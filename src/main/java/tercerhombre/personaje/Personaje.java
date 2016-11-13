@@ -1,5 +1,8 @@
 package tercerhombre.personaje;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 import tercerhombre.propiedades.Actividad;
@@ -9,7 +12,65 @@ import tercerhombre.propiedades.Nacionalidad;
 import tercerhombre.propiedades.Ubicacion;
 
 public class Personaje {
-
+	
+	// -----------------------------------
+	
+	// MAPA DE PERSONAJES
+	
+	/*
+	 * Mapa estático para guardar todos los personajes.
+	 * Cada elemento del mapa contiene un array, cada posición del array 
+	 * representa un acto: 0,1,2,3,4,5.
+	 */
+	
+	private static HashMap<String, ArrayList<Personaje>> mapaPersonajes = new HashMap<String, ArrayList<Personaje>>();
+	
+	public static Personaje get(String nombre, int acto) {
+		
+		Personaje personaje = null;
+		
+		if(mapaPersonajes.get(nombre) != null)
+			personaje = mapaPersonajes.get(nombre).get(acto);
+		
+		return personaje;
+	}
+	
+	public static Collection<Personaje> getAll() {
+		
+		// obtenemos los arrays
+		Collection<ArrayList<Personaje>> arrays = mapaPersonajes.values();
+		
+		// creamos un array que contendrá todos los personajes.
+		ArrayList<Personaje> all = new ArrayList<Personaje>();
+		
+		// creamos el array único
+		for (ArrayList<Personaje> a : arrays)
+			all.addAll(a);
+		
+		return all;
+	}
+	
+	public static void add(Personaje personaje) {
+		
+		String nombre = personaje.getNombre();
+		int acto = personaje.getActo();
+		
+		// si ese personaje aún no tiene array, se crea.
+		if(mapaPersonajes.get(nombre) == null){
+			
+			ArrayList<Personaje> array = new ArrayList<Personaje>(6);
+			
+			for (int i = 0; i < 6; i++)
+				array.add(i, null);
+			
+			mapaPersonajes.put(nombre, array);
+		}
+		
+		// insertar al personaje en el array, en el acto correspondiente.
+		mapaPersonajes.get(nombre).add(acto, personaje);
+		
+	}
+	
 	// ------------------------------------
 
 	//	PROPIEDADES
@@ -20,6 +81,7 @@ public class Personaje {
 	private Ubicacion ubicacion;
 	private Genero genero;
 	private Actividad actividad;
+	private int acto;
 
 	// ------------------------------------
 
@@ -54,13 +116,25 @@ public class Personaje {
 	 * más rápido.
 	 */
 	
-	public static Personaje crear(){
-		return new Personaje();
+	public static Personaje nuevo(){
+		
+		Personaje personaje = new Personaje(); // crea un nuevo personaje vacío.
+		
+		return personaje;
+	}
+	
+	public void fin(){
+		Personaje.add(this); // lo añade al mapa.		
 	}
 
 	// ------------------------------------
 
 	// GETTERS y SETTERS
+	
+	/*
+	 * Los setters devuelven this, para poder
+	 * encadenarlos.
+	 */
 
 
 	public String getNombre() {
@@ -207,8 +281,14 @@ public class Personaje {
 		return this;
 	}
 
+	public int getActo() {
+		return acto;
+	}
 
-
+	public Personaje setActo(int acto) {
+		this.acto = acto;
+		return this;
+	}
 
 
 

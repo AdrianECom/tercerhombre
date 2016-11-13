@@ -1,5 +1,6 @@
 package tercerhombre.propiedades;
 
 public enum Nacionalidad {
-	ESTADOSUNIDOS
+	AUSTRIA, GRANBRETAÑA, RUSIA,
+	ESTADOSUNIDOS, RUMANIA, ALEMANIA
 }
