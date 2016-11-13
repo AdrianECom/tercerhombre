@@ -103,7 +103,7 @@ public class Personaje {
 	// CONSTRUCTOR
 
 	public Personaje() {
-		// TODO Auto-generated constructor stub
+
 	}
 	
 	// ------------------------------------
@@ -116,15 +116,14 @@ public class Personaje {
 	 * más rápido.
 	 */
 	
+	// crea un nuevo personaje vacío.
 	public static Personaje nuevo(){
-		
-		Personaje personaje = new Personaje(); // crea un nuevo personaje vacío.
-		
-		return personaje;
+		return new Personaje();
 	}
 	
+	// lo añade al mapa.	
 	public void fin(){
-		Personaje.add(this); // lo añade al mapa.		
+		Personaje.add(this); 	
 	}
 
 	// ------------------------------------

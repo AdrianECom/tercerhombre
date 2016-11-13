@@ -1,4 +1,4 @@
-package tercerhombre
+package rules
 
 import tercerhombre.personaje.Personaje;
 
