@@ -32,7 +32,7 @@ public class Main {
 		// load up the knowledge base
 	    KieServices ks = KieServices.Factory.get();
 	    KieContainer kContainer = ks.getKieClasspathContainer();
-		KieSession kSession = kContainer.newKieSession("ksession-rules");
+		KieSession kSession = kContainer.newKieSession("ksession-rules0");
 	
 	    // go !
 		
