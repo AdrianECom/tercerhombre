@@ -25,17 +25,14 @@ public class LectorConsultas {
 
 	}
 
-	public static String muestraContenido(String archivo)
-			throws FileNotFoundException, IOException {
-		String linea = null;
+	public static void LeeFichero(String archivo) throws IOException {
 		String cadena;
 		FileReader f = new FileReader(archivo);
 		BufferedReader b = new BufferedReader(f);
 		while ((cadena = b.readLine()) != null) {
-			linea = cadena;
+			Consulta(cadena);
 		}
 		b.close();
-		return linea;
 	}
 
 	private static void Que(String archivo) throws FileNotFoundException {
@@ -53,7 +50,6 @@ public class LectorConsultas {
 
 	private static void Quien(String archivo) throws FileNotFoundException {
 
-		System.out.println(archivo);
 		Pattern persona = Pattern.compile("es (\\p{Lu}+\\p{Ll}*) hasta");
 		Matcher matchPersona = persona.matcher(archivo);
 		Pattern acto = Pattern.compile("hasta ([Acto]+\\d{1})");
@@ -75,8 +71,7 @@ public class LectorConsultas {
 	}
 
 	public static void main(String[] args) throws IOException {
-		String lector = muestraContenido("C:/Users/Jesus/Desktop/lector.csv");
-		Consulta(lector);
+		LeeFichero("C:/Users/Jesus/Desktop/lector.csv");
 
 	}
 }
