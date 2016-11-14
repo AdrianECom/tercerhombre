@@ -80,7 +80,7 @@ public class Main {
     	setGenero(Genero.HOMBRE).
     	setActividad(ActividadLegal.POLICIA).
     	setEstadoSalud(EstadoSalud.VIVO).
-    	setNacionalidad(Nacionalidad.GRANBRETAÑA).
+    	setNacionalidad(Nacionalidad.GRANBRETANA).
     	setUbicacion(Ubicacion.CEMENTERIO);
 
 
@@ -138,7 +138,7 @@ public class Main {
     	setGenero(Genero.HOMBRE).
     	setActividad(ActividadLegal.POLICIA).
     	setEstadoSalud(EstadoSalud.VIVO).
-    	setNacionalidad(Nacionalidad.GRANBRETAÑA).
+    	setNacionalidad(Nacionalidad.GRANBRETANA).
     	setUbicacion(Ubicacion.CEMENTERIO);
 
 
