@@ -17,6 +17,8 @@ public class Main {
 
     public static final void main(String[] args) {
         try {
+        	LectorConsultas lc = new LectorConsultas();
+        	lc.LeeFichero("src/main/resources/Consultas");
             Main.inicio();
         } catch (Throwable t) {
             t.printStackTrace();
@@ -26,7 +28,7 @@ public class Main {
     // ------------------------------------
 
     public static void inicio(){
-
+    	
 		// load up the knowledge base
 	    KieServices ks = KieServices.Factory.get();
 	    KieContainer kContainer = ks.getKieClasspathContainer();

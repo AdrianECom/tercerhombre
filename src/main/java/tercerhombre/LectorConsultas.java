@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class LectorConsultas {
 
-	public static void Consulta(String archivo) throws FileNotFoundException {
+	private static void Consulta(String archivo) throws FileNotFoundException {
 
 		Pattern patronQue = Pattern.compile("Qué");
 		Matcher matchQue = patronQue.matcher(archivo);
@@ -25,7 +25,7 @@ public class LectorConsultas {
 
 	}
 
-	public static void LeeFichero(String archivo) throws IOException {
+	public void LeeFichero(String archivo) throws IOException {
 		String cadena;
 		FileReader f = new FileReader(archivo);
 		BufferedReader b = new BufferedReader(f);
@@ -67,11 +67,10 @@ public class LectorConsultas {
 			String a2 = matchActo.group(1);
 			System.out.println(a2);
 		}
-
 	}
 
-	public static void main(String[] args) throws IOException {
-		LeeFichero("C:/Users/Jesus/Desktop/lector.csv");
+	public LectorConsultas(){
 
 	}
+	
 }
