@@ -36,6 +36,17 @@ public class Main {
 
 		Main.insertarPersonajes(kSession);
 
+		// TODO: leer fichero
+		// TODO: focus en el acto concreto
+		
+		/*
+		 * TODO:
+		 * Si por ejemplo piden acto 4,
+		 * necesitamos disparar las reglas del acto 0, del acto 1,
+		 * del acto 2, del acto 3 y del acto 4.
+		 */
+		
+		
 	    kSession.fireAllRules();
 
 	    // TODO: aquí se hace el log
