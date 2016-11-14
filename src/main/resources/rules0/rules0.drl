@@ -7,14 +7,14 @@ rule "martins karl"
         martins : Personaje( nombre == Personaje.martins  )
         karl : Personaje( nombre == Personaje.karl  )
         
-        Personaje( nombre == Personaje.martins, conoce_a not contains karl  )
-        Personaje( nombre == Personaje.karl, conoce_a not contains martins  )
+        not Personaje( nombre == Personaje.martins ) from karl.conoce_a
+        not Personaje( nombre == Personaje.karl ) from martins.conoce_a
     then
         System.out.println("martins conoce a karl"); 
-        modify(martins){	
+        modify(martins){
 		   getConoce_a().add(karl);
 		};
-		modify(karl){	
+		modify(karl){
 		   getConoce_a().add(martins);
 		};
 end
