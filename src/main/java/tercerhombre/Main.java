@@ -16,7 +16,7 @@ import tercerhombre.propiedades.Ubicacion;
 public class Main {
 
 	// ------------------------------------
-	
+
     public static final void main(String[] args) {
         try {
             Main.inicio();
@@ -24,195 +24,156 @@ public class Main {
             t.printStackTrace();
         }
     }
-    
+
     // ------------------------------------
 
     public static void inicio(){
-    	
+
 		// load up the knowledge base
 	    KieServices ks = KieServices.Factory.get();
 	    KieContainer kContainer = ks.getKieClasspathContainer();
 		KieSession kSession = kContainer.newKieSession("ksession-rules0");
-	
+
 	    // go !
-		
+
 		Main.insertarPersonajes(kSession);
-		
+
 	    kSession.fireAllRules();
     }
-    
+
     // ------------------------------------
-    
+
     public static void insertarPersonajes(KieSession ks){
+
     	
+    	// Estado inicial de los personajes
+
     	// ANNA
-    	
-    	Personaje.nuevo().
+
+    	Personaje anna = Personaje.nuevo().
     	setActo(0).
-    	setNombre("Anna").
+    	setNombre(Personaje.anna).
     	setGenero(Genero.MUJER).
     	setActividad(null).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(null).
-    	setUbicacion(Ubicacion.CEMENTERIO)
-    	.fin();
-    	
-    	Personaje.nuevo().
-    	setActo(1).
-    	setNombre("Anna").
-    	setGenero(Genero.MUJER).
-    	setActividad(null).
-    	setEstadoSalud(EstadoSalud.VIVO).
-    	setNacionalidad(null).
-    	setUbicacion(null)
-    	.fin();
-    	
+    	setUbicacion(Ubicacion.CEMENTERIO);
+
+
     	// LIME
-    	
-    	Personaje.nuevo().
+
+    	Personaje lime = Personaje.nuevo().
 		setActo(0).
-    	setNombre("Lime").
+    	setNombre(Personaje.lime).
     	setGenero(Genero.HOMBRE).
     	setActividad(null).
     	setEstadoSalud(EstadoSalud.MUERTO).
     	setNacionalidad(Nacionalidad.ESTADOSUNIDOS).
-    	setUbicacion(Ubicacion.CEMENTERIO)
-    	.fin();
-    	
-    	Personaje.nuevo().
-		setActo(1).
-    	setNombre("Lime").
-    	setGenero(Genero.HOMBRE).
-    	setActividad(ActividadIlegal.TRAFICANTE).
-    	setEstadoSalud(EstadoSalud.MUERTO).
-    	setNacionalidad(Nacionalidad.ESTADOSUNIDOS).
-    	setUbicacion(Ubicacion.CEMENTERIO)
-    	.fin();
-    	
+    	setUbicacion(Ubicacion.CEMENTERIO);
+
+
     	// CALLOWAY
-    	
-    	Personaje.nuevo().
+
+    	Personaje calloway = Personaje.nuevo().
 		setActo(0).
-    	setNombre("Calloway").
+    	setNombre(Personaje.calloway).
     	setGenero(Genero.HOMBRE).
     	setActividad(ActividadLegal.POLICIA).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.GRANBRETAÑA).
-    	setUbicacion(Ubicacion.CEMENTERIO)
-    	.fin();
-    	
-    	Personaje.nuevo().
-		setActo(1).
-    	setNombre("Calloway").
-    	setGenero(Genero.HOMBRE).
-    	setActividad(ActividadLegal.POLICIA).
-    	setEstadoSalud(EstadoSalud.VIVO).
-    	setNacionalidad(Nacionalidad.GRANBRETAÑA).
-    	setUbicacion(Ubicacion.PUB)
-    	.fin();
-    	
+    	setUbicacion(Ubicacion.CEMENTERIO);
+
+
     	// CRABBIN
-    	
-    	Personaje.nuevo().
-		setActo(1).
-    	setNombre("Crabbin").
-    	setGenero(Genero.HOMBRE).
-    	setActividad(ActividadLegal.DIRECTIVO).
-    	setEstadoSalud(EstadoSalud.VIVO).
-    	setNacionalidad(Nacionalidad.GRANBRETAÑA).
-    	setUbicacion(Ubicacion.HOTELSACHER)
-    	.fin();
-    	
+
+    // 	Personaje crabbin = Personaje.nuevo().
+		// setActo(1).
+    // 	setNombre(Personaje.crabbin).
+    // 	setGenero(Genero.HOMBRE).
+    // 	setActividad(ActividadLegal.DIRECTIVO).
+    // 	setEstadoSalud(EstadoSalud.VIVO).
+    // 	setNacionalidad(Nacionalidad.GRANBRETAÑA).
+    // 	setUbicacion(Ubicacion.HOTELSACHER);
+
     	// KARL
-    	
-    	Personaje.nuevo().
+
+    	Personaje karl = Personaje.nuevo().
 		setActo(0).
-    	setNombre("Karl").
+    	setNombre(Personaje.karl).
     	setGenero(Genero.HOMBRE).
     	setActividad(ActividadLegal.PORTERO).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.AUSTRIA).
-    	setUbicacion(Ubicacion.CASALIME)
-    	.fin();
-    	
-    	Personaje.nuevo().
-		setActo(1).
-    	setNombre("Karl").
-    	setGenero(Genero.HOMBRE).
-    	setActividad(ActividadLegal.PORTERO).
-    	setEstadoSalud(EstadoSalud.VIVO).
-    	setNacionalidad(Nacionalidad.AUSTRIA).
-    	setUbicacion(Ubicacion.CASALIME)
-    	.fin();
-    	
+    	setUbicacion(Ubicacion.CASALIME);
+
+
     	// KURTZ
-    	
-    	Personaje.nuevo().
-		setActo(1).
-    	setNombre("Kurtz").
-    	setGenero(Genero.HOMBRE).
-    	setActividad(null).
-    	setEstadoSalud(EstadoSalud.VIVO).
-    	setNacionalidad(Nacionalidad.AUSTRIA).
-    	setUbicacion(Ubicacion.CAFEMOZART)
-    	.fin();
-    	
+
+    // 	Personaje kurtz = Personaje.nuevo().
+		// setActo(1).
+    // 	setNombre(Personaje.kurtz).
+    // 	setGenero(Genero.HOMBRE).
+    // 	setActividad(null).
+    // 	setEstadoSalud(EstadoSalud.VIVO).
+    // 	setNacionalidad(Nacionalidad.AUSTRIA).
+    // 	setUbicacion(Ubicacion.CAFEMOZART);
+
     	// MARTINS
-    	
-    	Personaje.nuevo().
+
+    	Personaje martins = Personaje.nuevo().
 		setActo(0).
-    	setNombre("Martins").
+    	setNombre(Personaje.martins).
     	setGenero(Genero.HOMBRE).
     	setActividad(ActividadLegal.ESCRITOR).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.ESTADOSUNIDOS).
-    	setUbicacion(Ubicacion.CEMENTERIO)
-    	.fin();
-    	
-    	Personaje.nuevo().
-		setActo(1).
-    	setNombre("Martins").
-    	setGenero(Genero.HOMBRE).
-    	setActividad(ActividadLegal.ESCRITOR).
-    	setEstadoSalud(EstadoSalud.VIVO).
-    	setNacionalidad(Nacionalidad.ESTADOSUNIDOS).
-    	setUbicacion(Ubicacion.CAFEMOZART)
-    	.fin();
-    	
+    	setUbicacion(Ubicacion.CEMENTERIO);
+
+
     	// PAINE
-    	
-    	Personaje.nuevo().
+
+    	Personaje paine = Personaje.nuevo().
 		setActo(0).
-    	setNombre("Paine").
+    	setNombre(Personaje.paine).
     	setGenero(Genero.HOMBRE).
     	setActividad(ActividadLegal.POLICIA).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.GRANBRETAÑA).
-    	setUbicacion(Ubicacion.CEMENTERIO)
-    	.fin();
-    	
-    	Personaje.nuevo().
-		setActo(1).
-    	setNombre("Paine").
-    	setGenero(Genero.HOMBRE).
-    	setActividad(ActividadLegal.POLICIA).
-    	setEstadoSalud(EstadoSalud.VIVO).
-    	setNacionalidad(Nacionalidad.GRANBRETAÑA).
-    	setUbicacion(Ubicacion.HOTELSACHER)
-    	.fin();
-    	    	
-    	
-    	
-    	// TODO: relaciones
-    	
-    	
-    	
+    	setUbicacion(Ubicacion.CEMENTERIO);
+
+
+    	// Relaciones iniciales
+
+    	martins.getConoce_a().add(lime);
+//    	martins.getConoce_a().add(karl);
+    	martins.getBusca_a().add(lime);
+    	martins.getAmigo_de().add(lime);
+	
+    	lime.getConoce_a().add(martins);
+    	lime.getConoce_a().add(karl);
+    	lime.getAmigo_de().add(martins);
+    	lime.getQuiere_a().add(anna);
+	
+    	anna.getAmigo_de().add(lime);
+    	anna.getConoce_a().add(lime);
+    	anna.getQuiere_a().add(lime);
+
+    	calloway.getAmigo_de().add(paine);
+    	calloway.getConoce_a().add(paine);
+    	calloway.getTrabaja_con().add(paine);
+
+    	karl.getConoce_a().add(lime);
+//    	karl.getConoce_a().add(martins);
+
     	// Insertar
-    	for (Personaje p : Personaje.getAll()) {
-			ks.insert(p);
-		}
-    	
+
+    	ks.insert(anna);
+    	ks.insert(lime);
+    	ks.insert(calloway);
+    	ks.insert(karl);
+    	ks.insert(martins);
+    	ks.insert(paine);
+
+
     }
 }
-
-

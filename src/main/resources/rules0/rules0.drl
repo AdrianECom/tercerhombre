@@ -4,19 +4,10 @@ import tercerhombre.personaje.Personaje;
 
 rule "martins anna cementerio"
     when
-        martins : Personaje( nombre == "Martins", ubicacion == Ubicacion.CEMENTERIO  )
-        anna : Personaje( nombre == "Anna", ubicacion == Ubicacion.CEMENTERIO  )
+        martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO  )
+        anna : Personaje( nombre == Personaje.anna, ubicacion == Ubicacion.CEMENTERIO  )
     then
         System.out.println("martins conoce a anna");  
-end
-
-rule "martins calloway paine cementerio"
-    when
-        martins : Personaje( nombre == "Martins", ubicacion == Ubicacion.CEMENTERIO  )
-        calloway : Personaje( nombre == "Calloway", ubicacion == Ubicacion.CEMENTERIO  )
-        paine : Personaje( nombre == "Paine", ubicacion == Ubicacion.CEMENTERIO  )
-    then
-        System.out.println("martins conoce a calloway y a paine");  
 end
 
 rule "Personaje muerto"
