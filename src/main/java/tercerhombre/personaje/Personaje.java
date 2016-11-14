@@ -1,6 +1,8 @@
 package tercerhombre.personaje;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 import tercerhombre.propiedades.Actividad;
@@ -29,7 +31,77 @@ public class Personaje {
 	public static String paine = "Paine";
 
 	// -----------------------------------
-
+	
+	// MAPA DE PERSONAJES
+	
+	/*
+	 * Mapa estático para guardar todos los personajes.
+	 * Cada elemento del mapa contiene un array, cada posición del array 
+	 * representa un acto: 0,1,2,3,4,5.
+	 */
+	
+	private static HashMap<String, ArrayList<Personaje>> mapaPersonajes = new HashMap<String, ArrayList<Personaje>>();
+	
+	public static Personaje get(String nombre, int acto) {
+		
+		Personaje personaje = null;
+		
+		if(mapaPersonajes.get(nombre) != null)
+			personaje = mapaPersonajes.get(nombre).get(acto);
+		
+		return personaje;
+	}
+	
+	public static Collection<Personaje> getTodos() {
+		
+		// obtenemos los arrays
+		Collection<ArrayList<Personaje>> arrays = mapaPersonajes.values();
+		
+		// creamos un array que contendrá todos los personajes.
+		ArrayList<Personaje> all = new ArrayList<Personaje>();
+		
+		// creamos el array único
+		for (ArrayList<Personaje> a : arrays)
+			all.addAll(a);
+		
+		return all;
+	}
+	
+	public static Collection<Personaje> getTodosActo(int acto) {
+		
+		// obtenemos los arrays
+		Collection<ArrayList<Personaje>> arrays = mapaPersonajes.values();
+		
+		// creamos un array que contendrá todos los personajes.
+		ArrayList<Personaje> all = new ArrayList<Personaje>();
+		
+		// creamos el array único
+		for (ArrayList<Personaje> a : arrays)
+			all.add(a.get(acto));
+		
+		return all;
+	}
+	
+	public static void add(Personaje personaje) {
+		
+		String nombre = personaje.getNombre();
+		int acto = personaje.getActo();
+		
+		// si ese personaje aún no tiene array, se crea.
+		if(mapaPersonajes.get(nombre) == null){
+			
+			ArrayList<Personaje> array = new ArrayList<Personaje>(6);
+			
+			for (int i = 0; i < 6; i++)
+				array.add(i, null);
+			
+			mapaPersonajes.put(nombre, array);
+		}
+		
+		// insertar al personaje en el array, en el acto correspondiente.
+		mapaPersonajes.get(nombre).add(acto, personaje);
+			
+	}
 
 
 	// ------------------------------------
@@ -89,6 +161,12 @@ public class Personaje {
 	// crea un nuevo personaje vacío.
 	public static Personaje nuevo(){
 		return new Personaje();
+	}
+	
+	// crea un nuevo personaje vacío.
+	public Personaje fin(){
+		Personaje.add(this);
+		return this;
 	}
 
 	// ------------------------------------

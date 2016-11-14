@@ -5,8 +5,6 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
 import tercerhombre.personaje.Personaje;
-import tercerhombre.propiedades.Actividad;
-import tercerhombre.propiedades.ActividadIlegal;
 import tercerhombre.propiedades.ActividadLegal;
 import tercerhombre.propiedades.EstadoSalud;
 import tercerhombre.propiedades.Genero;
@@ -39,13 +37,20 @@ public class Main {
 		Main.insertarPersonajes(kSession);
 
 	    kSession.fireAllRules();
+
+	    // TODO: aquí se hace el log
+
+	    for (Personaje p : Personaje.getTodosActo(0)) {
+			System.out.println(p.getNombre());
+		}
+
     }
 
     // ------------------------------------
 
     public static void insertarPersonajes(KieSession ks){
 
-    	
+
     	// Estado inicial de los personajes
 
     	// ANNA
@@ -57,7 +62,8 @@ public class Main {
     	setActividad(null).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(null).
-    	setUbicacion(Ubicacion.CEMENTERIO);
+    	setUbicacion(Ubicacion.CEMENTERIO).
+    	fin();
 
 
     	// LIME
@@ -69,7 +75,8 @@ public class Main {
     	setActividad(null).
     	setEstadoSalud(EstadoSalud.MUERTO).
     	setNacionalidad(Nacionalidad.ESTADOSUNIDOS).
-    	setUbicacion(Ubicacion.CEMENTERIO);
+    	setUbicacion(Ubicacion.CEMENTERIO).
+    	fin();
 
 
     	// CALLOWAY
@@ -81,7 +88,8 @@ public class Main {
     	setActividad(ActividadLegal.POLICIA).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.GRANBRETANA).
-    	setUbicacion(Ubicacion.CEMENTERIO);
+    	setUbicacion(Ubicacion.CEMENTERIO).
+    	fin();
 
 
     	// CRABBIN
@@ -93,7 +101,8 @@ public class Main {
     // 	setActividad(ActividadLegal.DIRECTIVO).
     // 	setEstadoSalud(EstadoSalud.VIVO).
     // 	setNacionalidad(Nacionalidad.GRANBRETAÑA).
-    // 	setUbicacion(Ubicacion.HOTELSACHER);
+    // 	setUbicacion(Ubicacion.HOTELSACHER).
+    // fin();
 
     	// KARL
 
@@ -104,7 +113,8 @@ public class Main {
     	setActividad(ActividadLegal.PORTERO).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.AUSTRIA).
-    	setUbicacion(Ubicacion.CASALIME);
+    	setUbicacion(Ubicacion.CASALIME).
+    	fin();
 
 
     	// KURTZ
@@ -116,7 +126,8 @@ public class Main {
     // 	setActividad(null).
     // 	setEstadoSalud(EstadoSalud.VIVO).
     // 	setNacionalidad(Nacionalidad.AUSTRIA).
-    // 	setUbicacion(Ubicacion.CAFEMOZART);
+    // 	setUbicacion(Ubicacion.CAFEMOZART).
+    // fin();
 
     	// MARTINS
 
@@ -127,7 +138,8 @@ public class Main {
     	setActividad(ActividadLegal.ESCRITOR).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.ESTADOSUNIDOS).
-    	setUbicacion(Ubicacion.CEMENTERIO);
+    	setUbicacion(Ubicacion.CEMENTERIO).
+    	fin();
 
 
     	// PAINE
@@ -139,7 +151,8 @@ public class Main {
     	setActividad(ActividadLegal.POLICIA).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.GRANBRETANA).
-    	setUbicacion(Ubicacion.CEMENTERIO);
+    	setUbicacion(Ubicacion.CEMENTERIO).
+    	fin();
 
 
     	// Relaciones iniciales
@@ -148,12 +161,12 @@ public class Main {
 //    	martins.getConoce_a().add(karl);
     	martins.getBusca_a().add(lime);
     	martins.getAmigo_de().add(lime);
-	
+
     	lime.getConoce_a().add(martins);
     	lime.getConoce_a().add(karl);
     	lime.getAmigo_de().add(martins);
     	lime.getQuiere_a().add(anna);
-	
+
     	anna.getAmigo_de().add(lime);
     	anna.getConoce_a().add(lime);
     	anna.getQuiere_a().add(lime);
