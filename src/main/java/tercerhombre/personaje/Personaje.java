@@ -14,13 +14,13 @@ import tercerhombre.propiedades.Ubicacion;
 public class Personaje {
 
 	// -----------------------------------
-	
+
 	// NOMBRES
-	
+
 	/*
 	 * Para no tener que estar usando cadenas todo el rato.
 	 */
-	
+
 	public static String anna = "Anna";
 	public static String lime = "Lime";
 	public static String calloway = "Calloway";
@@ -29,10 +29,10 @@ public class Personaje {
 	public static String kurtz = "Kurtz";
 	public static String martins = "Martins";
 	public static String paine = "Paine";
-	
+
 	// -----------------------------------
 
-	
+
 
 	// ------------------------------------
 
@@ -66,7 +66,16 @@ public class Personaje {
 	// CONSTRUCTOR
 
 	public Personaje() {
-
+		this.amigo_de = new ArrayList<Personaje>();
+		this.mata_a = new ArrayList<Personaje>();
+		this.enfrentado_con = new ArrayList<Personaje>();
+		this.busca_a = new ArrayList<Personaje>();
+		this.asesinado_por = new ArrayList<Personaje>();
+		this.quiere_a = new ArrayList<Personaje>();
+		this.en_realidad_es = new ArrayList<Personaje>();
+		this.sospecha_de = new ArrayList<Personaje>();
+		this.conoce_a = new ArrayList<Personaje>();
+		this.trabaja_con = new ArrayList<Personaje>();
 	}
 
 	// ------------------------------------

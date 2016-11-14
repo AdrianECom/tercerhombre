@@ -2,12 +2,21 @@ package rules0
 
 import tercerhombre.personaje.Personaje;
 
-rule "martins anna cementerio"
+rule "martins karl"
     when
-        martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO  )
-        anna : Personaje( nombre == Personaje.anna, ubicacion == Ubicacion.CEMENTERIO  )
+        martins : Personaje( nombre == Personaje.martins  )
+        karl : Personaje( nombre == Personaje.karl  )
+        
+        Personaje( nombre == Personaje.martins, conoce_a not contains karl  )
+        Personaje( nombre == Personaje.karl, conoce_a not contains martins  )
     then
-        System.out.println("martins conoce a anna");  
+        System.out.println("martins conoce a karl"); 
+        modify(martins){	
+		   getConoce_a().add(karl);
+		};
+		modify(karl){	
+		   getConoce_a().add(martins);
+		};
 end
 
 rule "Personaje muerto"
