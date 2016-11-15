@@ -69,7 +69,7 @@ public class Main {
 			System.out.println(p.getNombre());
 		}
 
-	    // TODO: aquí se hace el log
+	    // TODO: aquí se hace cogen los personajes
 
 	    for (Personaje p : Personaje.getTodosActo(0)) {
 			System.out.println(p.getNombre());
