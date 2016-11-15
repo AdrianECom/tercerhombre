@@ -1,9 +1,14 @@
 package tercerhombre;
 
+import java.util.Collection;
+import java.util.List;
+
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
+import tercerhombre.consultas.Consulta;
+import tercerhombre.consultas.ConsultaQuien;
 import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.ActividadLegal;
 import tercerhombre.propiedades.EstadoSalud;
@@ -18,8 +23,8 @@ public class Main {
     public static final void main(String[] args) {
         try {
         	LectorConsultas lc = new LectorConsultas();
-        	lc.LeeFichero("src/main/resources/Consultas");
-            Main.inicio();
+        	List<Consulta> consultas = lc.LeeFichero("src/main/resources/Consultas");
+            Main.inicio(consultas);
         } catch (Throwable t) {
             t.printStackTrace();
         }
@@ -27,7 +32,7 @@ public class Main {
 
     // ------------------------------------
 
-    public static void inicio(){
+    public static void inicio(List<Consulta> consultas){
     	
 		// load up the knowledge base
 	    KieServices ks = KieServices.Factory.get();
@@ -48,10 +53,23 @@ public class Main {
 		 * del acto 2, del acto 3 y del acto 4.
 		 */
 		
-		
 	    kSession.fireAllRules();
+	    
+	    
+	    // TODO: necesito saber si hemos hecho un QUE o un QUIEN
+	    
+	    // TODO: de momento probamos con la PRIMERA consulta
+	    
+	    Consulta c = consultas.get(0);
+	    
+	    System.out.println("\n##############################\n");
+	    
+	    System.out.println("CONSULTA: " + c.getClass().toString());
+	    for (Personaje p: (Collection<Personaje>)kSession.getObjects()) {
+			System.out.println(p.getNombre());
+		}
 
-	    // TODO: aquÃÂ­ se hace el log
+	    // TODO: aquí se hace el log
 
 	    for (Personaje p : Personaje.getTodosActo(0)) {
 			System.out.println(p.getNombre());
