@@ -17,7 +17,7 @@ rule "martins karl"
 		modify(karl){
 		   getConoce_a().add(martins);
 		};
-end
+end 
 
 rule "Personaje muerto"
     when

@@ -10,9 +10,9 @@ public class LectorConsultas {
 
 	private static void Consulta(String archivo) throws FileNotFoundException {
 
-		Pattern patronQue = Pattern.compile("Qué");
+		Pattern patronQue = Pattern.compile("QuÃ©");
 		Matcher matchQue = patronQue.matcher(archivo);
-		Pattern patronQuien = Pattern.compile("Quién");
+		Pattern patronQuien = Pattern.compile("QuiÃ©n");
 		Matcher matchQuien = patronQuien.matcher(archivo);
 
 		if (matchQue.find()) {

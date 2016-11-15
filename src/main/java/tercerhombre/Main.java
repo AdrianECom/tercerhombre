@@ -51,7 +51,7 @@ public class Main {
 		
 	    kSession.fireAllRules();
 
-	    // TODO: aquí se hace el log
+	    // TODO: aquÃÂ­ se hace el log
 
 	    for (Personaje p : Personaje.getTodosActo(0)) {
 			System.out.println(p.getNombre());
@@ -113,7 +113,7 @@ public class Main {
     // 	setGenero(Genero.HOMBRE).
     // 	setActividad(ActividadLegal.DIRECTIVO).
     // 	setEstadoSalud(EstadoSalud.VIVO).
-    // 	setNacionalidad(Nacionalidad.GRANBRETAÑA).
+    // 	setNacionalidad(Nacionalidad.GRANBRETAÃâA).
     // 	setUbicacion(Ubicacion.HOTELSACHER).
     // fin();
 
@@ -199,7 +199,6 @@ public class Main {
     	ks.insert(karl);
     	ks.insert(martins);
     	ks.insert(paine);
-
 
     }
 }
