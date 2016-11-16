@@ -1,0 +1,37 @@
+##Cambios del Acto 0 al 1
+#Calloway
+* Conoce a Martins
+* Ubicacion pub
+
+#Crabbin (Aparece)
+* Actividad directivo
+* conoce a Martins
+* Salud vivo
+* Nacionalidad GranBretana
+* Sexo Hombre
+* Nombre "Crabbin"
+* Ubicacion hotelsacher
+
+#Karl
+* Conoce a Anna
+
+#Kurtz(Aparece)
+* Actividad Desconocida
+* conoce a Martins, Kurtz
+* Salud vivo
+* Nacionalidad Austria
+* Sexo Hombre
+* Nombre "Kurtz"
+* Ubicacion Cafemozart
+
+#Lime
+* Conoce a Kurtz
+* Amigo de Kurtz
+
+#Martins
+* conoce a Kurtz,Paine,Crabbin,Calloway,
+* Ubicacion Cafemozart
+
+#Paine
+* Conoce a Martins,Crabbin
+* Ubicacion hotelsacher
