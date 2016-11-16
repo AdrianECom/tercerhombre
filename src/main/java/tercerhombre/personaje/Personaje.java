@@ -138,14 +138,17 @@ public class Personaje {
 			
 			int n = relacion.size();
 			
+			s+=nombre+" "; // martins conoce a
+			
 			for (int i = 0; i < n; i++) {
 				
-				s+=nombre+" "+r.toString(sufijo)+" "; // martins conoce a					
-				s+= relacion.get(i).getNombre() ;
 				
-				if(i < n-1)
+				s+= r.toString(sufijo)+" "+relacion.get(i).getNombre() ;
+				
+				if(n > 1 && i == n-2)
+					s+= " y ";
+				else if(n > 2 && i < n-1)
 					s+= ", ";
-				
 			}
 			
 			s+=". ";
