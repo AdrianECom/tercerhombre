@@ -14,81 +14,95 @@ import tercerhombre.consultas.ConsultaQuien;
 
 public class LectorConsultas {
 
-	private static Consulta consulta(String archivo) throws FileNotFoundException {
+	/*
+	 * Esta función identifica el tipo de consulta QUE/QUIN y devuelve una Consulta.
+	 */
+	private static Consulta identificarConsulta(String archivo) throws FileNotFoundException {
 
+		// PATRONES
 		Pattern patronQue = Pattern.compile("Qué");
 		Matcher matchQue = patronQue.matcher(archivo);
 		Pattern patronQuien = Pattern.compile("Quién");
 		Matcher matchQuien = patronQuien.matcher(archivo);
 		
+		
+		// Leemos la consulta
+		
 		Consulta consulta = null;
 
 		if (matchQue.find()) {
 			System.out.println("QUE");
-			consulta = Que(archivo);
+			consulta = procesarQue(archivo);
 		} else if (matchQuien.find()) {
 			System.out.println("QUIEN");
-			consulta = Quien(archivo);
+			consulta = procesarQuien(archivo);
 		}
 		
 		return consulta;
 
 	}
 
-	public List<Consulta> LeeFichero(String archivo) throws IOException {
+	/*
+	 * Esta es la función principal. Lee todas las líneas del fichero 
+	 * y devuelve una lista de Consultas.
+	 */
+	public List<Consulta> leerFichero(String archivo) throws IOException {
 		String cadena;
+		
 		FileReader f = new FileReader(archivo);
 		BufferedReader b = new BufferedReader(f);
 		
 		List<Consulta> consultas = new ArrayList<Consulta>();
 		
 		while ((cadena = b.readLine()) != null) {	
-			Consulta c = consulta(cadena);
+			Consulta c = identificarConsulta(cadena);
 		
 			if(c!=null)
 				consultas.add(c);
 		}
+		
 		b.close();
 		
 		return consultas;
 	}
 
-	private static Consulta Que(String archivo) throws FileNotFoundException {
+	/*
+	 * Esta función se encarga de procesar una consulta QUE.
+	 */
+	private static Consulta procesarQue(String archivo) throws FileNotFoundException {
 
-		Pattern acto = Pattern.compile("hasta Acto(\\d{1})");
-		Matcher matchActo = acto.matcher(archivo);
+		Pattern patternActo = Pattern.compile("hasta Acto(\\d{1})");
+		Matcher matchActo = patternActo.matcher(archivo);
 
-		boolean matchActosi = matchActo.find();
-
-		if (matchActosi) {
-			String a2 = matchActo.group(1);
-			System.out.println(a2);
+		if (matchActo.find()) {
+			String acto = matchActo.group(1);
+//			System.out.println(acto);
 			
-			return new ConsultaQue(Integer.parseInt(a2));
+			return new ConsultaQue(Integer.parseInt(acto));
 		}
 		
 		return null;
 	}
 
-	private static Consulta Quien(String archivo) throws FileNotFoundException {
+	/*
+	 * Esta función se encarga de procesar una consulta QUIEN.
+	 */
+	private static Consulta procesarQuien(String archivo) throws FileNotFoundException {
 
-		Pattern persona = Pattern.compile("es (\\p{Lu}+\\p{Ll}*) hasta");
-		Matcher matchPersona = persona.matcher(archivo);
-		Pattern acto = Pattern.compile("hasta Acto(\\d{1})");
-		Matcher matchActo = acto.matcher(archivo);
+		Pattern patternPersona = Pattern.compile("es ([a-zA-Z]+) hasta");
+		Matcher matchPersona = patternPersona.matcher(archivo);
+		Pattern patternActo = Pattern.compile("hasta Acto(\\d{1})");
+		Matcher matchActo = patternActo.matcher(archivo);
 
-		boolean matchPersonasi = matchPersona.find();
-		boolean matchActosi = matchActo.find();
-
-		if (matchPersonasi) {
-			String el2 = matchPersona.group(1);
-			System.out.println(el2);
+		if (matchPersona.find()) {
+			String nombre = matchPersona.group(1);
+			System.out.println(nombre);
 			
-			if (matchActosi) {
-				String a2 = matchActo.group(1);
-				System.out.println(a2);
+			if (matchActo.find()) {
+				String acto = matchActo.group(1);
+//				System.out.println(acto);
 				
-				new ConsultaQuien(Integer.parseInt(a2),el2);
+				return new ConsultaQuien(Integer.parseInt(acto),nombre);
 			}
 		}
 

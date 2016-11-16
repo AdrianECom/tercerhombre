@@ -9,6 +9,7 @@ import tercerhombre.propiedades.Actividad;
 import tercerhombre.propiedades.EstadoSalud;
 import tercerhombre.propiedades.Genero;
 import tercerhombre.propiedades.Nacionalidad;
+import tercerhombre.propiedades.Relacion;
 import tercerhombre.propiedades.Ubicacion;
 
 public class Personaje {
@@ -29,80 +30,6 @@ public class Personaje {
 	public static String kurtz = "Kurtz";
 	public static String martins = "Martins";
 	public static String paine = "Paine";
-
-	// -----------------------------------
-	
-	// MAPA DE PERSONAJES
-	
-	/*
-	 * Mapa estático para guardar todos los personajes.
-	 * Cada elemento del mapa contiene un array, cada posición del array 
-	 * representa un acto: 0,1,2,3,4,5.
-	 */
-	
-	private static HashMap<String, ArrayList<Personaje>> mapaPersonajes = new HashMap<String, ArrayList<Personaje>>();
-	
-	public static Personaje get(String nombre, int acto) {
-		
-		Personaje personaje = null;
-		
-		if(mapaPersonajes.get(nombre) != null)
-			personaje = mapaPersonajes.get(nombre).get(acto);
-		
-		return personaje;
-	}
-	
-	public static Collection<Personaje> getTodos() {
-		
-		// obtenemos los arrays
-		Collection<ArrayList<Personaje>> arrays = mapaPersonajes.values();
-		
-		// creamos un array que contendrá todos los personajes.
-		ArrayList<Personaje> all = new ArrayList<Personaje>();
-		
-		// creamos el array único
-		for (ArrayList<Personaje> a : arrays)
-			all.addAll(a);
-		
-		return all;
-	}
-	
-	public static Collection<Personaje> getTodosActo(int acto) {
-		
-		// obtenemos los arrays
-		Collection<ArrayList<Personaje>> arrays = mapaPersonajes.values();
-		
-		// creamos un array que contendrá todos los personajes.
-		ArrayList<Personaje> all = new ArrayList<Personaje>();
-		
-		// creamos el array único
-		for (ArrayList<Personaje> a : arrays)
-			all.add(a.get(acto));
-		
-		return all;
-	}
-	
-	public static void add(Personaje personaje) {
-		
-		String nombre = personaje.getNombre();
-		int acto = personaje.getActo();
-		
-		// si ese personaje aún no tiene array, se crea.
-		if(mapaPersonajes.get(nombre) == null){
-			
-			ArrayList<Personaje> array = new ArrayList<Personaje>(6);
-			
-			for (int i = 0; i < 6; i++)
-				array.add(i, null);
-			
-			mapaPersonajes.put(nombre, array);
-		}
-		
-		// insertar al personaje en el array, en el acto correspondiente.
-		mapaPersonajes.get(nombre).add(acto, personaje);
-			
-	}
-
 
 	// ------------------------------------
 
@@ -130,12 +57,14 @@ public class Personaje {
 	private List<Personaje> sospecha_de;
 	private List<Personaje> conoce_a;
 	private List<Personaje> trabaja_con;
+	
 
 	// ------------------------------------
 
 	// CONSTRUCTOR
 
 	public Personaje() {
+		
 		this.amigo_de = new ArrayList<Personaje>();
 		this.mata_a = new ArrayList<Personaje>();
 		this.enfrentado_con = new ArrayList<Personaje>();
@@ -146,6 +75,11 @@ public class Personaje {
 		this.sospecha_de = new ArrayList<Personaje>();
 		this.conoce_a = new ArrayList<Personaje>();
 		this.trabaja_con = new ArrayList<Personaje>();
+		
+		
+		
+		
+		
 	}
 
 	// ------------------------------------
@@ -163,10 +97,57 @@ public class Personaje {
 		return new Personaje();
 	}
 	
-	// crea un nuevo personaje vacío.
-	public Personaje fin(){
-		Personaje.add(this);
-		return this;
+	// ------------------------------------
+	
+	// TO STRING
+	
+	private String relacionToString(String nombre, Relacion r, List<Personaje> relacion, String sufijo){
+		
+		String s = "";
+		
+		if(!relacion.isEmpty()){
+			
+			for (int i = 0; i < relacion.size(); i++) {
+				s+=nombre+" "+r.toString(sufijo)+" "; // martins conoce a
+				s+= relacion.get(i).getNombre() + ", ";
+			}
+			
+			s+=". ";
+		}
+		
+		return s;
+	}
+	
+	@Override
+	public String toString() {
+		
+		String sufijo = genero.sufijo();
+		String un = genero.un();
+		String generoStr = genero.toString();
+		String nacionalidadStr = "desconocida";
+		
+		String end = ". ";
+		
+		if(nacionalidad != null)
+			nacionalidadStr = nacionalidad.toString();
+		
+		String s = "";
+		
+		
+		
+		s+=nombre+" está viv"+sufijo+end;
+		s+="Es "+un+ " "+ generoStr +" de nacionalidad "+nacionalidadStr+end;
+		
+		if(actividad != null)
+			s+="Es "+un+ " "+ actividad.toString()+end;
+		else
+			s+="Se desconoce su actividad"+end;
+		
+		// TODO: qué pasa con la ubicación?
+		
+		s+=relacionToString(nombre, Relacion.AMIGO_DE, amigo_de, sufijo);
+		
+		return s;
 	}
 
 	// ------------------------------------

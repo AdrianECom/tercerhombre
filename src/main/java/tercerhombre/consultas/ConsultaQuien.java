@@ -1,16 +1,16 @@
 package tercerhombre.consultas;
 
+
 public class ConsultaQuien extends Consulta {
 	
-	private String personaje;
+	private String nombre;
 
 	public ConsultaQuien(int acto, String personaje) {
 		super(acto);
-		this.personaje = personaje;
+		this.nombre = personaje;
 	}
 
-	public String getPersonaje() {
-		return personaje;
+	public String getNombre() {
+		return nombre;
 	}
-
 }

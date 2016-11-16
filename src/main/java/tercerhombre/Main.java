@@ -17,14 +17,16 @@ import tercerhombre.propiedades.Nacionalidad;
 import tercerhombre.propiedades.Ubicacion;
 
 public class Main {
+	
+	public static FicheroSalida salida = new FicheroSalida("src/main/resources/output.txt");
 
 	// ------------------------------------
 
     public static final void main(String[] args) {
         try {
         	LectorConsultas lc = new LectorConsultas();
-        	List<Consulta> consultas = lc.LeeFichero("src/main/resources/Consultas");
-            Main.inicio(consultas);
+        	List<Consulta> consultas = lc.leerFichero("src/main/resources/input.txt");
+            Main.ejecutar(consultas);
         } catch (Throwable t) {
             t.printStackTrace();
         }
@@ -32,48 +34,63 @@ public class Main {
 
     // ------------------------------------
 
-    public static void inicio(List<Consulta> consultas){
+    public static void ejecutar(List<Consulta> consultas){
     	
 		// load up the knowledge base
 	    KieServices ks = KieServices.Factory.get();
 	    KieContainer kContainer = ks.getKieClasspathContainer();
-		KieSession kSession = kContainer.newKieSession("ksession-rules0");
+	    
+	    // RECORREMOS CONSULTAS
+	    for (Consulta consulta : consultas) {
+	    	
+	    	KieSession kSession = kContainer.newKieSession("ksession-rules0");
+	    	
+	    	System.out.println("CONSULTA: " + consulta.getClass().getName());
+	    	System.out.println("\n##############################\n");
 
-	    // go !
+		    // go !
 
-		Main.insertarPersonajes(kSession);
+			Main.insertarPersonajes(kSession);
 
-		// TODO: leer fichero
-		// TODO: focus en el acto concreto
-		
-		/*
-		 * TODO:
-		 * Si por ejemplo piden acto 4,
-		 * necesitamos disparar las reglas del acto 0, del acto 1,
-		 * del acto 2, del acto 3 y del acto 4.
-		 */
-		
-	    kSession.fireAllRules();
-	    
-	    
-	    // TODO: necesito saber si hemos hecho un QUE o un QUIEN
-	    
-	    // TODO: de momento probamos con la PRIMERA consulta
-	    
-	    Consulta c = consultas.get(0);
-	    
-	    System.out.println("\n##############################\n");
-	    
-	    System.out.println("CONSULTA: " + c.getClass().toString());
-	    for (Personaje p: (Collection<Personaje>)kSession.getObjects()) {
-			System.out.println(p.getNombre());
+			// TODO: focus en el acto concreto
+			
+			/*
+			 * TODO:
+			 * Si por ejemplo piden acto 4,
+			 * necesitamos disparar las reglas del acto 0, del acto 1,
+			 * del acto 2, del acto 3 y del acto 4.
+			 */
+			
+			System.out.println("REGLAS:\n");
+		    kSession.fireAllRules();
+		    
+		    if(consulta instanceof ConsultaQuien){		    	
+		    	System.out.println("\n##############################\n");
+		    	System.out.println("CONSULTA QUIEN:\n");
+		    	
+		    	ConsultaQuien consultaQuien = (ConsultaQuien)consulta;
+		    	
+		    	for (Personaje p: (Collection<Personaje>)kSession.getObjects()) {
+			    	if(p.getNombre().equals(consultaQuien.getNombre())){
+			    		salida.println(p.toString());
+			    	}
+				}
+		    	
+		    	
+		    	
+		    }
+		    
+		    
+		    
+		    kSession.dispose();
+		    
+		    System.out.println("\n##############################\n");
 		}
-
-	    // TODO: aquí se hace cogen los personajes
-
-	    for (Personaje p : Personaje.getTodosActo(0)) {
-			System.out.println(p.getNombre());
-		}
+	    
+	    salida.guardar();
+	    
+	    
+		
 
     }
 
@@ -83,7 +100,7 @@ public class Main {
 
 
     	// Estado inicial de los personajes
-
+    	    	
     	// ANNA
 
     	Personaje anna = Personaje.nuevo().
@@ -93,8 +110,7 @@ public class Main {
     	setActividad(null).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(null).
-    	setUbicacion(Ubicacion.CEMENTERIO).
-    	fin();
+    	setUbicacion(Ubicacion.CEMENTERIO);
 
 
     	// LIME
@@ -106,8 +122,7 @@ public class Main {
     	setActividad(null).
     	setEstadoSalud(EstadoSalud.MUERTO).
     	setNacionalidad(Nacionalidad.ESTADOSUNIDOS).
-    	setUbicacion(Ubicacion.CEMENTERIO).
-    	fin();
+    	setUbicacion(Ubicacion.CEMENTERIO);
 
 
     	// CALLOWAY
@@ -119,8 +134,7 @@ public class Main {
     	setActividad(ActividadLegal.POLICIA).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.GRANBRETANA).
-    	setUbicacion(Ubicacion.CEMENTERIO).
-    	fin();
+    	setUbicacion(Ubicacion.CEMENTERIO);
 
 
     	// CRABBIN
@@ -131,9 +145,8 @@ public class Main {
     // 	setGenero(Genero.HOMBRE).
     // 	setActividad(ActividadLegal.DIRECTIVO).
     // 	setEstadoSalud(EstadoSalud.VIVO).
-    // 	setNacionalidad(Nacionalidad.GRANBRETAÃâA).
-    // 	setUbicacion(Ubicacion.HOTELSACHER).
-    // fin();
+    // 	setNacionalidad(Nacionalidad.GRANBRETANA).
+    // 	setUbicacion(Ubicacion.HOTELSACHER);
 
     	// KARL
 
@@ -144,8 +157,7 @@ public class Main {
     	setActividad(ActividadLegal.PORTERO).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.AUSTRIA).
-    	setUbicacion(Ubicacion.CASALIME).
-    	fin();
+    	setUbicacion(Ubicacion.CASALIME);
 
 
     	// KURTZ
@@ -157,8 +169,7 @@ public class Main {
     // 	setActividad(null).
     // 	setEstadoSalud(EstadoSalud.VIVO).
     // 	setNacionalidad(Nacionalidad.AUSTRIA).
-    // 	setUbicacion(Ubicacion.CAFEMOZART).
-    // fin();
+    // 	setUbicacion(Ubicacion.CAFEMOZART);
 
     	// MARTINS
 
@@ -169,8 +180,7 @@ public class Main {
     	setActividad(ActividadLegal.ESCRITOR).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.ESTADOSUNIDOS).
-    	setUbicacion(Ubicacion.CEMENTERIO).
-    	fin();
+    	setUbicacion(Ubicacion.CEMENTERIO);
 
 
     	// PAINE
@@ -182,8 +192,7 @@ public class Main {
     	setActividad(ActividadLegal.POLICIA).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.GRANBRETANA).
-    	setUbicacion(Ubicacion.CEMENTERIO).
-    	fin();
+    	setUbicacion(Ubicacion.CEMENTERIO);
 
 
     	// Relaciones iniciales

@@ -1,5 +1,9 @@
 package tercerhombre.propiedades;
 
 public enum ActividadIlegal implements Actividad {
-	TRAFICANTE
+	TRAFICANTE;
+	
+	public String toString() {
+		return "traficante";
+	}
 }
