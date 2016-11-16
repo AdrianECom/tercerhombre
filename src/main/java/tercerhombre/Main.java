@@ -8,6 +8,7 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
 import tercerhombre.consultas.Consulta;
+import tercerhombre.consultas.ConsultaQue;
 import tercerhombre.consultas.ConsultaQuien;
 import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.ActividadLegal;
@@ -49,20 +50,29 @@ public class Main {
 	    	System.out.println("\n##############################\n");
 	    	
 			Main.insertarPersonajes(kSession);
-
-			kSession.getAgenda().getAgendaGroup("g"+consulta.getActo()).setFocus();
 			
 			/*
-			 * TODO:
+			 * Si el Acto es 0, lanzar función para imprimir todo lo anterior.
+			 * y después lanzar las reglas.
+			 */
+			
+			if(consulta instanceof ConsultaQue )
+				imprimirAnteriorActo0();
+			
+			/*
 			 * Si por ejemplo piden acto 4,
 			 * necesitamos disparar las reglas del acto 0, del acto 1,
 			 * del acto 2, del acto 3 y del acto 4.
 			 */
+			for (int i = 0; i <= consulta.getActo(); i++) {
+					
+				kSession.getAgenda().getAgendaGroup("g"+i).setFocus();
+
+				System.out.println("ACTO:" + i);
+			    kSession.fireAllRules();
+			}
 			
-			System.out.println("REGLAS:\n");
-		    kSession.fireAllRules();
-		    
-		    if(consulta instanceof ConsultaQuien){		    	
+			if(consulta instanceof ConsultaQuien){		    	
 		    	System.out.println("\n##############################\n");
 		    	System.out.println("CONSULTA QUIEN:\n");
 		    	
@@ -73,9 +83,7 @@ public class Main {
 			    		salida.println(p.toString());
 			    	}
 				}
-		    	
-		    	
-		    	
+		    		
 		    }
 		    
 		    
@@ -93,7 +101,13 @@ public class Main {
     }
 
     // ------------------------------------
-
+    
+    public static void imprimirAnteriorActo0(){
+    	
+    }
+    
+    // ------------------------------------
+    
     public static void insertarPersonajes(KieSession ks){
 
 
