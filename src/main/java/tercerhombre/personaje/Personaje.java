@@ -58,7 +58,12 @@ public class Personaje {
 	private List<Personaje> conoce_a;
 	private List<Personaje> trabaja_con;
 	
+	// cada personaje tendrá una lista de sus relaciones para facilitar la impresión en el fichero.
 	private List<List<Personaje>> listaDeRelaciones;
+	
+	// ------------------------------------
+	
+	// LISTA DE ENUMERADOS RELACION STATIC
 	
 	// IMPORTANTE
 	/*
@@ -67,7 +72,7 @@ public class Personaje {
 	private static List<Relacion> listaDeRelacionesEnum = new ArrayList<Relacion>();
 	
 	/*
-	 * La inicializamos en este bloque static
+	 * Inicializamos la lista en este bloque static
 	 */
 	static{
 		Personaje.listaDeRelacionesEnum.add(Relacion.AMIGO_DE);
@@ -174,12 +179,13 @@ public class Personaje {
 	@Override
 	public String toString() {
 		
+		String end = ". ";
+		
 		String sufijo = genero.sufijo();
 		String un = genero.un();
 		String generoStr = genero.toString();
+
 		String nacionalidadStr = "desconocida";
-		
-		String end = ". ";
 		
 		if(nacionalidad != null)
 			nacionalidadStr = nacionalidad.toString();
@@ -187,7 +193,7 @@ public class Personaje {
 		// En esta cadena se imprime todo.
 		String total = "";
 		
-		total+=nombre+" está viv"+sufijo+end;
+		total+=nombre+" está "+estadoSalud.toString()+sufijo+end;
 		total+="Es "+un+ " "+ generoStr +" de nacionalidad "+nacionalidadStr+end;
 		
 		if(actividad != null)

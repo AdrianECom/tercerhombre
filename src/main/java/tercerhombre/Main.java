@@ -43,16 +43,14 @@ public class Main {
 	    // RECORREMOS CONSULTAS
 	    for (Consulta consulta : consultas) {
 	    	
-	    	KieSession kSession = kContainer.newKieSession("ksession-rules0");
+	    	KieSession kSession = kContainer.newKieSession("ksession-rules");
 	    	
 	    	System.out.println("CONSULTA: " + consulta.getClass().getName());
 	    	System.out.println("\n##############################\n");
-
-		    // go !
-
+	    	
 			Main.insertarPersonajes(kSession);
 
-			// TODO: focus en el acto concreto
+			kSession.getAgenda().getAgendaGroup("g"+consulta.getActo()).setFocus();
 			
 			/*
 			 * TODO:
