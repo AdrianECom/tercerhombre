@@ -1,2 +1,2 @@
-Lime está vivo. Es un hombre de nacionalidad estadounidense. Se desconoce su actividad. Lime es amigo de Martins, . 
-Anna está viva. Es una mujer de nacionalidad desconocida. Se desconoce su actividad. Anna es amiga de Lime, . 
+Lime está vivo. Es un hombre de nacionalidad estadounidense. Se desconoce su actividad. Lime es amigo de Martins. Lime conoce a Martins, Lime conoce a Karl. Lime quiere a Anna. 
+Anna está viva. Es una mujer de nacionalidad desconocida. Se desconoce su actividad. Anna es amiga de Lime. Anna conoce a Lime. Anna quiere a Lime. 

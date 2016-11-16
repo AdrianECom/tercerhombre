@@ -58,6 +58,9 @@ public class Personaje {
 	private List<Personaje> conoce_a;
 	private List<Personaje> trabaja_con;
 	
+	private List<List<Personaje>> listaDeRelaciones;
+	private List<Relacion> listaDeRelacionesEnum;
+	
 
 	// ------------------------------------
 
@@ -76,6 +79,32 @@ public class Personaje {
 		this.conoce_a = new ArrayList<Personaje>();
 		this.trabaja_con = new ArrayList<Personaje>();
 		
+		this.listaDeRelaciones = new ArrayList<List<Personaje>>();
+		this.listaDeRelacionesEnum = new ArrayList<Relacion>();
+		
+		// IMPORTANTE INSERTAR LISTAS Y ENUM EN EL MISMO ORDEN
+		
+		this.listaDeRelaciones.add(amigo_de);
+		this.listaDeRelaciones.add(conoce_a);
+		this.listaDeRelaciones.add(mata_a);
+		this.listaDeRelaciones.add(enfrentado_con);
+		this.listaDeRelaciones.add(busca_a);
+		this.listaDeRelaciones.add(asesinado_por);
+		this.listaDeRelaciones.add(quiere_a);
+		this.listaDeRelaciones.add(en_realidad_es);
+		this.listaDeRelaciones.add(sospecha_de);
+		this.listaDeRelaciones.add(trabaja_con);
+		
+		this.listaDeRelacionesEnum.add(Relacion.AMIGO_DE);
+		this.listaDeRelacionesEnum.add(Relacion.CONOCE_A);
+		this.listaDeRelacionesEnum.add(Relacion.MATA_A);
+		this.listaDeRelacionesEnum.add(Relacion.ENFRENTADO_CON);
+		this.listaDeRelacionesEnum.add(Relacion.BUSCA_A);
+		this.listaDeRelacionesEnum.add(Relacion.ASESINADO_POR);
+		this.listaDeRelacionesEnum.add(Relacion.QUIERE_A);
+		this.listaDeRelacionesEnum.add(Relacion.EN_REALIDAD_ES);
+		this.listaDeRelacionesEnum.add(Relacion.SOSPECHA_DE);
+		this.listaDeRelacionesEnum.add(Relacion.TRABAJA_CON);
 		
 		
 		
@@ -107,9 +136,16 @@ public class Personaje {
 		
 		if(!relacion.isEmpty()){
 			
-			for (int i = 0; i < relacion.size(); i++) {
-				s+=nombre+" "+r.toString(sufijo)+" "; // martins conoce a
-				s+= relacion.get(i).getNombre() + ", ";
+			int n = relacion.size();
+			
+			for (int i = 0; i < n; i++) {
+				
+				s+=nombre+" "+r.toString(sufijo)+" "; // martins conoce a					
+				s+= relacion.get(i).getNombre() ;
+				
+				if(i < n-1)
+					s+= ", ";
+				
 			}
 			
 			s+=". ";
@@ -145,7 +181,9 @@ public class Personaje {
 		
 		// TODO: qué pasa con la ubicación?
 		
-		s+=relacionToString(nombre, Relacion.AMIGO_DE, amigo_de, sufijo);
+		for (int i = 0; i < listaDeRelaciones.size(); i++) {
+			s+=relacionToString(nombre, listaDeRelacionesEnum.get(i), listaDeRelaciones.get(i), sufijo);
+		}
 		
 		return s;
 	}
