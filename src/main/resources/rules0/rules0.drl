@@ -19,9 +19,3 @@ rule "martins karl"
 		};
 end 
 
-rule "Personaje muerto"
-    when
-        p : Personaje( estadoSalud == EstadoSalud.MUERTO )
-    then
-        System.out.println( "Personaje muerto: " + p.getNombre() + " " + p.getActo());
-end
