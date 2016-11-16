@@ -59,8 +59,29 @@ public class Personaje {
 	private List<Personaje> trabaja_con;
 	
 	private List<List<Personaje>> listaDeRelaciones;
-	private List<Relacion> listaDeRelacionesEnum;
 	
+	// IMPORTANTE
+	/*
+	 * ESTA LISTA ES STATIC. Porque es la misma para todos los objetos Personaje.
+	 */
+	private static List<Relacion> listaDeRelacionesEnum = new ArrayList<Relacion>();
+	
+	/*
+	 * La inicializamos en este bloque static
+	 */
+	static{
+		Personaje.listaDeRelacionesEnum.add(Relacion.AMIGO_DE);
+		Personaje.listaDeRelacionesEnum.add(Relacion.CONOCE_A);
+		Personaje.listaDeRelacionesEnum.add(Relacion.MATA_A);
+		Personaje.listaDeRelacionesEnum.add(Relacion.ENFRENTADO_CON);
+		Personaje.listaDeRelacionesEnum.add(Relacion.BUSCA_A);
+		Personaje.listaDeRelacionesEnum.add(Relacion.ASESINADO_POR);
+		Personaje.listaDeRelacionesEnum.add(Relacion.QUIERE_A);
+		Personaje.listaDeRelacionesEnum.add(Relacion.EN_REALIDAD_ES);
+		Personaje.listaDeRelacionesEnum.add(Relacion.SOSPECHA_DE);
+		Personaje.listaDeRelacionesEnum.add(Relacion.TRABAJA_CON);
+	}
+		
 
 	// ------------------------------------
 
@@ -80,7 +101,6 @@ public class Personaje {
 		this.trabaja_con = new ArrayList<Personaje>();
 		
 		this.listaDeRelaciones = new ArrayList<List<Personaje>>();
-		this.listaDeRelacionesEnum = new ArrayList<Relacion>();
 		
 		// IMPORTANTE INSERTAR LISTAS Y ENUM EN EL MISMO ORDEN
 		
@@ -94,17 +114,6 @@ public class Personaje {
 		this.listaDeRelaciones.add(en_realidad_es);
 		this.listaDeRelaciones.add(sospecha_de);
 		this.listaDeRelaciones.add(trabaja_con);
-		
-		this.listaDeRelacionesEnum.add(Relacion.AMIGO_DE);
-		this.listaDeRelacionesEnum.add(Relacion.CONOCE_A);
-		this.listaDeRelacionesEnum.add(Relacion.MATA_A);
-		this.listaDeRelacionesEnum.add(Relacion.ENFRENTADO_CON);
-		this.listaDeRelacionesEnum.add(Relacion.BUSCA_A);
-		this.listaDeRelacionesEnum.add(Relacion.ASESINADO_POR);
-		this.listaDeRelacionesEnum.add(Relacion.QUIERE_A);
-		this.listaDeRelacionesEnum.add(Relacion.EN_REALIDAD_ES);
-		this.listaDeRelacionesEnum.add(Relacion.SOSPECHA_DE);
-		this.listaDeRelacionesEnum.add(Relacion.TRABAJA_CON);
 		
 		
 		
@@ -120,8 +129,6 @@ public class Personaje {
 	 * junto con los setters encadenados para crear a los personajes
 	 * más rápido.
 	 */
-
-	// crea un nuevo personaje vacío.
 	public static Personaje nuevo(){
 		return new Personaje();
 	}
@@ -130,16 +137,23 @@ public class Personaje {
 	
 	// TO STRING
 	
+	/*
+	 * Imprime una relación. Por ejemplo, la relación conoce_a se imprimiría como:
+	 * 
+	 * Martins es conoce a Karl, conoce a Lime y conoce a Anna.
+	 */
 	private String relacionToString(String nombre, Relacion r, List<Personaje> relacion, String sufijo){
 		
 		String s = "";
 		
+		// Si la relación es vacía no imprime nada.
 		if(!relacion.isEmpty()){
 			
 			int n = relacion.size();
 			
 			s+=nombre+" "; // martins conoce a
 			
+			// para cada elemento de la lista
 			for (int i = 0; i < n; i++) {
 				
 				
@@ -170,25 +184,25 @@ public class Personaje {
 		if(nacionalidad != null)
 			nacionalidadStr = nacionalidad.toString();
 		
-		String s = "";
+		// En esta cadena se imprime todo.
+		String total = "";
 		
-		
-		
-		s+=nombre+" está viv"+sufijo+end;
-		s+="Es "+un+ " "+ generoStr +" de nacionalidad "+nacionalidadStr+end;
+		total+=nombre+" está viv"+sufijo+end;
+		total+="Es "+un+ " "+ generoStr +" de nacionalidad "+nacionalidadStr+end;
 		
 		if(actividad != null)
-			s+="Es "+un+ " "+ actividad.toString()+end;
+			total+="Es "+un+ " "+ actividad.toString()+end;
 		else
-			s+="Se desconoce su actividad"+end;
+			total+="Se desconoce su actividad"+end;
 		
 		// TODO: qué pasa con la ubicación?
 		
+		// Se imprimen las relaciones
 		for (int i = 0; i < listaDeRelaciones.size(); i++) {
-			s+=relacionToString(nombre, listaDeRelacionesEnum.get(i), listaDeRelaciones.get(i), sufijo);
+			total+=relacionToString(nombre, listaDeRelacionesEnum.get(i), listaDeRelaciones.get(i), sufijo);
 		}
 		
-		return s;
+		return total;
 	}
 
 	// ------------------------------------
