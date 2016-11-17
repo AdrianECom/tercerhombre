@@ -21,6 +21,8 @@ public class Main {
 	
 	public static FicheroSalida salida;
 	public static boolean esQue = false;
+	
+	private static final int ULTIMO_ACTO = 1;
 
 	// ------------------------------------
 
@@ -52,59 +54,75 @@ public class Main {
 		// load up the knowledge base
 	    KieServices ks = KieServices.Factory.get();
 	    KieContainer kContainer = ks.getKieClasspathContainer();
-	    
+	    	    
 	    // RECORREMOS CONSULTAS
 	    for (Consulta consulta : consultas) {
 	    	
-	    	KieSession kSession = kContainer.newKieSession("ksession-rules");
+	    	// Mensaje por si nos pasamos de acto.
+	    	if(consulta.getActo() > ULTIMO_ACTO){
+	    		
+	    		salida.print("# SOLO SE PUEDEN REALIZAR CONSULTAS HASTA : Acto" +ULTIMO_ACTO+"\n");
+	    		
+	    	}else{
 	    	
-	    	System.out.println("CONSULTA: " + consulta.getClass().getName());
-	    	System.out.println("\n##############################\n");
-	    	
-			Main.insertarPersonajes(kSession);
-			
-			/*
-			 * Si el Acto es 0, lanzar función para imprimir todo lo anterior.
-			 * y después lanzar las reglas.
-			 */
-			
-			if(consulta instanceof ConsultaQue ){
-				imprimirAnteriorActo0();
-				esQue = true;
-			}
-			
-			/*
-			 * Si por ejemplo piden acto 4,
-			 * necesitamos disparar las reglas del acto 0, del acto 1,
-			 * del acto 2, del acto 3 y del acto 4.
-			 */
-			for (int i = 0; i <= consulta.getActo(); i++) {
-					
-				kSession.getAgenda().getAgendaGroup("g"+i).setFocus();
-
-				System.out.println("ACTO:" + i);
-			    kSession.fireAllRules();
-			}
-			
-			if(consulta instanceof ConsultaQuien){		    	
+		    	KieSession kSession = kContainer.newKieSession("ksession-rules");
+		    	
+		    	System.out.println("CONSULTA: " + consulta.getClass().getName());
 		    	System.out.println("\n##############################\n");
-		    	System.out.println("CONSULTA QUIEN:\n");
 		    	
-		    	ConsultaQuien consultaQuien = (ConsultaQuien)consulta;
-		    	
-		    	for (Personaje p: (Collection<Personaje>)kSession.getObjects()) {
-			    	if(p.getNombre().equals(consultaQuien.getNombre())){
-			    		salida.print(p.toString()+"\n");
-			    	}
+				Main.insertarPersonajes(kSession);
+				
+				/*
+				 * Si el Acto es 0, lanzar función para imprimir todo lo anterior.
+				 * y después lanzar las reglas.
+				 */
+				
+				if(consulta instanceof ConsultaQue ){
+					imprimirAnteriorActo0();
+					esQue = true;
 				}
-		    		
-		    }
-		    
-		    
-		    
-		    kSession.dispose();
-		    
-		    System.out.println("\n##############################\n");
+				
+				/*
+				 * Si por ejemplo piden acto 4,
+				 * necesitamos disparar las reglas del acto 0, del acto 1,
+				 * del acto 2, del acto 3 y del acto 4.
+				 */
+				
+				
+				
+				for (int i = 0; i <= consulta.getActo(); i++) {
+						
+					kSession.getAgenda().getAgendaGroup("g"+i).setFocus();
+	
+					System.out.println("ACTO:" + i);
+				    kSession.fireAllRules();
+				}
+				
+				if(esQue)
+					salida.print("\n");
+				
+				esQue = false;
+				
+				if(consulta instanceof ConsultaQuien){		    	
+			    	System.out.println("\n##############################\n");
+			    	System.out.println("CONSULTA QUIEN:\n");
+			    	
+			    	ConsultaQuien consultaQuien = (ConsultaQuien)consulta;
+			    	
+			    	for (Personaje p: (Collection<Personaje>)kSession.getObjects()) {
+				    	if(p.getNombre().equals(consultaQuien.getNombre())){
+				    		salida.print(p.toString()+"\n");
+				    	}
+					}
+			    		
+			    }
+			    
+			    
+			    
+			    kSession.dispose();
+			    
+			    System.out.println("\n##############################\n");
+	    	}
 		}
 	    
 	    salida.guardar();
