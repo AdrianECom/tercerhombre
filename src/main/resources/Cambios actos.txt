@@ -12,9 +12,6 @@
 * Nombre "Crabbin"
 * Ubicacion hotelsacher
 
-#Karl
-* Conoce a Anna
-
 #Kurtz(Aparece)
 * Actividad Desconocida
 * conoce a Martins, Kurtz

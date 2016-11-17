@@ -41,7 +41,6 @@ public class Personaje {
 	private Ubicacion ubicacion;
 	private Genero genero;
 	private Actividad actividad;
-	private int acto;
 
 	// ------------------------------------
 
@@ -313,15 +312,6 @@ public class Personaje {
 
 	public List<Personaje> getTrabaja_con() {
 		return trabaja_con;
-	}
-
-	public int getActo() {
-		return acto;
-	}
-
-	public Personaje setActo(int acto) {
-		this.acto = acto;
-		return this;
 	}
 
 

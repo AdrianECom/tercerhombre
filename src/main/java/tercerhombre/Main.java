@@ -116,7 +116,6 @@ public class Main {
     	// ANNA
 
     	Personaje anna = Personaje.nuevo().
-    	setActo(0).
     	setNombre(Personaje.anna).
     	setGenero(Genero.MUJER).
     	setActividad(null).
@@ -128,7 +127,6 @@ public class Main {
     	// LIME
 
     	Personaje lime = Personaje.nuevo().
-		setActo(0).
     	setNombre(Personaje.lime).
     	setGenero(Genero.HOMBRE).
     	setActividad(null).
@@ -140,7 +138,6 @@ public class Main {
     	// CALLOWAY
 
     	Personaje calloway = Personaje.nuevo().
-		setActo(0).
     	setNombre(Personaje.calloway).
     	setGenero(Genero.HOMBRE).
     	setActividad(ActividadLegal.POLICIA).
@@ -152,7 +149,6 @@ public class Main {
     	// CRABBIN
 
     // 	Personaje crabbin = Personaje.nuevo().
-		// setActo(1).
     // 	setNombre(Personaje.crabbin).
     // 	setGenero(Genero.HOMBRE).
     // 	setActividad(ActividadLegal.DIRECTIVO).
@@ -163,7 +159,6 @@ public class Main {
     	// KARL
 
     	Personaje karl = Personaje.nuevo().
-		setActo(0).
     	setNombre(Personaje.karl).
     	setGenero(Genero.HOMBRE).
     	setActividad(ActividadLegal.PORTERO).
@@ -174,37 +169,34 @@ public class Main {
 
     	// KURTZ
 
-    // 	Personaje kurtz = Personaje.nuevo().
-		// setActo(1).
-    // 	setNombre(Personaje.kurtz).
-    // 	setGenero(Genero.HOMBRE).
-    // 	setActividad(null).
-    // 	setEstadoSalud(EstadoSalud.VIVO).
-    // 	setNacionalidad(Nacionalidad.AUSTRIA).
-    // 	setUbicacion(Ubicacion.CAFEMOZART);
+//     	Personaje kurtz = Personaje.nuevo().
+//     	setNombre(Personaje.kurtz).
+//     	setGenero(Genero.HOMBRE).
+//     	setActividad(null).
+//     	setEstadoSalud(EstadoSalud.VIVO).
+//     	setNacionalidad(Nacionalidad.AUSTRIA).
+//     	setUbicacion(Ubicacion.CAFEMOZART);
 
     	// MARTINS
 
     	Personaje martins = Personaje.nuevo().
-		setActo(0).
     	setNombre(Personaje.martins).
     	setGenero(Genero.HOMBRE).
     	setActividad(ActividadLegal.ESCRITOR).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.ESTADOSUNIDOS).
-    	setUbicacion(Ubicacion.CEMENTERIO);
+    	setUbicacion(Ubicacion.CASALIME);
 
 
     	// PAINE
 
-    	Personaje paine = Personaje.nuevo().
-		setActo(0).
-    	setNombre(Personaje.paine).
-    	setGenero(Genero.HOMBRE).
-    	setActividad(ActividadLegal.POLICIA).
-    	setEstadoSalud(EstadoSalud.VIVO).
-    	setNacionalidad(Nacionalidad.GRANBRETANA).
-    	setUbicacion(Ubicacion.CEMENTERIO);
+//    	Personaje paine = Personaje.nuevo().
+//    	setNombre(Personaje.paine).
+//    	setGenero(Genero.HOMBRE).
+//    	setActividad(ActividadLegal.POLICIA).
+//    	setEstadoSalud(EstadoSalud.VIVO).
+//    	setNacionalidad(Nacionalidad.GRANBRETANA).
+//    	setUbicacion(Ubicacion.CEMENTERIO);
 
 
     	// Relaciones iniciales
@@ -223,9 +215,9 @@ public class Main {
     	anna.getConoce_a().add(lime);
     	anna.getQuiere_a().add(lime);
 
-    	calloway.getAmigo_de().add(paine);
-    	calloway.getConoce_a().add(paine);
-    	calloway.getTrabaja_con().add(paine);
+//    	calloway.getAmigo_de().add(paine);
+//    	calloway.getConoce_a().add(paine);
+//    	calloway.getTrabaja_con().add(paine);
 
     	karl.getConoce_a().add(lime);
 //    	karl.getConoce_a().add(martins);
@@ -237,7 +229,7 @@ public class Main {
     	ks.insert(calloway);
     	ks.insert(karl);
     	ks.insert(martins);
-    	ks.insert(paine);
+//    	ks.insert(paine);
 
     }
 }

@@ -1,0 +1,22 @@
+Cambios ordenados
+
+Martins va al cementerio
+Martins conoce calloway
+
+{Van al pub
+*Se inserta paine
+Martins conoce paine
+calloway trabaja con paine}
+
+
+Martins va al hotel satcher
+*Se inserta crabbin
+Martins conoce crabbin
+
+Martins va cafe mozart
+
+* Se inserta kurtz
+{Martins conoce a kurtz
+#Lime
+* Conoce a Kurtz
+* Amigo de Kurtz}

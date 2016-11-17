@@ -1,15 +1,190 @@
 package rules
 
 import tercerhombre.personaje.Personaje;
+import tercerhombre.propiedades.*;
 
-rule "blablabla" agenda-group "g1"
+rule "martins va cementerio" agenda-group "g1"
+	when
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
+	then
+		System.out.println("Martins va Cementerio");
+		modify(martins){
+			setUbicacion(Ubicacion.CEMENTERIO);
+		}
+
+end
+
+rule "martins conoce calloway" agenda-group "g1"
     when
-        martins : Personaje( nombre == Personaje.martins  )
-        karl : Personaje( nombre == Personaje.karl  )
+        martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO  )
+        calloway : Personaje( nombre == Personaje.calloway, ubicacion == Ubicacion.CEMENTERIO  )
         
-        not Personaje( nombre == Personaje.martins ) from karl.conoce_a
-        not Personaje( nombre == Personaje.karl ) from martins.conoce_a
+        not Personaje( nombre == Personaje.martins ) from calloway.conoce_a
+        not Personaje( nombre == Personaje.calloway ) from martins.conoce_a
     then
-        System.out.println("HOLAAAAAAAAAAAAAA"); 
+        System.out.println("Martins conoce calloway"); 
+        
+        modify(martins){
+		   getConoce_a().add(calloway);
+		};
+		modify(calloway){
+		   getConoce_a().add(martins);
+		};
 end 
 
+rule "van al pub" agenda-group "g1"
+	when
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO  )
+        calloway : Personaje( nombre == Personaje.calloway, ubicacion == Ubicacion.CEMENTERIO  )
+        
+        Personaje( nombre == Personaje.martins ) from calloway.conoce_a
+        Personaje( nombre == Personaje.calloway ) from martins.conoce_a
+	then
+		System.out.println("Van al pub"); 
+        
+        modify(martins){
+		   setUbicacion(Ubicacion.PUB);
+		};
+		modify(calloway){
+		   setUbicacion(Ubicacion.PUB);
+		};
+		
+		insert(Personaje.nuevo().
+    	setNombre(Personaje.paine).
+    	setGenero(Genero.HOMBRE).
+    	setActividad(ActividadLegal.POLICIA).
+    	setEstadoSalud(EstadoSalud.VIVO).
+    	setNacionalidad(Nacionalidad.GRANBRETANA).
+    	setUbicacion(Ubicacion.PUB));
+end
+
+rule "martins conoce a paine" agenda-group "g1"
+	when
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.PUB )
+		paine : Personaje( nombre == Personaje.paine, ubicacion == Ubicacion.PUB )
+		calloway : Personaje( nombre == Personaje.calloway)
+		
+		not Personaje( nombre == Personaje.martins ) from paine.conoce_a
+        not Personaje( nombre == Personaje.paine ) from martins.conoce_a
+	then
+		System.out.println("Martins conoce paine");
+		
+		modify(paine){
+		   getConoce_a().add(martins);
+		};
+		modify(paine){
+		   getConoce_a().add(calloway);
+		};
+		modify(paine){
+		   getTrabaja_con().add(calloway);
+		};
+		modify(calloway){
+		   getConoce_a().add(paine);
+		};
+		modify(calloway){
+		   getTrabaja_con().add(paine);
+		};
+		modify(martins){
+		   getConoce_a().add(paine);
+		};
+		
+
+end
+
+rule "martins va a hotel" agenda-group "g1"
+	when
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.PUB )
+	then
+		System.out.println("Martins va hotel sacher");
+		
+		modify(martins){
+		   setUbicacion(Ubicacion.HOTELSACHER);
+		};
+		
+		insert(Personaje.nuevo().
+		setNombre(Personaje.crabbin).
+		setGenero(Genero.HOMBRE).
+		setActividad(ActividadLegal.DIRECTIVO).
+		setEstadoSalud(EstadoSalud.VIVO).
+		setNacionalidad(Nacionalidad.GRANBRETANA).
+		setUbicacion(Ubicacion.HOTELSACHER));
+end
+
+rule "martins conoce crabbin" agenda-group "g1"
+	when
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.HOTELSACHER )
+		crabbin : Personaje( nombre == Personaje.crabbin, ubicacion == Ubicacion.HOTELSACHER )
+		
+		not Personaje( nombre == Personaje.martins ) from crabbin.conoce_a
+        not Personaje( nombre == Personaje.crabbin ) from martins.conoce_a
+	then
+		System.out.println("Martins conoce crabbin");
+		
+		modify(martins){
+		   getConoce_a().add(crabbin);
+		};
+		
+		modify(crabbin){
+		   getConoce_a().add(martins);
+		};
+end
+
+rule "martins va cafe mozart" agenda-group "g1"
+	when
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.HOTELSACHER )
+		crabbin : Personaje( nombre == Personaje.crabbin )
+		
+		Personaje( nombre == Personaje.martins ) from crabbin.conoce_a
+        Personaje( nombre == Personaje.crabbin ) from martins.conoce_a
+	then
+		System.out.println("Martins va cafe mozart");
+		
+		modify(martins){
+		   setUbicacion(Ubicacion.CAFEMOZART);
+		};
+		
+		insert(Personaje.nuevo().
+     	setNombre(Personaje.kurtz).
+     	setGenero(Genero.HOMBRE).
+     	setActividad(null).
+     	setEstadoSalud(EstadoSalud.VIVO).
+     	setNacionalidad(Nacionalidad.AUSTRIA).
+     	setUbicacion(Ubicacion.CAFEMOZART));
+
+end
+
+rule "martins conoce kurtz" agenda-group "g1"
+	when
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CAFEMOZART )
+		kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CAFEMOZART )
+		lime : Personaje( nombre == Personaje.lime)
+		
+		not Personaje( nombre == Personaje.martins ) from kurtz.conoce_a
+        not Personaje( nombre == Personaje.kurtz ) from martins.conoce_a
+	then
+		System.out.println("Martins conoce kurtz");
+	
+		modify(martins){
+		   getConoce_a().add(kurtz);
+		};
+		
+		modify(kurtz){
+		   getConoce_a().add(martins);
+		};
+		
+		modify(kurtz){
+		   getConoce_a().add(lime);
+		};
+		
+		modify(kurtz){
+		   getAmigo_de().add(lime);
+		};
+		
+		modify(lime){
+		   getConoce_a().add(kurtz);
+		};
+		
+		modify(lime){
+		   getAmigo_de().add(kurtz);
+		};
+end
