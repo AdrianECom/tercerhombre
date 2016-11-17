@@ -8,8 +8,9 @@ rule "martins va cementerio" agenda-group "g1"
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
 	then
-		System.out.println("Martins va Cementerio");
-		Main.print("GGGGGGGG");
+	
+		Main.print("Martins va al Cementerio. ");
+		
 		modify(martins){
 			setUbicacion(Ubicacion.CEMENTERIO);
 		}
