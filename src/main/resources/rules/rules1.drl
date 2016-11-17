@@ -13,7 +13,7 @@ rule "martins va cementerio" agenda-group "g1"
 			setUbicacion(Ubicacion.CEMENTERIO);
 		}
 			
-		Main.print("Martins va a "+martins.getUbicacion().toString()+". ");
+		Main.print("Martins va a"+martins.getUbicacion().toString()+". ");
 		
 
 end
@@ -54,8 +54,8 @@ rule "van al pub" agenda-group "g1"
 		   setUbicacion(Ubicacion.PUB);
 		};
 		
-		Main.print("Martins va a "+martins.getUbicacion().toString()+". ");
-        Main.print("Calloway va a "+calloway.getUbicacion().toString()+". ");
+		Main.print("Martins va a"+martins.getUbicacion().toString()+". ");
+        Main.print("Calloway va a"+calloway.getUbicacion().toString()+". ");
 		
 		insert(Personaje.nuevo().
     	setNombre(Personaje.paine).
@@ -114,7 +114,7 @@ rule "martins va a hotel" agenda-group "g1"
 		   setUbicacion(Ubicacion.HOTELSACHER);
 		};
 		
-		Main.print("Martins va a "+martins.getUbicacion().toString()+". ");
+		Main.print("Martins va a"+martins.getUbicacion().toString()+". ");
 		
 		insert(Personaje.nuevo().
 		setNombre(Personaje.crabbin).
@@ -159,7 +159,7 @@ rule "martins va cafe mozart" agenda-group "g1"
 		   setUbicacion(Ubicacion.CAFEMOZART);
 		};
 		
-				Main.print("Martins va a "+martins.getUbicacion().toString()+". ");
+				Main.print("Martins va a"+martins.getUbicacion().toString()+". ");
 		
 		insert(Personaje.nuevo().
      	setNombre(Personaje.kurtz).

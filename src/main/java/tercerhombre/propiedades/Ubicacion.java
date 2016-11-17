@@ -9,39 +9,39 @@ public enum Ubicacion {
 	public String toString() {
 		switch (this) {
 		case PLAZA:
-			return "la Plaza";
+			return " la Plaza";
 		case CASALIME:
-			return "la casa de Lime";
+			return " la casa de Lime";
 		case CASAANNA:
-			return "la casa de Anna";
+			return " la casa de Anna";
 		case HOTELSACHER:
-			return "el hotel Sacher";
+			return "l hotel Sacher";
 		case TEATROJOSEPH:
-			return "el teatro Joseph";
+			return "l teatro Joseph";
 		case CASANOVACLUB:
-			return "el Club Casanova";
+			return "l Club Casanova";
 		case CONFERENCIA:
-			return "la conferencia";
+			return " la conferencia";
 		case CASAWINKEL:
-			return "la casa del Dr. Winkel";
+			return " la casa del Dr. Winkel";
 		case SECTORRUSO:
-			return "el Sector Ruso";
+			return "l Sector Ruso";
 		case CAFEMARC:
-			return "el Cafe Marc";
+			return "l Cafe Marc";
 		case COMISARIA:
-			return "la comisaria";
+			return " la comisaria";
 		case CEMENTERIO:
-			return "el cementerio";
+			return "l cementerio";
 		case CAFEMOZART:
-			return "el Cafe Mozart";
+			return "l Cafe Mozart";
 		case FUERADEVIENA:
-			return "fuera de Viena";
+			return " fuera de Viena";
 		case NORIA:
-			return "la Noria";
+			return " la Noria";
 		case PUB:
-			return "el Pub";
+			return "l Pub";
 		case CLOACAS:
-			return "las cloacas";
+			return " las cloacas";
 		default:
 			return null;
 		}
