@@ -140,16 +140,15 @@ public class Main {
     	// TODO : QUEDA HACER ESTO! !!!!!
     	
     	for (Personaje pInicial : personajesIniciales) {
-			for (List<Personaje> relacion: pInicial.getListaDeRelaciones()) {
-				for (int i = 0; i < Personaje.listaDeRelacionesEnum.size(); i++) {
-					
-					salida.print(Personaje.relacionToString(pInicial.getNombre(), 
-							Personaje.listaDeRelacionesEnum.get(i), 
-							pInicial.getListaDeRelaciones().get(i), 
-							pInicial.getGenero().sufijo()));
-				}
+			for (int i = 0; i < Personaje.listaDeRelacionesEnum.size(); i++) {
+				
+				salida.print(Personaje.relacionToString(pInicial.getNombre(), 
+						Personaje.listaDeRelacionesEnum.get(i), 
+						pInicial.getListaDeRelaciones().get(i), 
+						pInicial.getGenero().sufijo()));
 			}
 		}
+		
     }
     
     // ------------------------------------
