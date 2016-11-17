@@ -10,12 +10,15 @@ rule "martins karl" agenda-group "g0"
         not Personaje( nombre == Personaje.martins ) from karl.conoce_a
         not Personaje( nombre == Personaje.karl ) from martins.conoce_a
     then
-        System.out.println("Martins conoce a Karl.");
         modify(martins){
 		   getConoce_a().add(karl);
 		};
 		modify(karl){
 		   getConoce_a().add(martins);
 		};
+		
+		Main.print("Martins conoce a "+Personaje.karl+". ");
+        Main.print("Karl conoce a "+Personaje.martins+". ");
+		
 end 
 
