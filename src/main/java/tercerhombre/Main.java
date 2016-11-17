@@ -19,12 +19,14 @@ import tercerhombre.propiedades.Ubicacion;
 
 public class Main {
 	
-	public static FicheroSalida salida = new FicheroSalida("src/main/resources/output.txt");
+	public static FicheroSalida salida;
+	public static boolean esQue = false;
 
 	// ------------------------------------
 
     public static final void main(String[] args) {
         try {
+        	salida = new FicheroSalida("src/main/resources/output.txt");
         	LectorConsultas lc = new LectorConsultas();
         	List<Consulta> consultas = lc.leerFichero("src/main/resources/input.txt");
             Main.ejecutar(consultas);
@@ -32,7 +34,17 @@ public class Main {
             t.printStackTrace();
         }
     }
+    
+    // ------------------------------------
 
+    /*
+     * Esta funcion se usa para imprimir dentro de las reglas en las consultas QUE.
+     */
+    public static void print(String s){
+    	if(esQue)
+    		salida.print(s);
+    }
+    
     // ------------------------------------
 
     public static void ejecutar(List<Consulta> consultas){
@@ -56,8 +68,10 @@ public class Main {
 			 * y después lanzar las reglas.
 			 */
 			
-			if(consulta instanceof ConsultaQue )
+			if(consulta instanceof ConsultaQue ){
 				imprimirAnteriorActo0();
+				esQue = true;
+			}
 			
 			/*
 			 * Si por ejemplo piden acto 4,
@@ -80,7 +94,7 @@ public class Main {
 		    	
 		    	for (Personaje p: (Collection<Personaje>)kSession.getObjects()) {
 			    	if(p.getNombre().equals(consultaQuien.getNombre())){
-			    		salida.println(p.toString());
+			    		salida.print(p.toString()+"\n");
 			    	}
 				}
 		    		

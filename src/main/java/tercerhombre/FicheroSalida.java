@@ -40,13 +40,6 @@ public class FicheroSalida {
 	}
 	
 	/*
-	 * Imprime una línea con salto de línea al final.
-	 */
-	public void println(String s){
-		print(s+"\n");
-	}
-	
-	/*
 	 * Guarda y cierra el fichero.
 	 */
 	public void guardar(){

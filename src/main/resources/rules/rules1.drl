@@ -2,12 +2,14 @@ package rules
 
 import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
+import tercerhombre.Main;
 
 rule "martins va cementerio" agenda-group "g1"
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
 	then
 		System.out.println("Martins va Cementerio");
+		Main.print("GGGGGGGG");
 		modify(martins){
 			setUbicacion(Ubicacion.CEMENTERIO);
 		}
