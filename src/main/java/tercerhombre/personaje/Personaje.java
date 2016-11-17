@@ -185,9 +185,14 @@ public class Personaje {
 		String generoStr = genero.toString();
 
 		String nacionalidadStr = "desconocida";
+		String ubicacionStr = " ubicación desconocida";
 		
 		if(nacionalidad != null)
 			nacionalidadStr = nacionalidad.toString();
+		
+		if(ubicacion != null)
+			ubicacionStr = ubicacion.toString();
+		
 		
 		// En esta cadena se imprime todo.
 		String total = "";
@@ -200,7 +205,7 @@ public class Personaje {
 		else
 			total+="Se desconoce su actividad"+end;
 		
-		// TODO: qué pasa con la ubicación?
+		total+="Al final del acto va a"+ubicacionStr+end;
 		
 		// Se imprimen las relaciones
 		for (int i = 0; i < listaDeRelaciones.size(); i++) {
