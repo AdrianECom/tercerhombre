@@ -19,12 +19,11 @@ rule "martins va cementerio" agenda-group "g1"
 end
 
 rule "martins conoce calloway" agenda-group "g1"
+no-loop true
     when
         martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO  )
         calloway : Personaje( nombre == Personaje.calloway, ubicacion == Ubicacion.CEMENTERIO  )
         
-        not Personaje( nombre == Personaje.martins ) from calloway.conoce_a
-        not Personaje( nombre == Personaje.calloway ) from martins.conoce_a
     then
         
         modify(martins){
@@ -39,6 +38,7 @@ rule "martins conoce calloway" agenda-group "g1"
 end 
 
 rule "van al pub" agenda-group "g1"
+no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO  )
         calloway : Personaje( nombre == Personaje.calloway, ubicacion == Ubicacion.CEMENTERIO  )
@@ -67,13 +67,12 @@ rule "van al pub" agenda-group "g1"
 end
 
 rule "martins conoce a paine" agenda-group "g1"
+no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.PUB )
 		paine : Personaje( nombre == Personaje.paine, ubicacion == Ubicacion.PUB )
 		calloway : Personaje( nombre == Personaje.calloway)
 		
-		not Personaje( nombre == Personaje.martins ) from paine.conoce_a
-        not Personaje( nombre == Personaje.paine ) from martins.conoce_a
 	then
 		
 		modify(paine){
@@ -106,6 +105,7 @@ rule "martins conoce a paine" agenda-group "g1"
 end
 
 rule "martins va a hotel" agenda-group "g1"
+no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.PUB )
 	then
@@ -126,12 +126,10 @@ rule "martins va a hotel" agenda-group "g1"
 end
 
 rule "martins conoce crabbin" agenda-group "g1"
+no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.HOTELSACHER )
 		crabbin : Personaje( nombre == Personaje.crabbin, ubicacion == Ubicacion.HOTELSACHER )
-		
-		not Personaje( nombre == Personaje.martins ) from crabbin.conoce_a
-        not Personaje( nombre == Personaje.crabbin ) from martins.conoce_a
 	then
 		
 		modify(martins){
@@ -147,6 +145,7 @@ rule "martins conoce crabbin" agenda-group "g1"
 end
 
 rule "martins va cafe mozart" agenda-group "g1"
+no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.HOTELSACHER )
 		crabbin : Personaje( nombre == Personaje.crabbin )
@@ -173,13 +172,12 @@ rule "martins va cafe mozart" agenda-group "g1"
 end
 
 rule "martins conoce kurtz" agenda-group "g1"
+no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CAFEMOZART )
 		kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CAFEMOZART )
 		lime : Personaje( nombre == Personaje.lime)
 		
-		not Personaje( nombre == Personaje.martins ) from kurtz.conoce_a
-        not Personaje( nombre == Personaje.kurtz ) from martins.conoce_a
 	then
 	
 		modify(martins){

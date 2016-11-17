@@ -74,8 +74,8 @@ public class Personaje {
 	 * Inicializamos la lista en este bloque static
 	 */
 	static{
-		Personaje.listaDeRelacionesEnum.add(Relacion.AMIGO_DE);
 		Personaje.listaDeRelacionesEnum.add(Relacion.CONOCE_A);
+		Personaje.listaDeRelacionesEnum.add(Relacion.AMIGO_DE);
 		Personaje.listaDeRelacionesEnum.add(Relacion.MATA_A);
 		Personaje.listaDeRelacionesEnum.add(Relacion.ENFRENTADO_CON);
 		Personaje.listaDeRelacionesEnum.add(Relacion.BUSCA_A);
@@ -108,8 +108,8 @@ public class Personaje {
 		
 		// IMPORTANTE INSERTAR LISTAS Y ENUM EN EL MISMO ORDEN
 		
-		this.listaDeRelaciones.add(amigo_de);
 		this.listaDeRelaciones.add(conoce_a);
+		this.listaDeRelaciones.add(amigo_de);
 		this.listaDeRelaciones.add(mata_a);
 		this.listaDeRelaciones.add(enfrentado_con);
 		this.listaDeRelaciones.add(busca_a);

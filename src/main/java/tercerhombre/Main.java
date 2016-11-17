@@ -224,8 +224,6 @@ public class Main {
 
     	anna.getConoce_a().add(lime);
     	
-    	karl.getConoce_a().add(lime);
-    	
     	
     	
     	// TODO: meter estas relaciones en el acto2 !!
@@ -244,10 +242,10 @@ public class Main {
     	ks.insert(martins);
     	
     	List<Personaje> personajesIniciales = new ArrayList<Personaje>();
-    	personajesIniciales.add(anna);
+    	personajesIniciales.add(martins);
     	personajesIniciales.add(lime);
     	personajesIniciales.add(karl);
-    	personajesIniciales.add(martins);
+    	personajesIniciales.add(anna);
     	
     	return personajesIniciales;
 

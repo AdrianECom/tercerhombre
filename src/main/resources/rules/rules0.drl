@@ -4,13 +4,13 @@ import tercerhombre.personaje.Personaje;
 import tercerhombre.Main;
 	
 rule "martins karl" agenda-group "g0"
+no-loop true
     when
         martins : Personaje( nombre == Personaje.martins  )
         karl : Personaje( nombre == Personaje.karl  )
         lime : Personaje( nombre == Personaje.lime  )
         
-        not Personaje( nombre == Personaje.martins ) from karl.conoce_a
-        not Personaje( nombre == Personaje.karl ) from martins.conoce_a
+       
     then
         modify(martins){
 		   getConoce_a().add(karl);
