@@ -1,5 +1,6 @@
 package tercerhombre;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -70,7 +71,8 @@ public class Main {
 		    	System.out.println("CONSULTA: " + consulta.getClass().getName());
 		    	System.out.println("\n##############################\n");
 		    	
-				Main.insertarPersonajes(kSession);
+		    	// Los personajes iniciales se usarán para imprimir lo anterior al acto 0.
+				List<Personaje> personajesIniciales = Main.insertarPersonajes(kSession);
 				
 				/*
 				 * Si el Acto es 0, lanzar función para imprimir todo lo anterior.
@@ -78,7 +80,7 @@ public class Main {
 				 */
 				
 				if(consulta instanceof ConsultaQue ){
-					imprimirAnteriorActo0();
+					imprimirAnteriorActo0(personajesIniciales);
 					esQue = true;
 				}
 				
@@ -134,13 +136,25 @@ public class Main {
 
     // ------------------------------------
     
-    public static void imprimirAnteriorActo0(){
+    public static void imprimirAnteriorActo0(List<Personaje> personajesIniciales){
     	// TODO : QUEDA HACER ESTO! !!!!!
+    	
+    	for (Personaje pInicial : personajesIniciales) {
+			for (List<Personaje> relacion: pInicial.getListaDeRelaciones()) {
+				for (int i = 0; i < Personaje.listaDeRelacionesEnum.size(); i++) {
+					
+					salida.print(Personaje.relacionToString(pInicial.getNombre(), 
+							Personaje.listaDeRelacionesEnum.get(i), 
+							pInicial.getListaDeRelaciones().get(i), 
+							pInicial.getGenero().sufijo()));
+				}
+			}
+		}
     }
     
     // ------------------------------------
     
-    public static void insertarPersonajes(KieSession ks){
+    public static List<Personaje> insertarPersonajes(KieSession ks){
 
 
     	// Estado inicial de los personajes
@@ -178,16 +192,6 @@ public class Main {
     	setUbicacion(Ubicacion.CEMENTERIO);
 
 
-    	// CRABBIN
-
-    // 	Personaje crabbin = Personaje.nuevo().
-    // 	setNombre(Personaje.crabbin).
-    // 	setGenero(Genero.HOMBRE).
-    // 	setActividad(ActividadLegal.DIRECTIVO).
-    // 	setEstadoSalud(EstadoSalud.VIVO).
-    // 	setNacionalidad(Nacionalidad.GRANBRETANA).
-    // 	setUbicacion(Ubicacion.HOTELSACHER);
-
     	// KARL
 
     	Personaje karl = Personaje.nuevo().
@@ -199,16 +203,6 @@ public class Main {
     	setUbicacion(Ubicacion.CASALIME);
 
 
-    	// KURTZ
-
-//     	Personaje kurtz = Personaje.nuevo().
-//     	setNombre(Personaje.kurtz).
-//     	setGenero(Genero.HOMBRE).
-//     	setActividad(null).
-//     	setEstadoSalud(EstadoSalud.VIVO).
-//     	setNacionalidad(Nacionalidad.AUSTRIA).
-//     	setUbicacion(Ubicacion.CAFEMOZART);
-
     	// MARTINS
 
     	Personaje martins = Personaje.nuevo().
@@ -219,49 +213,44 @@ public class Main {
     	setNacionalidad(Nacionalidad.ESTADOSUNIDOS).
     	setUbicacion(Ubicacion.CASALIME);
 
-
-    	// PAINE
-
-//    	Personaje paine = Personaje.nuevo().
-//    	setNombre(Personaje.paine).
-//    	setGenero(Genero.HOMBRE).
-//    	setActividad(ActividadLegal.POLICIA).
-//    	setEstadoSalud(EstadoSalud.VIVO).
-//    	setNacionalidad(Nacionalidad.GRANBRETANA).
-//    	setUbicacion(Ubicacion.CEMENTERIO);
-
-
+    	
     	// Relaciones iniciales
 
     	martins.getConoce_a().add(lime);
-//    	martins.getConoce_a().add(karl);
     	martins.getBusca_a().add(lime);
     	martins.getAmigo_de().add(lime);
 
     	lime.getConoce_a().add(martins);
-    	lime.getConoce_a().add(karl);
     	lime.getAmigo_de().add(martins);
-    	lime.getQuiere_a().add(anna);
 
-    	anna.getAmigo_de().add(lime);
     	anna.getConoce_a().add(lime);
-    	anna.getQuiere_a().add(lime);
-
-//    	calloway.getAmigo_de().add(paine);
-//    	calloway.getConoce_a().add(paine);
-//    	calloway.getTrabaja_con().add(paine);
-
+    	
     	karl.getConoce_a().add(lime);
-//    	karl.getConoce_a().add(martins);
+    	
+    	
+    	
+    	// TODO: meter estas relaciones en el acto2 !!
 
-    	// Insertar
+ //    	lime.getQuiere_a().add(anna);
+//    	anna.getAmigo_de().add(lime);
+//    	anna.getQuiere_a().add(lime);
+
+
+    	// INSERTAR
 
     	ks.insert(anna);
     	ks.insert(lime);
     	ks.insert(calloway);
     	ks.insert(karl);
     	ks.insert(martins);
-//    	ks.insert(paine);
+    	
+    	List<Personaje> personajesIniciales = new ArrayList<Personaje>();
+    	personajesIniciales.add(anna);
+    	personajesIniciales.add(lime);
+    	personajesIniciales.add(karl);
+    	personajesIniciales.add(martins);
+    	
+    	return personajesIniciales;
 
     }
 }

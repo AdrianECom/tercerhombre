@@ -1,11 +1,13 @@
 package rules
 
 import tercerhombre.personaje.Personaje;
+import tercerhombre.Main;
 	
 rule "martins karl" agenda-group "g0"
     when
         martins : Personaje( nombre == Personaje.martins  )
         karl : Personaje( nombre == Personaje.karl  )
+        lime : Personaje( nombre == Personaje.lime  )
         
         not Personaje( nombre == Personaje.martins ) from karl.conoce_a
         not Personaje( nombre == Personaje.karl ) from martins.conoce_a
@@ -16,9 +18,17 @@ rule "martins karl" agenda-group "g0"
 		modify(karl){
 		   getConoce_a().add(martins);
 		};
+		modify(karl){
+		   getConoce_a().add(lime);
+		};
+		modify(lime){
+		   getConoce_a().add(karl);
+		};
 		
 		Main.print("Martins conoce a "+Personaje.karl+". ");
         Main.print("Karl conoce a "+Personaje.martins+". ");
+        Main.print("Karl conoce a "+Personaje.lime+". ");
+        Main.print("Lime conoce a "+Personaje.karl+". ");
 		
 end 
 

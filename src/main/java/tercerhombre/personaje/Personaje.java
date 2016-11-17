@@ -68,7 +68,7 @@ public class Personaje {
 	/*
 	 * ESTA LISTA ES STATIC. Porque es la misma para todos los objetos Personaje.
 	 */
-	private static List<Relacion> listaDeRelacionesEnum = new ArrayList<Relacion>();
+	public static List<Relacion> listaDeRelacionesEnum = new ArrayList<Relacion>();
 	
 	/*
 	 * Inicializamos la lista en este bloque static
@@ -146,7 +146,7 @@ public class Personaje {
 	 * 
 	 * Martins es conoce a Karl, conoce a Lime y conoce a Anna.
 	 */
-	private String relacionToString(String nombre, Relacion r, List<Personaje> relacion, String sufijo){
+	public static String relacionToString(String nombre, Relacion r, List<Personaje> relacion, String sufijo){
 		
 		String s = "";
 		
@@ -319,6 +319,10 @@ public class Personaje {
 		return trabaja_con;
 	}
 
+	public List<List<Personaje>> getListaDeRelaciones() {
+		return listaDeRelaciones;
+	}
 
+	
 
 }
