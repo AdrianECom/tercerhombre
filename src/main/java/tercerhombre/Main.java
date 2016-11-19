@@ -137,7 +137,6 @@ public class Main {
     // ------------------------------------
     
     public static void imprimirAnteriorActo0(List<Personaje> personajesIniciales){
-    	// TODO : QUEDA HACER ESTO! !!!!!
     	
     	for (Personaje pInicial : personajesIniciales) {
 			for (int i = 0; i < Personaje.listaDeRelacionesEnum.size(); i++) {

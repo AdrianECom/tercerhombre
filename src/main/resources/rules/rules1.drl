@@ -5,6 +5,7 @@ import tercerhombre.propiedades.*;
 import tercerhombre.Main;
 
 rule "martins va cementerio" agenda-group "g1"
+no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
 	then
