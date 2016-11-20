@@ -29,9 +29,9 @@ public class Main {
 
     public static final void main(String[] args) {
         try {
-        	salida = new FicheroSalida("src/main/resources/output.txt");
+        	salida = new FicheroSalida("output.txt");
         	LectorConsultas lc = new LectorConsultas();
-        	List<Consulta> consultas = lc.leerFichero("src/main/resources/input.txt");
+        	List<Consulta> consultas = lc.leerFichero("input.txt");
             Main.ejecutar(consultas);
         } catch (Throwable t) {
             t.printStackTrace();
