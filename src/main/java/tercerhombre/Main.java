@@ -7,6 +7,7 @@ import java.util.List;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.rule.FactHandle;
 
 import tercerhombre.consultas.Consulta;
 import tercerhombre.consultas.ConsultaQue;
@@ -23,7 +24,7 @@ public class Main {
 	public static FicheroSalida salida;
 	public static boolean esQue = false;
 	
-	private static final int ULTIMO_ACTO = 1;
+	private static final int ULTIMO_ACTO = 5;
 
 	// ------------------------------------
 
@@ -38,16 +39,7 @@ public class Main {
         }
     }
     
-    // ------------------------------------
-
-    /*
-     * Esta funcion se usa para imprimir dentro de las reglas en las consultas QUE.
-     */
-    public static void print(String s){
-    	if(esQue)
-    		salida.print(s);
-    }
-    
+ 
     // ------------------------------------
 
     public static void ejecutar(List<Consulta> consultas){
@@ -68,8 +60,11 @@ public class Main {
 	    	
 		    	KieSession kSession = kContainer.newKieSession("ksession-rules");
 		    	
-		    	System.out.println("CONSULTA: " + consulta.getClass().getName());
-		    	System.out.println("\n##############################\n");
+//		    	System.out.println("CONSULTA: " + consulta.getClass().getName());
+//		    	System.out.println("\n##############################\n");
+		    	
+		    	// Insertamos cadena 
+		    	FactHandle stringHandle = kSession.insert(new Buffer());
 		    	
 		    	// Los personajes iniciales se usarán para imprimir lo anterior al acto 0.
 				List<Personaje> personajesIniciales = Main.insertarPersonajes(kSession);
@@ -84,54 +79,56 @@ public class Main {
 					esQue = true;
 				}
 				
+				
 				/*
 				 * Si por ejemplo piden acto 4,
 				 * necesitamos disparar las reglas del acto 0, del acto 1,
 				 * del acto 2, del acto 3 y del acto 4.
 				 */
 				
-				
-				
 				for (int i = 0; i <= consulta.getActo(); i++) {
 						
 					kSession.getAgenda().getAgendaGroup("g"+i).setFocus();
 	
-					System.out.println("ACTO:" + i);
+//					System.out.println("ACTO:" + i);
 				    kSession.fireAllRules();
 				}
 				
-				if(esQue)
-					salida.print("\n");
+				if(esQue){
+					Buffer resultado = (Buffer) kSession.getObject(stringHandle);
+					salida.print(resultado.toString()+"\n");
+				}
 				
 				esQue = false;
 				
 				if(consulta instanceof ConsultaQuien){		    	
-			    	System.out.println("\n##############################\n");
-			    	System.out.println("CONSULTA QUIEN:\n");
+//			    	System.out.println("\n##############################\n");
+//			    	System.out.println("CONSULTA QUIEN:\n");
 			    	
 			    	ConsultaQuien consultaQuien = (ConsultaQuien)consulta;
 			    	
+			    	Personaje personajeEncontrado = null;
 			    	for (Personaje p: (Collection<Personaje>)kSession.getObjects()) {
-				    	if(p.getNombre().equals(consultaQuien.getNombre())){
-				    		salida.print(p.toString()+"\n");
-				    	}
+				    	if(p.getNombre().equals(consultaQuien.getNombre()))
+				    		personajeEncontrado = p;
 					}
-			    		
+			    	
+			    	if(personajeEncontrado != null)
+			    		salida.print(personajeEncontrado.toString()+"\n");
+			    	else
+			    		salida.print("# NO SE SABE NADA DEL PERSONAJE" + consultaQuien.getNombre() + " EN EL ACTO " + consultaQuien.getActo() +"\n");
 			    }
 			    
 			    
 			    
 			    kSession.dispose();
 			    
-			    System.out.println("\n##############################\n");
+//			    System.out.println("\n##############################\n");
 	    	}
 		}
 	    
 	    salida.guardar();
 	    
-	    
-		
-
     }
 
     // ------------------------------------

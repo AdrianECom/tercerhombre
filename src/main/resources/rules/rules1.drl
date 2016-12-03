@@ -2,19 +2,23 @@ package rules
 
 import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
-import tercerhombre.Main;
+import tercerhombre.Buffer;
 
 rule "martins va cementerio" agenda-group "g1"
 no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
+		
+		b : Buffer()
 	then
 
 		modify(martins){
 			setUbicacion(Ubicacion.CEMENTERIO);
 		}
-			
-		Main.print("Martins va a"+martins.getUbicacion().toString()+". ");
+		
+		modify(b){
+			append("Martins va a"+martins.getUbicacion().toString()+". ");
+		};
 		
 
 end
@@ -25,6 +29,7 @@ no-loop true
         martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO  )
         calloway : Personaje( nombre == Personaje.calloway, ubicacion == Ubicacion.CEMENTERIO  )
         
+        b : Buffer()
     then
         
         modify(martins){
@@ -33,9 +38,11 @@ no-loop true
 		modify(calloway){
 		   getConoce_a().add(martins);
 		};
-		
-		Main.print("Martins conoce a "+Personaje.calloway+". ");
-        Main.print("Calloway conoce a "+Personaje.martins+". ");
+
+        modify(b){
+			append("Martins conoce a "+Personaje.calloway+". ").
+			append("Calloway conoce a "+Personaje.martins+". ");
+		};
 end 
 
 rule "van al pub" agenda-group "g1"
@@ -46,6 +53,8 @@ no-loop true
         
         Personaje( nombre == Personaje.martins ) from calloway.conoce_a
         Personaje( nombre == Personaje.calloway ) from martins.conoce_a
+        
+        b : Buffer()
 	then
         
         modify(martins){
@@ -54,9 +63,11 @@ no-loop true
 		modify(calloway){
 		   setUbicacion(Ubicacion.PUB);
 		};
-		
-		Main.print("Martins va a"+martins.getUbicacion().toString()+". ");
-        Main.print("Calloway va a"+calloway.getUbicacion().toString()+". ");
+
+        modify(b){
+			append("Martins va a"+martins.getUbicacion().toString()+". ").
+			append("Calloway va a"+calloway.getUbicacion().toString()+". ");
+		};
 		
 		insert(Personaje.nuevo().
     	setNombre(Personaje.paine).
@@ -73,6 +84,8 @@ no-loop true
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.PUB )
 		paine : Personaje( nombre == Personaje.paine, ubicacion == Ubicacion.PUB )
 		calloway : Personaje( nombre == Personaje.calloway)
+		
+		b : Buffer()
 		
 	then
 		
@@ -95,13 +108,15 @@ no-loop true
 		   getConoce_a().add(paine);
 		};
 		
-		Main.print("Martins conoce a "+Personaje.paine+". ");
-        Main.print("Calloway conoce a "+Personaje.paine+". ");
-        Main.print("Paine conoce a "+Personaje.calloway+". ");
-        Main.print("Paine conoce a "+Personaje.martins+". ");
-        Main.print("Paine trabaja con "+Personaje.calloway+". ");
-        Main.print("Calloway trabaja con "+Personaje.paine+". ");
-		
+		modify(b){
+			append("Martins conoce a "+Personaje.paine+". ").
+	        append("Calloway conoce a "+Personaje.paine+". ").
+	        append("Paine conoce a "+Personaje.calloway+". ").
+	        append("Paine conoce a "+Personaje.martins+". ").
+	        append("Paine trabaja con "+Personaje.calloway+". ").
+	        append("Calloway trabaja con "+Personaje.paine+". ");
+		};
+	
 
 end
 
@@ -109,13 +124,17 @@ rule "martins va a hotel" agenda-group "g1"
 no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.PUB )
+		
+		b : Buffer()
 	then
 		
 		modify(martins){
 		   setUbicacion(Ubicacion.HOTELSACHER);
 		};
 		
-		Main.print("Martins va a"+martins.getUbicacion().toString()+". ");
+		modify(b){
+			append("Martins va a"+martins.getUbicacion().toString()+". ");
+		};
 		
 		insert(Personaje.nuevo().
 		setNombre(Personaje.crabbin).
@@ -131,6 +150,8 @@ no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.HOTELSACHER )
 		crabbin : Personaje( nombre == Personaje.crabbin, ubicacion == Ubicacion.HOTELSACHER )
+		
+		b : Buffer()
 	then
 		
 		modify(martins){
@@ -141,8 +162,10 @@ no-loop true
 		   getConoce_a().add(martins);
 		};
 		
-		Main.print("Martins conoce a "+Personaje.crabbin+". ");
-        Main.print("Crabbin conoce a "+Personaje.martins+". ");
+        modify(b){
+			append("Martins conoce a "+Personaje.crabbin+". ").
+			append("Crabbin conoce a "+Personaje.martins+". ");
+		};
 end
 
 rule "martins va cafe mozart" agenda-group "g1"
@@ -153,13 +176,18 @@ no-loop true
 		
 		Personaje( nombre == Personaje.martins ) from crabbin.conoce_a
         Personaje( nombre == Personaje.crabbin ) from martins.conoce_a
+        
+        b : Buffer()
 	then
 		
 		modify(martins){
 		   setUbicacion(Ubicacion.CAFEMOZART);
 		};
 		
-				Main.print("Martins va a"+martins.getUbicacion().toString()+". ");
+		
+		modify(b){
+			append("Martins va a"+martins.getUbicacion().toString()+". ");
+		};
 		
 		insert(Personaje.nuevo().
      	setNombre(Personaje.kurtz).
@@ -178,6 +206,8 @@ no-loop true
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CAFEMOZART )
 		kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CAFEMOZART )
 		lime : Personaje( nombre == Personaje.lime)
+		
+		b : Buffer()
 		
 	then
 	
@@ -205,10 +235,14 @@ no-loop true
 		   getAmigo_de().add(kurtz);
 		};
 		
-		Main.print("Martins conoce a "+Personaje.kurtz+". ");
-        Main.print("Kurtz conoce a "+Personaje.martins+". ");
-        Main.print("Kurtz conoce a "+Personaje.lime+". ");
-        Main.print("Kurtz es amigo de "+Personaje.lime+". ");
-        Main.print("Lime conoce a "+Personaje.kurtz+". ");
-        Main.print("Lime es amigo de "+Personaje.kurtz+". ");
+		modify(b){
+			append("Martins conoce a "+Personaje.kurtz+". ").
+	        append("Kurtz conoce a "+Personaje.martins+". ").
+	        append("Kurtz conoce a "+Personaje.lime+". ").
+	        append("Kurtz es amigo de "+Personaje.lime+". ").
+	        append("Lime conoce a "+Personaje.kurtz+". ").
+	        append("Lime es amigo de "+Personaje.kurtz+". ");
+		};
+		
+		
 end

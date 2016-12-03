@@ -1,0 +1,19 @@
+package tercerhombre;
+
+public class Buffer {
+	private StringBuffer buffer;
+	
+	public Buffer() {
+		buffer = new StringBuffer("");
+	}
+	
+	public Buffer append(String str){
+		buffer.append(str);
+		return this;
+	}
+	
+	@Override
+	public String toString() {
+		return buffer.toString();
+	}
+}

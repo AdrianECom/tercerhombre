@@ -58,7 +58,7 @@ public class LectorConsultas {
 			Consulta c = identificarConsulta(cadena);
 		
 			if(c!=null)
-				consultas.add(c);
+				consultas.add(c);			
 		}
 		
 		b.close();
@@ -71,7 +71,7 @@ public class LectorConsultas {
 	 */
 	private static Consulta procesarQue(String archivo) throws FileNotFoundException {
 
-		Pattern patternActo = Pattern.compile("hasta Acto(\\d{1})");
+		Pattern patternActo = Pattern.compile("hasta (\\d{1})");
 		Matcher matchActo = patternActo.matcher(archivo);
 
 		if (matchActo.find()) {
@@ -91,7 +91,7 @@ public class LectorConsultas {
 
 		Pattern patternPersona = Pattern.compile("es ([a-zA-Z]+) hasta");
 		Matcher matchPersona = patternPersona.matcher(archivo);
-		Pattern patternActo = Pattern.compile("hasta Acto(\\d{1})");
+		Pattern patternActo = Pattern.compile("hasta (\\d{1})");
 		Matcher matchActo = patternActo.matcher(archivo);
 
 		if (matchPersona.find()) {
