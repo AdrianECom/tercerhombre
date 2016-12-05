@@ -59,11 +59,8 @@ public class Main {
 	    	}else{
 	    	
 		    	KieSession kSession = kContainer.newKieSession("ksession-rules");
-		    	
-//		    	System.out.println("CONSULTA: " + consulta.getClass().getName());
-//		    	System.out.println("\n##############################\n");
-		    	
-		    	// Insertamos cadena 
+
+		    	// Insertamos buffer y nos quedamos con su manejador. 
 		    	FactHandle stringHandle = kSession.insert(new Buffer());
 		    	
 		    	// Los personajes iniciales se usarán para imprimir lo anterior al acto 0.
@@ -88,13 +85,12 @@ public class Main {
 				
 				for (int i = 0; i <= consulta.getActo(); i++) {
 						
-					kSession.getAgenda().getAgendaGroup("g"+i).setFocus();
-	
-//					System.out.println("ACTO:" + i);
+					kSession.getAgenda().getAgendaGroup("g"+i).setFocus();	
 				    kSession.fireAllRules();
 				}
 				
 				if(esQue){
+					// recuperamos el buffer.
 					Buffer resultado = (Buffer) kSession.getObject(stringHandle);
 					salida.print(resultado.toString()+"\n");
 				}
@@ -102,12 +98,12 @@ public class Main {
 				esQue = false;
 				
 				if(consulta instanceof ConsultaQuien){		    	
-//			    	System.out.println("\n##############################\n");
-//			    	System.out.println("CONSULTA QUIEN:\n");
-			    	
+
 			    	ConsultaQuien consultaQuien = (ConsultaQuien)consulta;
 			    	
 			    	Personaje personajeEncontrado = null;
+			    	
+			    	// buscar personaje
 			    	for (Personaje p: (Collection<Personaje>)kSession.getObjects()) {
 				    	if(p.getNombre().equals(consultaQuien.getNombre()))
 				    		personajeEncontrado = p;
@@ -123,7 +119,6 @@ public class Main {
 			    
 			    kSession.dispose();
 			    
-//			    System.out.println("\n##############################\n");
 	    	}
 		}
 	    
