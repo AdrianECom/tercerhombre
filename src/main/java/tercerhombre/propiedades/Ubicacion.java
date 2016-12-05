@@ -1,13 +1,15 @@
 package tercerhombre.propiedades;
 
 public enum Ubicacion {
-	PLAZA, CASALIME, CASAANNA, HOTELSACHER, TEATROJOSEPH, 
+	ESTACION, PLAZA, CASALIME, CASAANNA, HOTELSACHER, TEATROJOSEPH, 
 	CASANOVACLUB, CONFERENCIA, CASAWINKEL, SECTORRUSO, 
 	CAFEMARC, COMISARIA, CEMENTERIO, CAFEMOZART, 
 	FUERADEVIENA, NORIA, PUB, CLOACAS;
 	
 	public String toString() {
 		switch (this) {
+		case ESTACION:
+			return " la Estación";
 		case PLAZA:
 			return " la Plaza";
 		case CASALIME:

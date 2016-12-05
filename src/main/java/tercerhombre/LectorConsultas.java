@@ -11,35 +11,45 @@ import java.io.IOException;
 import tercerhombre.consultas.Consulta;
 import tercerhombre.consultas.ConsultaQue;
 import tercerhombre.consultas.ConsultaQuien;
+import tercerhombre.consultas.ConsultaSi;
 
 public class LectorConsultas {
+	
+	// PATRONES
+	private Pattern patronQue;
+	private Pattern patronQuien;
+	private Pattern patronSi; 
+	
+	public LectorConsultas(){
+		patronQue = Pattern.compile("Qué");
+		patronQuien = Pattern.compile("Quién");
+		patronSi = Pattern.compile("Si");
+	}
 
 	/*
 	 * Esta función identifica el tipo de consulta QUE/QUIN y devuelve una Consulta.
 	 */
-	private static Consulta identificarConsulta(String archivo) throws FileNotFoundException {
+	private Consulta identificarConsulta(String cadena) throws FileNotFoundException {
 
-		// PATRONES
-		Pattern patronQue = Pattern.compile("Qué");
-		Matcher matchQue = patronQue.matcher(archivo);
-		Pattern patronQuien = Pattern.compile("Quién");
-		Matcher matchQuien = patronQuien.matcher(archivo);
-		
+		Matcher matchQue = patronQue.matcher(cadena);
+		Matcher matchQuien = patronQuien.matcher(cadena);
+		Matcher matchSi = patronSi.matcher(cadena);
 		
 		// Leemos la consulta
 		
 		Consulta consulta = null;
 
-		if (matchQue.find()) {
-			System.out.println("QUE");
-			consulta = procesarQue(archivo);
-		} else if (matchQuien.find()) {
-			System.out.println("QUIEN");
-			consulta = procesarQuien(archivo);
+		if (matchQuien.find()) {
+			consulta = procesarQuien(cadena);
+		}else if (matchQue.find()) {
+			consulta = procesarQue(cadena);
+		}
+		
+		if (matchSi.find()) {
+			return procesarSi(cadena, consulta);
 		}
 		
 		return consulta;
-
 	}
 
 	/*
@@ -69,15 +79,14 @@ public class LectorConsultas {
 	/*
 	 * Esta función se encarga de procesar una consulta QUE.
 	 */
-	private static Consulta procesarQue(String archivo) throws FileNotFoundException {
+	private static Consulta procesarQue(String cadena) throws FileNotFoundException {
 
 		Pattern patternActo = Pattern.compile("hasta (\\d{1})");
-		Matcher matchActo = patternActo.matcher(archivo);
+		Matcher matchActo = patternActo.matcher(cadena);
 
 		if (matchActo.find()) {
-			String acto = matchActo.group(1);
-//			System.out.println(acto);
-			
+			String acto = matchActo.group(1);	
+			System.out.println("QUE");
 			return new ConsultaQue(Integer.parseInt(acto));
 		}
 		
@@ -87,32 +96,43 @@ public class LectorConsultas {
 	/*
 	 * Esta función se encarga de procesar una consulta QUIEN.
 	 */
-	private static Consulta procesarQuien(String archivo) throws FileNotFoundException {
+	private static Consulta procesarQuien(String cadena) throws FileNotFoundException {
 
 		Pattern patternPersona = Pattern.compile("es ([a-zA-Z]+) hasta");
-		Matcher matchPersona = patternPersona.matcher(archivo);
+		Matcher matchPersona = patternPersona.matcher(cadena);
 		Pattern patternActo = Pattern.compile("hasta (\\d{1})");
-		Matcher matchActo = patternActo.matcher(archivo);
+		Matcher matchActo = patternActo.matcher(cadena);
 
 		if (matchPersona.find()) {
 			String nombre = matchPersona.group(1);
-			System.out.println(nombre);
 			
 			if (matchActo.find()) {
 				String acto = matchActo.group(1);
-//				System.out.println(acto);
-				
+				System.out.println("QUIEN");
 				return new ConsultaQuien(Integer.parseInt(acto),nombre);
 			}
 		}
 
 		
 		return null;
-		
 	}
+	
+	/*
+	 * Esta función se encarga de procesar una consulta SI.
+	 */
+	private static Consulta procesarSi(String cadena, Consulta subconsulta) throws FileNotFoundException {
 
-	public LectorConsultas(){
+		Pattern patternEs = Pattern.compile("([a-zA-Z]+) es ([a-zA-Z]+),");
+		Matcher matchEs = patternEs.matcher(cadena);
 
+		if (matchEs.find()) {
+			String nombre = matchEs.group(1);
+			String propiedad = matchEs.group(2);
+			System.out.println("SI");
+			return new ConsultaSi(nombre, propiedad, subconsulta);
+		}
+		
+		return null;
 	}
 	
 }

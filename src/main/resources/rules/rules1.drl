@@ -20,6 +20,14 @@ no-loop true
 			append("Martins va a"+martins.getUbicacion().toString()+". ");
 		};
 		
+		insert(Personaje.nuevo().
+    	setNombre(Personaje.calloway).
+    	setGenero(Genero.HOMBRE).
+    	setActividad(ActividadLegal.POLICIA).
+    	setEstadoSalud(EstadoSalud.VIVO).
+    	setNacionalidad(Nacionalidad.GRANBRETANA).
+    	setUbicacion(Ubicacion.CEMENTERIO));
+		
 
 end
 

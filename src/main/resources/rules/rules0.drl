@@ -1,12 +1,115 @@
 package rules
 
 import tercerhombre.personaje.Personaje;
+import tercerhombre.propiedades.*;
 import tercerhombre.Buffer;
-	
-rule "martins karl" agenda-group "g0"
+
+rule "insertar martins y lime" agenda-group "g0"
 no-loop true
     when
-        martins : Personaje( nombre == Personaje.martins  )
+    	// sin condiciones
+    then
+        insert(Personaje.nuevo().
+    	setNombre(Personaje.martins).
+    	setGenero(Genero.HOMBRE).
+    	setActividad(ActividadLegal.ESCRITOR).
+    	setEstadoSalud(EstadoSalud.VIVO).
+    	setNacionalidad(Nacionalidad.ESTADOSUNIDOS).
+    	setUbicacion(null));
+    	
+    	insert(Personaje.nuevo().
+    	setNombre(Personaje.lime).
+    	setGenero(Genero.HOMBRE).
+    	setActividad(null).
+    	setEstadoSalud(EstadoSalud.VIVO).
+    	setNacionalidad(Nacionalidad.ESTADOSUNIDOS).
+    	setUbicacion(null));
+end
+
+rule "datos iniciales" agenda-group "g0"
+no-loop true
+    when
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == null )
+        lime : Personaje( nombre == Personaje.lime, ubicacion == null  )
+    
+        b : Buffer()
+    then
+    
+    	modify(martins){
+    		getConoce_a().add(lime);
+    	};
+    	
+    	modify(martins){
+    		getBusca_a().add(lime);
+    	};
+    	
+    	modify(martins){
+    		getAmigo_de().add(lime);
+    	};
+    	
+    	modify(lime){
+    		getConoce_a().add(martins);
+    	};
+    	
+    	modify(lime){
+    		getAmigo_de().add(martins);
+    	};	
+    	
+    	modify(b){
+			append("Martins conoce a "+Personaje.lime+". ").
+	        append("Martins busca a "+Personaje.lime+". ").
+	        append("Martins es amigo de "+Personaje.lime+". ").
+	        append("Lime conoce a "+Personaje.martins+". ").
+	        append("Lime es amigo de "+Personaje.martins+". ");
+		};
+end
+
+rule "martins va estacion" agenda-group "g0"
+no-loop true
+    when
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == null  )
+    
+        b : Buffer()
+    then
+    
+     	modify(martins){
+        	setUbicacion(Ubicacion.ESTACION)
+        };
+ 
+    	modify(b){
+			append("Martins va a"+martins.getUbicacion().toString()+". ");
+		};
+end
+
+rule "martins va casa lime" agenda-group "g0"
+no-loop true
+    when
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.ESTACION  )
+    
+        b : Buffer()
+    then
+    
+    	insert(Personaje.nuevo().
+    	setNombre(Personaje.karl).
+    	setGenero(Genero.HOMBRE).
+    	setActividad(ActividadLegal.PORTERO).
+    	setEstadoSalud(EstadoSalud.VIVO).
+    	setNacionalidad(Nacionalidad.AUSTRIA).
+    	setUbicacion(Ubicacion.CASALIME));
+    
+        modify(martins){
+        	setUbicacion(Ubicacion.CASALIME)
+        };
+    	
+    	modify(b){
+			append("Martins va a"+martins.getUbicacion().toString()+". ");
+		};
+end
+	
+rule "martins conoce karl" agenda-group "g0"
+no-loop true
+    when
+        martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME  )
         karl : Personaje( nombre == Personaje.karl  )
         lime : Personaje( nombre == Personaje.lime  )
         
@@ -21,18 +124,26 @@ no-loop true
 		modify(karl){
 		   getConoce_a().add(lime);
 		};
+		
+		modify(lime){
+		   setEstadoSalud(EstadoSalud.MUERTO);
+		};
+		
+		modify(lime){
+		   setUbicacion(Ubicacion.CEMENTERIO);
+		};
+		
 		modify(lime){
 		   getConoce_a().add(karl);
 		};
-		
 		
 		modify(b){
 			append("Martins conoce a "+Personaje.karl+". ").
 	        append("Karl conoce a "+Personaje.martins+". ").
 	        append("Karl conoce a "+Personaje.lime+". ").
-	        append("Lime conoce a "+Personaje.karl+". ");
+	        append("Lime conoce a "+Personaje.karl+". ").
+	        append("Lime esta "+lime.getEstadoSalud().toString()+lime.getGenero().sufijo()+". ").
+	        append("Lime esta en e"+lime.getUbicacion().toString()+". ");
 		};
-		
-		
 end 
 
