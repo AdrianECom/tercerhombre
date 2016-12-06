@@ -3,6 +3,7 @@ package rules
 import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
 import tercerhombre.Buffer;
+import tercerhombre.Modificador;
 
 rule "insertar martins y lime" agenda-group "g0"
 no-loop true
@@ -110,7 +111,7 @@ rule "martins conoce karl" agenda-group "g0"
 no-loop true
     when
         martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME  )
-        karl : Personaje( nombre == Personaje.karl  )
+        karl : Personaje( nombre == Personaje.karl, estadoSalud == EstadoSalud.VIVO  )
         lime : Personaje( nombre == Personaje.lime  )
         
        	b : Buffer()
@@ -145,5 +146,4 @@ no-loop true
 	        append("Lime esta "+lime.getEstadoSalud().toString()+lime.getGenero().sufijo()+". ").
 	        append("Lime esta en e"+lime.getUbicacion().toString()+". ");
 		};
-end 
-
+end

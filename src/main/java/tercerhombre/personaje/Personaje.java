@@ -13,6 +13,8 @@ import tercerhombre.propiedades.Relacion;
 import tercerhombre.propiedades.Ubicacion;
 
 public class Personaje {
+	
+	private boolean modificado;
 
 	// -----------------------------------
 
@@ -93,6 +95,8 @@ public class Personaje {
 
 	public Personaje() {
 		
+		modificado = false;
+		
 		this.amigo_de = new ArrayList<Personaje>();
 		this.mata_a = new ArrayList<Personaje>();
 		this.enfrentado_con = new ArrayList<Personaje>();
@@ -122,6 +126,16 @@ public class Personaje {
 		
 		
 		
+	}
+	
+	// ------------------------------------
+	
+	public boolean isModificado() {
+		return modificado;
+	}
+	
+	public void setModificado(boolean bool) {
+		this.modificado = bool;
 	}
 
 	// ------------------------------------

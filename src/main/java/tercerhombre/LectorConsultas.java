@@ -21,9 +21,9 @@ public class LectorConsultas {
 	private Pattern patronSi; 
 	
 	public LectorConsultas(){
-		patronQue = Pattern.compile("Qué");
-		patronQuien = Pattern.compile("Quién");
-		patronSi = Pattern.compile("Si");
+		patronQue = Pattern.compile("[Qq]u[ée]");
+		patronQuien = Pattern.compile("[Qq]ui[ée]n");
+		patronSi = Pattern.compile("[Ss]i");
 	}
 
 	/*
@@ -45,7 +45,10 @@ public class LectorConsultas {
 			consulta = procesarQue(cadena);
 		}
 		
-		if (matchSi.find()) {
+		/* si resulta que la consulta es Consulta SI, entonces,
+		 * la que se había detectado antes era la subconsulta del SI.
+		 */
+		if (consulta != null && matchSi.find()) {
 			return procesarSi(cadena, consulta);
 		}
 		
@@ -81,13 +84,27 @@ public class LectorConsultas {
 	 */
 	private static Consulta procesarQue(String cadena) throws FileNotFoundException {
 
-		Pattern patternActo = Pattern.compile("hasta (\\d{1})");
+		Pattern patternActo = Pattern.compile("hasta (Acto(\\d{1}|Final))");
 		Matcher matchActo = patternActo.matcher(cadena);
 
 		if (matchActo.find()) {
-			String acto = matchActo.group(1);	
+			String acto = matchActo.group(2);
 			System.out.println("QUE");
-			return new ConsultaQue(Integer.parseInt(acto));
+			
+			int a = 0;
+			
+			try {
+				a = Integer.parseInt(acto);
+			} catch (Exception e) {
+				if(acto.compareTo("Final") == 0)
+					a = 5;
+				else
+					return null;
+			}
+			
+			System.out.println(a);
+			
+			return new ConsultaQue(a);
 		}
 		
 		return null;

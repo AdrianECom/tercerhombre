@@ -13,6 +13,7 @@ import tercerhombre.consultas.ConsultaQue;
 import tercerhombre.consultas.ConsultaQuien;
 import tercerhombre.consultas.ConsultaSi;
 import tercerhombre.personaje.Personaje;
+import tercerhombre.propiedades.Ubicacion;
 
 public class Main {
 	
@@ -52,6 +53,8 @@ public class Main {
 	    		
 	    	}else{
 	    		
+	    		KieSession kSession = kContainer.newKieSession("ksession-rules");
+	    		
 	    		if(consulta instanceof ConsultaSi){
 	    			
 	    			/*
@@ -59,14 +62,13 @@ public class Main {
 	    			 * al personaje en cuestión.
 	    			 */
 	    			
+	    			ConsultaSi consultaSi = (ConsultaSi) consulta;
 	    			
+	    			Modificador modificador = new Modificador(consultaSi.getNombre(), consultaSi.getPropiedad());
+	    			kSession.insert(modificador);
 	    			
-	    			
-	    			
-	    			consulta = ((ConsultaSi) consulta).getSubconsulta();
+	    			consulta = consultaSi.getSubconsulta();
 	    		}
-	    	
-		    	KieSession kSession = kContainer.newKieSession("ksession-rules");
 
 		    	// Insertamos buffer y nos quedamos con su manejador. 
 		    	FactHandle bufferHandle = kSession.insert(new Buffer());

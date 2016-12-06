@@ -1,0 +1,41 @@
+package rules
+
+import tercerhombre.personaje.Personaje;
+import tercerhombre.propiedades.*;
+import tercerhombre.Modificador;
+
+/*
+* Estas reglas sirven para detectar cuando un personaje se modifica
+* debido a una consulta del tipo: SI <condicion>. 
+* 
+* La clase Modificador, representa la modificación de un personaje,
+* incluye su nombre, el tipo de la propiedad modificada, y la propiedad.
+*
+* Estas reglas se encuentran incluidas en todos los grupos.
+*/
+
+
+/*
+* Por ejemplo, esta regla se dispara cuando existe un personaje,
+* el cual no ha sido, aún, modificado, Y para el que existe un modificador
+* con su nombre.
+*/
+rule "modificador EstadoSalud"
+agenda-group "g0"
+agenda-group "g1"
+agenda-group "g2"
+agenda-group "g3"
+agenda-group "g4"
+agenda-group "g5"
+no-loop true
+    when
+    	m : Modificador( tipo == EstadoSalud )
+    	p : Personaje( nombre == m.getNombre() , modificado == false )
+    then
+    	modify(p){
+    		setEstadoSalud((EstadoSalud)m.getPropiedad()).
+    		setModificado(true);
+    	};
+end
+
+// TODO: hacer para el resto de propiedades (solo propiedades, no para las relaciones ! )
