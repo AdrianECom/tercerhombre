@@ -20,6 +20,10 @@ public class Modificador {
 		
 		String propiedadMayusculas = propiedad.toUpperCase();
 		
+		/*
+		 * Aquí convertimos el string al enumerado correspondiente.
+		 */
+		
 		try {
 			propiedadEnumerado = ActividadIlegal.valueOf(propiedadMayusculas);
 		} catch (Exception e) {
@@ -56,6 +60,11 @@ public class Modificador {
 			// TODO: handle exception
 		}
 		
+		
+		/*
+		 * Obtenemos el tipo de ese enumerado. Así sabemos cuál
+		 * es la propiedad que estamos modificando.
+		 */
 		tipo = propiedadEnumerado.getClass();
 		
 	}
