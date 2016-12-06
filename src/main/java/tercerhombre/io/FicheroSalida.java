@@ -1,4 +1,4 @@
-package tercerhombre;
+package tercerhombre.io;
 
 import java.io.BufferedWriter;
 import java.io.File;

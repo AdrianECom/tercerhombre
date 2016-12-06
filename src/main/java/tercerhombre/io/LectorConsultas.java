@@ -1,4 +1,4 @@
-package tercerhombre;
+package tercerhombre.io;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,22 +89,21 @@ public class LectorConsultas {
 
 		if (matchActo.find()) {
 			String acto = matchActo.group(2);
-			System.out.println("QUE");
+//			System.out.println("QUE");
 			
-			int a = 0;
+			int actoInt = 0;
 			
 			try {
-				a = Integer.parseInt(acto);
+				actoInt = Integer.parseInt(acto);
 			} catch (Exception e) {
 				if(acto.compareTo("Final") == 0)
-					a = 5;
+					actoInt = 5;
 				else
 					return null;
 			}
 			
-			System.out.println(a);
 			
-			return new ConsultaQue(a);
+			return new ConsultaQue(actoInt);
 		}
 		
 		return null;
@@ -125,7 +124,7 @@ public class LectorConsultas {
 			
 			if (matchActo.find()) {
 				String acto = matchActo.group(1);
-				System.out.println("QUIEN");
+//				System.out.println("QUIEN");
 				return new ConsultaQuien(Integer.parseInt(acto),nombre);
 			}
 		}
@@ -145,7 +144,7 @@ public class LectorConsultas {
 		if (matchEs.find()) {
 			String nombre = matchEs.group(1);
 			String propiedad = matchEs.group(2);
-			System.out.println("SI");
+//			System.out.println("SI");
 			return new ConsultaSi(nombre, propiedad, subconsulta);
 		}
 		

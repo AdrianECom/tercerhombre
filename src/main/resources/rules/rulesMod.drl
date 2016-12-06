@@ -2,7 +2,7 @@ package rules
 
 import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
-import tercerhombre.Modificador;
+import tercerhombre.consultas.Modificador;
 
 /*
 * Estas reglas sirven para detectar cuando un personaje se modifica

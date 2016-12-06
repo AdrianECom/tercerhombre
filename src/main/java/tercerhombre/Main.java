@@ -12,6 +12,10 @@ import tercerhombre.consultas.Consulta;
 import tercerhombre.consultas.ConsultaQue;
 import tercerhombre.consultas.ConsultaQuien;
 import tercerhombre.consultas.ConsultaSi;
+import tercerhombre.consultas.Modificador;
+import tercerhombre.io.Buffer;
+import tercerhombre.io.FicheroSalida;
+import tercerhombre.io.LectorConsultas;
 import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.Ubicacion;
 

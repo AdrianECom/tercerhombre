@@ -1,4 +1,4 @@
-package tercerhombre;
+package tercerhombre.consultas;
 
 import tercerhombre.propiedades.ActividadIlegal;
 import tercerhombre.propiedades.ActividadLegal;
@@ -7,7 +7,10 @@ import tercerhombre.propiedades.Genero;
 import tercerhombre.propiedades.Nacionalidad;
 import tercerhombre.propiedades.Ubicacion;
 
-
+/*
+ * La clase Modificador, representa la modificación de un personaje,
+ * incluye su nombre, el tipo de la propiedad modificada, y la propiedad.
+ */
 public class Modificador {
 	
 	private String nombre, propiedad;

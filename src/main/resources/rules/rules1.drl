@@ -2,7 +2,7 @@ package rules
 
 import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
-import tercerhombre.Buffer;
+import tercerhombre.io.Buffer;
 
 rule "martins va cementerio" agenda-group "g1"
 no-loop true

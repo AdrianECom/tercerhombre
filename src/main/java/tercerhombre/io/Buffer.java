@@ -1,4 +1,4 @@
-package tercerhombre;
+package tercerhombre.io;
 
 public class Buffer {
 	private StringBuffer buffer;
