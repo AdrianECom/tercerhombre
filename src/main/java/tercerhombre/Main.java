@@ -93,7 +93,6 @@ public class Main {
 				 */
 				for (int i = 0; i <= consulta.getActo(); i++) {
 					kSession.getAgenda().getAgendaGroup("g"+i).setFocus();
-//					kSession.getAgenda().getAgendaGroup(arg0)
 				    kSession.fireAllRules();
 				}
 				

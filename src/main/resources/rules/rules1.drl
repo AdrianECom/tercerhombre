@@ -28,8 +28,6 @@ no-loop true
     	setNacionalidad(Nacionalidad.GRANBRETANA).
     	setUbicacion(Ubicacion.CEMENTERIO));
 		
-		System.out.println("insertado calloway");
-
 end
 
 rule "martins conoce calloway" agenda-group "g1"

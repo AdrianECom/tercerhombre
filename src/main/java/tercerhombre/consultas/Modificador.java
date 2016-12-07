@@ -16,8 +16,10 @@ public class Modificador {
 	private String nombre, propiedad;
 	private Class tipo;
 	private Enum propiedadEnumerado;
+	private boolean error;
 
 	public Modificador(String nombre, String propiedad) {
+		error = false;
 		this.nombre = nombre;
 		this.propiedad = propiedad;
 		
@@ -30,37 +32,37 @@ public class Modificador {
 		try {
 			propiedadEnumerado = ActividadIlegal.valueOf(propiedadMayusculas);
 		} catch (Exception e) {
-			// TODO: handle exception
+			error = true;
 		}
 		
 		try {
 			propiedadEnumerado = ActividadLegal.valueOf(propiedadMayusculas);
 		} catch (Exception e) {
-			// TODO: handle exception
+			error = true;
 		}
 		
 		try {
 			propiedadEnumerado = EstadoSalud.valueOf(propiedadMayusculas);
 		} catch (Exception e) {
-			// TODO: handle exception
+			error = true;
 		}
 		
 		try {
 			propiedadEnumerado = Genero.valueOf(propiedadMayusculas);
 		} catch (Exception e) {
-			// TODO: handle exception
+			error = true;
 		}
 		
 		try {
 			propiedadEnumerado = Nacionalidad.valueOf(propiedadMayusculas);
 		} catch (Exception e) {
-			// TODO: handle exception
+			error = true;
 		}
 		
 		try {
 			propiedadEnumerado = Ubicacion.valueOf(propiedadMayusculas);
 		} catch (Exception e) {
-			// TODO: handle exception
+			error = true;
 		}
 		
 		
@@ -76,6 +78,10 @@ public class Modificador {
 //		System.out.println(tipo);
 //		System.out.println("");
 				
+	}
+	
+	public boolean isError() {
+		return error;
 	}
 	
 	public String getNombre() {
