@@ -32,6 +32,7 @@ public class Personaje {
 	public static String kurtz = "Kurtz";
 	public static String martins = "Martins";
 	public static String paine = "Paine";
+	public static String tercerhombre = "Tercer Hombre";
 
 	// ------------------------------------
 

@@ -114,7 +114,7 @@ public class LectorConsultas {
 	 */
 	private static Consulta procesarQuien(String cadena) throws FileNotFoundException {
 
-		Pattern patternPersona = Pattern.compile("es ([a-zA-Z]+|[Tt]ercer [Hh]ombre) hasta");
+		Pattern patternPersona = Pattern.compile("es ([A-Z][a-z]+|Tercer Hombre) hasta");
 		Matcher matchPersona = patternPersona.matcher(cadena);
 		Pattern patternActo = Pattern.compile("hasta [Aa]cto(\\d{1})");
 		Matcher matchActo = patternActo.matcher(cadena);

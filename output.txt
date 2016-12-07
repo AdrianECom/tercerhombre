@@ -1,3 +1,5 @@
 Martins conoce a Lime. Martins busca a Lime. Martins es amigo de Lime. Lime conoce a Martins. Lime es amigo de Martins. Martins va a la Estación. Martins va a la casa de Lime. Martins conoce a Karl. Karl conoce a Martins. Karl conoce a Lime. Lime conoce a Karl. Lime esta muerto. Lime esta en el cementerio. 
 Martins conoce a Lime. Martins busca a Lime. Martins es amigo de Lime. Lime conoce a Martins. Lime es amigo de Martins. Martins va a la Estación. Martins va a la casa de Lime. 
-# NO SE SABE NADA DEL PERSONAJE tercer hombre EN EL ACTO 0
+# NO SE SABE NADA DEL PERSONAJE Tercer Hombre EN EL ACTO 0
+Lime está muerto. Es un hombre de nacionalidad estadounidense. Se desconoce su actividad. Al final del acto va al cementerio. Lime conoce a Martins y conoce a Karl. Lime es amigo de Martins. 
+Lime está vivo. Es un hombre de nacionalidad estadounidense. Se desconoce su actividad. Al final del acto va a ubicación desconocida. Lime conoce a Martins. Lime es amigo de Martins. 
