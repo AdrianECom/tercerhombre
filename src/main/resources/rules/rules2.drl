@@ -1,0 +1,22 @@
+//created on: 07-dic-2016
+package rules
+
+import tercerhombre.personaje.Personaje;
+import tercerhombre.propiedades.*;
+import tercerhombre.io.Buffer;
+
+rule "Kurtz y Martins van casa Lime"
+
+    when
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CAFEMOZART )
+        kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CAFEMOZART )
+    then
+        modify(kurtz){
+		setUbicacion(Ubicacion.CASALIME);
+		};
+		modify(martins){
+		setUbicacion(Ubicacion.CASALIME);
+		};
+
+end
+

@@ -3,7 +3,6 @@ package rules
 import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
 import tercerhombre.io.Buffer;
-import tercerhombre.consultas.Modificador;
 
 rule "insertar martins y lime" agenda-group "g0"
 no-loop true
