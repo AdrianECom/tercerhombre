@@ -1,6 +1,6 @@
 package tercerhombre;
 
-import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.kie.api.KieServices;
@@ -17,7 +17,6 @@ import tercerhombre.io.Buffer;
 import tercerhombre.io.FicheroSalida;
 import tercerhombre.io.LectorConsultas;
 import tercerhombre.personaje.Personaje;
-import tercerhombre.propiedades.Ubicacion;
 
 public class Main {
 	
@@ -28,14 +27,24 @@ public class Main {
 	// ------------------------------------
 
     public static final void main(String[] args) {
-        try {
-        	salida = new FicheroSalida("output.txt");
-        	LectorConsultas lc = new LectorConsultas();
-        	List<Consulta> consultas = lc.leerFichero("input.txt");
-            Main.ejecutar(consultas);
-        } catch (Throwable t) {
-            t.printStackTrace();
-        }
+    	
+    	List<Consulta> consultas = new LinkedList<>();
+    	salida = new FicheroSalida("output.txt");
+    	LectorConsultas lc = new LectorConsultas();
+    	
+    	for (String fichero : args) {
+			
+	        try {
+	        	
+	        	consultas.addAll(lc.leerFichero(fichero));
+	            
+	        } catch (Throwable t) {
+	            t.printStackTrace();
+	        }
+        
+    	}
+        
+        Main.ejecutar(consultas);
     }
     
  
