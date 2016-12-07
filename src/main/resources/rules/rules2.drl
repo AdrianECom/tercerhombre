@@ -14,12 +14,23 @@ rule "kurtz y  martins van casa lime"
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CAFEMOZART )
         kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CAFEMOZART )
     then
+    
+    	insert(Personaje.nuevo().
+    	setNombre(Personaje.anna).
+    	setGenero(Genero.MUJER).
+    	setActividad(ActividadLegal.ACTRIZ).
+    	setEstadoSalud(EstadoSalud.VIVO).
+    	setNacionalidad(null).
+    	setUbicacion(null));
+    
         modify(kurtz){
 		setUbicacion(Ubicacion.CASALIME);
 		};
 		modify(martins){
 		setUbicacion(Ubicacion.CASALIME);
 		};
+		
+		
 
 end
 
@@ -28,14 +39,10 @@ rule "insertar Anna"
    when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
         kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CASALIME )
+        anna : Personaje( nombre == Personaje.anna )
+        lime : Personaje( nombre == Personaje.lime )
     then
-      insert(Personaje.nuevo().
-    	setNombre(Personaje.anna).
-    	setGenero(Genero.MUJER).
-    	setActividad(ActividadLegal.ACTRIZ).
-    	setEstadoSalud(EstadoSalud.VIVO).
-    	setNacionalidad(null).
-    	setUbicacion(null));
+      
     	
     	modify(anna){
 				setUbicacion(Ubicacion.CASALIME);
