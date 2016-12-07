@@ -99,15 +99,20 @@ public class Main {
 			    	Personaje personajeEncontrado = null;
 			    	
 			    	// buscar personaje
-			    	for (Personaje p: (Collection<Personaje>)kSession.getObjects()) {
-				    	if(p.getNombre().equals(consultaQuien.getNombre()))
-				    		personajeEncontrado = p;
+			    	for (Object o: kSession.getObjects()) {
+			    		if(o instanceof Personaje){
+			    			
+			    			Personaje p = (Personaje) o;
+			    			
+					    	if(p.getNombre().equals(consultaQuien.getNombre()))
+					    		personajeEncontrado = p;
+			    		}
 					}
 			    	
 			    	if(personajeEncontrado != null)
 			    		salida.print(personajeEncontrado.toString()+"\n");
 			    	else
-			    		salida.print("# NO SE SABE NADA DEL PERSONAJE" + consultaQuien.getNombre() + " EN EL ACTO " + consultaQuien.getActo() +"\n");
+			    		salida.print("# NO SE SABE NADA DEL PERSONAJE " + consultaQuien.getNombre() + " EN EL ACTO " + consultaQuien.getActo() +"\n");
 			    }
 			    
 			    kSession.dispose();

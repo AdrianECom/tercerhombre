@@ -84,11 +84,11 @@ public class LectorConsultas {
 	 */
 	private static Consulta procesarQue(String cadena) throws FileNotFoundException {
 
-		Pattern patternActo = Pattern.compile("hasta (Acto(\\d{1}|Final))");
+		Pattern patternActo = Pattern.compile("hasta [Aa]cto(\\d{1}|[Ff]inal)");
 		Matcher matchActo = patternActo.matcher(cadena);
 
 		if (matchActo.find()) {
-			String acto = matchActo.group(2);
+			String acto = matchActo.group(1);
 			System.out.println("QUE");
 			
 			int actoInt = 0;
@@ -96,7 +96,7 @@ public class LectorConsultas {
 			try {
 				actoInt = Integer.parseInt(acto);
 			} catch (Exception e) {
-				if(acto.compareTo("Final") == 0)
+				if(acto.toLowerCase().compareTo("final") == 0)
 					actoInt = 5;
 				else
 					return null;
@@ -114,9 +114,9 @@ public class LectorConsultas {
 	 */
 	private static Consulta procesarQuien(String cadena) throws FileNotFoundException {
 
-		Pattern patternPersona = Pattern.compile("es ([a-zA-Z]+) hasta");
+		Pattern patternPersona = Pattern.compile("es ([a-zA-Z]+|[Tt]ercer [Hh]ombre) hasta");
 		Matcher matchPersona = patternPersona.matcher(cadena);
-		Pattern patternActo = Pattern.compile("hasta (\\d{1})");
+		Pattern patternActo = Pattern.compile("hasta [Aa]cto(\\d{1})");
 		Matcher matchActo = patternActo.matcher(cadena);
 
 		if (matchPersona.find()) {

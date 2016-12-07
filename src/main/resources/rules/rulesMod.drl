@@ -31,13 +31,11 @@ salience 1
 no-loop true
     when
     	m : Modificador( tipo == EstadoSalud )
-    	p : Personaje( nombre == m.getNombre() , modificado == false )
+    	p : Personaje( nombre == m.getNombre() )
     then
     	modify(p){
-    		setEstadoSalud((EstadoSalud)m.getPropiedad()).
-    		setModificado(true);
-    	};
-    	
+    		setEstadoSalud((EstadoSalud)m.getPropiedad());
+    	};    	
 end
 
 // TODO: hacer para el resto de propiedades (solo propiedades, no para las relaciones ! )
