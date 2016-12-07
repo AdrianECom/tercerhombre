@@ -28,6 +28,7 @@ no-loop true
     	setNacionalidad(Nacionalidad.GRANBRETANA).
     	setUbicacion(Ubicacion.CEMENTERIO));
 		
+		System.out.println("insertado calloway");
 
 end
 
@@ -51,6 +52,8 @@ no-loop true
 			append("Martins conoce a "+Personaje.calloway+". ").
 			append("Calloway conoce a "+Personaje.martins+". ");
 		};
+		
+		
 end 
 
 rule "van al pub" agenda-group "g1"
@@ -84,6 +87,7 @@ no-loop true
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.GRANBRETANA).
     	setUbicacion(Ubicacion.PUB));
+    	
 end
 
 rule "martins conoce a paine" agenda-group "g1"
@@ -204,6 +208,8 @@ no-loop true
      	setEstadoSalud(EstadoSalud.VIVO).
      	setNacionalidad(Nacionalidad.AUSTRIA).
      	setUbicacion(Ubicacion.CAFEMOZART));
+     	
+     	
      	
 
 end

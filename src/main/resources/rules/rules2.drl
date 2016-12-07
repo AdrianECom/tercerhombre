@@ -8,7 +8,7 @@ import tercerhombre.io.Buffer;
 
 // Revisar el orden de las reglas
 
-rule "kurtz y  martins van casa lime"
+rule "kurtz y  martins van casa lime" agenda-group "g2"
 
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CAFEMOZART )
@@ -34,7 +34,7 @@ rule "kurtz y  martins van casa lime"
 
 end
 
-rule "insertar Anna"
+rule "insertar Anna" agenda-group "g2"
 
    when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )

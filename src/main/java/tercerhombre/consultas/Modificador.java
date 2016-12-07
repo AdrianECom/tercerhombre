@@ -70,11 +70,11 @@ public class Modificador {
 		 */
 		tipo = propiedadEnumerado.getClass();
 		
-		System.out.println("MODIFICADOR");
-		System.out.println(nombre);
-		System.out.println(propiedad);
-		System.out.println(tipo);
-		System.out.println("");
+//		System.out.println("MODIFICADOR");
+//		System.out.println(nombre);
+//		System.out.println(propiedad);
+//		System.out.println(tipo);
+//		System.out.println("");
 				
 	}
 	
