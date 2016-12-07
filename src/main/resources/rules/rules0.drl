@@ -105,6 +105,8 @@ no-loop true
     	modify(b){
 			append("Martins va a"+martins.getUbicacion().toString()+". ");
 		};
+		
+		System.out.println("insertado");
 end
 	
 rule "martins conoce karl" agenda-group "g0"
@@ -146,4 +148,6 @@ no-loop true
 	        append("Lime esta "+lime.getEstadoSalud().toString()+lime.getGenero().sufijo()+". ").
 	        append("Lime esta en e"+lime.getUbicacion().toString()+". ");
 		};
+		
+		System.out.println("conocido");
 end

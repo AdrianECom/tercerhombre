@@ -21,12 +21,13 @@ import tercerhombre.consultas.Modificador;
 * con su nombre.
 */
 rule "modificador EstadoSalud"
-agenda-group "g0"
-agenda-group "g1"
-agenda-group "g2"
-agenda-group "g3"
+agenda-group "g5" // Cuidao ! Agenda group funciona como un stack!
 agenda-group "g4"
-agenda-group "g5"
+agenda-group "g3"
+agenda-group "g2"
+agenda-group "g1"
+agenda-group "g0"
+salience 1
 no-loop true
     when
     	m : Modificador( tipo == EstadoSalud )
@@ -36,6 +37,8 @@ no-loop true
     		setEstadoSalud((EstadoSalud)m.getPropiedad()).
     		setModificado(true);
     	};
+    	
+    	System.out.println("modificado");
 end
 
 // TODO: hacer para el resto de propiedades (solo propiedades, no para las relaciones ! )
