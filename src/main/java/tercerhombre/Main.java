@@ -92,7 +92,8 @@ public class Main {
 				 * del acto 2, del acto 3 y del acto 4.
 				 */
 				for (int i = 0; i <= consulta.getActo(); i++) {
-					kSession.getAgenda().getAgendaGroup("g"+i).setFocus();	
+					kSession.getAgenda().getAgendaGroup("g"+i).setFocus();
+//					kSession.getAgenda().getAgendaGroup(arg0)
 				    kSession.fireAllRules();
 				}
 				

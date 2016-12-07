@@ -1,0 +1,27 @@
+package rules
+
+import tercerhombre.personaje.Personaje;
+import tercerhombre.propiedades.*;
+import tercerhombre.consultas.Modificador;
+
+
+
+rule "modificador Actividad"
+agenda-group "g5"
+agenda-group "g4"
+agenda-group "g3"
+agenda-group "g2"
+agenda-group "g1"
+agenda-group "g0"
+salience 1
+no-loop true
+	when
+		m : Modificador( tipo == Actividad )
+		p : Personaje( nombre == m.getNombre(), modificado == false )
+	then
+		modify(p){
+    		setActividad((Actividad)m.getPropiedad()).
+    		setModificado(true);
+    	};
+		System.out.println("actividad"); 
+end
