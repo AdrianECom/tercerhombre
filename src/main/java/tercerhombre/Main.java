@@ -62,7 +62,7 @@ public class Main {
 	    	// Mensaje por si nos pasamos de acto.
 	    	if(consulta.getActo() > ULTIMO_ACTO){
 	    		
-	    		salida.print("# SOLO SE PUEDEN REALIZAR CONSULTAS HASTA : Acto" +ULTIMO_ACTO+"\n");
+	    		salida.print("# SOLO SE PUEDEN REALIZAR CONSULTAS HASTA : Acto" +ULTIMO_ACTO+".\n");
 	    		
 	    	}else{
 	    		
@@ -71,15 +71,23 @@ public class Main {
 	    		if(consulta instanceof ConsultaSi){
 	    			
 	    			/*
-	    			 * TODO: insertar objeto a la base de hechos que modifique
-	    			 * al personaje en cuestión.
+	    			 * Creamos un Modificador a partir de la consulta SI.
 	    			 */
 	    			
 	    			ConsultaSi consultaSi = (ConsultaSi) consulta;
 	    			
 	    			Modificador modificador = new Modificador(consultaSi.getNombre(), consultaSi.getPropiedad());
-	    			kSession.insert(modificador);
 	    			
+	    			if(modificador.hasError())
+	    				salida.print("# CONSULTA 'SI' NO SE HA ESCRITO CORRECTAMENTE.\n");
+	    			else
+	    				kSession.insert(modificador);
+	    			
+	    			
+	    			/*
+	    			 * Tras procesar la consulta SI, procesaremos la subconsulta.
+	    			 * Ponemos la subconsulta como la consulta principal a tratar.
+	    			 */
 	    			consulta = consultaSi.getSubconsulta();
 	    		}
 
@@ -121,7 +129,7 @@ public class Main {
 			    	if(personajeEncontrado != null)
 			    		salida.print(personajeEncontrado.toString()+"\n");
 			    	else
-			    		salida.print("# NO SE SABE NADA DEL PERSONAJE " + consultaQuien.getNombre() + " EN EL ACTO " + consultaQuien.getActo() +"\n");
+			    		salida.print("# NO SE SABE NADA DEL PERSONAJE " + consultaQuien.getNombre() + " EN EL ACTO " + consultaQuien.getActo() +".\n");
 			    }
 			    
 			    kSession.dispose();
@@ -134,13 +142,5 @@ public class Main {
     }
 
     // ------------------------------------
-    
-//    		insert(Personaje.nuevo().
-//        	setNombre(Personaje.anna).
-//        	setGenero(Genero.MUJER).
-//        	setActividad(null).
-//        	setEstadoSalud(EstadoSalud.VIVO).
-//        	setNacionalidad(null).
-//        	setUbicacion(Ubicacion.CEMENTERIO));
 
 }

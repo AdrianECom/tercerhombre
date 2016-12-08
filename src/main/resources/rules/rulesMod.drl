@@ -14,7 +14,7 @@ agenda-group "g0"
 salience 1
 no-loop true
     when
-    	m : Modificador( error == false, tipo.equals(EstadoSalud.class) )
+    	m : Modificador( tipo.equals(EstadoSalud.class) ) // Se comprueba cual es la propiedad a modificar.
     	p : Personaje( nombre == Personaje.karl, modificado == false )
     then
     	modify(p){
@@ -22,7 +22,7 @@ no-loop true
     		setModificado(true);
     	};    	
     	
-    	System.out.println("estado salud");
+    	//System.out.println("modificado estado salud");
 end
 
 rule "modificador Nacionalidad"
@@ -35,12 +35,53 @@ agenda-group "g0"
 salience 1
 no-loop true
 	when
-		m : Modificador( error == false, tipo.equals(Nacionalidad.class) )
+		m : Modificador( tipo.equals(Nacionalidad.class) )
 		p : Personaje( nombre == m.getNombre(), modificado == false )
 	then
 		modify(p){
     		setNacionalidad((Nacionalidad)m.getPropiedad()).
     		setModificado(true);
     	};
-		System.out.println("nacionalidad"); 
+		//System.out.println("modificado nacionalidad"); 
+end
+
+rule "modificador Actividad"
+agenda-group "g5"
+agenda-group "g4"
+agenda-group "g3"
+agenda-group "g2"
+agenda-group "g1"
+agenda-group "g0"
+salience 1
+no-loop true
+	when
+		// NOTA: Como Actividad tiene dos subclases, debemos comprobar si el tipo hereda de Actividad.
+		m : Modificador( Actividad.class.isAssignableFrom(tipo) )
+		p : Personaje( nombre == m.getNombre(), modificado == false )
+	then
+		modify(p){
+    		setActividad((Actividad)m.getPropiedad()).
+    		setModificado(true);
+    	};
+		//System.out.println("modificado actividad"); 
+end
+
+rule "modificador Ubicacion"
+agenda-group "g5"
+agenda-group "g4"
+agenda-group "g3"
+agenda-group "g2"
+agenda-group "g1"
+agenda-group "g0"
+salience 1
+no-loop true
+	when
+		m : Modificador( tipo.equals(Ubicacion.class) )
+		p : Personaje( nombre == m.getNombre(), modificado == false )
+	then
+		modify(p){
+    		setUbicacion((Ubicacion)m.getPropiedad()).
+    		setModificado(true);
+    	};
+		//System.out.println("modificado ubicacion"); 
 end
