@@ -1,0 +1,280 @@
+//created on: 08-dic-2016
+package rules
+
+//list any import classes here.
+
+import tercerhombre.personaje.Personaje;
+import tercerhombre.propiedades.*;
+import tercerhombre.io.Buffer;
+
+
+
+//declare any global variables here
+
+
+
+
+rule "reunion en el puente" agenda-group "g4"
+no-loop true
+	when
+		tercerhombre : Personaje ( nombre == Personaje.tercerhombre )
+		winkel : Personaje( nombre == Personaje.winkel )
+		popescu : Personaje ( nombre == Personaje.popescu, ubicacion == Ubicacion.CASANOVACLUB )
+		kurtz : Personaje (nombre == Personaje.kurtz, ubicacion == Ubicacion.CASANOVACLUB )
+		
+		b : Buffer()
+	then
+
+		modify(popescu){
+			setUbicacion(Ubicacion.PUENTE);
+		};
+		
+		modify(winkel){
+			setUbicacion(Ubicacion.PUENTE);
+		};
+		
+		modify(kurtz){
+			setUbicacion(Ubicacion.PUENTE);
+		};
+		
+		modify(tercerhombre){
+			setUbicacion(Ubicacion.PUENTE);
+		};
+		
+		modify(b){
+			append("El tercer hombre, Popescu, Dr Winkel y Kurtz se reunen en e"+tercerhombre
+			.getUbicacion().toString()+". ");
+			
+		};
+		
+		modify(kurtz){
+    		getAmigo_de().add(winkel);
+    	};
+
+		modify(winkel){
+    		getAmigo_de().add(kurtz);
+    	};
+
+		modify(popescu){
+    		getConoce_a().add(winkel);
+    	};
+
+		modify(winkel){
+    		getConoce_a().add(popescu);
+    	};
+		
+end
+
+rule "Martins y Anna van a hablar con el portero y esta muerto" agenda-group "g4"
+no-loop true
+    when
+		popescu : Personaje ( nombre == Personaje.popescu, ubicacion == Ubicacion.PUENTE )
+		anna : Personaje ( nombre == Personaje.anna, ubicacion == Ubicacion.CASANOVACLUB )
+		martins : Personaje ( nombre == Personaje.martins, ubicacion == Ubicacion.CASANOVACLUB )
+		karl : Personaje ( nombre == Personaje.karl, estadoSalud == EstadoSalud.VIVO )
+		
+		b : Buffer()
+		
+    then
+    
+    	modify(anna){
+			setUbicacion(Ubicacion.CASALIME);
+		};
+		
+		modify(martins){
+			setUbicacion(Ubicacion.CASALIME);
+		};
+		
+		modify(karl){
+			setEstadoSalud(EstadoSalud.MUERTO);
+		};
+		
+		modify(karl){
+			setUbicacion(Ubicacion.CEMENTERIO);
+		};
+		
+		modify(b){
+			append("Anna y Martins van a"+martins.getUbicacion().toString()+". ").
+			append("Karl está "+karl.getEstadoSalud().toString()+". ");
+		};
+end
+
+rule "Martins va a dar la conferencia" agenda-group "g4"
+no-loop true
+    when
+		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
+		karl : Personaje (nombre == Personaje.karl, estadoSalud == EstadoSalud.MUERTO )
+		crabbin : Personaje (nombre == Personaje.crabbin)
+		
+		b : Buffer()
+		
+    then
+    	modify(crabbin){
+			setUbicacion(Ubicacion.CONFERENCIA);
+		};
+		modify(martins){
+			setUbicacion(Ubicacion.CONFERENCIA);
+		};
+
+		modify(b){
+			append("Martins va a"+martins.getUbicacion().toString()+". ").
+			append("Crabbin va a"+karl.getEstadoSalud().toString()+". ");
+		};
+end
+
+rule "Popescu intenta matar a Martin" agenda-group "g4"
+no-loop true
+    when
+		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CONFERENCIA )
+		crabbin : Personaje (nombre == Personaje.crabbin, ubicacion == Ubicacion.CONFERENCIA )
+		popescu : Personaje (nombre == Personaje.popescu )
+		
+		b : Buffer()
+		
+    then
+    	
+    	modify(popescu){
+			setUbicacion(Ubicacion.CONFERENCIA);
+		};
+		modify(crabbin){
+    		getConoce_a().add(popescu);
+    	};
+
+		modify(popescu){
+    		getConoce_a().add(crabbin);
+    	};	
+
+		modify(popescu){
+    		getEnfrentado_con().add(martins);
+    	};	
+		
+		modify(martins){
+    		getEnfrentado_con().add(popescu);
+    	};
+
+		modify(b){
+			append("Popescu va a"+popescu.getUbicacion().toString()+". ").
+			append("Crabbin conoce a "+Personaje.popescu+". ").
+			append("Popescu conoce a "+Personaje.crabbin+". ").
+			append("Popescu enfrentado con "+Personaje.martins+". ").
+			append("Martins enfrentado con "+Personaje.popescu+". ").
+			append("Popescu intenta matar a "+Personaje.martins+". ");
+			
+		};
+end
+
+rule "Calloway le cuenta la verdad a martins" agenda-group "g4"
+no-loop true
+    when
+		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CONFERENCIA )
+		popescu : Personaje (nombre == Personaje.popescu, ubicacion == Ubicacion.CONFERENCIA )
+		kurtz : Personaje (nombre == Personaje.kurtz )
+		calloway : Personaje (nombre == Personaje.calloway)
+		paine : Personaje (nombre == Personaje.paine )
+		harbin : Personaje (nombre == Personaje.harbin )
+		lime : Personaje (nombre == Personaje.lime )
+		
+		b : Buffer()
+		
+    then
+    	
+    	modify(calloway){
+			setUbicacion(Ubicacion.COMISARIA);
+		};
+		modify(paine){
+			setUbicacion(Ubicacion.COMISARIA);
+		};
+    	modify(martins){
+			setUbicacion(Ubicacion.COMISARIA);
+		};
+		
+		modify(b){
+			append("Calloway va a"+calloway.getUbicacion().toString()+". ").
+			append("Paine va a"+paine.getUbicacion().toString()+". ").
+			append("Martins va a"+martins.getUbicacion().toString()+". ").
+			append("Calloway le muestra la verdad a Martins");
+		};
+			
+		modify(martins){
+			getEnfrentado_con().remove(calloway);
+		};
+
+		modify(martins){
+			getEnfrentado_con().remove(paine);
+		};
+		
+		modify(b){
+
+			append("Martins ya no está enfrentado con "+Personaje.calloway+". ").
+			append("Martins ya no está enfrentado con "+Personaje.paine+". ");
+		};
+		
+		modify(kurtz){
+    		getTrabaja_con().add(lime);
+    	};
+
+		modify(lime){
+    		getTrabaja_con().add(kurtz);
+    	};
+    	
+    	modify(lime){
+    		getTrabaja_con().add(harbin);
+    	};
+    	
+    	modify(harbin){
+    		getTrabaja_con().add(lime);
+    	};
+    	
+    	modify(kurtz){
+			getTrabaja_con().add(harbin);
+		};
+		
+		modify(harbin){
+    		getTrabaja_con().add(kurtz);
+    	};
+    	
+    	    	
+    	modify(lime){
+    		setActividad(ActividadIlegal.TRAFICANTE);
+    	};
+    	
+    	modify(kurtz){
+    		setActividad(ActividadIlegal.TRAFICANTE);
+    	};
+    	
+    	modify(harbin){
+    		setActividad(ActividadIlegal.TRAFICANTE);
+    	}
+    	
+    	modify(b){
+			append("Se descubre que Lime, Kurtz y Harbin trabajan juntos siendo traficantes de penicilina. ");
+		};
+
+end
+
+rule "Martins decide irse y informa a Anna" agenda-group "g4"
+no-loop true
+    when
+		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
+		anna : Personaje (nombre == Personaje.anna, ubicacion == Ubicacion.CASALIME )
+		
+		b : Buffer()
+		
+    then
+    	modify(martins){
+			setUbicacion(Ubicacion.CASAANNA);
+		};
+		modify(anna){
+			setUbicacion(Ubicacion.CASAANNA);
+		};
+		modify(martins){
+    		getQuiere_a().add(anna);
+    	};
+
+		modify(b){
+			append("Martins va a"+martins.getUbicacion().toString()+". ").
+			append("Anna va a"+anna.getUbicacion().toString()+". ").
+			append("Martins le dice a Anna que ha decidido irse a Estados Unidos.").
+			append("Martins quiere a "+Personaje.anna);
+		};
+end

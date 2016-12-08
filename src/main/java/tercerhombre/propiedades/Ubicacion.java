@@ -4,7 +4,7 @@ public enum Ubicacion {
 	ESTACION, PLAZA, CASALIME, CASAANNA, HOTELSACHER, TEATROJOSEPH, 
 	CASANOVACLUB, CONFERENCIA, CASAWINKEL, SECTORRUSO, 
 	CAFEMARC, COMISARIA, CEMENTERIO, CAFEMOZART, 
-	FUERADEVIENA, NORIA, PUB, CLOACAS;
+	FUERADEVIENA, NORIA, PUB, CLOACAS, PUENTE, HOSPITAL;
 	
 	public String toString() {
 		switch (this) {
@@ -44,6 +44,10 @@ public enum Ubicacion {
 			return "l Pub";
 		case CLOACAS:
 			return " las cloacas";
+		case PUENTE:
+			return "l Puente";
+		case HOSPITAL:
+			return "l Hospital";
 		default:
 			return null;
 		}
