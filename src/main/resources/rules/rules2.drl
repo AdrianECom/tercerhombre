@@ -32,6 +32,70 @@ rule "kurtz y  martins van casa lime" agenda-group "g2"
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(null).
     	setUbicacion(null));
+    	
+    	modify(winkel){
+    	 getConoce_a().add(lime);
+    	};	
+
+		modify(winkel){
+    		getAmigo_de().add(lime);
+    	};	
+
+		modify(winkel){
+    		getConoce_a().add(kurtz);
+    	};	
+
+		modify(lime){
+    		getAmigo_de().add(winkel);
+    	};	
+
+		modify(lime){
+    		getConoce_a().add(winkel);
+    	};
+	
+		modify(kurtz){
+    		getConoce_a().add(winkel);
+    	};	
+    	
+    	insert(Personaje.nuevo().
+    	setNombre(Personaje.popescu).
+    	setGenero(Genero.HOMBRE).
+    	setActividad(Actividad.desconocida).
+    	setEstadoSalud(EstadoSalud.VIVO).
+    	setNacionalidad(Nacionalidad.RUMANO).
+    	setUbicacion(null));
+
+modify(popescu){
+    		getConoce_a().add(lime);
+    	};	
+
+modify(popescu){
+    		getAmigo_de().add(lime);
+    	};	
+
+modify(popescu){
+    		getConoce_a().add(kurtz);
+    	};
+
+modify(popescu){
+    		getAmigo_de().add(kurtz);
+    	};	
+
+modify(lime){
+    		getAmigo_de().add(popescu);
+    	};	
+
+modify(lime){
+    		getConoce_a().add(popescu);
+    	};
+	
+modify(kurtz){
+    		getConoce_a().add(popescu);
+    	};
+
+modify(kurtz){
+    		getAmigo_de().add(popescu);
+    	};
     
         modify(kurtz){
 		setUbicacion(Ubicacion.CASALIME);
@@ -41,7 +105,10 @@ rule "kurtz y  martins van casa lime" agenda-group "g2"
 		};
 		modify(martins){
     		getBusca_a().add(anna);
-    	};	
+    	};
+    	modify(karl){
+    	getConoce_a().add(kurtz);
+    	}
 		
 
 end
@@ -70,34 +137,64 @@ rule "insertar Anna" agenda-group "g2"
 	    		getConoce_a().add(anna);
 	    	};
 	    modify(martins){
-	    		getBusca_a().add(anna);
+	    		getBusca_a().add(anna);  //TODO hay que quitarlo despues?
 	    }
 
 end
 rule "visita a anna" agenda-group "g2"
 	when
-    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAWINKEL )
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
     	anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASANOVACLUB)
     then
     
+     	modify(martins){
+	    setUbicacion(Ubicacion.CASANOVACLUB);
+	    };
+	    
+	     modify(martins){
+	    		getConoce_a().add(anna);
+	    };
+	    
+	    modify(anna){
+	    		getConoce_a().add(martins);
+	    };
+	    
+	    modify(anna){
+    		getQuiere_a().add(lime);
+    	};
+    	
+	    
+end
 
-rule "va a ver a winkel" agenda-group "g2"
+ rule "vuelta a casa Lime" agenda-group "g2"
 	when
-    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAWINKEL )
-        winkel : Personaje( nombre == Personaje.winkel )
-    then
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASANOVACLUB )
+        anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASANOVACLUB)
+    then 
+    	modify(martins){
+	    setUbicacion(Ubicacion.CASALIME);
+	    };
+	    modify(anna){
+	    setUbicacion(Ubicacion.CASALIME);
+	    };
+	    
+    	
     
+end
 
-rule "insertar Winkel" agenda-group "g2"  // para inseratar a Winkel primero martins tiene que ir
+rule "martins y anna van a casa de anna" agenda-group "g2"
+	when
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
+      	anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASALIME)
+    then
+end    
+
+rule "insertar Winkel" agenda-group "g2"  // para inseratar a Winkel primero martins tiene que ir 
 
    when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAWINKEL )
         winkel : Personaje( nombre == Personaje.winkel )
     then
-    
-      	modify(martins){
-      	getConoce_a().add(winkel);
-      	};
     
     	modify(winkel){
     	 getConoce_a().add(lime);

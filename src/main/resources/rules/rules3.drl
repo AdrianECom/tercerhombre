@@ -1,0 +1,59 @@
+//created on: 11-dic-2016
+package rules
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "va a ver a winkel" agenda-group "g2"
+	when
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
+        winkel : Personaje( nombre == Personaje.winkel )
+    then
+       	
+       	modify(martins){
+      	getConoce_a().add(winkel);
+      	};
+    
+    end
+    
+rule "visita a Winkel" agenda-group "g2"  // para inseratar a Winkel primero martins tiene que ir 
+
+   when
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAWINKEL )
+        winkel : Personaje( nombre == Personaje.winkel )
+    then
+    
+   
+    
+    	modify(winkel){
+    	 getConoce_a().add(lime);
+    	};	
+
+		modify(winkel){
+    		getAmigo_de().add(lime);
+    	};	
+
+		modify(winkel){
+    		getConoce_a().add(kurtz);
+    	};	
+
+		modify(lime){
+    		getAmigo_de().add(winkel);
+    	};	
+
+		modify(lime){
+    		getConoce_a().add(winkel);
+    	};
+	
+		modify(kurtz){
+    		getConoce_a().add(winkel);
+    	};	
+
+
+end
