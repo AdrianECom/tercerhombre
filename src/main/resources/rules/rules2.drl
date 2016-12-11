@@ -22,6 +22,16 @@ rule "kurtz y  martins van casa lime" agenda-group "g2"
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(null).
     	setUbicacion(null));
+    	
+    	//Insertamos a Winkel
+    	
+    	insert(Personaje.nuevo().
+    	setNombre(Personaje.winkel).
+    	setGenero(Genero.HOMBRE).
+    	setActividad(ActividadLegal.MEDICO).
+    	setEstadoSalud(EstadoSalud.VIVO).
+    	setNacionalidad(null).
+    	setUbicacion(null));
     
         modify(kurtz){
 		setUbicacion(Ubicacion.CASALIME);
@@ -29,7 +39,9 @@ rule "kurtz y  martins van casa lime" agenda-group "g2"
 		modify(martins){
 		setUbicacion(Ubicacion.CASALIME);
 		};
-		
+		modify(martins){
+    		getBusca_a().add(anna);
+    	};	
 		
 
 end
@@ -45,7 +57,7 @@ rule "insertar Anna" agenda-group "g2"
       
     	
     	modify(anna){
-				setUbicacion(Ubicacion.CASALIME);
+				setUbicacion(Ubicacion.CASANOVACLUB);
 			};
 
 		modify(anna){
@@ -60,5 +72,56 @@ rule "insertar Anna" agenda-group "g2"
 	    modify(martins){
 	    		getBusca_a().add(anna);
 	    }
+
+end
+rule "visita a anna" agenda-group "g2"
+	when
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAWINKEL )
+    	anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASANOVACLUB)
+    then
+    
+
+rule "va a ver a winkel" agenda-group "g2"
+	when
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAWINKEL )
+        winkel : Personaje( nombre == Personaje.winkel )
+    then
+    
+
+rule "insertar Winkel" agenda-group "g2"  // para inseratar a Winkel primero martins tiene que ir
+
+   when
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAWINKEL )
+        winkel : Personaje( nombre == Personaje.winkel )
+    then
+    
+      	modify(martins){
+      	getConoce_a().add(winkel);
+      	};
+    
+    	modify(winkel){
+    	 getConoce_a().add(lime);
+    	};	
+
+		modify(winkel){
+    		getAmigo_de().add(lime);
+    	};	
+
+		modify(winkel){
+    		getConoce_a().add(kurtz);
+    	};	
+
+		modify(lime){
+    		getAmigo_de().add(winkel);
+    	};	
+
+		modify(lime){
+    		getConoce_a().add(winkel);
+    	};
+	
+		modify(kurtz){
+    		getConoce_a().add(winkel);
+    	};	
+
 
 end
