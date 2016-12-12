@@ -5,7 +5,7 @@ import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
 import tercerhombre.io.Buffer;
 
-rule "problemas en casa de anna" agenda-group "g2"
+rule "problemas en casa de anna" agenda-group "g3"
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
         anna : Personaje( nombre == Personaje.anna, ubicacion == Ubicacion.CASAANNA )
@@ -13,6 +13,12 @@ rule "problemas en casa de anna" agenda-group "g2"
         calloway : Personaje( nombre == Personaje.calloway )
         
     then
+    	 modify(calloway){
+	    	setUbicacion(Ubicacion.CASAANNA);
+	    };
+	    modify(paine){
+	    	setUbicacion(Ubicacion.CASAANNA);
+	    };
       modify(anna){
 	    	getConoce_a().add(calloway)
 	    };
@@ -25,21 +31,16 @@ rule "problemas en casa de anna" agenda-group "g2"
 	    modify(paine){
 	    	getConoce_a().add(anna)
 	    };
-	    modify(calloway){
-	    	setUbicacion(Ubicacion.CASAANNA);
-	    };
-	    modify(paine){
-	    	setUbicacion(Ubicacion.CASAANNA);
-	    };
 	    modify(martins){
     		getEnfrentado_con().add(calloway);
     	};	
 		modify(martins){
     		getEnfrentado_con().add(paine);
     	};
+    	
 end
     
- rule "van a la comisaria " agenda-group "g2"
+ rule "van a la comisaria " agenda-group "g3"
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
         anna : Personaje( nombre == Personaje.anna, ubicacion == Ubicacion.CASAANNA )
@@ -57,7 +58,7 @@ end
 	    	setUbicacion(Ubicacion.COMISARIA);
 	    };
 end
-rule "va a ver a winkel" agenda-group "g2"
+rule "va a ver a winkel" agenda-group "g3"
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
         winkel : Personaje( nombre == Personaje.winkel )
@@ -72,7 +73,7 @@ rule "va a ver a winkel" agenda-group "g2"
 		
     end
     
-rule "visita a Winkel" agenda-group "g2"  // para inseratar a Winkel primero martins tiene que ir 
+rule "visita a Winkel" agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir 
 
    when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAWINKEL )
@@ -87,7 +88,7 @@ rule "visita a Winkel" agenda-group "g2"  // para inseratar a Winkel primero mar
       	};
 end
 
-rule "martins y anna van al cassanovaclub" agenda-group "g2"  // para inseratar a Winkel primero martins tiene que ir 
+rule "martins y anna van al cassanovaclub" agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir 
 
    when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
