@@ -6,6 +6,7 @@ import tercerhombre.propiedades.*;
 import tercerhombre.io.Buffer;
 
 rule "problemas en casa de anna" agenda-group "g3"
+no-loop true
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
         anna : Personaje( nombre == Personaje.anna, ubicacion == Ubicacion.CASAANNA )
@@ -41,6 +42,7 @@ rule "problemas en casa de anna" agenda-group "g3"
 end
     
  rule "van a la comisaria " agenda-group "g3"
+ no-loop true
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
         anna : Personaje( nombre == Personaje.anna, ubicacion == Ubicacion.CASAANNA )
@@ -58,7 +60,9 @@ end
 	    	setUbicacion(Ubicacion.COMISARIA);
 	    };
 end
+
 rule "va a ver a winkel" agenda-group "g3"
+no-loop true
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
         winkel : Personaje( nombre == Personaje.winkel )
@@ -74,7 +78,7 @@ rule "va a ver a winkel" agenda-group "g3"
     end
     
 rule "visita a Winkel" agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir 
-
+no-loop true
    when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAWINKEL )
         winkel : Personaje( nombre == Personaje.winkel, ubicacion == Ubicacion.CASAWINKEL )
@@ -89,7 +93,7 @@ rule "visita a Winkel" agenda-group "g3"  // para inseratar a Winkel primero mar
 end
 
 rule "martins y anna van al cassanovaclub" agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir 
-
+no-loop true
    when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
         anna : Personaje( nombre == Personaje.winkel, ubicacion == Ubicacion.COMISARIA )

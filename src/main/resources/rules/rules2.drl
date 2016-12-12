@@ -9,6 +9,7 @@ import tercerhombre.io.Buffer;
 //TODO Revisar el orden de las reglas Y falta poner los append
 
 rule "insertar anna y winkel" agenda-group "g2"
+no-loop true
 
     when
     	
@@ -44,7 +45,7 @@ rule "insertar anna y winkel" agenda-group "g2"
 end
 
 rule "kurtz y  martins van casa lime" agenda-group "g2"
-
+no-loop true
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CAFEMOZART )
         kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CAFEMOZART )
@@ -159,6 +160,7 @@ end
 
 
 rule "visita a anna en el teatro" agenda-group "g2" // 
+no-loop true
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
     	anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASANOVACLUB)
@@ -192,6 +194,7 @@ rule "visita a anna en el teatro" agenda-group "g2" //
 end
 
  rule "vuelta a casa Lime" agenda-group "g2"
+ no-loop true
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASANOVACLUB )
         anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASANOVACLUB)
@@ -223,6 +226,7 @@ end
 end
 
 rule "martins y anna van a casa de anna" agenda-group "g2"
+no-loop true
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
       	anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASALIME)

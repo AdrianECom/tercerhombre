@@ -1,4 +1,7 @@
 Qué pasa hasta Acto0
-Si Karl es muerto, Qué pasa hasta Acto0
-Si Karl es alemania, Qué pasa hasta Acto0
-Si Karl es policia, Qué pasa hasta Acto0
+Qué pasa hasta Acto1
+Qué pasa hasta Acto2
+Qué pasa hasta Acto3
+Qué pasa hasta Acto4
+Qué pasa hasta Acto5
+Qué pasa hasta ActoFinal
