@@ -159,10 +159,6 @@ rule "visita a anna en el teatro" agenda-group "g2" //
 	    setUbicacion(Ubicacion.CASANOVACLUB);
 	    };
 	    
-	    modify(b){
-			append("Martins va a"+martins.getUbicacion().toString()+". ");
-		};
-	    
 	     modify(martins){
 	    		getConoce_a().add(anna);
 	    };
@@ -175,7 +171,12 @@ rule "visita a anna en el teatro" agenda-group "g2" //
     		getQuiere_a().add(lime);  //TODO sabemos si lime quiere a anna?
     	};
     	
-    	
+    	modify(b){
+			append("Martins va a"+martins.getUbicacion().toString()+". ").
+			append("Martins conoce a"+Personaje.karl+". ").
+			append("Anna conoce a"+Personaje.martins+". ").
+			append("Anna quiere a"+Personaje.lime+". ");
+		};
 	    
 end
 
