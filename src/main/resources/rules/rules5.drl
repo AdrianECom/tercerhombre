@@ -134,8 +134,8 @@ rule "Martins va al Sector Ruso a hablar con Lime" agenda-group "g5"
     no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
-		anna : Personaje (nombre == Personaje.anna, ubicacion == ubicacion.COMISARIA)
-		lime : Personaje (nombre == Personaje.lime, ubicacion == ubicacion.CLOACAS)
+		anna : Personaje (nombre == Personaje.anna, ubicacion == Ubicacion.COMISARIA)
+		lime : Personaje (nombre == Personaje.lime, ubicacion == Ubicacion.CLOACAS)
 		tercerhombre : Personaje (nombre == Personaje.tercerhombre)
 		kurtz : Personaje (nombre == Personaje.kurtz)
 		winkel : Personaje (nombre == Personaje.winkel)
