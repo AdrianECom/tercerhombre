@@ -1,24 +1,70 @@
 //created on: 11-dic-2016
 package rules
 
-//list any import classes here.
+import tercerhombre.personaje.Personaje;
+import tercerhombre.propiedades.*;
+import tercerhombre.io.Buffer;
 
+rule "problemas en casa de anna" agenda-group "g2"
+	when
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
+        anna : Personaje( nombre == Personaje.anna, ubicacion == Ubicacion.CASAANNA )
+    then
+       	
+      modify(anna){
+	    getConoce_a().add(calloway)
+	    };
+	    modify(anna){
+	    getConoce_a().add(paine)
+	    };
+	    modify(calloway){
+	    getConoce_a().add(anna)
+	    };
+	    modify(paine){
+	    getConoce_a().add(anna)
+	    };
+	    modify(calloway){
+	    setUbicacion(Ubicacion.CASAANNA);
+	    };
+	    modify(paine){
+	    setUbicacion(Ubicacion.CASAANNA);
+	    };
+	    
+	    modify(martins){
+    		getEnfrentado_con().add(calloway);
+    	};	
 
-
-//declare any global variables here
-
-
-
-
+		modify(martins){
+    		getEnfrentado_con().add(paine);
+    	};	
+	    
+    
+end
+    
+ rule "van a la comisaria " agenda-group "g2"
+	when
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
+        anna : Personaje( nombre == Personaje.anna, ubicacion == Ubicacion.CASAANNA )
+        paine : Personaje( nombre == Personaje.paine, ubicacion == Ubicacion.CASAANNA )
+        calloway : Personaje( nombre == Personaje.calloway, ubicacion == Ubicacion.CASAANNA ) 
+        
+    then
+    
+    
+end
 rule "va a ver a winkel" agenda-group "g2"
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
         winkel : Personaje( nombre == Personaje.winkel )
     then
        	
-       	modify(martins){
-      	getConoce_a().add(winkel);
-      	};
+      	modify(winkel){
+		setUbicacion(Ubicacion.CASAWINKEL);
+		};
+		modify(martins){
+		setUbicacion(Ubicacion.CASAWINKEL);
+		};
+		
     
     end
     
@@ -26,34 +72,17 @@ rule "visita a Winkel" agenda-group "g2"  // para inseratar a Winkel primero mar
 
    when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAWINKEL )
-        winkel : Personaje( nombre == Personaje.winkel )
+        winkel : Personaje( nombre == Personaje.winkel, ubicacion == Ubicacion.CASAWINKEL )
     then
-    
-   
-    
-    	modify(winkel){
-    	 getConoce_a().add(lime);
-    	};	
-
-		modify(winkel){
-    		getAmigo_de().add(lime);
-    	};	
-
-		modify(winkel){
-    		getConoce_a().add(kurtz);
-    	};	
-
-		modify(lime){
-    		getAmigo_de().add(winkel);
-    	};	
-
-		modify(lime){
-    		getConoce_a().add(winkel);
-    	};
-	
-		modify(kurtz){
-    		getConoce_a().add(winkel);
-    	};	
+    	
+    	modify(martins){
+      	getConoce_a().add(winkel);
+      	};
+      	
+      	modify(winkel){
+      	getConoce_a().add(martins);
+      	};
+      	
 
 
 end

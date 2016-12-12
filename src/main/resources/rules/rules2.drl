@@ -191,18 +191,6 @@ rule "martins y anna van a casa de anna" agenda-group "g2"
 	    modify(martins){
 	    setUbicacion(Ubicacion.CASAANNA);
 	    };
-	    modify(anna){
-	    getConoce_a().add(calloway)
-	    };
-	    modify(anna){
-	    getConoce_a().add(paine)
-	    };
-	    modify(calloway){
-	    getConoce_a().add(anna)
-	    };
-	    modify(paine){
-	    getConoce_a().add(anna)
-	    };
 	    
 	    
     
