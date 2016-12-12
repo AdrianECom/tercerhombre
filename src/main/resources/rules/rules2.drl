@@ -17,6 +17,8 @@ rule "kurtz y  martins van casa lime" agenda-group "g2"
         anna : Personaje( nombre == Personaje.anna)
         popescu : Personaje( nombre == Personaje.popescu)
         karl : Personaje( nombre == Personaje.karl)
+       	lime : Personaje( nombre == Personaje.lime)
+        b : Buffer()
         
     then
     
@@ -65,12 +67,13 @@ rule "kurtz y  martins van casa lime" agenda-group "g2"
     	insert(Personaje.nuevo().
     	setNombre(Personaje.popescu).
     	setGenero(Genero.HOMBRE).
-    	setActividad(Actividad.desconocida).
+    	setActividad(null).
     	setEstadoSalud(EstadoSalud.VIVO).
-    	setNacionalidad(Nacionalidad.RUMANO).
+    	setNacionalidad(Nacionalidad.RUMANIA).
     	setUbicacion(null));
     	
 		//insertamos popescu
+		
 	modify(popescu){
     		getConoce_a().add(lime);
     	};	
@@ -114,8 +117,10 @@ rule "kurtz y  martins van casa lime" agenda-group "g2"
     	};
     	modify(karl){
     	getConoce_a().add(kurtz);
-    	}
+    	};
+    	
 		//Insertamos de anna 
+		
 		modify(anna){
 				setUbicacion(Ubicacion.CASANOVACLUB);
 			};
@@ -130,7 +135,8 @@ rule "kurtz y  martins van casa lime" agenda-group "g2"
 	    		getConoce_a().add(anna);
 	    	};
 	    modify(martins){
-	    		getBusca_a().add(anna);  //TODO hay que quitarlo despues?
+	    		getBusca_a().add(anna);
+	    		};  //TODO hay que quitarlo despues?
 
 end
 
@@ -139,6 +145,8 @@ rule "visita a anna" agenda-group "g2" //
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
     	anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASANOVACLUB)
+    	lime : Personaje( nombre == Personaje.lime)
+    	b : Buffer()
     then
     
      	modify(martins){
@@ -189,6 +197,7 @@ rule "martins y anna van a casa de anna" agenda-group "g2"
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
       	anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASALIME)
+      	b : Buffer()
     then
     
     modify(anna){

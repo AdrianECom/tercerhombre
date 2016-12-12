@@ -11,6 +11,7 @@ rule "problemas en casa de anna" agenda-group "g2"
         anna : Personaje( nombre == Personaje.anna, ubicacion == Ubicacion.CASAANNA )
         paine : Personaje( nombre == Personaje.paine )
         calloway : Personaje( nombre == Personaje.calloway )
+        
     then
       modify(anna){
 	    	getConoce_a().add(calloway)
@@ -44,6 +45,7 @@ end
         anna : Personaje( nombre == Personaje.anna, ubicacion == Ubicacion.CASAANNA )
         paine : Personaje( nombre == Personaje.paine, ubicacion == Ubicacion.CASAANNA )
         calloway : Personaje( nombre == Personaje.calloway, ubicacion == Ubicacion.CASAANNA ) 
+        
     then
     	modify(calloway){
 	    	setUbicacion(Ubicacion.COMISARIA);
