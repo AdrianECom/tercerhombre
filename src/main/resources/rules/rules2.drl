@@ -138,10 +138,16 @@ rule "kurtz y  martins van casa lime" agenda-group "g2"
 	    		getBusca_a().add(anna);
 	    		};  //TODO hay que quitarlo despues?
 
+		 modify(b){
+			append("Martins va a"+martins.getUbicacion().toString()+". ").
+			append("Kurtz va a"+martins.getUbicacion().toString()+". ")
+		};
+	  
+
 end
 
 
-rule "visita a anna" agenda-group "g2" // 
+rule "visita a anna en el teatro" agenda-group "g2" // 
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
     	anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASANOVACLUB)
@@ -152,6 +158,10 @@ rule "visita a anna" agenda-group "g2" //
      	modify(martins){
 	    setUbicacion(Ubicacion.CASANOVACLUB);
 	    };
+	    
+	    modify(b){
+			append("Martins va a"+martins.getUbicacion().toString()+". ");
+		};
 	    
 	     modify(martins){
 	    		getConoce_a().add(anna);
@@ -173,7 +183,8 @@ end
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASANOVACLUB )
         anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASANOVACLUB)
-        karl : Personaje( nombre == Personaje.karl)
+        karl : Personaje( nombre == Personaje.karl )
+        b : Buffer()
     then 
     	
     	modify(martins){
@@ -188,6 +199,12 @@ end
 	    modify(karl){
 	    		getConoce_a().add(anna);
 	    };
+	    modify(b){
+			append("Martins va a"+martins.getUbicacion().toString()+". ").
+			append("Anna va a"+martins.getUbicacion().toString()+". ").
+			append("Anna conoce a "+Personaje.karl+". ").
+			append("Karl conoce a "+Personaje.anna+". ");
+		};
 	    
     	
     
@@ -200,13 +217,18 @@ rule "martins y anna van a casa de anna" agenda-group "g2"
       	b : Buffer()
     then
     
-    modify(anna){
-	    setUbicacion(Ubicacion.CASAANNA);
-	    };
-	    modify(martins){
+    	modify(anna){
 	    setUbicacion(Ubicacion.CASAANNA);
 	    };
 	    
+	  
+	    modify(martins){
+	    setUbicacion(Ubicacion.CASAANNA);
+	    };
+	    modify(b){
+			append("Martins va a"+martins.getUbicacion().toString()+". ").
+			append("Anna va a"+martins.getUbicacion().toString()+". ");
+		};
 	    
     
 end    
