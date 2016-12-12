@@ -186,9 +186,9 @@ no-loop true
     	
     	modify(b){
 			append("Martins va a"+martins.getUbicacion().toString()+". ").
-			append("Martins conoce a"+Personaje.karl+". ").
-			append("Anna conoce a"+Personaje.martins+". ").
-			append("Anna quiere a"+Personaje.lime+". ");
+			append("Martins conoce a "+Personaje.karl+". ").
+			append("Anna conoce a "+Personaje.martins+". ").
+			append("Anna quiere a "+Personaje.lime+". ");
 		};
 	    
 end
