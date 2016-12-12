@@ -6,7 +6,7 @@ import tercerhombre.propiedades.*;
 import tercerhombre.io.Buffer;
 
 
-// Revisar el orden de las reglas
+//TODO Revisar el orden de las reglas Y falta poner los append
 
 rule "kurtz y  martins van casa lime" agenda-group "g2"
 
@@ -64,36 +64,37 @@ rule "kurtz y  martins van casa lime" agenda-group "g2"
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.RUMANO).
     	setUbicacion(null));
-
-modify(popescu){
+    	
+		//insertamos popescu
+	modify(popescu){
     		getConoce_a().add(lime);
     	};	
 
-modify(popescu){
+	modify(popescu){
     		getAmigo_de().add(lime);
     	};	
 
-modify(popescu){
+	modify(popescu){
     		getConoce_a().add(kurtz);
     	};
 
-modify(popescu){
+	modify(popescu){
     		getAmigo_de().add(kurtz);
     	};	
 
-modify(lime){
+	modify(lime){
     		getAmigo_de().add(popescu);
     	};	
 
-modify(lime){
+	modify(lime){
     		getConoce_a().add(popescu);
     	};
 	
-modify(kurtz){
+	modify(kurtz){
     		getConoce_a().add(popescu);
     	};
 
-modify(kurtz){
+	modify(kurtz){
     		getAmigo_de().add(popescu);
     	};
     
@@ -109,21 +110,8 @@ modify(kurtz){
     	modify(karl){
     	getConoce_a().add(kurtz);
     	}
-		
-
-end
-
-rule "insertar Anna" agenda-group "g2"
-
-   when
-    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
-        kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CASALIME )
-        anna : Personaje( nombre == Personaje.anna )
-        lime : Personaje( nombre == Personaje.lime )
-    then
-      
-    	
-    	modify(anna){
+		//Insertamos de anna 
+		modify(anna){
 				setUbicacion(Ubicacion.CASANOVACLUB);
 			};
 
@@ -138,10 +126,11 @@ rule "insertar Anna" agenda-group "g2"
 	    	};
 	    modify(martins){
 	    		getBusca_a().add(anna);  //TODO hay que quitarlo despues?
-	    }
 
 end
-rule "visita a anna" agenda-group "g2"
+
+
+rule "visita a anna" agenda-group "g2" // 
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
     	anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASANOVACLUB)
@@ -160,8 +149,9 @@ rule "visita a anna" agenda-group "g2"
 	    };
 	    
 	    modify(anna){
-    		getQuiere_a().add(lime);
+    		getQuiere_a().add(lime);  //TODO sabemos si lime quiere a anna?
     	};
+    	
     	
 	    
 end
@@ -171,11 +161,18 @@ end
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASANOVACLUB )
         anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASANOVACLUB)
     then 
+    	
     	modify(martins){
 	    setUbicacion(Ubicacion.CASALIME);
 	    };
 	    modify(anna){
 	    setUbicacion(Ubicacion.CASALIME);
+	    };
+	    modify(anna){
+	    		getConoce_a().add(karl);
+	    };
+	    modify(karl){
+	    		getConoce_a().add(anna);
 	    };
 	    
     	
@@ -187,38 +184,26 @@ rule "martins y anna van a casa de anna" agenda-group "g2"
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
       	anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASALIME)
     then
-end    
-
-rule "insertar Winkel" agenda-group "g2"  // para inseratar a Winkel primero martins tiene que ir 
-
-   when
-    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAWINKEL )
-        winkel : Personaje( nombre == Personaje.winkel )
-    then
     
-    	modify(winkel){
-    	 getConoce_a().add(lime);
-    	};	
-
-		modify(winkel){
-    		getAmigo_de().add(lime);
-    	};	
-
-		modify(winkel){
-    		getConoce_a().add(kurtz);
-    	};	
-
-		modify(lime){
-    		getAmigo_de().add(winkel);
-    	};	
-
-		modify(lime){
-    		getConoce_a().add(winkel);
-    	};
-	
-		modify(kurtz){
-    		getConoce_a().add(winkel);
-    	};	
-
-
-end
+    modify(anna){
+	    setUbicacion(Ubicacion.CASAANNA);
+	    };
+	    modify(martins){
+	    setUbicacion(Ubicacion.CASAANNA);
+	    };
+	    modify(anna){
+	    getConoce_a().add(calloway)
+	    };
+	    modify(anna){
+	    getConoce_a().add(paine)
+	    };
+	    modify(calloway){
+	    getConoce_a().add(anna)
+	    };
+	    modify(paine){
+	    getConoce_a().add(anna)
+	    };
+	    
+	    
+    
+end    
