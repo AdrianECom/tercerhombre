@@ -13,6 +13,11 @@ rule "kurtz y  martins van casa lime" agenda-group "g2"
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CAFEMOZART )
         kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CAFEMOZART )
+        winkel : Personaje( nombre == Personaje.winkel)
+        anna : Personaje( nombre == Personaje.anna)
+        popescu : Personaje( nombre == Personaje.popescu)
+        karl : Personaje( nombre == Personaje.karl)
+        
     then
     
     	insert(Personaje.nuevo().
@@ -160,6 +165,7 @@ end
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASANOVACLUB )
         anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASANOVACLUB)
+        karl : Personaje( nombre == Personaje.karl)
     then 
     	
     	modify(martins){
