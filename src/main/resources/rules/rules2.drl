@@ -8,20 +8,11 @@ import tercerhombre.io.Buffer;
 
 //TODO Revisar el orden de las reglas Y falta poner los append
 
-rule "kurtz y  martins van casa lime" agenda-group "g2"
+rule "insertar anna y winkel" agenda-group "g2"
 
     when
-    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CAFEMOZART )
-        kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CAFEMOZART )
-        winkel : Personaje( nombre == Personaje.winkel)
-        anna : Personaje( nombre == Personaje.anna)
-        popescu : Personaje( nombre == Personaje.popescu)
-        karl : Personaje( nombre == Personaje.karl)
-       	lime : Personaje( nombre == Personaje.lime)
-        b : Buffer()
-        
+    	
     then
-    
     	insert(Personaje.nuevo().
     	setNombre(Personaje.anna).
     	setGenero(Genero.MUJER).
@@ -39,6 +30,34 @@ rule "kurtz y  martins van casa lime" agenda-group "g2"
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(null).
     	setUbicacion(null));
+    	
+		//insertamos popescu
+    	
+    	insert(Personaje.nuevo().
+    	setNombre(Personaje.popescu).
+    	setGenero(Genero.HOMBRE).
+    	setActividad(null).
+    	setEstadoSalud(EstadoSalud.VIVO).
+    	setNacionalidad(Nacionalidad.RUMANIA).
+    	setUbicacion(null));
+    	
+end
+
+rule "kurtz y  martins van casa lime" agenda-group "g2"
+
+    when
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CAFEMOZART )
+        kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CAFEMOZART )
+        winkel : Personaje( nombre == Personaje.winkel)
+        anna : Personaje( nombre == Personaje.anna)
+        popescu : Personaje( nombre == Personaje.popescu)
+        karl : Personaje( nombre == Personaje.karl)
+       	lime : Personaje( nombre == Personaje.lime)
+        b : Buffer()
+        
+    then
+    
+    	
     	
     	modify(winkel){
     	 getConoce_a().add(lime);
@@ -64,15 +83,7 @@ rule "kurtz y  martins van casa lime" agenda-group "g2"
     		getConoce_a().add(winkel);
     	};	
     	
-    	insert(Personaje.nuevo().
-    	setNombre(Personaje.popescu).
-    	setGenero(Genero.HOMBRE).
-    	setActividad(null).
-    	setEstadoSalud(EstadoSalud.VIVO).
-    	setNacionalidad(Nacionalidad.RUMANIA).
-    	setUbicacion(null));
     	
-		//insertamos popescu
 		
 	modify(popescu){
     		getConoce_a().add(lime);
