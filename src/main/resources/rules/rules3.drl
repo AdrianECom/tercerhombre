@@ -49,7 +49,16 @@ end
         calloway : Personaje( nombre == Personaje.calloway, ubicacion == Ubicacion.CASAANNA ) 
         
     then
-    
+    	modify(calloway){
+	    setUbicacion(Ubicacion.COMISARIA);
+	    };
+	    modify(paine){
+	    setUbicacion(Ubicacion.COMISARIA);
+	    };
+	    modify(anna){
+	    setUbicacion(Ubicacion.COMISARIA);
+	    };
+	  
     
 end
 rule "va a ver a winkel" agenda-group "g2"
@@ -83,6 +92,59 @@ rule "visita a Winkel" agenda-group "g2"  // para inseratar a Winkel primero mar
       	getConoce_a().add(martins);
       	};
       	
+end
 
+rule "martins y anna van al cassanovaclub" agenda-group "g2"  // para inseratar a Winkel primero martins tiene que ir 
+
+   when
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
+        anna : Personaje( nombre == Personaje.winkel, ubicacion == Ubicacion.COMISARIA )
+    then
+    
+    	modify(anna){
+    		getConoce_a().add(kurtz);
+    	};	
+
+		modify(anna){
+    		getConoce_a().add(popescu);
+    	};
+    	
+    	modify(anna){
+		setUbicacion(Ubicacion.CASANOVA_CLUB);
+		};
+		
+		modify(kurtz){
+		setUbicacion(Ubicacion.CASANOVA_CLUB);
+		
+		};
+		
+		modify(popescu){
+		setUbicacion(Ubicacion.CASANOVA_CLUB);
+		
+		};
+	
+		modify(martins){
+		setUbicacion(Ubicacion.CASANOVA_CLUB);
+		
+		};
+
+
+		modify(popescu){
+    		getSospecha_de().add(martins);
+    	};
+    	
+    	modify(martins){
+    		getConoce_a().add(popescu);
+    	};
+
+		modify(popescu){
+    		getConoce_a().add(martins);
+    	};
+    	
+    	modify(martins){
+    		getBusca_a().add(3hombre);
+    	};
+      	
 
 end
+
