@@ -25,7 +25,7 @@ public enum Ubicacion {
 		case CONFERENCIA:
 			return " la conferencia";
 		case CASAWINKEL:
-			return " la casa del Dr. Winkel";
+			return " la casa de Winkel";
 		case SECTORRUSO:
 			return "l Sector Ruso";
 		case CAFEMARC:
