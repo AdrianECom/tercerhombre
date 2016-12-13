@@ -3,6 +3,7 @@ package rules
 import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
 import tercerhombre.consultas.Modificador;
+import tercerhombre.io.Buffer;
 
 /* IDEAS
 
@@ -26,7 +27,9 @@ salience 1
 no-loop true
     when
     	m : Modificador( tipo.equals(EstadoSalud.class) ) // Se comprueba cual es la propiedad a modificar.
-    	p : Personaje( nombre == Personaje.karl, modificado == false )
+    	p : Personaje( nombre == m.getNombre(), modificado == false )
+    	
+    	b: Buffer()
     then
     	modify(p){
     		setEstadoSalud((EstadoSalud)m.getPropiedad()).

@@ -1,0 +1,52 @@
+package rules
+
+import tercerhombre.personaje.Personaje;
+import tercerhombre.propiedades.*;
+import tercerhombre.io.Buffer;
+
+/*
+* -------------------------------------------------------------------
+* ######################## ALTERNATIVAS ############################
+* -------------------------------------------------------------------
+*/
+
+rule "lime esta vivo y martins encuentra a lime" agenda-group "g0"
+no-loop true
+    when
+        martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME, estadoSalud == EstadoSalud.VIVO  )
+        lime : Personaje( nombre == Personaje.lime, estadoSalud == EstadoSalud.VIVO )
+        
+       	b : Buffer()
+    then
+
+	modify(b){
+		append("Martins encuentra a Lime y trabaja para él. ");
+	}
+    	
+end
+
+rule "martins muere" agenda-group "g0"
+no-loop true
+    when
+    	martins : Personaje(nombre == Personaje.martins , estadoSalud == EstadoSalud.MUERTO  )
+    
+        b : Buffer()
+    then
+    	modify(b){
+			append("Martins esta "+martins.getEstadoSalud()+". ");
+		}
+end
+
+rule "karl muere" agenda-group "g0"
+no-loop true
+    when
+    	karl : Personaje( nombre == Personaje.karl, estadoSalud == EstadoSalud.MUERTO  )
+    
+        b : Buffer()
+    then
+    	modify(b){
+			append("Karl esta "+karl.getEstadoSalud()+". ");
+			// TODO: como sigue ??
+		}
+end
+        

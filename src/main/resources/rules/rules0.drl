@@ -21,7 +21,7 @@ no-loop true
     	setNombre(Personaje.lime).
     	setGenero(Genero.HOMBRE).
     	setActividad(null).
-    	setEstadoSalud(EstadoSalud.VIVO).
+    	setEstadoSalud(null).
     	setNacionalidad(Nacionalidad.ESTADOSUNIDOS).
     	setUbicacion(null));
 end
@@ -67,7 +67,7 @@ end
 rule "martins va estacion" agenda-group "g0"
 no-loop true
     when
-    	martins : Personaje( nombre == Personaje.martins, ubicacion == null  )
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == null, estadoSalud == EstadoSalud.VIVO  )
     
         b : Buffer()
     then
@@ -84,7 +84,7 @@ end
 rule "martins va casa lime" agenda-group "g0"
 no-loop true
     when
-    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.ESTACION  )
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.ESTACION, estadoSalud == EstadoSalud.VIVO  )
     
         b : Buffer()
     then
@@ -112,9 +112,9 @@ end
 rule "martins conoce karl" agenda-group "g0"
 no-loop true
     when
-        martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME  )
+        martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME, estadoSalud == EstadoSalud.VIVO  )
         karl : Personaje( nombre == Personaje.karl, estadoSalud == EstadoSalud.VIVO  )
-        lime : Personaje( nombre == Personaje.lime  )
+        lime : Personaje( nombre == Personaje.lime, estadoSalud == null )
         
        	b : Buffer()
     then

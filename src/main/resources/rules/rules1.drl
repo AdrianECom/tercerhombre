@@ -7,7 +7,7 @@ import tercerhombre.io.Buffer;
 rule "martins va cementerio" agenda-group "g1"
 no-loop true
 	when
-		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME, estadoSalud == EstadoSalud.VIVO )
 		
 		b : Buffer()
 	then
@@ -33,8 +33,8 @@ end
 rule "martins conoce calloway" agenda-group "g1"
 no-loop true
     when
-        martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO  )
-        calloway : Personaje( nombre == Personaje.calloway, ubicacion == Ubicacion.CEMENTERIO  )
+        martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO, estadoSalud == EstadoSalud.VIVO  )
+        calloway : Personaje( nombre == Personaje.calloway, ubicacion == Ubicacion.CEMENTERIO, estadoSalud == EstadoSalud.VIVO  )
         
         b : Buffer()
     then
@@ -57,8 +57,8 @@ end
 rule "van al pub" agenda-group "g1"
 no-loop true
 	when
-		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO  )
-        calloway : Personaje( nombre == Personaje.calloway, ubicacion == Ubicacion.CEMENTERIO  )
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO, estadoSalud == EstadoSalud.VIVO  )
+        calloway : Personaje( nombre == Personaje.calloway, ubicacion == Ubicacion.CEMENTERIO, estadoSalud == EstadoSalud.VIVO  )
         
         Personaje( nombre == Personaje.martins ) from calloway.conoce_a
         Personaje( nombre == Personaje.calloway ) from martins.conoce_a
@@ -91,7 +91,7 @@ end
 rule "martins conoce a paine" agenda-group "g1"
 no-loop true
 	when
-		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.PUB )
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.PUB, estadoSalud == EstadoSalud.VIVO )
 		paine : Personaje( nombre == Personaje.paine, ubicacion == Ubicacion.PUB )
 		calloway : Personaje( nombre == Personaje.calloway)
 		
@@ -133,7 +133,7 @@ end
 rule "martins va a hotel" agenda-group "g1"
 no-loop true
 	when
-		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.PUB )
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.PUB, estadoSalud == EstadoSalud.VIVO )
 		
 		b : Buffer()
 	then
@@ -158,8 +158,8 @@ end
 rule "martins conoce crabbin" agenda-group "g1"
 no-loop true
 	when
-		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.HOTELSACHER )
-		crabbin : Personaje( nombre == Personaje.crabbin, ubicacion == Ubicacion.HOTELSACHER )
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.HOTELSACHER, estadoSalud == EstadoSalud.VIVO )
+		crabbin : Personaje( nombre == Personaje.crabbin, ubicacion == Ubicacion.HOTELSACHER, estadoSalud == EstadoSalud.VIVO )
 		
 		b : Buffer()
 	then
@@ -178,14 +178,27 @@ no-loop true
 		};
 end
 
+rule "insertar kurtz" agenda-group "g1"
+no-loop true
+	when
+
+	then
+		
+		insert(Personaje.nuevo().
+     	setNombre(Personaje.kurtz).
+     	setGenero(Genero.HOMBRE).
+     	setActividad(null).
+     	setEstadoSalud(EstadoSalud.VIVO).
+     	setNacionalidad(Nacionalidad.AUSTRIA).
+     	setUbicacion(Ubicacion.CAFEMOZART));
+     	
+end
+
 rule "martins va cafe mozart" agenda-group "g1"
 no-loop true
 	when
-		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.HOTELSACHER )
-		crabbin : Personaje( nombre == Personaje.crabbin )
-		
-		Personaje( nombre == Personaje.martins ) from crabbin.conoce_a
-        Personaje( nombre == Personaje.crabbin ) from martins.conoce_a
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.HOTELSACHER, estadoSalud == EstadoSalud.VIVO )
+		kurtz : Personaje( nombre == Personaje.kurtz, estadoSalud == EstadoSalud.VIVO )
         
         b : Buffer()
 	then
@@ -198,16 +211,7 @@ no-loop true
 		modify(b){
 			append("Martins va a"+martins.getUbicacion().toString()+". ");
 		};
-		
-		insert(Personaje.nuevo().
-     	setNombre(Personaje.kurtz).
-     	setGenero(Genero.HOMBRE).
-     	setActividad(null).
-     	setEstadoSalud(EstadoSalud.VIVO).
-     	setNacionalidad(Nacionalidad.AUSTRIA).
-     	setUbicacion(Ubicacion.CAFEMOZART));
-     	
-     	
+
      	
 
 end
@@ -215,8 +219,8 @@ end
 rule "martins conoce kurtz" agenda-group "g1"
 no-loop true
 	when
-		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CAFEMOZART )
-		kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CAFEMOZART )
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CAFEMOZART, estadoSalud == EstadoSalud.VIVO )
+		kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CAFEMOZART, estadoSalud == EstadoSalud.VIVO )
 		lime : Personaje( nombre == Personaje.lime)
 		
 		b : Buffer()
