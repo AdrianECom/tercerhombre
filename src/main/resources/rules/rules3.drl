@@ -42,14 +42,14 @@ no-loop true
     	};
 
     	modify(b){
-			append("Martins va a"+martins.getUbicacion().toString()+". ").
-			append("Paine va a"+paine.getUbicacion().toString()+". ").
-			append("Anna conoce a "+Personaje.calloway+". ").
-			append("Anna conoce a "+Personaje.paine+". ").
-			append("Calloway conoce a "+Personaje.anna+". ").
-			append("Paine conoce a "+Personaje.anna+". ").
-			append("Martins enfrentado con "+Personaje.calloway+". ").
-			append("Martins enfrentado con "+Personaje.paine+". ");
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
+			append(Personaje.paine+" va a"+paine.getUbicacion().toString()+". ").
+			append(Personaje.anna+" conoce a "+Personaje.calloway+". ").
+			append(Personaje.anna+" conoce a "+Personaje.paine+". ").
+			append(Personaje.calloway+" conoce a "+Personaje.anna+". ").
+			append(Personaje.paine+" conoce a "+Personaje.anna+". ").
+			append(Personaje.martins+" enfrentado con "+Personaje.calloway+". ").
+			append(Personaje.martins+" enfrentado con "+Personaje.paine+". ");
 		};
 
 end
@@ -76,9 +76,9 @@ end
 	    };
 
 			modify(b){
-			append("Calloway va a"+calloway.getUbicacion().toString()+". ").
-			append("Paine va a"+paine.getUbicacion().toString()+". ").
-			append("Anna va a"+anna.getUbicacion().toString()+". ");
+			append(Personaje.calloway+" va a"+calloway.getUbicacion().toString()+". ").
+			append(Personaje.paine+" va a"+paine.getUbicacion().toString()+". ").
+			append(Personaje.anna+" va a"+anna.getUbicacion().toString()+". ");
 		};
 end
 
@@ -100,8 +100,8 @@ no-loop true
 		};
 
 		modify(b){
-		append("Winkel va a"+winkel.getUbicacion().toString()+". ").
-		append("Martins va a"+martins.getUbicacion().toString()+". ");
+		append(Personaje.winkel+" va a"+winkel.getUbicacion().toString()+". ").
+		append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ");
 	};
 
     end
@@ -124,8 +124,8 @@ no-loop true
       	};
 
 				modify(b){
-				append("Martins conoce a "+Personaje.winkel+". ").
-				append("Winkel conoce a "+Personaje.martins+". ");
+				append(Personaje.martins+" conoce a "+Personaje.winkel+". ").
+				append(Personaje.winkel+" conoce a "+Personaje.martins+". ");
 			};
 end
 
@@ -182,16 +182,16 @@ no-loop true
     	};
 
 			modify(b){
-			append("Anna conoce a "+Personaje.kurtz+". ").
-			append("Anna conoce a "+Personaje.popescu+". ").
-			append("Popescu conoce a "+Personaje.anna+". ").
-			append("Martins conoce a "+Personaje.popescu+". ").
-			append("Popescu conoce a "+Personaje.martins+". ").
-			append("Anna va a"+anna.getUbicacion().toString()+". ").
-			append("Kurtz va a"+kurtz.getUbicacion().toString()+". ").
-			append("Popescu va a"+popescu.getUbicacion().toString()+". ").
-			append("Martins va a"+martins.getUbicacion().toString()+". ").
-			append("Popescu sospecha de "+Personaje.martins+". ").
-			append("Martins busca a "+Personaje.tercerhombre+". ");
+			append(Personaje.anna+" conoce a "+Personaje.kurtz+". ").
+			append(Personaje.anna+" conoce a "+Personaje.popescu+". ").
+			append(Personaje.popescu+" conoce a "+Personaje.anna+". ").
+			append(Personaje.martins+" conoce a "+Personaje.popescu+". ").
+			append(Personaje.popescu+" conoce a "+Personaje.martins+". ").
+			append(Personaje.anna+" va a"+anna.getUbicacion().toString()+". ").
+			append(Personaje.kurtz+" va a"+kurtz.getUbicacion().toString()+". ").
+			append(Personaje.popescu+" va a"+popescu.getUbicacion().toString()+". ").
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
+			append(Personaje.popescu+" sospecha de "+Personaje.martins+". ").
+			append(Personaje.martins+" busca a "+Personaje.tercerhombre+". ");
 		};
 end

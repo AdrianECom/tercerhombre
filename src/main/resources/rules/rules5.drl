@@ -25,7 +25,7 @@ no-loop true
 		}
 		
 		modify(b){
-			append("Lime le aparece a Martins en la calle. ");
+			append(Personaje.lime+" le aparece a Martins en la calle. ");
 		};
 		
 		modify(lime){
@@ -36,7 +36,7 @@ no-loop true
 		}		
 		
 		modify(b){
-			append("Lime y Martins llegan a"+lime.getUbicacion().toString());
+			append(Personaje.lime+" y Martins llegan a"+lime.getUbicacion().toString());
 		};
 		
 		modify(lime){
@@ -44,7 +44,7 @@ no-loop true
 		}
 		
 		modify(b){
-			append("Lime desaparece, se esconde y va a"+lime.getUbicacion().toString());
+			append(Personaje.lime+" desaparece, se esconde y va a"+lime.getUbicacion().toString());
 		};
 		
 		modify(calloway){
@@ -55,7 +55,7 @@ no-loop true
 		}
 
 		modify(b){
-			append("Martins, Paine y Calloway buscan a Lime en"+calloway.getUbicacion().toString());
+			append(Personaje.martins+", Paine y Calloway buscan a Lime en"+calloway.getUbicacion().toString());
 		};
 end
 
@@ -81,7 +81,7 @@ rule "Harbin esta enterrado en la tumba de Lime" agenda-group "g5"
 		}
 	
 		modify(b){
-			append("Calloway, Martins y Paine van a"+calloway.getUbicacion().toString());
+			append(Personaje.calloway+", Martins y Paine van a"+calloway.getUbicacion().toString());
 		};
 		
 		modify(harbin){
@@ -123,9 +123,9 @@ rule "Llevan a Anna a la comisaria" agenda-group "g5"
 	
 		modify(b){
 			append("Llevan a Anna a"+anna.getUbicacion().toString()+" por su pasaporte falso. ").
-			append("Martins le dice a Anna que ha visto a Lime. ").
-			append("Calloway le pide ayuda a Anna para encontrar a Lime y ella lo rechaza. ").
-			append("Anna busca a Lime. ");
+			append(Personaje.martins+" le dice a Anna que ha visto a Lime. ").
+			append(Personaje.calloway+" le pide ayuda a Anna para encontrar a Lime y ella lo rechaza. ").
+			append(Personaje.anna+" busca a Lime. ");
 		};
 		
 end
@@ -157,8 +157,8 @@ rule "Martins va al Sector Ruso a hablar con Lime" agenda-group "g5"
 		}
 
 		modify(b){
-			append("Martins va a"+martins.getUbicacion().toString()+" para buscar a Lime. ").
-			append("Kurtz y Winkel están en e"+kurtz.getUbicacion().toString()+" junto con Lime. ");
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+" para buscar a Lime. ").
+			append(Personaje.kurtz+" y Winkel están en e"+kurtz.getUbicacion().toString()+" junto con Lime. ");
 		};
 		
 		modify(martins){
@@ -169,7 +169,7 @@ rule "Martins va al Sector Ruso a hablar con Lime" agenda-group "g5"
 		}
 		
 		modify(b){
-			append("Martins y Lime hablan en "+martins.getUbicacion().toString()+". ");
+			append(Personaje.martins+" y Lime hablan en "+martins.getUbicacion().toString()+". ");
 		};
 		
 		modify(tercerhombre) {
@@ -202,8 +202,8 @@ rule "Martins decide ayudar a Calloway" agenda-group "g5"
 		}
 	
 		modify(b){
-			append("Martins, Calloway y Paine se reunen en "+martins.getUbicacion().toString()+". ").
-			append("Martins cede a ayudar a Calloway a atrapar a Lime si él lleva a Anna de vuelta a Rusia. ");
+			append(Personaje.martins+", Calloway y Paine se reunen en "+martins.getUbicacion().toString()+". ").
+			append(Personaje.martins+" cede a ayudar a Calloway a atrapar a Lime si él lleva a Anna de vuelta a Rusia. ");
 		};
 end
 
@@ -233,10 +233,10 @@ rule "Martins y Anna discuten en la estacion" agenda-group "g5"
 		};
 	
 		modify(b){
-			append("Martins espera en "+martins.getUbicacion().toString()+" a que Anna coja el tren. ").
-			append("Anna llega a"+anna.getUbicacion().toString()+" y ve a Martins .").
-			append("Anna y Martins discuten y Anna decide no coger el tren. ").
-			append("Anna está enfrentada con Martins. ");
+			append(Personaje.martins+" espera en "+martins.getUbicacion().toString()+" a que Anna coja el tren. ").
+			append(Personaje.anna+" llega a"+anna.getUbicacion().toString()+" y ve a Martins .").
+			append(Personaje.anna+" y Martins discuten y Anna decide no coger el tren. ").
+			append(Personaje.anna+" está enfrentada con Martins. ");
 			
 		};
 end
@@ -262,7 +262,7 @@ rule "Martins y Calloway van al hospital" agenda-group "g5"
 		}
 	
 		modify(b){
-			append("Martins habla con Calloway en"+martins.getUbicacion().toString()+" y duda.");
+			append(Personaje.martins+" habla con Calloway en"+martins.getUbicacion().toString()+" y duda.");
 		};
 		
 		modify(martins){
@@ -276,7 +276,7 @@ rule "Martins y Calloway van al hospital" agenda-group "g5"
 		}
 	
 		modify(b){
-			append("Calloway lleva a Martins a"+martins.getUbicacion().toString()+" y convence a Martins para que le ayude.");
+			append(Personaje.calloway+" lleva a Martins a"+martins.getUbicacion().toString()+" y convence a Martins para que le ayude.");
 		};		
 end
 
@@ -304,7 +304,7 @@ rule "Martins y Lime se ven en el cafe" agenda-group "g5"
 		}
 	
 		modify(b){
-			append("Martins queda con Lime en e"+martins.getUbicacion().toString()+" mientras Calloway y Paine esperan fuera. ");
+			append(Personaje.martins+" queda con Lime en e"+martins.getUbicacion().toString()+" mientras Calloway y Paine esperan fuera. ");
 		};
 		
 		modify(anna){
@@ -315,8 +315,8 @@ rule "Martins y Lime se ven en el cafe" agenda-group "g5"
 		}
 		
 		modify(b){
-			append("Anna aparece en e"+anna.getUbicacion().toString()+". ").
-			append("Lime aparece en e"+anna.getUbicacion().toString()+" y Anna le dice que huya. ");	
+			append(Personaje.anna+" aparece en e"+anna.getUbicacion().toString()+". ").
+			append(Personaje.lime+" aparece en e"+anna.getUbicacion().toString()+" y Anna le dice que huya. ");	
 		};
 end
 
@@ -344,7 +344,7 @@ rule "Desenlace en las cloacas" agenda-group "g5"
 		}
 	
 		modify(b){
-			append("Lime huye a"+lime.getUbicacion().toString()+"y Martins, Calloway y Paine le persiguen. ").
+			append(Personaje.lime+" huye a"+lime.getUbicacion().toString()+"y Martins, Calloway y Paine le persiguen. ").
 			append("Lo encuentran y Martins mata a Lime.");	
 		};
 		
@@ -381,8 +381,8 @@ rule "Final" agenda-group "g5"
 		}
 	
 		modify(b){
-			append("Martins, Calloway, Paine y Anna van a"+anna.getUbicacion().toString()+" al entierro de Lime. ").
-			append("Anna ignora a Martins.");	
+			append(Personaje.martins+", Calloway, Paine y Anna van a"+anna.getUbicacion().toString()+" al entierro de Lime. ").
+			append(Personaje.anna+" ignora a Martins.");	
 		};
 		
 end

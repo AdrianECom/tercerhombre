@@ -20,7 +20,7 @@ no-loop true
     then
 
 	modify(b){
-		append("Martins encuentra a Lime y trabaja para él. ");
+		append(Personaje.martins+" encuentra a Lime y trabaja para él. ");
 	}
     	
 end
@@ -33,7 +33,7 @@ no-loop true
         b : Buffer()
     then
     	modify(b){
-			append("Martins esta "+martins.getEstadoSalud()+". ");
+			append(Personaje.martins+" esta "+martins.getEstadoSalud()+". ");
 		}
 end
 
@@ -45,7 +45,7 @@ no-loop true
         b : Buffer()
     then
     	modify(b){
-			append("Karl esta "+karl.getEstadoSalud()+". ");
+			append(Personaje.karl+" esta "+karl.getEstadoSalud()+". ");
 			// TODO: como sigue ??
 		}
 end

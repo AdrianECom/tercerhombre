@@ -17,9 +17,16 @@ no-loop true
 		}
 		
 		modify(b){
-			append("Martins va a"+martins.getUbicacion().toString()+". ");
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ");
 		};
 		
+end
+
+rule "inserta calloway"
+no-loop true
+	when
+	
+	then
 		insert(Personaje.nuevo().
     	setNombre(Personaje.calloway).
     	setGenero(Genero.HOMBRE).
@@ -27,7 +34,6 @@ no-loop true
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.GRANBRETANA).
     	setUbicacion(Ubicacion.CEMENTERIO));
-		
 end
 
 rule "martins conoce calloway" agenda-group "g1"
@@ -47,8 +53,8 @@ no-loop true
 		};
 
         modify(b){
-			append("Martins conoce a "+Personaje.calloway+". ").
-			append("Calloway conoce a "+Personaje.martins+". ");
+			append(Personaje.martins+" conoce a "+Personaje.calloway+". ").
+			append(Personaje.calloway+" conoce a "+Personaje.martins+". ");
 		};
 		
 		
@@ -60,6 +66,7 @@ no-loop true
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO, estadoSalud == EstadoSalud.VIVO  )
         calloway : Personaje( nombre == Personaje.calloway, ubicacion == Ubicacion.CEMENTERIO, estadoSalud == EstadoSalud.VIVO  )
         
+        // si ambos se conocen
         Personaje( nombre == Personaje.martins ) from calloway.conoce_a
         Personaje( nombre == Personaje.calloway ) from martins.conoce_a
         
@@ -74,26 +81,33 @@ no-loop true
 		};
 
         modify(b){
-			append("Martins va a"+martins.getUbicacion().toString()+". ").
-			append("Calloway va a"+calloway.getUbicacion().toString()+". ");
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
+			append(Personaje.calloway+" va a"+calloway.getUbicacion().toString()+". ");
 		};
-		
-		insert(Personaje.nuevo().
+    	
+end
+
+rule "inserta paine"
+no-loop true
+	when
+	
+	then
+	
+    	insert(Personaje.nuevo().
     	setNombre(Personaje.paine).
     	setGenero(Genero.HOMBRE).
     	setActividad(ActividadLegal.POLICIA).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.GRANBRETANA).
     	setUbicacion(Ubicacion.PUB));
-    	
 end
 
 rule "martins conoce a paine" agenda-group "g1"
 no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.PUB, estadoSalud == EstadoSalud.VIVO )
-		paine : Personaje( nombre == Personaje.paine, ubicacion == Ubicacion.PUB )
-		calloway : Personaje( nombre == Personaje.calloway)
+		paine : Personaje( nombre == Personaje.paine, ubicacion == Ubicacion.PUB, estadoSalud == EstadoSalud.VIVO )
+		calloway : Personaje( nombre == Personaje.calloway, ubicacion == Ubicacion.PUB, estadoSalud == EstadoSalud.VIVO)
 		
 		b : Buffer()
 		
@@ -119,12 +133,12 @@ no-loop true
 		};
 		
 		modify(b){
-			append("Martins conoce a "+Personaje.paine+". ").
-	        append("Calloway conoce a "+Personaje.paine+". ").
-	        append("Paine conoce a "+Personaje.calloway+". ").
-	        append("Paine conoce a "+Personaje.martins+". ").
-	        append("Paine trabaja con "+Personaje.calloway+". ").
-	        append("Calloway trabaja con "+Personaje.paine+". ");
+			append(Personaje.martins+" conoce a "+Personaje.paine+". ").
+	        append(Personaje.calloway+" conoce a "+Personaje.paine+". ").
+	        append(Personaje.paine+" conoce a "+Personaje.calloway+". ").
+	        append(Personaje.paine+" conoce a "+Personaje.martins+". ").
+	        append(Personaje.paine+" trabaja con "+Personaje.calloway+". ").
+	        append(Personaje.calloway+" trabaja con "+Personaje.paine+". ");
 		};
 	
 
@@ -143,7 +157,7 @@ no-loop true
 		};
 		
 		modify(b){
-			append("Martins va a"+martins.getUbicacion().toString()+". ");
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ");
 		};
 		
 		insert(Personaje.nuevo().
@@ -173,8 +187,8 @@ no-loop true
 		};
 		
         modify(b){
-			append("Martins conoce a "+Personaje.crabbin+". ").
-			append("Crabbin conoce a "+Personaje.martins+". ");
+			append(Personaje.martins+" conoce a "+Personaje.crabbin+". ").
+			append(Personaje.crabbin+" conoce a "+Personaje.martins+". ");
 		};
 end
 
@@ -198,7 +212,6 @@ rule "martins va cafe mozart" agenda-group "g1"
 no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.HOTELSACHER, estadoSalud == EstadoSalud.VIVO )
-		kurtz : Personaje( nombre == Personaje.kurtz, estadoSalud == EstadoSalud.VIVO )
         
         b : Buffer()
 	then
@@ -209,7 +222,7 @@ no-loop true
 		
 		
 		modify(b){
-			append("Martins va a"+martins.getUbicacion().toString()+". ");
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ");
 		};
 
      	
@@ -252,12 +265,12 @@ no-loop true
 		};
 		
 		modify(b){
-			append("Martins conoce a "+Personaje.kurtz+". ").
-	        append("Kurtz conoce a "+Personaje.martins+". ").
-	        append("Kurtz conoce a "+Personaje.lime+". ").
-	        append("Kurtz es amigo de "+Personaje.lime+". ").
-	        append("Lime conoce a "+Personaje.kurtz+". ").
-	        append("Lime es amigo de "+Personaje.kurtz+". ");
+			append(Personaje.martins+" conoce a "+Personaje.kurtz+". ").
+	        append(Personaje.kurtz+" conoce a "+Personaje.martins+". ").
+	        append(Personaje.kurtz+" conoce a "+Personaje.lime+". ").
+	        append(Personaje.kurtz+" es amigo de "+Personaje.lime+". ").
+	        append(Personaje.lime+" conoce a "+Personaje.kurtz+". ").
+	        append(Personaje.lime+" es amigo de "+Personaje.kurtz+". ");
 		};
 		
 		

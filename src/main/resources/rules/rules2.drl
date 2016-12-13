@@ -167,29 +167,29 @@ no-loop true
 	   
 
 		 modify(b){
-			append("Martins va a"+martins.getUbicacion().toString()+". ").
-			append("Kurtz va a"+kurtz.getUbicacion().toString()+". ").
-			append("Lime conoce a "+Personaje.winkel+". ").
-			append("Lime conoce a "+Personaje.popescu+". ").
-			append("Lime conoce a "+Personaje.anna+". ").
-			append("Lime es amigo de "+Personaje.popescu+". ").
-			append("Kurtz conoce a "+Personaje.winkel+". ").
-			append("Kurtz conoce a "+Personaje.popescu+". ").
-			append("Kurtz es amigo de "+Personaje.popescu+". ").
-			append("Kurtz conoce a "+Personaje.anna+". ").
-			append("Kurtz conoce a "+Personaje.karl+". ").
-			append("Karl conoce a "+Personaje.kurtz+". ").
-			append("Winkel conoce a "+Personaje.kurtz+". ").
-			append("Winkel conoce a "+Personaje.lime+". ").
-			append("Winkel conoce a "+Personaje.popescu+". ").
-			append("Popescu conoce a "+Personaje.winkel+". ").
-			append("Popescu conoce a "+Personaje.lime+". ").
-			append("Popescu conoce a "+Personaje.kurtz+". ").
-			append("Popescu es amigo de "+Personaje.lime+". ").
-			append("Popescu es amigo de "+Personaje.kurtz+". ").
-			append("Anna conoce a "+Personaje.lime+". ").
-			append("Anna esta en "+anna.getUbicacion().toString()+". ").
-			append("Martins busca a "+Personaje.anna+". ");
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
+			append(Personaje.kurtz+" va a"+kurtz.getUbicacion().toString()+". ").
+			append(Personaje.lime+" conoce a "+Personaje.winkel+". ").
+			append(Personaje.lime+" conoce a "+Personaje.popescu+". ").
+			append(Personaje.lime+" conoce a "+Personaje.anna+". ").
+			append(Personaje.lime+" es amigo de "+Personaje.popescu+". ").
+			append(Personaje.kurtz+" conoce a "+Personaje.winkel+". ").
+			append(Personaje.kurtz+" conoce a "+Personaje.popescu+". ").
+			append(Personaje.kurtz+" es amigo de "+Personaje.popescu+". ").
+			append(Personaje.kurtz+" conoce a "+Personaje.anna+". ").
+			append(Personaje.kurtz+" conoce a "+Personaje.karl+". ").
+			append(Personaje.karl+" conoce a "+Personaje.kurtz+". ").
+			append(Personaje.winkel+" conoce a "+Personaje.kurtz+". ").
+			append(Personaje.winkel+" conoce a "+Personaje.lime+". ").
+			append(Personaje.winkel+" conoce a "+Personaje.popescu+". ").
+			append(Personaje.popescu+" conoce a "+Personaje.winkel+". ").
+			append(Personaje.popescu+" conoce a "+Personaje.lime+". ").
+			append(Personaje.popescu+" conoce a "+Personaje.kurtz+". ").
+			append(Personaje.popescu+" es amigo de "+Personaje.lime+". ").
+			append(Personaje.popescu+" es amigo de "+Personaje.kurtz+". ").
+			append(Personaje.anna+" conoce a "+Personaje.lime+". ").
+			append(Personaje.anna+" esta en "+anna.getUbicacion().toString()+". ").
+			append(Personaje.martins+" busca a "+Personaje.anna+". ");
 		};
 	  
 
@@ -222,10 +222,10 @@ no-loop true
     	};
     	
     	modify(b){
-			append("Martins va a"+martins.getUbicacion().toString()+". ").
-			append("Martins conoce a "+Personaje.anna+". ").
-			append("Anna conoce a "+Personaje.martins+". ").
-			append("Anna quiere a "+Personaje.lime+". ");
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
+			append(Personaje.martins+" conoce a "+Personaje.anna+". ").
+			append(Personaje.anna+" conoce a "+Personaje.martins+". ").
+			append(Personaje.anna+" quiere a "+Personaje.lime+". ");
 		};
 	    
 end
@@ -256,11 +256,11 @@ end
 	    	getBusca_a().add(tercerhombre);
 	    };
 	    modify(b){
-			append("Martins va a"+martins.getUbicacion().toString()+". ").
-			append("Anna va a"+martins.getUbicacion().toString()+". ").
-			append("Anna conoce a "+Personaje.karl+". ").
-			append("Karl conoce a "+Personaje.anna+". ").
-			append("Martins Busca a "+Personaje.tercerhombre+". ");
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
+			append(Personaje.anna+" va a"+martins.getUbicacion().toString()+". ").
+			append(Personaje.anna+" conoce a "+Personaje.karl+". ").
+			append(Personaje.karl+" conoce a "+Personaje.anna+". ").
+			append(Personaje.martins+" Busca a "+Personaje.tercerhombre+". ");
 		};
 	    
     	
@@ -285,8 +285,8 @@ no-loop true
 	    
 	    
 	    modify(b){
-			append("Martins va a"+martins.getUbicacion().toString()+". ").
-			append("Anna va a"+martins.getUbicacion().toString()+". ");
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
+			append(Personaje.anna+" va a"+martins.getUbicacion().toString()+". ");
 		};
 	    
     

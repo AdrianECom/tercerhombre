@@ -16,7 +16,7 @@ no-loop true
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.ESTADOSUNIDOS).
     	setUbicacion(null));
-    	
+
     	insert(Personaje.nuevo().
     	setNombre(Personaje.lime).
     	setGenero(Genero.HOMBRE).
@@ -29,38 +29,38 @@ end
 rule "datos iniciales" agenda-group "g0"
 no-loop true
     when
-    	martins : Personaje( nombre == Personaje.martins, ubicacion == null )
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == null, estadoSalud == EstadoSalud.VIVO )
         lime : Personaje( nombre == Personaje.lime, ubicacion == null  )
-    
+
         b : Buffer()
     then
-    
+
     	modify(martins){
     		getConoce_a().add(lime);
     	};
-    	
+
     	modify(martins){
     		getBusca_a().add(lime);
     	};
-    	
+
     	modify(martins){
     		getAmigo_de().add(lime);
     	};
-    	
+
     	modify(lime){
     		getConoce_a().add(martins);
     	};
-    	
+
     	modify(lime){
     		getAmigo_de().add(martins);
-    	};	
-    	
+    	};
+
     	modify(b){
-			append("Martins conoce a "+Personaje.lime+". ").
-	        append("Martins busca a "+Personaje.lime+". ").
-	        append("Martins es amigo de "+Personaje.lime+". ").
-	        append("Lime conoce a "+Personaje.martins+". ").
-	        append("Lime es amigo de "+Personaje.martins+". ");
+			append(Personaje.martins+" conoce a "+Personaje.lime+". ").
+	        append(Personaje.martins+" busca a "+Personaje.lime+". ").
+	        append(Personaje.martins+" es amigo de "+Personaje.lime+". ").
+	        append(Personaje.lime+" conoce a "+Personaje.martins+". ").
+	        append(Personaje.lime+" es amigo de "+Personaje.martins+". ");
 		};
 end
 
@@ -68,16 +68,16 @@ rule "martins va estacion" agenda-group "g0"
 no-loop true
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == null, estadoSalud == EstadoSalud.VIVO  )
-    
+
         b : Buffer()
     then
-    
+
      	modify(martins){
         	setUbicacion(Ubicacion.ESTACION)
         };
- 
+
     	modify(b){
-			append("Martins va a"+martins.getUbicacion().toString()+". ");
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ");
 		};
 end
 
@@ -85,10 +85,10 @@ rule "martins va casa lime" agenda-group "g0"
 no-loop true
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.ESTACION, estadoSalud == EstadoSalud.VIVO  )
-    
+
         b : Buffer()
     then
-    
+
     	insert(Personaje.nuevo().
     	setNombre(Personaje.karl).
     	setGenero(Genero.HOMBRE).
@@ -96,26 +96,26 @@ no-loop true
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.AUSTRIA).
     	setUbicacion(Ubicacion.CASALIME));
-    
+
         modify(martins){
         	setUbicacion(Ubicacion.CASALIME)
         };
-    	
+
     	modify(b){
-			append("Martins va a"+martins.getUbicacion().toString()+". ");
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ");
 		};
-		
+
 		//System.out.println("Karl insertado");
-		
+
 end
-	
+
 rule "martins conoce karl" agenda-group "g0"
 no-loop true
     when
         martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME, estadoSalud == EstadoSalud.VIVO  )
         karl : Personaje( nombre == Personaje.karl, estadoSalud == EstadoSalud.VIVO  )
         lime : Personaje( nombre == Personaje.lime, estadoSalud == null )
-        
+
        	b : Buffer()
     then
         modify(martins){
@@ -127,28 +127,28 @@ no-loop true
 		modify(karl){
 		   getConoce_a().add(lime);
 		};
-		
+
 		modify(lime){
 		   setEstadoSalud(EstadoSalud.MUERTO);
 		};
-		
+
 		modify(lime){
 		   setUbicacion(Ubicacion.CEMENTERIO);
 		};
-		
+
 		modify(lime){
 		   getConoce_a().add(karl);
 		};
-		
+
 		modify(b){
-			append("Martins conoce a "+Personaje.karl+". ").
-	        append("Karl conoce a "+Personaje.martins+". ").
-	        append("Karl conoce a "+Personaje.lime+". ").
-	        append("Lime conoce a "+Personaje.karl+". ").
-	        append("Lime esta "+lime.getEstadoSalud().toString()+lime.getGenero().sufijo()+". ").
-	        append("Lime esta en e"+lime.getUbicacion().toString()+". ");
+			append(Personaje.martins+" conoce a "+Personaje.karl+". ").
+	        append(Personaje.karl+" conoce a "+Personaje.martins+". ").
+	        append(Personaje.karl+" conoce a "+Personaje.lime+". ").
+	        append(Personaje.lime+" conoce a "+Personaje.karl+". ").
+	        append(Personaje.lime+" esta "+lime.getEstadoSalud().toString()+lime.getGenero().sufijo()+". ").
+	        append(Personaje.lime+" esta en e"+lime.getUbicacion().toString()+". ");
 		};
-		
+
 		//System.out.println("Martins conoce a Karl");
-		
+
 end
