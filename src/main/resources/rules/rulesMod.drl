@@ -4,6 +4,17 @@ import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
 import tercerhombre.consultas.Modificador;
 
+/* IDEAS
+
+	Cuando matamos a alguien cambiar la ubucacion al cementerio
+
+
+
+
+*/
+
+
+
 rule "modificador EstadoSalud"
 agenda-group "g5"
 agenda-group "g4"
