@@ -212,6 +212,7 @@ rule "martins va cafe mozart" agenda-group "g1"
 no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.HOTELSACHER, estadoSalud == EstadoSalud.VIVO )
+		kurtz: Personaje( nombre == Personaje.kurtz, estadoSalud == EstadoSalud.VIVO )
         
         b : Buffer()
 	then
