@@ -57,102 +57,129 @@ no-loop true
         b : Buffer()
         
     then
-    
+    	modify(martins){ //
+		setUbicacion(Ubicacion.CASALIME);
+		};
+		
+		modify(martins){ //
+    		getBusca_a().add(anna);
+    	};
     	
     	
-    	modify(winkel){
+    	modify(winkel){//
     	 getConoce_a().add(lime);
     	};	
 
-		modify(winkel){
-    		getAmigo_de().add(lime);
-    	};	
 
-		modify(winkel){
+		modify(winkel){//
     		getConoce_a().add(kurtz);
     	};	
-
-		modify(lime){
-    		getAmigo_de().add(winkel);
+    	
+    	modify(winkel){//
+    		getConoce_a().add(popescu);
     	};	
+    	
 
-		modify(lime){
+		modify(lime){//
     		getConoce_a().add(winkel);
     	};
-	
-		modify(kurtz){
-    		getConoce_a().add(winkel);
+    	
+    	modify(lime){ //
+    		getAmigo_de().add(popescu);
     	};	
+
+		modify(lime){ //
+    		getConoce_a().add(popescu);
+    	};
+	
+		modify(lime){//
+	    		getConoce_a().add(anna);
+	    };
     	
     	
-		
-	modify(popescu){
+		modify(popescu){//
     		getConoce_a().add(lime);
     	};	
 
-	modify(popescu){
+		modify(popescu){//
     		getAmigo_de().add(lime);
     	};	
 
-	modify(popescu){
+		modify(popescu){//
     		getConoce_a().add(kurtz);
     	};
 
-	modify(popescu){
+		modify(popescu){//
     		getAmigo_de().add(kurtz);
     	};	
+    	modify(popescu){//
+    		getConoce_a().add(winkel);
+    	};
 
-	modify(lime){
+		modify(kurtz){ //
+    		getConoce_a().add(popescu);
+    	};
+
+		modify(kurtz){//
     		getAmigo_de().add(popescu);
+    	};
+   	 	modify(kurtz){ //
+    		getConoce_a().add(winkel);
     	};	
-
-	modify(lime){
-    		getConoce_a().add(popescu);
-    	};
-	
-	modify(kurtz){
-    		getConoce_a().add(popescu);
-    	};
-
-	modify(kurtz){
-    		getAmigo_de().add(popescu);
-    	};
     
-        modify(kurtz){
+        modify(kurtz){ //
 		setUbicacion(Ubicacion.CASALIME);
 		};
-		modify(martins){
-		setUbicacion(Ubicacion.CASALIME);
-		};
-		modify(martins){
-    		getBusca_a().add(anna);
-    	};
-    	modify(karl){
-    	getConoce_a().add(kurtz);
+		
+		modify(kurtz){ //
+	    		getConoce_a().add(anna);
+	    };
+	    	
+		modify(kurtz){ //
+	    		getConoce_a().add(karl);
+	    };
+    	modify(karl){ //
+    	
+    		getConoce_a().add(kurtz);
     	};
     	
 		//Insertamos de anna 
 		
-		modify(anna){
+		modify(anna){ //
 				setUbicacion(Ubicacion.CASANOVACLUB);
 			};
 
-		modify(anna){
+		modify(anna){ //
 	    		getConoce_a().add(lime);
 	    	};
-		modify(kurtz){
-	    		getConoce_a().add(anna);
-	    	};
-		modify(lime){
-	    		getConoce_a().add(anna);
-	    	};
-	    modify(martins){
-	    		getBusca_a().add(anna);
-	    		};  //TODO hay que quitarlo despues?
+		
+		
+	   
 
 		 modify(b){
 			append("Martins va a"+martins.getUbicacion().toString()+". ").
-			append("Kurtz va a"+martins.getUbicacion().toString()+". ")
+			append("Kurtz va a"+kurtz.getUbicacion().toString()+". ").
+			append("Lime conoce a "+Personaje.winkel+". ").
+			append("Lime conoce a "+Personaje.popescu+". ").
+			append("Lime conoce a "+Personaje.anna+". ").
+			append("Lime es amigo de "+Personaje.popescu+". ").
+			append("Kurtz conoce a "+Personaje.winkel+". ").
+			append("Kurtz conoce a "+Personaje.popescu+". ").
+			append("Kurtz es amigo de "+Personaje.popescu+". ").
+			append("Kurtz conoce a "+Personaje.anna+". ").
+			append("Kurtz conoce a "+Personaje.karl+". ").
+			append("Karl conoce a "+Personaje.kurtz+". ").
+			append("Winkel conoce a "+Personaje.kurtz+". ").
+			append("Winkel conoce a "+Personaje.lime+". ").
+			append("Winkel conoce a "+Personaje.popescu+". ").
+			append("Popescu conoce a "+Personaje.winkel+". ").
+			append("Popescu conoce a "+Personaje.lime+". ").
+			append("Popescu conoce a "+Personaje.kurtz+". ").
+			append("Popescu es amigo de "+Personaje.lime+". ").
+			append("Popescu es amigo de "+Personaje.kurtz+". ").
+			append("Anna conoce a "+Personaje.lime+". ").
+			append("Anna esta en "+anna.getUbicacion().toString()+". ").
+			append("Martins busca a "+Personaje.anna+". ");
 		};
 	  
 
@@ -236,8 +263,6 @@ no-loop true
     	modify(anna){
 	    setUbicacion(Ubicacion.CASAANNA);
 	    };
-	    
-	  
 	    modify(martins){
 	    setUbicacion(Ubicacion.CASAANNA);
 	    };
