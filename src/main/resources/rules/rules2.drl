@@ -8,7 +8,7 @@ import tercerhombre.io.Buffer;
 
 //TODO Revisar el orden de las reglas Y falta poner los append
 
-rule "insertar anna y winkel" agenda-group "g2"
+rule "insertar anna, winkel,popescu,tercerhombre " agenda-group "g2"
 no-loop true
 
     when
@@ -40,6 +40,16 @@ no-loop true
     	setActividad(null).
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.RUMANIA).
+    	setUbicacion(null));
+    	
+    	//insertamos tercerhombre
+    	
+    	insert(Personaje.nuevo().
+    	setNombre(Personaje.tercerhombre).
+    	setGenero(Genero.HOMBRE).
+    	setActividad(null).
+    	setEstadoSalud(EstadoSalud.VIVO).
+    	setNacionalidad(null).
     	setUbicacion(null));
     	
 end
@@ -213,7 +223,7 @@ no-loop true
     	
     	modify(b){
 			append("Martins va a"+martins.getUbicacion().toString()+". ").
-			append("Martins conoce a "+Personaje.karl+". ").
+			append("Martins conoce a "+Personaje.anna+". ").
 			append("Anna conoce a "+Personaje.martins+". ").
 			append("Anna quiere a "+Personaje.lime+". ");
 		};
@@ -226,6 +236,7 @@ end
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASANOVACLUB )
         anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASANOVACLUB)
         karl : Personaje( nombre == Personaje.karl )
+        tercerhombre : Personaje ( nombre == Personaje.anna )
         b : Buffer()
     then 
     	
@@ -241,11 +252,15 @@ end
 	    modify(karl){
 	    		getConoce_a().add(anna);
 	    };
+	     modify(martins){
+	    	getBusca_a().add(tercerhombre);
+	    };
 	    modify(b){
 			append("Martins va a"+martins.getUbicacion().toString()+". ").
 			append("Anna va a"+martins.getUbicacion().toString()+". ").
 			append("Anna conoce a "+Personaje.karl+". ").
-			append("Karl conoce a "+Personaje.anna+". ");
+			append("Karl conoce a "+Personaje.anna+". ").
+			append("Martins Busca a "+Personaje.tercerhombre+". ");
 		};
 	    
     	
@@ -257,6 +272,7 @@ no-loop true
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
       	anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASALIME)
+      	
       	b : Buffer()
     then
     
@@ -266,6 +282,8 @@ no-loop true
 	    modify(martins){
 	    setUbicacion(Ubicacion.CASAANNA);
 	    };
+	    
+	    
 	    modify(b){
 			append("Martins va a"+martins.getUbicacion().toString()+". ").
 			append("Anna va a"+martins.getUbicacion().toString()+". ");
