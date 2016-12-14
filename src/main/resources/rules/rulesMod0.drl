@@ -16,27 +16,31 @@ import tercerhombre.io.Buffer;
 
 
 
-rule "modificador EstadoSalud"
+rule "modificador EstadoSalud 0"
 
 salience 1
+agenda-group "g0"
+
 no-loop true
     when
     	m : Modificador( tipo.equals(EstadoSalud.class) ) // Se comprueba cual es la propiedad a modificar.
     	p : Personaje( nombre == m.getNombre(), modificado == false )
-    	
+
     	b: Buffer()
     then
     	modify(p){
     		setEstadoSalud((EstadoSalud)m.getPropiedad()).
     		setModificado(true);
-    	};    	
-    	
-    	System.out.println(p.getNombre()+" modificado estado salud");
+    	};
+
+    	System.out.println(p.getNombre()+" " +m.getPropiedad() );
 end
 
-rule "modificador Nacionalidad"
+rule "modificador Nacionalidad 0"
 
 salience 1
+agenda-group "g0"
+
 no-loop true
 	when
 		m : Modificador( tipo.equals(Nacionalidad.class) )
@@ -46,12 +50,14 @@ no-loop true
     		setNacionalidad((Nacionalidad)m.getPropiedad()).
     		setModificado(true);
     	};
-		System.out.println(p.getNombre()+" modificado nacionalidad"); 
+		System.out.println(p.getNombre()+" " +m.getPropiedad() );
 end
 
-rule "modificador Actividad"
+rule "modificador Actividad 0"
 
 salience 1
+agenda-group "g0"
+
 no-loop true
 	when
 		// NOTA: Como Actividad tiene dos subclases, debemos comprobar si el tipo hereda de Actividad.
@@ -62,12 +68,14 @@ no-loop true
     		setActividad((Actividad)m.getPropiedad()).
     		setModificado(true);
     	};
-		System.out.println(p.getNombre()+" modificado actividad"); 
+		System.out.println(p.getNombre()+" " +m.getPropiedad() );
 end
 
-rule "modificador Ubicacion"
+rule "modificador Ubicacion 0"
 
 salience 1
+agenda-group "g0"
+
 no-loop true
 	when
 		m : Modificador( tipo.equals(Ubicacion.class) )
@@ -77,5 +85,5 @@ no-loop true
     		setUbicacion((Ubicacion)m.getPropiedad()).
     		setModificado(true);
     	};
-		System.out.println(p.getNombre()+" modificado ubicacion"); 
+		System.out.println(p.getNombre()+" " +m.getPropiedad() );
 end

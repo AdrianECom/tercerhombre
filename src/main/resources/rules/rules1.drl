@@ -25,7 +25,7 @@ end
 rule "inserta calloway"
 no-loop true
 	when
-	
+		not Personaje( nombre == Personaje.calloway)
 	then
 		insert(Personaje.nuevo().
     	setNombre(Personaje.calloway).
@@ -34,6 +34,7 @@ no-loop true
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.GRANBRETANA).
     	setUbicacion(Ubicacion.CEMENTERIO));
+    	
 end
 
 rule "martins conoce calloway" agenda-group "g1"
@@ -56,6 +57,7 @@ no-loop true
 			append(Personaje.martins+" conoce a "+Personaje.calloway+". ").
 			append(Personaje.calloway+" conoce a "+Personaje.martins+". ");
 		};
+		
 		
 		
 end 
@@ -84,13 +86,14 @@ no-loop true
 			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
 			append(Personaje.calloway+" va a"+calloway.getUbicacion().toString()+". ");
 		};
+		
     	
 end
 
 rule "inserta paine"
 no-loop true
 	when
-	
+		not Personaje( nombre == Personaje.paine)
 	then
 	
     	insert(Personaje.nuevo().
@@ -100,6 +103,7 @@ no-loop true
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.GRANBRETANA).
     	setUbicacion(Ubicacion.PUB));
+    	
 end
 
 rule "martins conoce a paine" agenda-group "g1"
@@ -141,7 +145,6 @@ no-loop true
 	        append(Personaje.calloway+" trabaja con "+Personaje.paine+". ");
 		};
 	
-
 end
 
 rule "martins va a hotel" agenda-group "g1"
@@ -167,6 +170,7 @@ no-loop true
 		setEstadoSalud(EstadoSalud.VIVO).
 		setNacionalidad(Nacionalidad.GRANBRETANA).
 		setUbicacion(Ubicacion.HOTELSACHER));
+		
 end
 
 rule "martins conoce crabbin" agenda-group "g1"
@@ -190,11 +194,18 @@ no-loop true
 			append(Personaje.martins+" conoce a "+Personaje.crabbin+". ").
 			append(Personaje.crabbin+" conoce a "+Personaje.martins+". ");
 		};
+		
+		modify(crabbin){
+		   setUbicacion(null);
+		};
+
 end
 
 rule "insertar kurtz" agenda-group "g1"
 no-loop true
 	when
+	
+		not Personaje( nombre == Personaje.kurtz)
 
 	then
 		
@@ -205,6 +216,7 @@ no-loop true
      	setEstadoSalud(EstadoSalud.VIVO).
      	setNacionalidad(Nacionalidad.AUSTRIA).
      	setUbicacion(Ubicacion.CAFEMOZART));
+
      	
 end
 
@@ -226,7 +238,7 @@ no-loop true
 			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ");
 		};
 
-     	
+     	System.out.println("va cafe mozart");
 
 end
 
@@ -273,6 +285,8 @@ no-loop true
 	        append(Personaje.lime+" conoce a "+Personaje.kurtz+". ").
 	        append(Personaje.lime+" es amigo de "+Personaje.kurtz+". ");
 		};
+		
+		System.out.println("conoce a kurtz");
 		
 		
 end
