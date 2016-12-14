@@ -3,6 +3,7 @@ package rules
 import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
 import tercerhombre.io.Buffer;
+import tercerhombre.Fin;
 
 /*
 * -------------------------------------------------------------------
@@ -21,7 +22,9 @@ no-loop true
 
 	modify(b){
 		append(Personaje.martins+" encuentra a Lime y trabaja para él. ");
-	}
+	};
+	
+	insert(new Fin());
     	
 end
 

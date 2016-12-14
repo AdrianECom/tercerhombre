@@ -7,11 +7,7 @@ import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
 import tercerhombre.io.Buffer;
 
-
-
 //declare any global variables here
-
-
 
 
 rule "reunion en el puente" agenda-group "g4"
@@ -65,26 +61,51 @@ no-loop true
 
 end
 
-rule "Martins y Anna van a hablar con el portero y esta muerto" agenda-group "g4"
+rule "Martins va a hablar con el portero" agenda-group "g4"
 no-loop true
     when
 		popescu : Personaje ( nombre == Personaje.popescu, ubicacion == Ubicacion.PUENTE )
-		anna : Personaje ( nombre == Personaje.anna, ubicacion == Ubicacion.CASANOVACLUB )
 		martins : Personaje ( nombre == Personaje.martins, ubicacion == Ubicacion.CASANOVACLUB )
 		karl : Personaje ( nombre == Personaje.karl, estadoSalud == EstadoSalud.VIVO )
-
 		b : Buffer()
 
     then
-
-    	modify(anna){
-			setUbicacion(Ubicacion.CASALIME);
-		};
 
 		modify(martins){
 			setUbicacion(Ubicacion.CASALIME);
 		};
 
+		modify(b){
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ");
+		};
+end
+
+rule "Anna acompaña a Martins a ver a Karl" agenda-group "g4"
+no-loop true
+	when
+		anna : Personaje ( nombre == Personaje.anna, ubicacion == Ubicacion.CASANOVACLUB )
+		martins : Personaje ( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
+		karl : Personaje ( nombre == Personaje.karl, estadoSalud == EstadoSalud.VIVO )
+		b : Buffer()
+		
+	then
+
+    	modify(anna){
+			setUbicacion(Ubicacion.CASALIME);
+		};
+		modify(b){
+			append(Personaje.anna+" acomapaña a Martins a"+anna.getUbicacion().toString()+". ") 
+		};
+end
+
+rule "Karl esta muerto" agenda-group "g4"
+no-loop true
+	when
+		karl : Personaje ( nombre == Personaje.karl, estadoSalud == EstadoSalud.VIVO )
+		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )	
+		b : Buffer()
+
+	then
 		modify(karl){
 			setEstadoSalud(EstadoSalud.MUERTO);
 		};
@@ -92,9 +113,7 @@ no-loop true
 		modify(karl){
 			setUbicacion(Ubicacion.CEMENTERIO);
 		};
-
-		modify(b){
-			append(Personaje.anna+" y Martins van a"+martins.getUbicacion().toString()+". ").
+		modify(b) {
 			append(Personaje.karl+" está "+karl.getEstadoSalud().toString()+". ");
 		};
 end
@@ -104,7 +123,7 @@ no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
 		karl : Personaje (nombre == Personaje.karl, estadoSalud == EstadoSalud.MUERTO )
-		crabbin : Personaje (nombre == Personaje.crabbin)
+		crabbin : Personaje (nombre == Personaje.crabbin, estadoSalud == EstadoSalud.VIVO)
 
 		b : Buffer()
 
@@ -127,7 +146,7 @@ no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CONFERENCIA )
 		crabbin : Personaje (nombre == Personaje.crabbin, ubicacion == Ubicacion.CONFERENCIA )
-		popescu : Personaje (nombre == Personaje.popescu )
+		popescu : Personaje (nombre == Personaje.popescu , estadoSalud == EstadoSalud.VIVO )
 
 		b : Buffer()
 
@@ -159,7 +178,6 @@ no-loop true
 			append(Personaje.popescu+" enfrentado con "+Personaje.martins+". ").
 			append(Personaje.martins+" enfrentado con "+Personaje.popescu+". ").
 			append(Personaje.popescu+" intenta matar a "+Personaje.martins+". ");
-
 		};
 end
 
@@ -167,12 +185,10 @@ rule "Calloway le cuenta la verdad a martins" agenda-group "g4"
 no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CONFERENCIA )
-		popescu : Personaje (nombre == Personaje.popescu, ubicacion == Ubicacion.CONFERENCIA )
 		kurtz : Personaje (nombre == Personaje.kurtz )
-		calloway : Personaje (nombre == Personaje.calloway)
-		paine : Personaje (nombre == Personaje.paine )
+		calloway : Personaje (nombre == Personaje.calloway, estadoSalud == EstadoSalud.VIVO)
 		harbin : Personaje (nombre == Personaje.harbin )
-		lime : Personaje (nombre == Personaje.lime )
+		lime : Personaje (nombre == Personaje.lime, estadoSalud == EstadoSalud.VIVO )
 
 		b : Buffer()
 
@@ -181,16 +197,13 @@ no-loop true
     	modify(calloway){
 			setUbicacion(Ubicacion.COMISARIA);
 		};
-		modify(paine){
-			setUbicacion(Ubicacion.COMISARIA);
-		};
+
     	modify(martins){
 			setUbicacion(Ubicacion.COMISARIA);
 		};
 
 		modify(b){
 			append(Personaje.calloway+" va a"+calloway.getUbicacion().toString()+". ").
-			append(Personaje.paine+" va a"+paine.getUbicacion().toString()+". ").
 			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
 			append(Personaje.calloway+" le muestra la verdad a Martins");
 		};
@@ -199,14 +212,8 @@ no-loop true
 			getEnfrentado_con().remove(calloway);
 		};
 
-		modify(martins){
-			getEnfrentado_con().remove(paine);
-		};
-
 		modify(b){
-
-			append(Personaje.martins+" ya no está enfrentado con "+Personaje.calloway+". ").
-			append(Personaje.martins+" ya no está enfrentado con "+Personaje.paine+". ");
+			append(Personaje.martins+" ya no está enfrentado con "+Personaje.calloway+". ");
 		};
 
 		modify(kurtz){
@@ -252,11 +259,34 @@ no-loop true
 
 end
 
+rule "Paine esta en la comisaria" agenda-group "g4"
+no-loop true
+	when
+		paine : Personaje (nombre == Personaje.paine , estadoSalud == EstadoSalud.VIVO)	
+		martins : Personaje (nombre == Personaje.martins)
+		b : Buffer()		
+	then
+		modify(paine){
+			setUbicacion(Ubicacion.COMISARIA);
+		};
+		
+		modify(martins){
+			getEnfrentado_con().remove(paine);
+		};
+		
+		modify(b){
+			append(Personaje.paine+" va a"+paine.getUbicacion().toString()+". ").
+			append(Personaje.martins+" ya no está enfrentado con "+Personaje.paine+". ");			
+		};
+
+end
+
 rule "Martins decide irse y informa a Anna" agenda-group "g4"
 no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
-		anna : Personaje (nombre == Personaje.anna, ubicacion == Ubicacion.CASALIME )
+		anna : Personaje (nombre == Personaje.anna, ubicacion == Ubicacion.CASALIME, 
+							estadoSalud == EstadoSalud.VIVO )
 
 		b : Buffer()
 

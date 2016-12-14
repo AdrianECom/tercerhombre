@@ -1,11 +1,14 @@
 package tercerhombre;
 
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.kie.api.KieServices;
+import org.kie.api.cdi.KSession;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.ObjectFilter;
 import org.kie.api.runtime.rule.FactHandle;
 
 import tercerhombre.consultas.Consulta;
@@ -47,6 +50,18 @@ public class Main {
         Main.ejecutar(consultas);
     }
     
+    // ------------------------------------
+
+    public static boolean comprobarFin(KieSession kSession){
+    	Collection<? extends Object> list = kSession.getObjects(new ObjectFilter() {
+			@Override
+			public boolean accept(Object arg0) {
+				return arg0 instanceof Fin;
+			}
+		});
+    	
+    	return ! list.isEmpty();
+    }
  
     // ------------------------------------
 
@@ -94,14 +109,19 @@ public class Main {
 		    	// Insertamos buffer y nos quedamos con su manejador. 
 		    	FactHandle bufferHandle = kSession.insert(new Buffer());
 				
+		    	
+		    	boolean fin = false;
+		    	
 				/*
 				 * Si por ejemplo piden acto 4,
 				 * necesitamos disparar las reglas del acto 0, del acto 1,
 				 * del acto 2, del acto 3 y del acto 4.
 				 */
-				for (int i = 0; i <= consulta.getActo(); i++) {
+				for (int i = 0; !fin && i <= consulta.getActo(); i++) {
 					kSession.getAgenda().getAgendaGroup("g"+i).setFocus();
 				    kSession.fireAllRules();
+				    
+				    fin = comprobarFin(kSession);
 				}
 				
 				if(consulta instanceof ConsultaQue){
