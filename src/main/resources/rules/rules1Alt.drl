@@ -3,6 +3,7 @@ package rules
 import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
 import tercerhombre.io.Buffer;
+import tercerhombre.Fin;
 
 /*
 * -------------------------------------------------------------------
@@ -29,7 +30,7 @@ no-loop true
 			append("calloway esta muerto y nunca conoce a martins. ");
 		};
 		
-		
+		insert(new Fin());
 end 
 
 
@@ -46,5 +47,7 @@ no-loop true
 		modify(b){
 			append("kurtz esta muerto y nunca llama a martins. ");
 		};
+		
+		insert(new Fin());
 end
 

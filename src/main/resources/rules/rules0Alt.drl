@@ -38,6 +38,8 @@ no-loop true
     	modify(b){
 			append(Personaje.martins+" esta "+martins.getEstadoSalud()+". ");
 		}
+		
+		insert(new Fin());
 end
 
 rule "karl muere" agenda-group "g0"
@@ -51,5 +53,8 @@ no-loop true
 			append(Personaje.karl+" esta "+karl.getEstadoSalud()+". ");
 			// TODO: como sigue ??
 		}
+		
+		insert(new Fin());
 end
+
         
