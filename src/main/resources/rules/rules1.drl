@@ -65,6 +65,7 @@ end
 rule "van al pub" agenda-group "g1"
 no-loop true
 	when
+		// calloway lleva a martins al pub, no pueden ir por separado.
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO, estadoSalud == EstadoSalud.VIVO  )
         calloway : Personaje( nombre == Personaje.calloway, ubicacion == Ubicacion.CEMENTERIO, estadoSalud == EstadoSalud.VIVO  )
         
