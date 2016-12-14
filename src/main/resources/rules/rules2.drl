@@ -88,7 +88,7 @@ rule "kurtz y martins hablan con karl" agenda-group "g2"
 no-loop true
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
-        kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CASALIME )
+        kurtz : Personaje( nombre == Personaje.kurtz, estadoSalud == EstadoSalud.VIVO ,ubicacion == Ubicacion.CASALIME )
         karl : Personaje( karl == Personaje.karl, estadoSalud == EstadoSalud.VIVO)
         b : Buffer()
     	
