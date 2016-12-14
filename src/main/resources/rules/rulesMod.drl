@@ -17,12 +17,7 @@ import tercerhombre.io.Buffer;
 
 
 rule "modificador EstadoSalud"
-agenda-group "g5"
-agenda-group "g4"
-agenda-group "g3"
-agenda-group "g2"
-agenda-group "g1"
-agenda-group "g0"
+
 salience 1
 no-loop true
     when
@@ -36,16 +31,11 @@ no-loop true
     		setModificado(true);
     	};    	
     	
-    	//System.out.println("modificado estado salud");
+    	System.out.println(p.getNombre()+" modificado estado salud");
 end
 
 rule "modificador Nacionalidad"
-agenda-group "g5"
-agenda-group "g4"
-agenda-group "g3"
-agenda-group "g2"
-agenda-group "g1"
-agenda-group "g0"
+
 salience 1
 no-loop true
 	when
@@ -56,16 +46,11 @@ no-loop true
     		setNacionalidad((Nacionalidad)m.getPropiedad()).
     		setModificado(true);
     	};
-		//System.out.println("modificado nacionalidad"); 
+		System.out.println(p.getNombre()+" modificado nacionalidad"); 
 end
 
 rule "modificador Actividad"
-agenda-group "g5"
-agenda-group "g4"
-agenda-group "g3"
-agenda-group "g2"
-agenda-group "g1"
-agenda-group "g0"
+
 salience 1
 no-loop true
 	when
@@ -77,16 +62,11 @@ no-loop true
     		setActividad((Actividad)m.getPropiedad()).
     		setModificado(true);
     	};
-		//System.out.println("modificado actividad"); 
+		System.out.println(p.getNombre()+" modificado actividad"); 
 end
 
 rule "modificador Ubicacion"
-agenda-group "g5"
-agenda-group "g4"
-agenda-group "g3"
-agenda-group "g2"
-agenda-group "g1"
-agenda-group "g0"
+
 salience 1
 no-loop true
 	when
@@ -97,5 +77,5 @@ no-loop true
     		setUbicacion((Ubicacion)m.getPropiedad()).
     		setModificado(true);
     	};
-		//System.out.println("modificado ubicacion"); 
+		System.out.println(p.getNombre()+" modificado ubicacion"); 
 end
