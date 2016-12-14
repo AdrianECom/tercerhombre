@@ -1,0 +1,89 @@
+package rules
+
+import tercerhombre.personaje.Personaje;
+import tercerhombre.propiedades.*;
+import tercerhombre.consultas.Modificador;
+import tercerhombre.io.Buffer;
+
+/* IDEAS
+
+	Cuando matamos a alguien cambiar la ubucacion al cementerio
+
+
+
+
+*/
+
+
+
+rule "modificador EstadoSalud 5"
+
+salience 1
+agenda-group "g5"
+
+no-loop true
+    when
+    	m : Modificador( tipo.equals(EstadoSalud.class) ) // Se comprueba cual es la propiedad a modificar.
+    	p : Personaje( nombre == m.getNombre(), modificado == false )
+
+    	b: Buffer()
+    then
+    	modify(p){
+    		setEstadoSalud((EstadoSalud)m.getPropiedad()).
+    		setModificado(true);
+    	};
+
+    	System.out.println(p.getNombre()+" " +m.getPropiedad() );
+end
+
+rule "modificador Nacionalidad 5"
+
+salience 1
+agenda-group "g5"
+
+no-loop true
+	when
+		m : Modificador( tipo.equals(Nacionalidad.class) )
+		p : Personaje( nombre == m.getNombre(), modificado == false )
+	then
+		modify(p){
+    		setNacionalidad((Nacionalidad)m.getPropiedad()).
+    		setModificado(true);
+    	};
+		System.out.println(p.getNombre()+" " +m.getPropiedad() );
+end
+
+rule "modificador Actividad 5"
+
+salience 1
+agenda-group "g5"
+
+no-loop true
+	when
+		// NOTA: Como Actividad tiene dos subclases, debemos comprobar si el tipo hereda de Actividad.
+		m : Modificador( Actividad.class.isAssignableFrom(tipo) )
+		p : Personaje( nombre == m.getNombre(), modificado == false )
+	then
+		modify(p){
+    		setActividad((Actividad)m.getPropiedad()).
+    		setModificado(true);
+    	};
+		System.out.println(p.getNombre()+" " +m.getPropiedad() );
+end
+
+rule "modificador Ubicacion 5"
+
+salience 1
+agenda-group "g5"
+
+no-loop true
+	when
+		m : Modificador( tipo.equals(Ubicacion.class) )
+		p : Personaje( nombre == m.getNombre(), modificado == false )
+	then
+		modify(p){
+    		setUbicacion((Ubicacion)m.getPropiedad()).
+    		setModificado(true);
+    	};
+		System.out.println(p.getNombre()+" " +m.getPropiedad() );
+end
