@@ -30,7 +30,7 @@ rule "Winkel está en la reunion" agenda-group "g4"
 no-loop true
 	when
 		tercerhombre : Personaje (nombre == Personaje.tercerhombre, ubicacion == Ubicacion.PUENTE )
-		winkel : Personaje( nombre == Personaje.winkel, estadoSalud == EstadoSalud.VIVO, ubicacion != Ubicacion.PUENTE )
+		winkel : Personaje( nombre == Personaje.winkel, estadoSalud == EstadoSalud.VIVO, ubicacion == Ubicacion.CASAWINKEL )
 		b : Buffer()
 	then
 System.out.println("Winkel está en la reunion");
@@ -40,15 +40,13 @@ System.out.println("Winkel está en la reunion");
 		modify(b){
 			append(Personaje.winkel+" está en e"+winkel.getUbicacion().toString()+". ");
 		};
-		
-
 end
 
 rule "Kurtz está en la reunion" agenda-group "g4"
 no-loop true
 	when
 		tercerhombre : Personaje (nombre == Personaje.tercerhombre, ubicacion == Ubicacion.PUENTE )
-		kurtz : Personaje( nombre == Personaje.kurtz, estadoSalud == EstadoSalud.VIVO, ubicacion != Ubicacion.PUENTE )
+		kurtz : Personaje( nombre == Personaje.kurtz, estadoSalud == EstadoSalud.VIVO, ubicacion == Ubicacion.CASANOVACLUB )
 		b : Buffer()
 	then
 System.out.println("Kurtz está en la reunion");
@@ -62,11 +60,12 @@ System.out.println("Kurtz está en la reunion");
 
 end
 
+
 rule "Popescu está en la reunion" agenda-group "g4"
 no-loop true
 	when
 		tercerhombre : Personaje (nombre == Personaje.tercerhombre, ubicacion == Ubicacion.PUENTE )
-		popescu : Personaje( nombre == Personaje.popescu, estadoSalud == EstadoSalud.VIVO, ubicacion != Ubicacion.PUENTE )
+		popescu : Personaje( nombre == Personaje.popescu, estadoSalud == EstadoSalud.VIVO, ubicacion == Ubicacion.CASANOVACLUB )
 		b : Buffer()
 	then
 System.out.println("Popescu está en la reunion");
@@ -82,7 +81,7 @@ end
 rule "tercer hombre va puente" agenda-group "g4"
 no-loop true
 	when
-		tercerhombre : Personaje ( nombre == Personaje.tercerhombre, ubicacion != Ubicacion.PUENTE )
+		tercerhombre : Personaje ( nombre == Personaje.tercerhombre, ubicacion == null )
 
 		b : Buffer()
 	then
@@ -228,7 +227,7 @@ no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CONFERENCIA )
 		kurtz : Personaje (nombre == Personaje.kurtz )
-		calloway : Personaje (nombre == Personaje.calloway, estadoSalud == EstadoSalud.VIVO)
+		calloway : Personaje (nombre == Personaje.calloway)
 		harbin : Personaje (nombre == Personaje.harbin )
 		lime : Personaje (nombre == Personaje.lime )
 
@@ -306,8 +305,9 @@ end
 rule "Paine esta en la comisaria" agenda-group "g4"
 no-loop true
 	when
-		paine : Personaje (nombre == Personaje.paine , estadoSalud == EstadoSalud.VIVO)
-		martins : Personaje (nombre == Personaje.martins)
+		paine : Personaje (nombre == Personaje.paine, ubicacion == Ubicacion.COMISARIA, estadoSalud == EstadoSalud.VIVO)
+		calloway : Personaje (nombre == Personaje.calloway, ubicacion == Ubicacion.COMISARIA)
+		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA)
 		b : Buffer()
 	then
 System.out.println("Paine esta en la comisaria");
