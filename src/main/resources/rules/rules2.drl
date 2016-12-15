@@ -84,43 +84,7 @@ no-loop true
 end
 
 
-/*
-*
-* ESTA ES LA REGLA DEL BUCLE ↓↓↓↓↓
-* 
-*/
 
-
-rule "kurtz y martins hablan con karl" agenda-group "g2"
-no-loop true
-    when
-    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
-        kurtz : Personaje( nombre == Personaje.kurtz,ubicacion == Ubicacion.CASALIME )
-        karl : Personaje( karl == Personaje.karl)
-        
-		not Personaje( nombre == Personaje.karl ) from kurtz.conoce_a    
-
-        b : Buffer()
-
-    then
-
-	
-   		modify(karl){//
-    	 getConoce_a().add(kurtz);
-    	};
-    	
-    	modify(kurtz){//
-    	 getConoce_a().add(karl);
-    	};
-
-    	modify(b){
-		append(Personaje.kurtz+" conoce a "+Personaje.karl+". ").
-		append(Personaje.karl+" conoce a "+Personaje.kurtz+". ");
-
-		}
-		
-		System.out.println("kurtz y martins hablan con karl");
-end
 
 rule "kurtz y martins hablan de winkel" agenda-group "g2"
 no-loop true
@@ -130,9 +94,10 @@ no-loop true
         winkel : Personaje( nombre == Personaje.winkel, estadoSalud == EstadoSalud.VIVO)
         lime : Personaje (nombre == Personaje.lime)
         popescu : Personaje (nombre == Personaje.popescu)
-        
+        karl : Personaje( karl == Personaje.karl)
+
         not Personaje( nombre == Personaje.winkel ) from kurtz.conoce_a
-        
+
         b : Buffer()
 
     then
@@ -142,7 +107,6 @@ no-loop true
     	 getConoce_a().add(lime);
     	};
 
-
 		modify(winkel){//
     		getConoce_a().add(kurtz);
     	};
@@ -150,7 +114,6 @@ no-loop true
     	modify(winkel){// añadir en popescu
     		getConoce_a().add(popescu);
     	};
-
 
 		modify(lime){//
     		getConoce_a().add(winkel);
@@ -166,7 +129,19 @@ no-loop true
 			append(Personaje.winkel+" conoce a "+Personaje.popescu+". ").
 			append(Personaje.kurtz+" conoce a "+Personaje.winkel+". ").
 			append(Personaje.lime+" conoce a "+Personaje.winkel+". ");
+		}
+		
+		modify(karl){
+    	 getConoce_a().add(kurtz);
+    	};
 
+    	modify(kurtz){
+    	 getConoce_a().add(karl);
+    	};
+
+    	modify(b){
+			append(Personaje.kurtz+" conoce a "+Personaje.karl+". ").
+			append(Personaje.karl+" conoce a "+Personaje.kurtz+". ");
 		}
 
 end
@@ -179,9 +154,10 @@ no-loop true
         winkel : Personaje( nombre == Personaje.winkel)
         lime : Personaje (nombre == Personaje.lime)
         popescu : Personaje (nombre == Personaje.popescu,estadoSalud == EstadoSalud.VIVO)
-        
+        karl : Personaje( karl == Personaje.karl)
+
         not Personaje( nombre == Personaje.popescu ) from kurtz.conoce_a
-        
+
         b : Buffer()
 
     then
@@ -211,6 +187,7 @@ no-loop true
 		modify(popescu){//
     		getAmigo_de().add(kurtz);
     	};
+
     	modify(popescu){//
     		getConoce_a().add(winkel);
     	};
@@ -224,7 +201,6 @@ no-loop true
     	};
 
     	modify(b){
-
 			append(Personaje.popescu+" conoce a "+Personaje.winkel+". ").
 			append(Personaje.popescu+" conoce a "+Personaje.lime+". ").
 			append(Personaje.popescu+" conoce a "+Personaje.kurtz+". ").
@@ -235,6 +211,19 @@ no-loop true
 			append(Personaje.kurtz+" conoce a "+Personaje.popescu+". ").
 			append(Personaje.kurtz+" es amigo de "+Personaje.popescu+". ");
 		}
+		
+		modify(karl){
+    	 getConoce_a().add(kurtz);
+    	};
+
+    	modify(kurtz){
+    	 getConoce_a().add(karl);
+    	};
+
+    	modify(b){
+			append(Personaje.kurtz+" conoce a "+Personaje.karl+". ").
+			append(Personaje.karl+" conoce a "+Personaje.kurtz+". ");
+		}
 end
 
 rule "kurtz y martins hablan de anna" agenda-group "g2"
@@ -244,6 +233,7 @@ no-loop true
         kurtz : Personaje( nombre == Personaje.kurtz ,ubicacion == Ubicacion.CASALIME )
         anna : Personaje( nombre == Personaje.anna, estadoSalud == EstadoSalud.VIVO)
         lime : Personaje (nombre == Personaje.lime)
+        karl : Personaje( karl == Personaje.karl)
         
         not Personaje( nombre == Personaje.anna ) from kurtz.conoce_a 
          
@@ -254,38 +244,84 @@ no-loop true
      System.out.println("kurtz y martins hablan de anna");
 
     	modify(kurtz){ //
-	    		getConoce_a().add(anna);
+    		getConoce_a().add(anna);
 	    };
 
     	modify(lime){//
-	    		getConoce_a().add(anna);
+    		getConoce_a().add(anna);
 	    };
 
 	    modify(anna){ //
-				setUbicacion(Ubicacion.CASANOVACLUB);
-			};
+			setUbicacion(Ubicacion.CASANOVACLUB);
+		};
 
 		modify(anna){ //
-	    		getConoce_a().add(lime);
+    		getConoce_a().add(lime);
 	    };
-
-
 
    		modify(martins){ //
     		getBusca_a().add(anna);
     	};
 
-    	 modify(b){
-
+    	modify(b){
 			append(Personaje.lime+" conoce a "+Personaje.anna+". ").
 			append(Personaje.kurtz+" conoce a "+Personaje.anna+". ").
 			append(Personaje.anna+" conoce a "+Personaje.lime+". ").
 			append(Personaje.anna+" está en "+anna.getUbicacion().toString()+". ").
 			append(Personaje.martins+" busca a "+Personaje.anna+". ");
 		};
+		
+		modify(karl){
+    	 getConoce_a().add(kurtz);
+    	};
+
+    	modify(kurtz){
+    	 getConoce_a().add(karl);
+    	};
+
+    	modify(b){
+			append(Personaje.kurtz+" conoce a "+Personaje.karl+". ").
+			append(Personaje.karl+" conoce a "+Personaje.kurtz+". ");
+		}
 
 end
 
+/*
+*
+* ESTA ES LA REGLA DEL BUCLE ↓↓↓↓↓
+* 
+*/
+
+/*
+rule "kurtz y martins hablan con karl" agenda-group "g2"
+no-loop true
+    when
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
+        kurtz : Personaje( nombre == Personaje.kurtz,ubicacion == Ubicacion.CASALIME )
+        karl : Personaje( karl == Personaje.karl)
+
+		not Personaje( nombre == Personaje.karl ) from kurtz.conoce_a    
+
+        b : Buffer()
+
+    then
+
+   		modify(karl){
+    	 getConoce_a().add(kurtz);
+    	};
+
+    	modify(kurtz){
+    	 getConoce_a().add(karl);
+    	};
+
+    	modify(b){
+			append(Personaje.kurtz+" conoce a "+Personaje.karl+". ").
+			append(Personaje.karl+" conoce a "+Personaje.kurtz+". ");
+		}
+
+		System.out.println("kurtz y martins hablan con karl");
+end
+*/
 
 rule "visita a anna en el teatro" agenda-group "g2" //
 no-loop true
@@ -296,7 +332,7 @@ no-loop true
     	b : Buffer()
     then
 
-    // System.out.println("XXX");
+    System.out.println("visita a anna en el teatro");
 
      	modify(martins){
 	    setUbicacion(Ubicacion.CASANOVACLUB);
@@ -333,7 +369,7 @@ end
         b : Buffer()
     then
 
-    // System.out.println("XXX");
+    System.out.println("vuelta a casa Lime");
 
     	modify(martins){
 	    setUbicacion(Ubicacion.CASALIME);
@@ -371,7 +407,7 @@ no-loop true
       	b : Buffer()
     then
 
-    // System.out.println("XXX");
+	System.out.println("martins y anna van a casa de anna");
 
     	modify(anna){
 	    setUbicacion(Ubicacion.CASAANNA);

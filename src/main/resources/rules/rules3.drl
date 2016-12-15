@@ -11,33 +11,36 @@ no-loop true
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
         anna : Personaje( nombre == Personaje.anna, ubicacion == Ubicacion.CASAANNA, nacionalidad != Nacionalidad.AUSTRIA )
         calloway : Personaje( nombre == Personaje.calloway )
+        
+        not Personaje( nombre == Personaje.calloway ) from anna.conoce_a 
 
         b : Buffer()
 
     then
+System.out.println("problemas en casa de anna");
     	 modify(calloway){
 	    	setUbicacion(Ubicacion.CASAANNA);
 	    };
-	    
+
       modify(anna){
 	    	getConoce_a().add(calloway)
 	    };
-	    
+
 	    modify(calloway){
 	    	getConoce_a().add(anna)
 	    };
-	    
+
 	    modify(martins){
     		getEnfrentado_con().add(calloway);
     	};
-		
+
 
     	modify(b){
 			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
 			append(Personaje.anna+" conoce a "+Personaje.calloway+". ").
 			append(Personaje.calloway+" conoce a "+Personaje.anna+". ").
 			append(Personaje.martins+" enfrentado con "+Personaje.calloway+". ");
-			
+
 		};
 
 end
@@ -48,26 +51,27 @@ no-loop true
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
 		anna : Personaje( nombre == Personaje.anna, ubicacion == Ubicacion.CASAANNA, nacionalidad != Nacionalidad.AUSTRIA )
         paine : Personaje( nombre == Personaje.paine, estadoSalud == EstadoSalud.VIVO )
-	
+
 		b : Buffer()
 	then
-	
+System.out.println("anna conoce a paine en su casa");
+
 		modify(anna){
 	    	getConoce_a().add(paine)
 	    };
-	    
+
 	    modify(paine){
 	    	getConoce_a().add(anna)
 	    };
-	    
+
 	    modify(paine){
 	    	setUbicacion(Ubicacion.CASAANNA);
 	    };
-	    
+
 	    modify(martins){
     		getEnfrentado_con().add(paine);
     	};
-    	
+
     	modify(b){
     		append(Personaje.paine+" va a"+paine.getUbicacion().toString()+". ").
     		append(Personaje.anna+" conoce a "+Personaje.paine+". ").
@@ -88,6 +92,7 @@ end
 				b : Buffer()
 
     then
+System.out.println("van a la comisaria ");
     	modify(calloway){
 	    	setUbicacion(Ubicacion.COMISARIA);
 	    };
@@ -114,6 +119,7 @@ no-loop true
 				b : Buffer()
 
     then
+System.out.println("va a ver a winkel");
 
       	modify(winkel){
 			setUbicacion(Ubicacion.CASAWINKEL);
@@ -135,9 +141,12 @@ no-loop true
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAWINKEL )
         winkel : Personaje( nombre == Personaje.winkel, ubicacion == Ubicacion.CASAWINKEL )
 
-				b : Buffer()
+		not Personaje( nombre == Personaje.winkel ) from martins.conoce_a 
+
+		b : Buffer()
 
     then
+System.out.println("habla con Winkel");
     	modify(martins){
       		getConoce_a().add(winkel);
       	};
@@ -152,10 +161,10 @@ no-loop true
 			};
 end
 
-rule "martins y anna van al cassanovaclub" agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir
+rule "martins y anna van al cassanovaclub" agenda-group "g3"
 no-loop true
    when
-    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAWINKEL || ubicacion == Ubicacion.CASAANNA || ubicacion == Ubicacion.CASALIME )
         kurtz : Personaje( nombre == Personaje.kurtz )
         popescu : Personaje( nombre == Personaje.popescu, estadoSalud == EstadoSalud.VIVO )
         tercerhombre : Personaje( nombre == Personaje.tercerhombre )
@@ -163,7 +172,8 @@ no-loop true
 				b : Buffer()
 
     then
-    	
+System.out.println("martins y anna van al cassanovaclub");
+
 
 		modify(kurtz){
 			setUbicacion(Ubicacion.CASANOVACLUB);
@@ -194,11 +204,11 @@ no-loop true
     	};
 
 			modify(b){
-			
-			
+
+
 			append(Personaje.martins+" conoce a "+Personaje.popescu+". ").
 			append(Personaje.popescu+" conoce a "+Personaje.martins+". ").
-			
+
 			append(Personaje.kurtz+" va a"+kurtz.getUbicacion().toString()+". ").
 			append(Personaje.popescu+" va a"+popescu.getUbicacion().toString()+". ").
 			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
@@ -207,7 +217,7 @@ no-loop true
 		};
 end
 
- 
+
  rule "anna está en casanova club" agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir
 no-loop true
    when
@@ -215,10 +225,11 @@ no-loop true
    		popescu : Personaje( nombre == Personaje.popescu, estadoSalud == EstadoSalud.VIVO)
    		kurtz : Personaje( nombre == Personaje.kurtz )
    		anna : Personaje( nombre == Personaje.anna, ubicacion == Ubicacion.COMISARIA, estadoSalud == EstadoSalud.VIVO )
-   		
+
    		b : Buffer()
    	then
-   	
+System.out.println("anna está en casanova club");
+
    		modify(anna){
     		getConoce_a().add(kurtz);
     	};
@@ -230,7 +241,7 @@ no-loop true
     	modify(anna){
 			setUbicacion(Ubicacion.CASANOVACLUB);
 		};
-		
+
 		modify(b){
 			append(Personaje.anna+" va a"+anna.getUbicacion().toString()+". ").
 			append(Personaje.anna+" conoce a "+Personaje.kurtz+". ").
@@ -238,21 +249,21 @@ no-loop true
 			append(Personaje.popescu+" conoce a "+Personaje.anna+". ");
 		}
  end
- 
+
 rule "crabbin está en casanova club" agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir
 no-loop true
    when
-	   	crabbin : Personaje( nombre == Personaje.crabbin, estadoSalud == EstadoSalud.VIVO)
-	   	
+	   	crabbin : Personaje( nombre == Personaje.crabbin, ubicacion != Ubicacion.CASANOVACLUB, estadoSalud == EstadoSalud.VIVO)
+
 	   	b : Buffer()
    then
-   
+System.out.println("crabbin está en casanova club");
+
 	   	modify(crabbin){
 			setUbicacion(Ubicacion.CASANOVACLUB);
 		};
-	   
+
 	   	modify(b){
 			append(Personaje.crabbin+" va a"+crabbin.getUbicacion().toString()+". ");
 		};
  end
- 
