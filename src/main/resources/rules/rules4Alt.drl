@@ -1,0 +1,88 @@
+//created on: 14-dic-2016
+package rules
+
+//list any import classes here.
+
+import tercerhombre.personaje.Personaje;
+import tercerhombre.propiedades.*;
+import tercerhombre.io.Buffer;
+
+/*
+* -------------------------------------------------------------------
+* ######################## ALTERNATIVAS ############################
+* -------------------------------------------------------------------
+*/
+
+/*
+* - Si Crabbin esta muerto Martins no va a la conferencia y Popescu mata a Martins en el hotel Sacher
+* - Si Karl esta muerto Martins no va a hablar con él, Martins se queda en el hotel y Popescu mata a Martins
+* - Si Popescu esta muerto no intenta matar a Martins
+* - Si Anna esta muerta, Martins se va sin hablar con nadie y no ve a Lime.
+*/
+
+rule "Crabbin esta muerto" agenda-group "g4"
+no-loop true
+    when
+        crabbin : Personaje(nombre == Personaje.crabbin, estadoSalud == EstadoSalud.MUERTO )
+       	popescu : Personaje( nombre == Personaje.popescu, ubicacion == Ubicacion.PUENTE )
+        martins : Personaje ( nombre == Personaje.martins)
+ 		b : Buffer()
+    then
+ 		
+       	modify(martins){
+			setUbicacion(Ubicacion.HOTELSACHER);
+		};
+		
+		modify(b){
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+", ya que sin Crabbin no hay conferencia. ");
+		};	
+end
+
+rule "Popescu mata a Martins" agenda-group "g4"
+no-loop true
+    when
+       	popescu : Personaje( nombre == Personaje.popescu, ubicacion == Ubicacion.PUENTE )
+        martins : Personaje ( nombre == Personaje.martins, ubicacion == Ubicacion.HOTELSACHER )
+ 		b : Buffer()
+    then
+ 		
+       	modify(popescu){
+			setUbicacion(Ubicacion.HOTELSACHER);
+		};
+		
+		modify(b){
+			append(Personaje.popescu+" va a"+popescu.getUbicacion().toString()+". ").
+			append(Personaje.popescu+" mata a Martins en su habitación. ");
+		};	
+		
+		modify(martins){
+			setEstadoSalud(EstadoSalud.MUERTO);
+		};
+		
+		modify(martins){
+			setUbicacion(Ubicacion.CEMENTERIO);
+		};
+		
+		modify(b){
+			append(Personaje.martins+" esta muerto y va a"+martins.getUbicacion().toString()+". ").
+			append("sin Martins no se descubre quien es el tercer hombre. ");
+		};	
+		
+				//insert(new Fin());
+		
+end
+
+rule "Anna esta muerta " agenda-group "g4"
+no-loop true
+	when
+		martins : Personaje ( nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
+        anna : Personaje ( nombre == Personaje.anna, estadoSalud == EstadoSalud.MUERTO )
+ 		b : Buffer()
+	then
+		modify(b){
+			append(Personaje.martins+" al saber la verdad, decide volver a EEUU. ");
+		};
+		
+		//insert(new Fin());
+	
+end

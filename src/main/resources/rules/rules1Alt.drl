@@ -12,8 +12,6 @@ import tercerhombre.Fin;
 */
 
 
-
-
 // Si calloway esta muerto, martins va al cementerio y luego vuelve a casa.
 // Crear una regla general para: martins vuelve a casa.
 
@@ -51,3 +49,4 @@ no-loop true
 		insert(new Fin());
 end
 
+// Si crabbin esta muerto, no conoce a martins. Pero martins se queda porque ese mismo día habla con Kurtz.

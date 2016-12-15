@@ -1,0 +1,68 @@
+//created on: 14-dic-2016
+package rules
+
+//list any import classes here.
+
+import tercerhombre.personaje.Personaje;
+import tercerhombre.propiedades.*;
+import tercerhombre.io.Buffer;
+
+//declare any global variables here
+
+/*
+ - Si Anna no es rusa no tiene problemas con el pasaporte y no la llevan a la comisaria.
+ 	Si no la llevan a la comisaria Martins va a su casa a hablar con ella
+ 	
+ - Si Anna no es rusa, Martins no accede a ayudar a Calloway y decide irse a EEUU
+ 
+*/
+
+
+
+rule "Anna no es rusa, Martins va a su casa a hablar de Lime"
+no-loop true
+    when
+		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO )
+		calloway : Personaje (nombre == Personaje.calloway, ubicacion == Ubicacion.CEMENTERIO )
+ 		anna : Personaje (nombre == Personaje.anna, nacionalidad != Nacionalidad.AUSTRIA )
+ 		harbin : Personaje (nombre == Personaje.harbin, estadoSalud == EstadoSalud.MUERTO )
+		lime : Personaje (nombre == Personaje.lime )
+ 		b : Buffer()
+    then
+    	modify(anna){
+			setUbicacion(Ubicacion.CASAANNA);
+		}
+		
+		modify(martins){
+			setUbicacion(Ubicacion.CASAANNA);
+		}
+		modify(anna){
+   		getBusca_a().add(lime);
+		};
+		
+		modify(b){
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+" a hablar con Anna. ").
+			append(Personaje.martins+" le cuenta a Anna que ha visto a Lime. ").
+			append(Personaje.anna+" busca a Lime. ");
+		};
+    	
+    	
+
+end
+
+rule "Anna no es rusa, Martins no ayuda a Calloway y se va"
+no-loop true
+    when
+		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
+		calloway : Personaje (nombre == Personaje.calloway, ubicacion == Ubicacion.COMISARIA )
+ 		anna : Personaje (nombre == Personaje.anna, nacionalidad != Nacionalidad.AUSTRIA )
+ 		
+ 		b : Buffer()
+    then
+    	modify(b){
+			append(Personaje.martins+" no cede en ayudar a Calloway puesto que él no puede ofrecerle nada a cambio. ").
+			append(Personaje.martins+" decide volverse a EEUU. ");
+		};
+    	
+    	//insert(new Fin());
+end

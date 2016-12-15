@@ -10,61 +10,77 @@ import tercerhombre.io.Buffer;
 //declare any global variables here
 
 
+rule "Winkel está en la reunion" agenda-group "g4"
+no-loop true
+	when
+		tercerhombre : Personaje (nombre == Personaje.tercerhombre, ubicacion == Ubicacion.PUENTE )
+		winkel : Personaje( nombre == Personaje.winkel, estadoSalud == EstadoSalud.VIVO )
+		b : Buffer()
+	then
+		modify(winkel){
+			setUbicacion(Ubicacion.PUENTE);
+		};
+		modify(b){
+			append(Personaje.winkel+" está en e"+winkel.getUbicacion().toString()+". ");
+		};
+
+end
+
+rule "Kurtz está en la reunion" agenda-group "g4"
+no-loop true
+	when
+		tercerhombre : Personaje (nombre == Personaje.tercerhombre, ubicacion == Ubicacion.PUENTE )
+		kurtz : Personaje( nombre == Personaje.kurtz, estadoSalud == EstadoSalud.VIVO )
+		b : Buffer()
+	then
+		modify(kurtz){
+			setUbicacion(Ubicacion.PUENTE);
+		};
+		modify(b){
+			append(Personaje.kurtz+" está en e"+kurtz.getUbicacion().toString()+". ");
+		};
+
+
+end
+
+rule "Popescu está en la reunion" agenda-group "g4"
+no-loop true
+	when
+		tercerhombre : Personaje (nombre == Personaje.tercerhombre, ubicacion == Ubicacion.PUENTE )
+		popescu : Personaje( nombre == Personaje.popescu, estadoSalud == EstadoSalud.VIVO )
+		b : Buffer()
+	then
+		modify(popescu){
+			setUbicacion(Ubicacion.PUENTE);
+		};
+		modify(b){
+			append(Personaje.popescu+" está en e"+popescu.getUbicacion().toString()+". ");
+		};
+
+end
+
 rule "reunion en el puente" agenda-group "g4"
 no-loop true
 	when
 		tercerhombre : Personaje ( nombre == Personaje.tercerhombre )
-		winkel : Personaje( nombre == Personaje.winkel )
-		popescu : Personaje ( nombre == Personaje.popescu, ubicacion == Ubicacion.CASANOVACLUB )
-		kurtz : Personaje (nombre == Personaje.kurtz, ubicacion == Ubicacion.CASANOVACLUB )
-
+	
 		b : Buffer()
 	then
-
-		modify(popescu){
-			setUbicacion(Ubicacion.PUENTE);
-		};
-
-		modify(winkel){
-			setUbicacion(Ubicacion.PUENTE);
-		};
-
-		modify(kurtz){
-			setUbicacion(Ubicacion.PUENTE);
-		};
 
 		modify(tercerhombre){
 			setUbicacion(Ubicacion.PUENTE);
 		};
 
 		modify(b){
-			append("El tercer hombre, Popescu, Dr Winkel y Kurtz se reunen en e"+tercerhombre
-			.getUbicacion().toString()+". ");
-
+			append("El tercer hombre está en e"+tercerhombre.getUbicacion().toString()+". ");
 		};
-
-		modify(kurtz){
-    		getAmigo_de().add(winkel);
-    	};
-
-		modify(winkel){
-    		getAmigo_de().add(kurtz);
-    	};
-
-		modify(popescu){
-    		getConoce_a().add(winkel);
-    	};
-
-		modify(winkel){
-    		getConoce_a().add(popescu);
-    	};
-
 end
+
+
 
 rule "Martins va a hablar con el portero" agenda-group "g4"
 no-loop true
     when
-		popescu : Personaje ( nombre == Personaje.popescu, ubicacion == Ubicacion.PUENTE )
 		martins : Personaje ( nombre == Personaje.martins, ubicacion == Ubicacion.CASANOVACLUB )
 		karl : Personaje ( nombre == Personaje.karl, estadoSalud == EstadoSalud.VIVO )
 		b : Buffer()
@@ -239,6 +255,7 @@ no-loop true
 		modify(harbin){
     		getTrabaja_con().add(kurtz);
     	};
+    	// METER CONSULTAS CONOCER
 
 
     	modify(lime){
@@ -281,7 +298,7 @@ no-loop true
 
 end
 
-rule "Martins decide irse y informa a Anna" agenda-group "g4"
+rule "Martins decide irse e informa a Anna" agenda-group "g4"
 no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
