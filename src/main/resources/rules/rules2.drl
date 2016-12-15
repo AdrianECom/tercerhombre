@@ -53,6 +53,8 @@ no-loop true
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(null).
     	setUbicacion(null));
+    	
+    	System.out.println("insertar");
 
 end
 
@@ -60,7 +62,7 @@ rule "martins van casa lime" agenda-group "g2"
 no-loop true
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CAFEMOZART )
-    	kurtz : Personaje( nombre == Personaje.kurtz,estadoSalud == EstadoSalud.VIVO, ubicacion == Ubicacion.CAFEMOZART )
+    	kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CAFEMOZART )
     	b : Buffer()
     then
 
@@ -77,22 +79,36 @@ no-loop true
 		append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
 		append(Personaje.kurtz+" va a"+kurtz.getUbicacion().toString()+". ");
 		}
+		
+		System.out.println("martins va casa lime");
 end
+
+
+/*
+*
+* ESTA ES LA REGLA DEL BUCLE ↓↓↓↓↓
+* 
+*/
+
 
 rule "kurtz y martins hablan con karl" agenda-group "g2"
 no-loop true
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
-        kurtz : Personaje( nombre == Personaje.kurtz, estadoSalud == EstadoSalud.VIVO ,ubicacion == Ubicacion.CASALIME )
-        karl : Personaje( karl == Personaje.karl, estadoSalud == EstadoSalud.VIVO)
+        kurtz : Personaje( nombre == Personaje.kurtz,ubicacion == Ubicacion.CASALIME )
+        karl : Personaje( karl == Personaje.karl)
+        
+		not Personaje( nombre == Personaje.karl ) from kurtz.conoce_a    
+
         b : Buffer()
 
     then
 
-    // System.out.println("XXX");
+	
    		modify(karl){//
     	 getConoce_a().add(kurtz);
     	};
+    	
     	modify(kurtz){//
     	 getConoce_a().add(karl);
     	};
@@ -102,6 +118,8 @@ no-loop true
 		append(Personaje.karl+" conoce a "+Personaje.kurtz+". ");
 
 		}
+		
+		System.out.println("kurtz y martins hablan con karl");
 end
 
 rule "kurtz y martins hablan de winkel" agenda-group "g2"
@@ -112,11 +130,14 @@ no-loop true
         winkel : Personaje( nombre == Personaje.winkel, estadoSalud == EstadoSalud.VIVO)
         lime : Personaje (nombre == Personaje.lime)
         popescu : Personaje (nombre == Personaje.popescu)
+        
+        not Personaje( nombre == Personaje.winkel ) from kurtz.conoce_a
+        
         b : Buffer()
 
     then
 
-     //System.out.println("XXX");
+     System.out.println("kurtz y martins hablan de winkel");
    		modify(winkel){//
     	 getConoce_a().add(lime);
     	};
@@ -158,11 +179,14 @@ no-loop true
         winkel : Personaje( nombre == Personaje.winkel)
         lime : Personaje (nombre == Personaje.lime)
         popescu : Personaje (nombre == Personaje.popescu,estadoSalud == EstadoSalud.VIVO)
+        
+        not Personaje( nombre == Personaje.popescu ) from kurtz.conoce_a
+        
         b : Buffer()
 
     then
 
-    // System.out.println("XXX");
+     System.out.println("kurtz y martins hablan de popescu");
 
     	modify(lime){ //
     		getConoce_a().add(popescu);
@@ -217,14 +241,17 @@ rule "kurtz y martins hablan de anna" agenda-group "g2"
 no-loop true
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
-        kurtz : Personaje( nombre == Personaje.kurtz, estadoSalud == EstadoSalud.VIVO ,ubicacion == Ubicacion.CASALIME )
+        kurtz : Personaje( nombre == Personaje.kurtz ,ubicacion == Ubicacion.CASALIME )
         anna : Personaje( nombre == Personaje.anna, estadoSalud == EstadoSalud.VIVO)
         lime : Personaje (nombre == Personaje.lime)
+        
+        not Personaje( nombre == Personaje.anna ) from kurtz.conoce_a 
+         
         b : Buffer()
 
     then
 
-    // System.out.println("XXX");
+     System.out.println("kurtz y martins hablan de anna");
 
     	modify(kurtz){ //
 	    		getConoce_a().add(anna);

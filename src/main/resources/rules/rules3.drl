@@ -9,8 +9,7 @@ rule "problemas en casa de anna" agenda-group "g3"
 no-loop true
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
-        anna : Personaje( nombre == Personaje.anna, ubicacion == Ubicacion.CASAANNA )
-        paine : Personaje( nombre == Personaje.paine )
+        anna : Personaje( nombre == Personaje.anna, ubicacion == Ubicacion.CASAANNA, nacionalidad != Nacionalidad.AUSTRIA )
         calloway : Personaje( nombre == Personaje.calloway )
 
         b : Buffer()
@@ -19,40 +18,64 @@ no-loop true
     	 modify(calloway){
 	    	setUbicacion(Ubicacion.CASAANNA);
 	    };
-	    modify(paine){
-	    	setUbicacion(Ubicacion.CASAANNA);
-	    };
+	    
       modify(anna){
 	    	getConoce_a().add(calloway)
 	    };
-	    modify(anna){
-	    	getConoce_a().add(paine)
-	    };
+	    
 	    modify(calloway){
 	    	getConoce_a().add(anna)
 	    };
-	    modify(paine){
-	    	getConoce_a().add(anna)
-	    };
+	    
 	    modify(martins){
     		getEnfrentado_con().add(calloway);
     	};
-		modify(martins){
-    		getEnfrentado_con().add(paine);
-    	};
+		
 
     	modify(b){
 			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
-			append(Personaje.paine+" va a"+paine.getUbicacion().toString()+". ").
 			append(Personaje.anna+" conoce a "+Personaje.calloway+". ").
-			append(Personaje.anna+" conoce a "+Personaje.paine+". ").
 			append(Personaje.calloway+" conoce a "+Personaje.anna+". ").
-			append(Personaje.paine+" conoce a "+Personaje.anna+". ").
-			append(Personaje.martins+" enfrentado con "+Personaje.calloway+". ").
-			append(Personaje.martins+" enfrentado con "+Personaje.paine+". ");
+			append(Personaje.martins+" enfrentado con "+Personaje.calloway+". ");
+			
 		};
 
 end
+
+rule "anna conoce a paine en su casa" agenda-group "g3"
+no-loop true
+	when
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
+		anna : Personaje( nombre == Personaje.anna, ubicacion == Ubicacion.CASAANNA, nacionalidad != Nacionalidad.AUSTRIA )
+        paine : Personaje( nombre == Personaje.paine, estadoSalud == EstadoSalud.VIVO )
+	
+		b : Buffer()
+	then
+	
+		modify(anna){
+	    	getConoce_a().add(paine)
+	    };
+	    
+	    modify(paine){
+	    	getConoce_a().add(anna)
+	    };
+	    
+	    modify(paine){
+	    	setUbicacion(Ubicacion.CASAANNA);
+	    };
+	    
+	    modify(martins){
+    		getEnfrentado_con().add(paine);
+    	};
+    	
+    	modify(b){
+    		append(Personaje.paine+" va a"+paine.getUbicacion().toString()+". ").
+    		append(Personaje.anna+" conoce a "+Personaje.paine+". ").
+    		append(Personaje.paine+" conoce a "+Personaje.anna+". ").
+    		append(Personaje.martins+" enfrentado con "+Personaje.paine+". ");
+    	}
+end
+
 
  rule "van a la comisaria " agenda-group "g3"
  no-loop true
@@ -85,8 +108,8 @@ end
 rule "va a ver a winkel" agenda-group "g3"
 no-loop true
 	when
-    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
-        winkel : Personaje( nombre == Personaje.winkel )
+    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA || ubicacion == Ubicacion.CASALIME )
+        winkel : Personaje( nombre == Personaje.winkel, estadoSalud == EstadoSalud.VIVO )
 
 				b : Buffer()
 
@@ -106,7 +129,7 @@ no-loop true
 
     end
 
-rule "visita a Winkel" agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir
+rule "habla con Winkel" agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir
 no-loop true
    when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAWINKEL )
@@ -133,25 +156,14 @@ rule "martins y anna van al cassanovaclub" agenda-group "g3"  // para inseratar 
 no-loop true
    when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
-        anna : Personaje( nombre == Personaje.winkel, ubicacion == Ubicacion.COMISARIA )
         kurtz : Personaje( nombre == Personaje.kurtz )
-        popescu : Personaje( nombre == Personaje.popescu )
+        popescu : Personaje( nombre == Personaje.popescu, estadoSalud == EstadoSalud.VIVO )
         tercerhombre : Personaje( nombre == Personaje.tercerhombre )
 
 				b : Buffer()
 
     then
-    	modify(anna){
-    		getConoce_a().add(kurtz);
-    	};
-
-		modify(anna){
-    		getConoce_a().add(popescu);
-    	};
-
-    	modify(anna){
-			setUbicacion(Ubicacion.CASANOVACLUB);
-		};
+    	
 
 		modify(kurtz){
 			setUbicacion(Ubicacion.CASANOVACLUB);
@@ -182,12 +194,11 @@ no-loop true
     	};
 
 			modify(b){
-			append(Personaje.anna+" conoce a "+Personaje.kurtz+". ").
-			append(Personaje.anna+" conoce a "+Personaje.popescu+". ").
-			append(Personaje.popescu+" conoce a "+Personaje.anna+". ").
+			
+			
 			append(Personaje.martins+" conoce a "+Personaje.popescu+". ").
 			append(Personaje.popescu+" conoce a "+Personaje.martins+". ").
-			append(Personaje.anna+" va a"+anna.getUbicacion().toString()+". ").
+			
 			append(Personaje.kurtz+" va a"+kurtz.getUbicacion().toString()+". ").
 			append(Personaje.popescu+" va a"+popescu.getUbicacion().toString()+". ").
 			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
@@ -195,3 +206,53 @@ no-loop true
 			append(Personaje.martins+" busca a "+Personaje.tercerhombre+". ");
 		};
 end
+
+ 
+ rule "anna está en casanova club" agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir
+no-loop true
+   when
+   		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASANOVACLUB )
+   		popescu : Personaje( nombre == Personaje.popescu, estadoSalud == EstadoSalud.VIVO)
+   		kurtz : Personaje( nombre == Personaje.kurtz )
+   		anna : Personaje( nombre == Personaje.anna, ubicacion == Ubicacion.COMISARIA, estadoSalud == EstadoSalud.VIVO )
+   		
+   		b : Buffer()
+   	then
+   	
+   		modify(anna){
+    		getConoce_a().add(kurtz);
+    	};
+
+		modify(anna){
+    		getConoce_a().add(popescu);
+    	};
+
+    	modify(anna){
+			setUbicacion(Ubicacion.CASANOVACLUB);
+		};
+		
+		modify(b){
+			append(Personaje.anna+" va a"+anna.getUbicacion().toString()+". ").
+			append(Personaje.anna+" conoce a "+Personaje.kurtz+". ").
+			append(Personaje.anna+" conoce a "+Personaje.popescu+". ").
+			append(Personaje.popescu+" conoce a "+Personaje.anna+". ");
+		}
+ end
+ 
+rule "crabbin está en casanova club" agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir
+no-loop true
+   when
+	   	crabbin : Personaje( nombre == Personaje.crabbin, estadoSalud == EstadoSalud.VIVO)
+	   	
+	   	b : Buffer()
+   then
+   
+	   	modify(crabbin){
+			setUbicacion(Ubicacion.CASANOVACLUB);
+		};
+	   
+	   	modify(b){
+			append(Personaje.crabbin+" va a"+crabbin.getUbicacion().toString()+". ");
+		};
+ end
+ 
