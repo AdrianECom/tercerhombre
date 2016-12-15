@@ -12,7 +12,7 @@ rule "insertar anna, winkel,popescu,tercerhombre " agenda-group "g2"
 no-loop true
 
     when
-    	
+
     then
     	insert(Personaje.nuevo().
     	setNombre(Personaje.anna).
@@ -21,9 +21,9 @@ no-loop true
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(null).
     	setUbicacion(null));
-    	
+
     	//Insertamos a Winkel
-    	
+
     	insert(Personaje.nuevo().
     	setNombre(Personaje.winkel).
     	setGenero(Genero.HOMBRE).
@@ -31,9 +31,9 @@ no-loop true
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(null).
     	setUbicacion(null));
-    	
+
 		//insertamos popescu
-    	
+
     	insert(Personaje.nuevo().
     	setNombre(Personaje.popescu).
     	setGenero(Genero.HOMBRE).
@@ -41,9 +41,9 @@ no-loop true
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(Nacionalidad.RUMANIA).
     	setUbicacion(null));
-    	
+
     	//insertamos tercerhombre
-    	
+
     	insert(Personaje.nuevo().
     	setNombre(Personaje.tercerhombre).
     	setGenero(Genero.HOMBRE).
@@ -51,133 +51,69 @@ no-loop true
     	setEstadoSalud(EstadoSalud.VIVO).
     	setNacionalidad(null).
     	setUbicacion(null));
-    	
+
 end
 
-rule "martins van casa lime" agenda-group "g2"
+rule "kurtz y  martins van casa lime" agenda-group "g2"
 no-loop true
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CAFEMOZART )
-    	b : Buffer()
+        kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CAFEMOZART )
+        winkel : Personaje( nombre == Personaje.winkel)
+        anna : Personaje( nombre == Personaje.anna)
+        popescu : Personaje( nombre == Personaje.popescu)
+        karl : Personaje( nombre == Personaje.karl)
+       	lime : Personaje( nombre == Personaje.lime)
+        b : Buffer()
+
     then
     	modify(martins){ //
 		setUbicacion(Ubicacion.CASALIME);
 		};
-		
-		modify(b){
-		append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ");
-		}
-end
 
-rule "kurtz van casa lime" agenda-group "g2"
-no-loop true
-    when
-    	kurtz : Personaje( nombre == Personaje.kurtz,estadoSalud == EstadoSalud.VIVO, ubicacion == Ubicacion.CAFEMOZART )
-    	b : Buffer()
-    then
-    	modify(kurtz){ //
-		setUbicacion(Ubicacion.CASALIME);
-		};
-		
-		modify(b){
-		append(Personaje.kurtz+" va a"+kurtz.getUbicacion().toString()+". ");
-		}
-end
-
-rule "kurtz y martins hablan con karl" agenda-group "g2"
-no-loop true
-    when
-    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
-        kurtz : Personaje( nombre == Personaje.kurtz, estadoSalud == EstadoSalud.VIVO ,ubicacion == Ubicacion.CASALIME )
-        karl : Personaje( karl == Personaje.karl, estadoSalud == EstadoSalud.VIVO)
-        b : Buffer()
-    	
-    then
-   		modify(karl){//
-    	 getConoce_a().add(kurtz);
+		modify(martins){ //
+    		getBusca_a().add(anna);
     	};
-    	modify(kurtz){//
-    	 getConoce_a().add(karl);
-    	};
-    	
-    	modify(b){
-		append(Personaje.kurtz+" conoce a "+Personaje.karl+". ").
-		append(Personaje.karl+" conoce a "+Personaje.kurtz+". ");
-		
-		}
-end
 
-rule "kurtz y martins hablan de winkel" agenda-group "g2"
-no-loop true
-    when
-    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
-        kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CASALIME )
-        winkel : Personaje( nombre == Personaje.winkel, estadoSalud == EstadoSalud.VIVO)
-        lime : Personaje (nombre == Personaje.lime)
-        popescu : Personaje (nombre == Personaje.popescu)
-        b : Buffer()
-    	
-    then
-   		modify(winkel){//
+
+    	modify(winkel){//
     	 getConoce_a().add(lime);
-    	};	
+    	};
 
 
 		modify(winkel){//
     		getConoce_a().add(kurtz);
-    	};	
-    	
-    	modify(winkel){// añadir en popescu
+    	};
+
+    	modify(winkel){//
     		getConoce_a().add(popescu);
-    	};	
-    	
+    	};
+
 
 		modify(lime){//
     		getConoce_a().add(winkel);
     	};
-    	
-    	modify(kurtz){ //
-    		getConoce_a().add(winkel);
-    	};	
-    	
-    	modify(b){
-			append(Personaje.winkel+" conoce a "+Personaje.kurtz+". ").
-			append(Personaje.winkel+" conoce a "+Personaje.lime+". ").
-			append(Personaje.winkel+" conoce a "+Personaje.popescu+". ").
-			append(Personaje.kurtz+" conoce a "+Personaje.winkel+". ").
-			append(Personaje.lime+" conoce a "+Personaje.winkel+". ");
-		
-		}
-    	
-end
 
-rule "kurtz y martins hablan de popescu" agenda-group "g2"
-no-loop true
-    when
-    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
-        kurtz : Personaje( nombre == Personaje.kurtz, ubicacion == Ubicacion.CASALIME )
-        winkel : Personaje( nombre == Personaje.winkel)
-        lime : Personaje (nombre == Personaje.lime)
-        popescu : Personaje (nombre == Personaje.popescu,estadoSalud == EstadoSalud.VIVO)
-        b : Buffer()
-    	
-    then
-   			
-    	modify(lime){ //
-    		getConoce_a().add(popescu);
-    	};
-    	
     	modify(lime){ //
     		getAmigo_de().add(popescu);
-    	};	
-    	
-    	modify(popescu){//
+    	};
+
+		modify(lime){ //
+    		getConoce_a().add(popescu);
+    	};
+
+		modify(lime){//
+	    		getConoce_a().add(anna);
+	    };
+
+
+		modify(popescu){//
     		getConoce_a().add(lime);
-    	};	
+    	};
 
 		modify(popescu){//
     		getAmigo_de().add(lime);
-    	};	
+    	};
 
 		modify(popescu){//
     		getConoce_a().add(kurtz);
@@ -185,7 +121,7 @@ no-loop true
 
 		modify(popescu){//
     		getAmigo_de().add(kurtz);
-    	};	
+    	};
     	modify(popescu){//
     		getConoce_a().add(winkel);
     	};
@@ -193,114 +129,117 @@ no-loop true
 		modify(kurtz){ //
     		getConoce_a().add(popescu);
     	};
-    	
-    	modify(kurtz){//
+
+		modify(kurtz){//
     		getAmigo_de().add(popescu);
     	};
-    	
-    	modify(b){
-		
-			append(Personaje.popescu+" conoce a "+Personaje.winkel+". ").
-			append(Personaje.popescu+" conoce a "+Personaje.lime+". ").
-			append(Personaje.popescu+" conoce a "+Personaje.kurtz+". ").
-			append(Personaje.popescu+" es amigo de "+Personaje.lime+". ").
-			append(Personaje.popescu+" es amigo de "+Personaje.kurtz+". ").
-			append(Personaje.lime+" es amigo de "+Personaje.popescu+". ").
-			append(Personaje.lime+" conoce a "+Personaje.popescu+". ").
-			append(Personaje.kurtz+" conoce a "+Personaje.popescu+". ").
-			append(Personaje.kurtz+" es amigo de "+Personaje.popescu+". ");
-		}
-end
+   	 	modify(kurtz){ //
+    		getConoce_a().add(winkel);
+    	};
 
-rule "kurtz y martins hablan de anna" agenda-group "g2"
-no-loop true
-    when
-    	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
-        kurtz : Personaje( nombre == Personaje.kurtz, estadoSalud == EstadoSalud.VIVO ,ubicacion == Ubicacion.CASALIME )
-        anna : Personaje( nombre == Personaje.anna, estadoSalud == EstadoSalud.VIVO)
-        lime : Personaje (nombre == Personaje.lime)
-        b : Buffer()
-    	
-    then
-    
-    	modify(kurtz){ //
+        modify(kurtz){ //
+		setUbicacion(Ubicacion.CASALIME);
+		};
+
+		modify(kurtz){ //
 	    		getConoce_a().add(anna);
 	    };
-    
-    	modify(lime){//
-	    		getConoce_a().add(anna);
+
+		modify(kurtz){ //
+	    		getConoce_a().add(karl);
 	    };
-	    
-	    modify(anna){ //
+    	modify(karl){ //
+
+    		getConoce_a().add(kurtz);
+    	};
+
+		//Insertamos de anna
+
+		modify(anna){ //
 				setUbicacion(Ubicacion.CASANOVACLUB);
 			};
 
 		modify(anna){ //
 	    		getConoce_a().add(lime);
-	    };
-    	
-    
-    
-   		modify(martins){ //
-    		getBusca_a().add(anna);
-    	};
-    	
-    	 modify(b){
-		
+	    	};
+
+
+
+
+		 modify(b){
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
+			append(Personaje.kurtz+" va a"+kurtz.getUbicacion().toString()+". ").
+			append(Personaje.lime+" conoce a "+Personaje.winkel+". ").
+			append(Personaje.lime+" conoce a "+Personaje.popescu+". ").
 			append(Personaje.lime+" conoce a "+Personaje.anna+". ").
+			append(Personaje.lime+" es amigo de "+Personaje.popescu+". ").
+			append(Personaje.kurtz+" conoce a "+Personaje.winkel+". ").
+			append(Personaje.kurtz+" conoce a "+Personaje.popescu+". ").
+			append(Personaje.kurtz+" es amigo de "+Personaje.popescu+". ").
 			append(Personaje.kurtz+" conoce a "+Personaje.anna+". ").
+			append(Personaje.kurtz+" conoce a "+Personaje.karl+". ").
+			append(Personaje.karl+" conoce a "+Personaje.kurtz+". ").
+			append(Personaje.winkel+" conoce a "+Personaje.kurtz+". ").
+			append(Personaje.winkel+" conoce a "+Personaje.lime+". ").
+			append(Personaje.winkel+" conoce a "+Personaje.popescu+". ").
+			append(Personaje.popescu+" conoce a "+Personaje.winkel+". ").
+			append(Personaje.popescu+" conoce a "+Personaje.lime+". ").
+			append(Personaje.popescu+" conoce a "+Personaje.kurtz+". ").
+			append(Personaje.popescu+" es amigo de "+Personaje.lime+". ").
+			append(Personaje.popescu+" es amigo de "+Personaje.kurtz+". ").
 			append(Personaje.anna+" conoce a "+Personaje.lime+". ").
-			append(Personaje.anna+" está en "+anna.getUbicacion().toString()+". ").
+			append(Personaje.anna+" esta en "+anna.getUbicacion().toString()+". ").
 			append(Personaje.martins+" busca a "+Personaje.anna+". ");
 		};
-    	
+
+
 end
 
 
-rule "visita a anna en el teatro" agenda-group "g2" // 
+rule "visita a anna en el teatro" agenda-group "g2" //
 no-loop true
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
-    	anna : Personaje( nombre == Personaje.anna ,estadoSalud == EstadoSalud.VIVO, ubicacion == Ubicacion.CASANOVACLUB)
+    	anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASANOVACLUB)
     	lime : Personaje( nombre == Personaje.lime)
     	b : Buffer()
     then
-    
+
      	modify(martins){
 	    setUbicacion(Ubicacion.CASANOVACLUB);
 	    };
-	    
+
 	     modify(martins){
 	    		getConoce_a().add(anna);
 	    };
-	    
+
 	    modify(anna){
 	    		getConoce_a().add(martins);
 	    };
-	    
+
 	    modify(anna){
     		getQuiere_a().add(lime);  //TODO sabemos si lime quiere a anna?
     	};
-    	
+
     	modify(b){
 			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
 			append(Personaje.martins+" conoce a "+Personaje.anna+". ").
 			append(Personaje.anna+" conoce a "+Personaje.martins+". ").
 			append(Personaje.anna+" quiere a "+Personaje.lime+". ");
 		};
-	    
+
 end
 
  rule "vuelta a casa Lime" agenda-group "g2"
  no-loop true
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASANOVACLUB )
-        anna : Personaje( nombre == Personaje.anna ,estadoSalud == EstadoSalud.VIVO,ubicacion == Ubicacion.CASANOVACLUB)
+        anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASANOVACLUB)
         karl : Personaje( nombre == Personaje.karl )
         tercerhombre : Personaje ( nombre == Personaje.anna )
         b : Buffer()
-    then 
-    	
+    then
+
     	modify(martins){
 	    setUbicacion(Ubicacion.CASALIME);
 	    };
@@ -323,32 +262,32 @@ end
 			append(Personaje.karl+" conoce a "+Personaje.anna+". ").
 			append(Personaje.martins+" Busca a "+Personaje.tercerhombre+". ");
 		};
-	    
-    	
-    
+
+
+
 end
 
 rule "martins y anna van a casa de anna" agenda-group "g2"
 no-loop true
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
-      	anna : Personaje( nombre == Personaje.anna, estadoSalud == EstadoSalud.VIVO, ubicacion == Ubicacion.CASALIME)
-      	
+      	anna : Personaje( nombre == Personaje.anna , ubicacion == Ubicacion.CASALIME)
+
       	b : Buffer()
     then
-    
+
     	modify(anna){
 	    setUbicacion(Ubicacion.CASAANNA);
 	    };
 	    modify(martins){
 	    setUbicacion(Ubicacion.CASAANNA);
 	    };
-	    
-	    
+
+
 	    modify(b){
 			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
 			append(Personaje.anna+" va a"+martins.getUbicacion().toString()+". ");
 		};
-	    
-    
-end    
+
+
+end 
