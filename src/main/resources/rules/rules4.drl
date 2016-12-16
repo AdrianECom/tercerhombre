@@ -15,7 +15,7 @@ no-loop true
 
     then
 
-    System.out.println("insertar harbin");
+    // System.out.println("insertar harbin");
     	insert(Personaje.nuevo().
     	setNombre(Personaje.harbin).
     	setGenero(Genero.HOMBRE).
@@ -33,7 +33,7 @@ no-loop true
 		winkel : Personaje( nombre == Personaje.winkel, estadoSalud == EstadoSalud.VIVO, ubicacion == Ubicacion.CASAWINKEL )
 		b : Buffer()
 	then
-System.out.println("Winkel está en la reunion");
+// System.out.println("Winkel está en la reunion");
 		modify(winkel){
 			setUbicacion(Ubicacion.PUENTE);
 		};
@@ -49,7 +49,7 @@ no-loop true
 		kurtz : Personaje( nombre == Personaje.kurtz, estadoSalud == EstadoSalud.VIVO, ubicacion == Ubicacion.CASANOVACLUB )
 		b : Buffer()
 	then
-System.out.println("Kurtz está en la reunion");
+// System.out.println("Kurtz está en la reunion");
 		modify(kurtz){
 			setUbicacion(Ubicacion.PUENTE);
 		};
@@ -68,7 +68,7 @@ no-loop true
 		popescu : Personaje( nombre == Personaje.popescu, estadoSalud == EstadoSalud.VIVO, ubicacion == Ubicacion.CASANOVACLUB )
 		b : Buffer()
 	then
-System.out.println("Popescu está en la reunion");
+// System.out.println("Popescu está en la reunion");
 		modify(popescu){
 			setUbicacion(Ubicacion.PUENTE);
 		};
@@ -78,23 +78,6 @@ System.out.println("Popescu está en la reunion");
 
 end
 
-rule "tercer hombre va puente" agenda-group "g4"
-no-loop true
-	when
-		tercerhombre : Personaje ( nombre == Personaje.tercerhombre, ubicacion == null )
-
-		b : Buffer()
-	then
-System.out.println("tercer hombre va puente");
-
-		modify(tercerhombre){
-			setUbicacion(Ubicacion.PUENTE);
-		};
-
-		modify(b){
-			append("El tercer hombre está en e"+tercerhombre.getUbicacion().toString()+". ");
-		};
-end
 
 
 
@@ -106,7 +89,7 @@ no-loop true
 		b : Buffer()
 
     then
-System.out.println("Martins va a hablar con el portero");
+// System.out.println("Martins va a hablar con el portero");
 
 		modify(martins){
 			setUbicacion(Ubicacion.CASALIME);
@@ -126,7 +109,7 @@ no-loop true
 		b : Buffer()
 
 	then
-System.out.println("Anna acompaña a Martins a ver a Karl");
+// System.out.println("Anna acompaña a Martins a ver a Karl");
 
     	modify(anna){
 			setUbicacion(Ubicacion.CASALIME);
@@ -144,7 +127,7 @@ no-loop true
 		b : Buffer()
 
 	then
-System.out.println("Karl esta muerto");
+// System.out.println("Karl esta muerto");
 		modify(karl){
 			setEstadoSalud(EstadoSalud.MUERTO);
 		};
@@ -167,7 +150,7 @@ no-loop true
 		b : Buffer()
 
     then
-System.out.println("Martins va a dar la conferencia");
+// System.out.println("Martins va a dar la conferencia");
     	modify(crabbin){
 			setUbicacion(Ubicacion.CONFERENCIA);
 		};
@@ -191,7 +174,7 @@ no-loop true
 		b : Buffer()
 
     then
-System.out.println("Popescu intenta matar a Martin");
+// System.out.println("Popescu intenta matar a Martin");
 
     	modify(popescu){
 			setUbicacion(Ubicacion.CONFERENCIA);
@@ -222,6 +205,8 @@ System.out.println("Popescu intenta matar a Martin");
 		};
 end
 
+
+
 rule "Calloway le cuenta la verdad a martins" agenda-group "g4"
 no-loop true
     when
@@ -234,7 +219,7 @@ no-loop true
 		b : Buffer()
 
     then
-System.out.println("Calloway le cuenta la verdad a martins");
+// System.out.println("Calloway le cuenta la verdad a martins");
 
     	modify(calloway){
 			setUbicacion(Ubicacion.COMISARIA);
@@ -294,7 +279,7 @@ System.out.println("Calloway le cuenta la verdad a martins");
 
     	modify(harbin){
     		setActividad(ActividadIlegal.TRAFICANTE);
-    	}
+    	};
 
     	modify(b){
 			append("Se descubre que Lime, Kurtz y Harbin trabajan juntos siendo traficantes de penicilina. ");
@@ -302,41 +287,17 @@ System.out.println("Calloway le cuenta la verdad a martins");
 
 end
 
-rule "Paine esta en la comisaria" agenda-group "g4"
-no-loop true
-	when
-		paine : Personaje (nombre == Personaje.paine, ubicacion == Ubicacion.COMISARIA, estadoSalud == EstadoSalud.VIVO)
-		calloway : Personaje (nombre == Personaje.calloway, ubicacion == Ubicacion.COMISARIA)
-		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA)
-		b : Buffer()
-	then
-System.out.println("Paine esta en la comisaria");
-		modify(paine){
-			setUbicacion(Ubicacion.COMISARIA);
-		};
-
-		modify(martins){
-			getEnfrentado_con().remove(paine);
-		};
-
-		modify(b){
-			append(Personaje.paine+" va a"+paine.getUbicacion().toString()+". ").
-			append(Personaje.martins+" ya no está enfrentado con "+Personaje.paine+". ");
-		};
-
-end
-
 rule "Martins decide irse e informa a Anna" agenda-group "g4"
 no-loop true
     when
-		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
-		anna : Personaje (nombre == Personaje.anna, ubicacion == Ubicacion.CASALIME,
-							estadoSalud == EstadoSalud.VIVO )
+		martins : Personaje (nombre == Personaje.martins )
+		anna : Personaje (nombre == Personaje.anna, estadoSalud == EstadoSalud.VIVO )
+		harbin : Personaje (nombre == Personaje.harbin, actividad == ActividadIlegal.TRAFICANTE )
 
 		b : Buffer()
 
     then
-System.out.println("Martins decide irse e informa a Anna");
+// System.out.println("Martins decide irse e informa a Anna");
     	modify(martins){
 			setUbicacion(Ubicacion.CASAANNA);
 		};
@@ -354,3 +315,29 @@ System.out.println("Martins decide irse e informa a Anna");
 			append(Personaje.martins+" quiere a "+Personaje.anna);
 		};
 end
+
+rule "Paine esta en la comisaria" agenda-group "g4"
+no-loop true
+	when
+		paine : Personaje (nombre == Personaje.paine, ubicacion == Ubicacion.COMISARIA, estadoSalud == EstadoSalud.VIVO)
+		calloway : Personaje (nombre == Personaje.calloway, ubicacion == Ubicacion.COMISARIA)
+		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA)
+		b : Buffer()
+	then
+// System.out.println("Paine esta en la comisaria");
+		modify(paine){
+			setUbicacion(Ubicacion.COMISARIA);
+		};
+
+		modify(martins){
+			getEnfrentado_con().remove(paine);
+		};
+
+		modify(b){
+			append(Personaje.paine+" va a"+paine.getUbicacion().toString()+". ").
+			append(Personaje.martins+" ya no está enfrentado con "+Personaje.paine+". ");
+		};
+
+end
+
+

@@ -17,10 +17,8 @@ import tercerhombre.io.Buffer;
 
 
 rule "modificador EstadoSalud 5"
-
 salience 1
 agenda-group "g5"
-
 no-loop true
     when
     	m : Modificador( tipo.equals(EstadoSalud.class) ) // Se comprueba cual es la propiedad a modificar.
@@ -33,7 +31,7 @@ no-loop true
     		setModificado(true);
     	};
 
-    	System.out.println(p.getNombre()+" " +m.getPropiedad() );
+    	 System.out.println(p.getNombre()+" " +m.getPropiedad() );
 end
 
 rule "modificador Nacionalidad 5"
@@ -50,7 +48,7 @@ no-loop true
     		setNacionalidad((Nacionalidad)m.getPropiedad()).
     		setModificado(true);
     	};
-		System.out.println(p.getNombre()+" " +m.getPropiedad() );
+		// System.out.println(p.getNombre()+" " +m.getPropiedad() );
 end
 
 rule "modificador Actividad 5"
@@ -68,7 +66,7 @@ no-loop true
     		setActividad((Actividad)m.getPropiedad()).
     		setModificado(true);
     	};
-		System.out.println(p.getNombre()+" " +m.getPropiedad() );
+		// System.out.println(p.getNombre()+" " +m.getPropiedad() );
 end
 
 rule "modificador Ubicacion 5"
@@ -85,5 +83,5 @@ no-loop true
     		setUbicacion((Ubicacion)m.getPropiedad()).
     		setModificado(true);
     	};
-		System.out.println(p.getNombre()+" " +m.getPropiedad() );
+		// System.out.println(p.getNombre()+" " +m.getPropiedad() );
 end

@@ -6,6 +6,7 @@ package rules
 import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
 import tercerhombre.io.Buffer;
+import tercerhombre.Fin;
 
 
 rule "Anna esta en el final" agenda-group "g5"
@@ -50,12 +51,13 @@ end
 rule "Lime hace acto de presencia" agenda-group "g5"
 no-loop true
 	when
-		lime : Personaje ( nombre == Personaje.lime, estadoSalud == EstadoSalud.MUERTO )
-		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
+		lime : Personaje ( nombre == Personaje.lime, estadoSalud == EstadoSalud.MUERTO, ubicacion != Ubicacion.CLOACAS )
+		martins : Personaje ( nombre == Personaje.martins, ubicacion != Ubicacion.CEMENTERIO )
+		not Personaje( nombre == Personaje.calloway ) from martins.enfrentado_con
 
 		b : Buffer()
 	then
-System.out.println("Lime hace acto de presencia");
+ System.out.println("Lime hace acto de presencia");
 
 		modify(lime){
 			setEstadoSalud(EstadoSalud.VIVO);
@@ -86,7 +88,7 @@ rule "Calloway va a la Plaza" agenda-group "g5"
 no-loop true
 	when
 		calloway : Personaje (nombre == Personaje.calloway, ubicacion == Ubicacion.COMISARIA )
-		harbin : Personaje ( nombre == Personaje.harbin,estadoSalud == null )
+		harbin : Personaje ( nombre == Personaje.harbin,ubicacion != Ubicacion.CEMENTERIO )
 
 		b : Buffer()
 	then
@@ -103,8 +105,9 @@ end
 rule "Paine va a la Plaza" agenda-group "g5"
 no-loop true
 	when
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.PLAZA )
 		paine : Personaje (nombre == Personaje.paine, ubicacion == Ubicacion.COMISARIA )
-		harbin : Personaje ( nombre == Personaje.harbin,estadoSalud == null )
+		harbin : Personaje ( nombre == Personaje.harbin,ubicacion != Ubicacion.CEMENTERIO)
 		b : Buffer()
 	then
 System.out.println( "Paine va a la Plaza");
@@ -120,8 +123,9 @@ end
 rule "Calloway y Martins buscan a Lime en las cloacas" agenda-group "g5"
 	no-loop true
 	when
-		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.PLAZA )
+		martins : Personaje ( nombre == Personaje.martins, ubicacion == Ubicacion.PLAZA )
 		calloway : Personaje (nombre == Personaje.calloway, ubicacion == Ubicacion.PLAZA )
+		harbin : Personaje ( nombre == Personaje.harbin,ubicacion != Ubicacion.CEMENTERIO )
 
 		b : Buffer()
 	then
@@ -137,12 +141,14 @@ System.out.println("Calloway y Martins buscan a Lime en las cloacas");
 		modify(b){
 			append(Personaje.martins+" y Calloway buscan a Lime en"+calloway.getUbicacion().toString()+". ");
 		};
-
 end
 
 rule "Paine esta con calloway en las cloacas" agenda-group "g5"
 	no-loop true
 	when
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CLOACAS )
+		calloway : Personaje (nombre == Personaje.calloway, ubicacion == Ubicacion.CLOACAS )
+		harbin : Personaje ( nombre == Personaje.harbin,ubicacion != Ubicacion.CEMENTERIO)
 		paine : Personaje (nombre == Personaje.paine, ubicacion == Ubicacion.PLAZA,
 							estadoSalud == EstadoSalud.VIVO )
 		b : Buffer()
@@ -164,7 +170,7 @@ rule "Harbin esta enterrado en la tumba de Lime" agenda-group "g5"
     when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CLOACAS )
 		calloway : Personaje (nombre == Personaje.calloway, ubicacion == Ubicacion.CLOACAS )
-		harbin : Personaje (nombre == Personaje.harbin, ubicacion != Ubicacion.CEMENTERIO)
+		harbin : Personaje (nombre == Personaje.harbin, ubicacion != Ubicacion.CEMENTERIO, estadoSalud != EstadoSalud.VIVO)
 
 		b : Buffer()
     then
@@ -221,7 +227,7 @@ rule "Llevan a Anna a la comisaria" agenda-group "g5"
 		anna : Personaje (nombre == Personaje.anna, nacionalidad != Nacionalidad.AUSTRIA, ubicacion != Ubicacion.CEMENTERIO )
 		lime : Personaje (nombre == Personaje.lime, estadoSalud == EstadoSalud.VIVO )
 		calloway : Personaje (nombre == Personaje.calloway, ubicacion == Ubicacion.CEMENTERIO )
-		harbin : Personaje (nombre == Personaje.harbin, estadoSalud == EstadoSalud.MUERTO )
+		harbin : Personaje (nombre == Personaje.harbin, estadoSalud != null )
 
 		b : Buffer()
     then
@@ -361,7 +367,7 @@ no-loop true
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
 		calloway : Personaje (nombre == Personaje.calloway, ubicacion == Ubicacion.COMISARIA )
 		lime : Personaje (nombre == Personaje.lime, ubicacion == Ubicacion.NORIA )
-		paine : Personaje (nombre == Personaje.paine, estadoSalud == EstadoSalud.VIVO )
+		paine : Personaje (nombre == Personaje.paine, ubicacion != Ubicacion.COMISARIA, estadoSalud == EstadoSalud.VIVO )
 
 		b : Buffer()
     then
@@ -551,7 +557,7 @@ rule "Paine está en las cloacas" agenda-group "g5"
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CLOACAS )
 		calloway : Personaje (nombre == Personaje.calloway, ubicacion == Ubicacion.CLOACAS )
 		lime : Personaje (nombre == Personaje.lime, ubicacion == Ubicacion.CLOACAS )
-		paine : Personaje (nombre == Personaje.paine, estadoSalud == EstadoSalud.VIVO )
+		paine : Personaje (nombre == Personaje.paine, ubicacion != Ubicacion.CLOACAS, estadoSalud == EstadoSalud.VIVO )
 
 		b : Buffer()
 
@@ -583,10 +589,7 @@ System.out.println("Muere Lime");
 		modify(lime){
 			setEstadoSalud(EstadoSalud.MUERTO);
 		}
-		modify(lime){
-			setUbicacion(Ubicacion.CEMENTERIO);
-		}
-
+		
 end
 
 
@@ -597,7 +600,7 @@ rule "Final" agenda-group "g5"
 	when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CLOACAS )
 		calloway : Personaje (nombre == Personaje.calloway )
-		lime : Personaje (nombre == Personaje.lime, estadoSalud == EstadoSalud.MUERTO )
+		lime : Personaje (nombre == Personaje.lime, ubicacion == Ubicacion.CLOACAS, estadoSalud == EstadoSalud.MUERTO )
 
 		b : Buffer()
     then
@@ -608,9 +611,15 @@ System.out.println("Final");
 		modify(calloway){
 			setUbicacion(Ubicacion.CEMENTERIO);
 		}
+		
+		modify(lime){
+			setUbicacion(Ubicacion.CEMENTERIO);
+		}
+		
 
 		modify(b){
 			append(Personaje.martins+" y Calloway van a"+martins.getUbicacion().toString()+" al entierro de Lime. ");
 		};
+
 end
 

@@ -15,7 +15,7 @@ no-loop true
 
     then
 
-    // System.out.println("XXX");
+    // // System.out.println("XXX");
     	insert(Personaje.nuevo().
     	setNombre(Personaje.anna).
     	setGenero(Genero.MUJER).
@@ -54,7 +54,7 @@ no-loop true
     	setNacionalidad(null).
     	setUbicacion(null));
     	
-    	System.out.println("insertar");
+    	// System.out.println("insertar");
 
 end
 
@@ -66,7 +66,7 @@ no-loop true
     	b : Buffer()
     then
 
-    // System.out.println("XXX");
+    // // System.out.println("XXX");
     	modify(martins){ //
 		setUbicacion(Ubicacion.CASALIME);
 		};
@@ -80,7 +80,7 @@ no-loop true
 		append(Personaje.kurtz+" va a"+kurtz.getUbicacion().toString()+". ");
 		}
 		
-		System.out.println("martins va casa lime");
+		// System.out.println("martins va casa lime");
 end
 
 
@@ -102,7 +102,7 @@ no-loop true
 
     then
 
-     System.out.println("kurtz y martins hablan de winkel");
+     // System.out.println("kurtz y martins hablan de winkel");
    		modify(winkel){//
     	 getConoce_a().add(lime);
     	};
@@ -162,7 +162,7 @@ no-loop true
 
     then
 
-     System.out.println("kurtz y martins hablan de popescu");
+     // System.out.println("kurtz y martins hablan de popescu");
 
     	modify(lime){ //
     		getConoce_a().add(popescu);
@@ -241,7 +241,7 @@ no-loop true
 
     then
 
-     System.out.println("kurtz y martins hablan de anna");
+     // System.out.println("kurtz y martins hablan de anna");
 
     	modify(kurtz){ //
     		getConoce_a().add(anna);
@@ -319,7 +319,7 @@ no-loop true
 			append(Personaje.karl+" conoce a "+Personaje.kurtz+". ");
 		}
 
-		System.out.println("kurtz y martins hablan con karl");
+		// System.out.println("kurtz y martins hablan con karl");
 end
 */
 
@@ -332,7 +332,7 @@ no-loop true
     	b : Buffer()
     then
 
-    System.out.println("visita a anna en el teatro");
+    // System.out.println("visita a anna en el teatro");
 
      	modify(martins){
 	    setUbicacion(Ubicacion.CASANOVACLUB);
@@ -369,7 +369,7 @@ end
         b : Buffer()
     then
 
-    System.out.println("vuelta a casa Lime");
+    // System.out.println("vuelta a casa Lime");
 
     	modify(martins){
 	    setUbicacion(Ubicacion.CASALIME);
@@ -407,7 +407,7 @@ no-loop true
       	b : Buffer()
     then
 
-	System.out.println("martins y anna van a casa de anna");
+	// System.out.println("martins y anna van a casa de anna");
 
     	modify(anna){
 	    setUbicacion(Ubicacion.CASAANNA);

@@ -105,7 +105,7 @@ no-loop true
 			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ");
 		};
 
-		//System.out.println("Karl insertado");
+		//// System.out.println("Karl insertado");
 
 end
 
@@ -149,6 +149,6 @@ no-loop true
 	        append(Personaje.lime+" esta en e"+lime.getUbicacion().toString()+". ");
 		};
 
-		//System.out.println("Martins conoce a Karl");
+		//// System.out.println("Martins conoce a Karl");
 
 end

@@ -239,7 +239,7 @@ no-loop true
 			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ");
 		};
 
-     	System.out.println("va cafe mozart");
+     	// System.out.println("va cafe mozart");
 
 end
 
@@ -287,7 +287,7 @@ no-loop true
 	        append(Personaje.lime+" es amigo de "+Personaje.kurtz+". ");
 		};
 		
-		System.out.println("conoce a kurtz");
+		// System.out.println("conoce a kurtz");
 		
 		
 end

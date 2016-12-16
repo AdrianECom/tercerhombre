@@ -33,7 +33,7 @@ no-loop true
     		setModificado(true);
     	};
 
-    	System.out.println(p.getNombre()+" " +m.getPropiedad() );
+    	// System.out.println(p.getNombre()+" " +m.getPropiedad() );
 end
 
 rule "modificador Nacionalidad 2"
@@ -50,7 +50,7 @@ no-loop true
     		setNacionalidad((Nacionalidad)m.getPropiedad()).
     		setModificado(true);
     	};
-		System.out.println(p.getNombre()+" " +m.getPropiedad() );
+		// System.out.println(p.getNombre()+" " +m.getPropiedad() );
 end
 
 rule "modificador Actividad 2"
@@ -68,7 +68,7 @@ no-loop true
     		setActividad((Actividad)m.getPropiedad()).
     		setModificado(true);
     	};
-		System.out.println(p.getNombre()+" " +m.getPropiedad() );
+		// System.out.println(p.getNombre()+" " +m.getPropiedad() );
 end
 
 rule "modificador Ubicacion 2"
@@ -85,5 +85,5 @@ no-loop true
     		setUbicacion((Ubicacion)m.getPropiedad()).
     		setModificado(true);
     	};
-		System.out.println(p.getNombre()+" " +m.getPropiedad() );
+		// System.out.println(p.getNombre()+" " +m.getPropiedad() );
 end

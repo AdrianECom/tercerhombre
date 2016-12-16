@@ -17,7 +17,7 @@ no-loop true
         b : Buffer()
 
     then
-System.out.println("problemas en casa de anna");
+// System.out.println("problemas en casa de anna");
     	 modify(calloway){
 	    	setUbicacion(Ubicacion.CASAANNA);
 	    };
@@ -54,7 +54,7 @@ no-loop true
 
 		b : Buffer()
 	then
-System.out.println("anna conoce a paine en su casa");
+// System.out.println("anna conoce a paine en su casa");
 
 		modify(anna){
 	    	getConoce_a().add(paine)
@@ -92,7 +92,7 @@ end
 				b : Buffer()
 
     then
-System.out.println("van a la comisaria ");
+// System.out.println("van a la comisaria ");
     	modify(calloway){
 	    	setUbicacion(Ubicacion.COMISARIA);
 	    };
@@ -119,7 +119,7 @@ no-loop true
 				b : Buffer()
 
     then
-System.out.println("va a ver a winkel");
+// System.out.println("va a ver a winkel");
 
       	modify(winkel){
 			setUbicacion(Ubicacion.CASAWINKEL);
@@ -146,7 +146,7 @@ no-loop true
 		b : Buffer()
 
     then
-System.out.println("habla con Winkel");
+// System.out.println("habla con Winkel");
     	modify(martins){
       		getConoce_a().add(winkel);
       	};
@@ -166,27 +166,44 @@ no-loop true
    when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAWINKEL || ubicacion == Ubicacion.CASAANNA || ubicacion == Ubicacion.CASALIME )
         kurtz : Personaje( nombre == Personaje.kurtz )
-        popescu : Personaje( nombre == Personaje.popescu, estadoSalud == EstadoSalud.VIVO )
-        tercerhombre : Personaje( nombre == Personaje.tercerhombre )
+        
 
 				b : Buffer()
 
     then
-System.out.println("martins y anna van al cassanovaclub");
+// System.out.println("martins y anna van al cassanovaclub");
 
 
 		modify(kurtz){
 			setUbicacion(Ubicacion.CASANOVACLUB);
 		};
 
-		modify(popescu){
-			setUbicacion(Ubicacion.CASANOVACLUB);
-		};
-
+		
 		modify(martins){
 			setUbicacion(Ubicacion.CASANOVACLUB);
 		};
 
+		
+
+		modify(b){
+			append(Personaje.kurtz+" va a"+kurtz.getUbicacion().toString()+". ").
+			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ");
+		};
+end
+
+rule "martins conoce a popescu en cassanovaclub" agenda-group "g3"
+no-loop true
+   when
+   	popescu : Personaje( nombre == Personaje.popescu, estadoSalud == EstadoSalud.VIVO )
+   	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASANOVACLUB)
+   	tercerhombre : Personaje( nombre == Personaje.tercerhombre )
+   	
+   	b: Buffer()
+   then
+   		modify(popescu){
+			setUbicacion(Ubicacion.CASANOVACLUB);
+		};
+		
 		modify(popescu){
     		getSospecha_de().add(martins);
     	};
@@ -202,20 +219,16 @@ System.out.println("martins y anna van al cassanovaclub");
     	modify(martins){
     		getBusca_a().add(tercerhombre);
     	};
-
-			modify(b){
-
-
-			append(Personaje.martins+" conoce a "+Personaje.popescu+". ").
+    	
+    	modify(b){
+    		append(Personaje.popescu+" va a"+popescu.getUbicacion().toString()+". ").
+    		append(Personaje.martins+" conoce a "+Personaje.popescu+". ").
 			append(Personaje.popescu+" conoce a "+Personaje.martins+". ").
-
-			append(Personaje.kurtz+" va a"+kurtz.getUbicacion().toString()+". ").
-			append(Personaje.popescu+" va a"+popescu.getUbicacion().toString()+". ").
-			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
-			append(Personaje.popescu+" sospecha de "+Personaje.martins+". ").
+    		append(Personaje.popescu+" sospecha de "+Personaje.martins+". ").
 			append(Personaje.martins+" busca a "+Personaje.tercerhombre+". ");
-		};
-end
+    	};
+   	
+ end
 
 
  rule "anna está en casanova club" agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir
@@ -228,7 +241,7 @@ no-loop true
 
    		b : Buffer()
    	then
-System.out.println("anna está en casanova club");
+// System.out.println("anna está en casanova club");
 
    		modify(anna){
     		getConoce_a().add(kurtz);
@@ -257,7 +270,7 @@ no-loop true
 
 	   	b : Buffer()
    then
-System.out.println("crabbin está en casanova club");
+// System.out.println("crabbin está en casanova club");
 
 	   	modify(crabbin){
 			setUbicacion(Ubicacion.CASANOVACLUB);

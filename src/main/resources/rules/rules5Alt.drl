@@ -17,16 +17,45 @@ import tercerhombre.io.Buffer;
  
 */
 
+rule "Tumba Lime vacía" agenda-group "g5"
+salience 2
+    no-loop true
+    when
+		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CLOACAS )
+		calloway : Personaje (nombre == Personaje.calloway, ubicacion == Ubicacion.CLOACAS )
+		harbin : Personaje (nombre == Personaje.harbin, ubicacion == null, estadoSalud == EstadoSalud.VIVO)
 
+		b : Buffer()
+    then
+System.out.println("No hay nadie enterrado en la tumba de Lime.");
+        modify(calloway){
+			setUbicacion(Ubicacion.CEMENTERIO);
+		}
+		modify(martins){
+			setUbicacion(Ubicacion.CEMENTERIO);
+		}
+		
+		modify(harbin){
+			setUbicacion(Ubicacion.HOSPITAL);
+		}
 
-rule "Anna no es rusa, Martins va a su casa a hablar de Lime"
+		modify(b){
+			append(Personaje.calloway+" y Martins van a"+calloway.getUbicacion().toString());
+		};
+
+		modify(b){
+			append("La tumba de Lime está vacía.");
+		};
+end
+
+rule "Anna no es rusa, Martins va a su casa a hablar de Lime" agenda-group "g5"
 no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO )
 		calloway : Personaje (nombre == Personaje.calloway, ubicacion == Ubicacion.CEMENTERIO )
- 		anna : Personaje (nombre == Personaje.anna, nacionalidad != Nacionalidad.AUSTRIA )
+ 		anna : Personaje (nombre == Personaje.anna, ubicacion == Ubicacion.CASAANNA, nacionalidad != Nacionalidad.AUSTRIA )
  		harbin : Personaje (nombre == Personaje.harbin, estadoSalud == EstadoSalud.MUERTO )
-		lime : Personaje (nombre == Personaje.lime )
+		lime : Personaje (nombre == Personaje.lime , estadoSalud == EstadoSalud.VIVO)
  		b : Buffer()
     then
     	modify(anna){
@@ -50,7 +79,7 @@ no-loop true
 
 end
 
-rule "Anna no es rusa, Martins no ayuda a Calloway y se va"
+rule "Anna no es rusa, Martins no ayuda a Calloway y se va" agenda-group "g5"
 no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
@@ -66,3 +95,5 @@ no-loop true
     	
     	//insert(new Fin());
 end
+
+
