@@ -879,6 +879,14 @@ agenda-group "g5"
 			setEstadoSalud(EstadoSalud.MUERTO);
 		}
 		
+		modify(martins){
+			getMata_a().add(lime);
+		}
+		
+		modify(lime){
+			getMata_a().add(martins);
+		}
+		
 end
 
 
