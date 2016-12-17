@@ -88,7 +88,7 @@ no-loop true
     then
     	modify(b){
 			append(Personaje.karl+" esta "+karl.getEstadoSalud()+". ");
-			// TODO: como sigue ??
+		
 		}
 		
 		insert(new Fin());

@@ -30,7 +30,7 @@ no-loop true
         b : Buffer()
 
     then
-// 
+
     	 modify(calloway){
 	    	setUbicacion(Ubicacion.CASAANNA);
 	    };
@@ -79,8 +79,6 @@ no-loop true
 
 		b : Buffer()
 	then
-// 
-
 		modify(anna){
 	    	getConoce_a().add(paine)
 	    };
@@ -129,7 +127,6 @@ end
 				b : Buffer()
 
     then
-// 
     	modify(calloway){
 	    	setUbicacion(Ubicacion.COMISARIA);
 	    };
@@ -168,7 +165,6 @@ no-loop true
 				b : Buffer()
 
     then
-// 
 
       	modify(winkel){
 			setUbicacion(Ubicacion.CASAWINKEL);
@@ -207,7 +203,6 @@ no-loop true
 		b : Buffer()
 
     then
-// 
     	modify(martins){
       		getConoce_a().add(winkel);
       	};
@@ -242,8 +237,7 @@ no-loop true
 
 				b : Buffer()
 
-    then
-// 
+    then 
 
 
 		modify(kurtz){
@@ -335,7 +329,6 @@ no-loop true
 
    		b : Buffer()
    	then
-// 
 
    		modify(anna){
     		getConoce_a().add(kurtz);
@@ -374,7 +367,7 @@ no-loop true
 
 	   	b : Buffer()
    then
-// 
+
 
 	   	modify(crabbin){
 			setUbicacion(Ubicacion.CASANOVACLUB);

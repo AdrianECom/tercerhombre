@@ -1,7 +1,6 @@
 //created on: 08-dic-2016
 package rules
 
-//list any import classes here.
 
 import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
@@ -25,8 +24,7 @@ no-loop true
     when
 
     then
-
-    // 
+ 
     	insert(Personaje.nuevo().
     	setNombre(Personaje.harbin).
     	setGenero(Genero.HOMBRE).
@@ -57,7 +55,7 @@ no-loop true
 		winkel : Personaje( nombre == Personaje.winkel, estadoSalud == EstadoSalud.VIVO, ubicacion == Ubicacion.CASAWINKEL )
 		b : Buffer()
 	then
-// 
+
 		modify(winkel){
 			setUbicacion(Ubicacion.PUENTE);
 		};
@@ -117,8 +115,7 @@ no-loop true
 		tercerhombre : Personaje (nombre == Personaje.tercerhombre, ubicacion == Ubicacion.PUENTE )
 		popescu : Personaje( nombre == Personaje.popescu, estadoSalud == EstadoSalud.VIVO, ubicacion == Ubicacion.CASANOVACLUB )
 		b : Buffer()
-	then
-// 
+	then 
 		modify(popescu){
 			setUbicacion(Ubicacion.PUENTE);
 		};
@@ -150,8 +147,6 @@ no-loop true
 		b : Buffer()
 
     then
-// 
-
 		modify(martins){
 			setUbicacion(Ubicacion.CASALIME);
 		};
@@ -183,7 +178,6 @@ no-loop true
 		b : Buffer()
 
 	then
-// 
 
     	modify(anna){
 			setUbicacion(Ubicacion.CASALIME);
@@ -213,7 +207,6 @@ no-loop true
 		b : Buffer()
 
 	then
-// 
 		modify(karl){
 			setEstadoSalud(EstadoSalud.MUERTO);
 		};
@@ -249,7 +242,6 @@ no-loop true
 		b : Buffer()
 
     then
-// 
     	modify(crabbin){
 			setUbicacion(Ubicacion.CONFERENCIA);
 		};
@@ -286,8 +278,6 @@ no-loop true
 		b : Buffer()
 
     then
-// 
-
     	modify(popescu){
 			setUbicacion(Ubicacion.CONFERENCIA);
 		};
@@ -344,8 +334,6 @@ no-loop true
 		b : Buffer()
 
     then
-// 
-
     	modify(calloway){
 			setUbicacion(Ubicacion.COMISARIA);
 		};
@@ -434,8 +422,7 @@ no-loop true
 
 		b : Buffer()
 
-    then
-// 
+    then 
     	modify(martins){
 			setUbicacion(Ubicacion.CASAANNA);
 		};
@@ -474,8 +461,7 @@ no-loop true
 		calloway : Personaje (nombre == Personaje.calloway, ubicacion == Ubicacion.COMISARIA)
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA)
 		b : Buffer()
-	then
-// 
+	then 
 		modify(paine){
 			setUbicacion(Ubicacion.COMISARIA);
 		};

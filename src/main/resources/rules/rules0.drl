@@ -201,6 +201,5 @@ no-loop true
 	        append(Personaje.lime+" esta en e"+lime.getUbicacion().toString()+". ");
 		};
 
-		//// 
 
 end

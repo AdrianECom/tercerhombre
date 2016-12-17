@@ -1,7 +1,6 @@
 //created on: 14-dic-2016
 package rules
 
-//list any import classes here.
 
 import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
@@ -94,7 +93,7 @@ no-loop true
 			append("sin Martins no se descubre quien es el tercer hombre. ");
 		};	
 		
-				//insert(new Fin());
+			
 		
 end
 

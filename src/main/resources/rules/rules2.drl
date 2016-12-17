@@ -6,8 +6,6 @@ import tercerhombre.propiedades.*;
 import tercerhombre.io.Buffer;
 
 
-//TODO Revisar el orden de las reglas Y falta poner los append
-
 rule "insertar anna, winkel,popescu,tercerhombre " 
 
 // **************** METADATOS ******************* //
@@ -27,7 +25,6 @@ no-loop true
 
     then
 
-    // // 
     	insert(Personaje.nuevo().
     	setNombre(Personaje.anna).
     	setGenero(Genero.MUJER).
@@ -66,7 +63,6 @@ no-loop true
     	setNacionalidad(null).
     	setUbicacion(null));
     	
-    	// 
 
 end
 
@@ -90,12 +86,11 @@ no-loop true
     	b : Buffer()
     then
 
-    // // 
-    	modify(martins){ //
+    	modify(martins){ 
 		setUbicacion(Ubicacion.CASALIME);
 		};
 		
-		modify(kurtz){ //
+		modify(kurtz){ 
 		setUbicacion(Ubicacion.CASALIME);
 		};
 
@@ -104,7 +99,6 @@ no-loop true
 		append(Personaje.kurtz+" va a"+kurtz.getUbicacion().toString()+". ");
 		}
 		
-		// 
 end
 
 
@@ -136,24 +130,23 @@ no-loop true
 
     then
 
-     // 
-   		modify(winkel){//
+   		modify(winkel){
     	 getConoce_a().add(lime);
     	};
 
-		modify(winkel){//
+		modify(winkel){
     		getConoce_a().add(kurtz);
     	};
 
-    	modify(winkel){// añadir en popescu
+    	modify(winkel){
     		getConoce_a().add(popescu);
     	};
 
-		modify(lime){//
+		modify(lime){
     		getConoce_a().add(winkel);
     	};
 
-    	modify(kurtz){ //
+    	modify(kurtz){ 
     		getConoce_a().add(winkel);
     	};
 
@@ -207,42 +200,39 @@ no-loop true
         b : Buffer()
 
     then
-
-     // 
-
-    	modify(lime){ //
+    	modify(lime){ 
     		getConoce_a().add(popescu);
     	};
 
-    	modify(lime){ //
+    	modify(lime){ 
     		getAmigo_de().add(popescu);
     	};
 
-    	modify(popescu){//
+    	modify(popescu){
     		getConoce_a().add(lime);
     	};
 
-		modify(popescu){//
+		modify(popescu){
     		getAmigo_de().add(lime);
     	};
 
-		modify(popescu){//
+		modify(popescu){
     		getConoce_a().add(kurtz);
     	};
 
-		modify(popescu){//
+		modify(popescu){
     		getAmigo_de().add(kurtz);
     	};
 
-    	modify(popescu){//
+    	modify(popescu){
     		getConoce_a().add(winkel);
     	};
 
-		modify(kurtz){ //
+		modify(kurtz){ 
     		getConoce_a().add(popescu);
     	};
 
-    	modify(kurtz){//
+    	modify(kurtz){
     		getAmigo_de().add(popescu);
     	};
 
@@ -300,25 +290,24 @@ no-loop true
 
     then
 
-     // 
-
-    	modify(kurtz){ //
+ 
+    	modify(kurtz){ 
     		getConoce_a().add(anna);
 	    };
 
-    	modify(lime){//
+    	modify(lime){
     		getConoce_a().add(anna);
 	    };
 
-	    modify(anna){ //
+	    modify(anna){ 
 			setUbicacion(Ubicacion.CASANOVACLUB);
 		};
 
-		modify(anna){ //
+		modify(anna){ 
     		getConoce_a().add(lime);
 	    };
 
-   		modify(martins){ //
+   		modify(martins){ 
     		getBusca_a().add(anna);
     	};
 
@@ -369,8 +358,6 @@ no-loop true
     	b : Buffer()
     then
 
-    // 
-
      	modify(martins){
 	    setUbicacion(Ubicacion.CASANOVACLUB);
 	    };
@@ -384,7 +371,7 @@ no-loop true
 	    };
 
 	    modify(anna){
-    		getQuiere_a().add(lime);  //TODO sabemos si lime quiere a anna?
+    		getQuiere_a().add(lime); 
     	};
 
     	modify(b){
@@ -418,8 +405,6 @@ end
         tercerhombre : Personaje ( nombre == Personaje.tercerhombre )
         b : Buffer()
     then
-
-    // 
 
     	modify(martins){
 	    setUbicacion(Ubicacion.CASALIME);
@@ -469,9 +454,6 @@ no-loop true
 
       	b : Buffer()
     then
-
-	// 
-
     	modify(anna){
 	    setUbicacion(Ubicacion.CASAANNA);
 	    };

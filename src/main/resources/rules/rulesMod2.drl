@@ -5,17 +5,6 @@ import tercerhombre.propiedades.*;
 import tercerhombre.consultas.Modificador;
 import tercerhombre.io.Buffer;
 
-/* IDEAS
-
-	Cuando matamos a alguien cambiar la ubucacion al cementerio
-
-
-
-
-*/
-
-
-
 rule "modificador EstadoSalud 2"
 
 // **************** METADATOS ******************* //
@@ -44,7 +33,7 @@ no-loop true
     		setModificado(true);
     	};
 
-    	// 
+    
 end
 
 rule "modificador Nacionalidad 2"
@@ -72,7 +61,7 @@ no-loop true
     		setNacionalidad((Nacionalidad)m.getPropiedad()).
     		setModificado(true);
     	};
-		// 
+ 
 end
 
 rule "modificador Actividad 2"
@@ -101,7 +90,7 @@ no-loop true
     		setActividad((Actividad)m.getPropiedad()).
     		setModificado(true);
     	};
-		// 
+		
 end
 
 rule "modificador Ubicacion 2"
@@ -129,5 +118,5 @@ no-loop true
     		setUbicacion((Ubicacion)m.getPropiedad()).
     		setModificado(true);
     	};
-		// 
+		
 end

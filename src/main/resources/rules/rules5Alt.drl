@@ -1,13 +1,10 @@
 //created on: 14-dic-2016
 package rules
 
-//list any import classes here.
-
 import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
 import tercerhombre.io.Buffer;
 
-//declare any global variables here
 
 /*
  - Si Anna no es rusa no tiene problemas con el pasaporte y no la llevan a la comisaria.
@@ -130,7 +127,7 @@ no-loop true
 			append(Personaje.martins+" decide volverse a EEUU. ");
 		};
     	
-    	//insert(new Fin());
+  
 end
 
 
