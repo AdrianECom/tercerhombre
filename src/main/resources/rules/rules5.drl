@@ -9,7 +9,19 @@ import tercerhombre.io.Buffer;
 import tercerhombre.Fin;
 
 
-rule "Anna esta en el final" agenda-group "g5"
+rule "Anna esta en el final" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Anna está en el cementerio cuando están enterrando a Lime.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+	agenda-group "g5"
 	no-loop true
 	when
 		anna : Personaje (nombre == Personaje.anna, ubicacion == Ubicacion.CAFEMARC, estadoSalud == EstadoSalud.VIVO )
@@ -19,7 +31,7 @@ rule "Anna esta en el final" agenda-group "g5"
 		b : Buffer()
 
 	then
-System.out.println("Anna esta en el final");
+		System.out.println("Anna esta en el final");
 		modify(anna){
 			setUbicacion(Ubicacion.CEMENTERIO);
 		}
@@ -29,7 +41,19 @@ System.out.println("Anna esta en el final");
 		};
 end
 
-rule "Paine esta en el final" agenda-group "g5"
+rule "Paine esta en el final" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Paine está en el cementerio cuando están enterrando a Lime. ")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+	agenda-group "g5"
 	no-loop true
 	when
 		paine : Personaje (nombre == Personaje.paine, estadoSalud == EstadoSalud.VIVO )
@@ -48,7 +72,19 @@ System.out.println("Paine esta en el final");
 end
 
 
-rule "Lime hace acto de presencia" agenda-group "g5"
+rule "Lime hace acto de presencia" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Lime hace acto de presencia a Martins cerca de casa de Anna.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g5"
 no-loop true
 	when
 		lime : Personaje ( nombre == Personaje.lime, estadoSalud == EstadoSalud.MUERTO, ubicacion != Ubicacion.CLOACAS )
@@ -84,7 +120,19 @@ no-loop true
 
 end
 
-rule "Calloway va a la Plaza" agenda-group "g5"
+rule "Calloway va a la Plaza" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Calloway va a la plaza en la que Lime desapareció.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g5"
 no-loop true
 	when
 		calloway : Personaje (nombre == Personaje.calloway, ubicacion == Ubicacion.COMISARIA )
@@ -102,7 +150,19 @@ System.out.println("Calloway va a la Plaza");
 
 end
 
-rule "Paine va a la Plaza" agenda-group "g5"
+rule "Paine va a la Plaza" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Paine va a la plaza en la que Lime desapareció.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g5"
 no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.PLAZA )
@@ -120,7 +180,19 @@ System.out.println( "Paine va a la Plaza");
 
 end
 
-rule "Calloway y Martins buscan a Lime en las cloacas" agenda-group "g5"
+rule "Calloway y Martins buscan a Lime en las cloacas" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Calloway y Martins buscan a Lime en las cloacas tras descubrir que se fue por allí.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g5"
 	no-loop true
 	when
 		martins : Personaje ( nombre == Personaje.martins, ubicacion == Ubicacion.PLAZA )
@@ -143,7 +215,19 @@ System.out.println("Calloway y Martins buscan a Lime en las cloacas");
 		};
 end
 
-rule "Paine esta con calloway en las cloacas" agenda-group "g5"
+rule "Paine esta con calloway en las cloacas" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Paine va con Calloway y Martins a las cloacas en busca de Lime.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g5"
 	no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CLOACAS )
@@ -165,7 +249,19 @@ System.out.println("Paine esta con calloway en las cloacas");
 
 end
 
-rule "Harbin esta enterrado en la tumba de Lime" agenda-group "g5"
+rule "Harbin esta enterrado en la tumba de Lime" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Al abrir la tumba de Lime, Martins y Calloway encuentran a Harbin enterrado ahí.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g5"
     no-loop true
     when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CLOACAS )
@@ -199,7 +295,18 @@ System.out.println("Harbin esta enterrado en la tumba de Lime");
 		};
 end
 
-rule "Paine esta en el cementerio también" agenda-group "g5"
+rule "Paine esta en el cementerio también" 
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Paine acompaña a Calloway y Martins en el cementerio abriendo la tumba de Lime.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g5"
 	no-loop true
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO )
@@ -220,7 +327,19 @@ rule "Paine esta en el cementerio también" agenda-group "g5"
 
 end
 
-rule "Llevan a Anna a la comisaria" agenda-group "g5"
+rule "Llevan a Anna a la comisaria" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Van a casa de Anna y la llevan a comisaria por el pasaporte falso.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g5"
     no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO )
@@ -254,7 +373,19 @@ System.out.println("Llevan a Anna a la comisaria");
 
 end
 
-rule "Martins va al Sector Ruso a hablar con Lime" agenda-group "g5"
+rule "Martins va al Sector Ruso a hablar con Lime" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Martins va en busca de Lime y va a una casa en el Sector Ruso.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g5"
     no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
@@ -297,7 +428,19 @@ System.out.println("Martins va al Sector Ruso a hablar con Lime");
 
 end
 
-rule "Kurtz esta con Lime" agenda-group "g5"
+rule "Kurtz esta con Lime" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("En la casa del Sector Ruso, Kurtz está en la casa con Lime.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g5"
     no-loop true
     when
     	lime : Personaje (nombre == Personaje.lime, ubicacion == Ubicacion.NORIA)
@@ -315,7 +458,20 @@ System.out.println("Kurtz esta con Lime");
 
 end
 
-rule "Winkel esta con Lime" agenda-group "g5"
+rule "Winkel esta con Lime" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("En la casa del Sector Ruso, Winkel está en la casa con Lime.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g5"
     no-loop true
     when
     	lime : Personaje (nombre == Personaje.lime, ubicacion == Ubicacion.NORIA)
@@ -333,7 +489,20 @@ System.out.println("Winkel esta con Lime");
 		};
 end
 
-rule "Martins decide ayudar a Calloway" agenda-group "g5"
+rule "Martins decide ayudar a Calloway" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Tras hablar con Lime, Martins decide ayudar a Calloway y va a la comisaria.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g5"
     no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.NORIA )
@@ -361,7 +530,20 @@ System.out.println("Martins decide ayudar a Calloway");
 end
 
 
-rule "Paine esta con ellos" agenda-group "g5"
+rule "Paine esta con ellos" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("En la comisaria, cuando se reunen Martins y Calloway, también está Paine.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g5"
 no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
@@ -382,7 +564,20 @@ System.out.println("Paine esta con ellos");
 end
 
 
-rule "Martins y Anna discuten en la estacion" agenda-group "g5"
+rule "Martins y Anna discuten en la estacion" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Martins va a ver como Anna coge el tren y Anna lo ve y discuten.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g5"
     no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
@@ -418,7 +613,20 @@ System.out.println( "Martins y Anna discuten en la estacion");
 end
 
 // SUCEDE POR QUE ANNA LE HACE DUDAR
-rule "Martins y Calloway van al hospital" agenda-group "g5"
+rule "Martins y Calloway van al hospital" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Martins duda si ayudar a Calloway, y para convencerlo, Calloway lo lleva al hospital.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g5"
 	no-loop true
 	when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.ESTACION )
@@ -451,7 +659,20 @@ System.out.println("Martins y Calloway van al hospital");
 		};
 end
 
-rule "Martins y Lime se ven en el cafe" agenda-group "g5"
+rule "Martins y Lime se ven en el cafe" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Martins decide quedar con Lime en el Cafe Marc y Calloway espera fuera.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g5"
 	no-loop true
 	when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.HOSPITAL )
@@ -487,7 +708,19 @@ end
 
 
 
-rule "Paine esta en el Café Marc" agenda-group "g5"
+rule "Paine esta en el Café Marc" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Paine también esta fuera del Café Marc con Calloway esperando a Lime.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g5"
 	no-loop true
 	when
 		paine : Personaje (nombre == Personaje.paine, ubicacion != Ubicacion.CAFEMARC )
@@ -506,7 +739,20 @@ System.out.println("Paine esta en el Café Marc");
 end
 
 
-rule "Anna va al Café Marc" agenda-group "g5"
+rule "Anna va al Café Marc" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Anna aparece en el Café Marc y le dice a Lime que huya.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g5"
 	no-loop true
 	when
 		anna : Personaje (nombre == Personaje.anna, ubicacion != Ubicacion.CAFEMARC && ubicacion != Ubicacion.CEMENTERIO, estadoSalud == EstadoSalud.VIVO )
@@ -525,7 +771,20 @@ System.out.println("Anna va al Café Marc");
 end
 
 
-rule "Desenlace en las cloacas" agenda-group "g5"
+rule "Desenlace en las cloacas" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Lime huye por las cloacas y Martins y Calloway lo siguen.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g5"
 	no-loop true
 	when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CAFEMARC )
@@ -551,7 +810,20 @@ System.out.println("Desenlace en las cloacas" );
 		};
 end
 
-rule "Paine está en las cloacas" agenda-group "g5"
+rule "Paine está en las cloacas" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Paine está con Calloway cuando van a las cloacas a por Lime.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g5"
 	no-loop true
 	when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CLOACAS )
@@ -573,7 +845,20 @@ System.out.println("Paine está en las cloacas");
 
 end
 
-rule "Muere Lime" agenda-group "g5"
+rule "Muere Lime" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Finalmente Martins dispará a Lime por que Lime se lo pide.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g5"
 	no-loop true
 	when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CLOACAS )
@@ -595,7 +880,19 @@ end
 
 
 
-rule "Final" agenda-group "g5"
+rule "Final" 
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("En el entierro de Lime van Martins y Calloway.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g5"
 	no-loop true
 	when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CLOACAS )

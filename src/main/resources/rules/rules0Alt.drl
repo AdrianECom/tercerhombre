@@ -11,7 +11,20 @@ import tercerhombre.Fin;
 * -------------------------------------------------------------------
 */
 
-rule "lime esta vivo y martins encuentra a lime" agenda-group "g0"
+
+rule "lime esta vivo y martins encuentra a lime" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-10)
+
+  @ruleDescription("En caso de que Lime esté vivo, cuando Martins llegue a casa de Lime lo encontrará y trabajará para él. ")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g0"
 no-loop true
     when
         martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME, estadoSalud == EstadoSalud.VIVO  )
@@ -28,7 +41,19 @@ no-loop true
     	
 end
 
-rule "martins muere" agenda-group "g0"
+rule "martins muere" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-10)
+
+  @ruleDescription("En el caso de que Martins esté muerto, no hay historia que contar. ")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g0"
 no-loop true
     when
     	martins : Personaje(nombre == Personaje.martins , estadoSalud == EstadoSalud.MUERTO  )
@@ -42,7 +67,19 @@ no-loop true
 		insert(new Fin());
 end
 
-rule "karl muere" agenda-group "g0"
+rule "karl muere" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-10)
+
+  @ruleDescription("En caso de que Karl este muerto, Martins no encontrará a nadie al ir a casa de Lime y volverá a EEUU. ")
+  
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g0"
 no-loop true
     when
     	karl : Personaje( nombre == Personaje.karl, estadoSalud == EstadoSalud.MUERTO  )

@@ -5,7 +5,20 @@ import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
 import tercerhombre.io.Buffer;
 
-rule "problemas en casa de anna" agenda-group "g3"
+rule "problemas en casa de anna" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-05)
+
+  @ruleDescription("Calloway va a casa de Anna por que tiene problemas con su pasaporte estando Martins allí.")
+
+  @ruleAuthor(Pablo Saura)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g3"
 no-loop true
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
@@ -45,7 +58,19 @@ no-loop true
 
 end
 
-rule "anna conoce a paine en su casa" agenda-group "g3"
+rule "anna conoce a paine en su casa" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-05)
+
+  @ruleDescription("Paine ha ido con Calloway a casa de Anna.")
+
+  @ruleAuthor(Pablo Saura)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g3"
 no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
@@ -81,7 +106,19 @@ no-loop true
 end
 
 
- rule "van a la comisaria " agenda-group "g3"
+ rule "van a la comisaria " 
+ 
+ // **************** METADATOS ******************* //
+  @ruleDate(2016-12-05)
+
+  @ruleDescription("Calloway y Paine deciden llevar a Anna a la comisaria.")
+
+  @ruleAuthor(Pablo Saura)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+ 
+ agenda-group "g3"
  no-loop true
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA )
@@ -110,7 +147,19 @@ end
 		};
 end
 
-rule "va a ver a winkel" agenda-group "g3"
+rule "va a ver a winkel" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-05)
+
+  @ruleDescription("Martins decide ir a cada del Dr Winkel a hablar con él.")
+
+  @ruleAuthor(Pablo Saura)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g3"
 no-loop true
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAANNA || ubicacion == Ubicacion.CASALIME )
@@ -135,7 +184,19 @@ no-loop true
 
     end
 
-rule "habla con Winkel" agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir
+rule "habla con Winkel" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-05)
+
+  @ruleDescription("Martins y Winkel hablan sobre Lime y su muerte.")
+
+  @ruleAuthor(Pablo Saura)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir
 no-loop true
    when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAWINKEL )
@@ -161,7 +222,18 @@ no-loop true
 			};
 end
 
-rule "martins y anna van al cassanovaclub" agenda-group "g3"
+rule "martins va al cassanovaclub" 
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-05)
+
+  @ruleDescription("Martins va al Cassanova Club para hablar con Kurtz, ya que el trabaja allí.")
+
+  @ruleAuthor(Pablo Saura)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g3"
 no-loop true
    when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASAWINKEL || ubicacion == Ubicacion.CASAANNA || ubicacion == Ubicacion.CASALIME )
@@ -191,7 +263,18 @@ no-loop true
 		};
 end
 
-rule "martins conoce a popescu en cassanovaclub" agenda-group "g3"
+rule "martins conoce a popescu en cassanovaclub" 
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-05)
+
+  @ruleDescription("Kurtz aprovecha para presentarle a Martins a Popescu ya que estaba en el Club.")
+
+  @ruleAuthor(Pablo Saura)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g3"
 no-loop true
    when
    	popescu : Personaje( nombre == Personaje.popescu, estadoSalud == EstadoSalud.VIVO )
@@ -231,7 +314,18 @@ no-loop true
  end
 
 
- rule "anna está en casanova club" agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir
+ rule "anna está en casanova club" 
+ // **************** METADATOS ******************* //
+  @ruleDate(2016-12-05)
+
+  @ruleDescription("Martins encuentra a Anna en el Cassanova Club y se quedan juntos.")
+
+  @ruleAuthor(Pablo Saura)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+ 
+ agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir
 no-loop true
    when
    		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASANOVACLUB )
@@ -263,7 +357,17 @@ no-loop true
 		}
  end
 
-rule "crabbin está en casanova club" agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir
+rule "crabbin está en casanova club" 
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-05)
+
+  @ruleDescription("Crabbin saluda a Martins en el Cassanova Club.")
+
+  @ruleAuthor(Pablo Saura)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+agenda-group "g3"  // para inseratar a Winkel primero martins tiene que ir
 no-loop true
    when
 	   	crabbin : Personaje( nombre == Personaje.crabbin, ubicacion != Ubicacion.CASANOVACLUB, estadoSalud == EstadoSalud.VIVO)

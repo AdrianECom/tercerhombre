@@ -4,7 +4,19 @@ import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
 import tercerhombre.io.Buffer;
 
-rule "martins va cementerio" agenda-group "g1"
+rule "martins va cementerio" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-10-04)
+
+  @ruleDescription("Martins va al cementerio al entierro de Lime. ")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g1"
 no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME, estadoSalud == EstadoSalud.VIVO )
@@ -23,6 +35,17 @@ no-loop true
 end
 
 rule "inserta calloway"
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-11-04)
+
+  @ruleDescription("Calloway está en el entierro, lo insertamos en la BH. ")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
 no-loop true
 	when
 		not Personaje( nombre == Personaje.calloway)
@@ -37,7 +60,19 @@ no-loop true
     	
 end
 
-rule "martins conoce calloway" agenda-group "g1"
+rule "martins conoce calloway" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-11-04)
+
+  @ruleDescription("Martins conoce a Calloway en el entierro de Lime. ")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g1"
 no-loop true
     when
         martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO, estadoSalud == EstadoSalud.VIVO  )
@@ -62,7 +97,19 @@ no-loop true
 		
 end 
 
-rule "van al pub" agenda-group "g1"
+rule "van al pub" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-11-04)
+
+  @ruleDescription("Martins, Calloway van al Pub a hablar sobre Lime. ")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g1"
 no-loop true
 	when
 		// calloway lleva a martins al pub, no pueden ir por separado.
@@ -92,6 +139,17 @@ no-loop true
 end
 
 rule "inserta paine"
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-11-04)
+
+  @ruleDescription("Insertamos a Paine en la BH ya que aparece en el Pub. ")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
 no-loop true
 	when
 		not Personaje( nombre == Personaje.paine)
@@ -107,7 +165,19 @@ no-loop true
     	
 end
 
-rule "martins conoce a paine" agenda-group "g1"
+rule "martins conoce a paine" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-11-04)
+
+  @ruleDescription("Martins conoce a Paine puesto que van los dos al Pub junto con Calloway. ")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g1"
 no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.PUB, estadoSalud == EstadoSalud.VIVO )
@@ -148,7 +218,19 @@ no-loop true
 	
 end
 
-rule "martins va a hotel" agenda-group "g1"
+rule "martins va a hotel" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-11-04)
+
+  @ruleDescription("Martins va al hotel al que se hospedará. Se inserta a Crabbin en la BH puesto que está allí. ")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g1"
 no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.PUB, estadoSalud == EstadoSalud.VIVO )
@@ -174,7 +256,19 @@ no-loop true
 		
 end
 
-rule "martins conoce crabbin" agenda-group "g1"
+rule "martins conoce crabbin" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-11-04)
+
+  @ruleDescription("Martins conoce a Crabbin en el Hotel y le invita a quedarse allí. ")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g1"
 no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.HOTELSACHER, estadoSalud == EstadoSalud.VIVO )
@@ -202,7 +296,19 @@ no-loop true
 
 end
 
-rule "insertar kurtz" agenda-group "g1"
+rule "insertar kurtz" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-11-04)
+
+  @ruleDescription("Kurtz llama a Martins y es insertado en la B.H.")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g1"
 no-loop true
 	when
 	
@@ -221,7 +327,19 @@ no-loop true
      	
 end
 
-rule "martins va cafe mozart" agenda-group "g1"
+rule "martins va cafe mozart" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-11-04)
+
+  @ruleDescription("Kurtz y Martins deciden encontrarse en el Café Mozart para hablar de Lime.")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g1"
 no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.HOTELSACHER, estadoSalud == EstadoSalud.VIVO )
@@ -239,11 +357,21 @@ no-loop true
 			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ");
 		};
 
-     	// System.out.println("va cafe mozart");
-
 end
 
-rule "martins conoce kurtz" agenda-group "g1"
+rule "martins conoce kurtz" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-11-04)
+
+  @ruleDescription("Martins y Kurtz se encuentran en el Café Mozart, se conocen.")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g1"
 no-loop true
 	when
 		martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CAFEMOZART, estadoSalud == EstadoSalud.VIVO )
@@ -286,8 +414,5 @@ no-loop true
 	        append(Personaje.lime+" conoce a "+Personaje.kurtz+". ").
 	        append(Personaje.lime+" es amigo de "+Personaje.kurtz+". ");
 		};
-		
-		// System.out.println("conoce a kurtz");
-		
-		
+
 end

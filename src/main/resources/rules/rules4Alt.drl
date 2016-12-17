@@ -20,7 +20,20 @@ import tercerhombre.io.Buffer;
 * - Si Anna esta muerta, Martins se va sin hablar con nadie y no ve a Lime.
 */
 
-rule "Crabbin esta muerto" agenda-group "g4"
+rule "Crabbin esta muerto" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-12)
+
+  @ruleDescription("Si Crabbin esta muerto, Martins va al Hotel Sacher ya que no hay Conferencia.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g4"
 no-loop true
     when
         crabbin : Personaje(nombre == Personaje.crabbin, estadoSalud == EstadoSalud.MUERTO )
@@ -38,7 +51,20 @@ no-loop true
 		};	
 end
 
-rule "Popescu mata a Martins" agenda-group "g4"
+rule "Popescu mata a Martins" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-12)
+
+  @ruleDescription("En el Hotel Sacher, Popescu mata a Martins.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g4"
 no-loop true
     when
        	popescu : Personaje( nombre == Personaje.popescu, ubicacion == Ubicacion.PUENTE )
@@ -72,7 +98,20 @@ no-loop true
 		
 end
 
-/*rule "Anna esta muerta " agenda-group "g4"
+/*rule "Anna esta muerta " 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-12)
+
+  @ruleDescription("Si Anna esta muerta, Martins decide volver a Estados Unidos.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g4"
 no-loop true
 	when
 		martins : Personaje ( nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )

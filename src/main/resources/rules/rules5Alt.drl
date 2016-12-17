@@ -17,7 +17,19 @@ import tercerhombre.io.Buffer;
  
 */
 
-rule "Tumba Lime vacía" agenda-group "g5"
+rule "Tumba Lime vacía" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-13)
+
+  @ruleDescription("Al abrir la tumba de Lime está esta vacía.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g5"
 salience 2
     no-loop true
     when
@@ -48,7 +60,19 @@ System.out.println("No hay nadie enterrado en la tumba de Lime.");
 		};
 end
 
-rule "Anna no es rusa, Martins va a su casa a hablar de Lime" agenda-group "g5"
+rule "Anna no es rusa, Martins va a su casa a hablar de Lime" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-13)
+
+  @ruleDescription("Si Anna no es Rusa, Anna no irá a la comisaría y Martins irá a su casa a decirle que ha visto a Lime.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g5"
 no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO )
@@ -79,7 +103,20 @@ no-loop true
 
 end
 
-rule "Anna no es rusa, Martins no ayuda a Calloway y se va" agenda-group "g5"
+rule "Anna no es rusa, Martins no ayuda a Calloway y se va" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-13)
+
+  @ruleDescription("Si Anna no es rusa, Calloway no le puede dar nada a Martins a cambio de su ayuda, y Martins decide irse.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g5"
 no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )

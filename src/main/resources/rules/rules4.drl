@@ -8,7 +8,18 @@ import tercerhombre.propiedades.*;
 import tercerhombre.io.Buffer;
 
 
-rule "insertar harbin" agenda-group "g2"
+rule "insertar harbin" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Se inserta a Harbin puesto que se habla de el por primera vez en este acto.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+agenda-group "g4"
 no-loop true
 
     when
@@ -26,7 +37,20 @@ no-loop true
  end
 
 
-rule "Winkel está en la reunion" agenda-group "g4"
+rule "Winkel está en la reunion" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Dr Winkel se dirige a la reunión en el puente en bicicleta.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g4"
 no-loop true
 	when
 		tercerhombre : Personaje (nombre == Personaje.tercerhombre, ubicacion == Ubicacion.PUENTE )
@@ -42,7 +66,20 @@ no-loop true
 		};
 end
 
-rule "Kurtz está en la reunion" agenda-group "g4"
+rule "Kurtz está en la reunion" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Kurtz se dirige a la reunión en el puente.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g4"
 no-loop true
 	when
 		tercerhombre : Personaje (nombre == Personaje.tercerhombre, ubicacion == Ubicacion.PUENTE )
@@ -61,7 +98,20 @@ no-loop true
 end
 
 
-rule "Popescu está en la reunion" agenda-group "g4"
+rule "Popescu está en la reunion" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Popescu se dirige a la reunión en el puente.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g4"
 no-loop true
 	when
 		tercerhombre : Personaje (nombre == Personaje.tercerhombre, ubicacion == Ubicacion.PUENTE )
@@ -79,9 +129,20 @@ no-loop true
 end
 
 
+rule "Martins va a hablar con el portero" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Martins va a casa de Lime para hablar con el portero Karl. ")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
 
 
-rule "Martins va a hablar con el portero" agenda-group "g4"
+agenda-group "g4"
 no-loop true
     when
 		martins : Personaje ( nombre == Personaje.martins, ubicacion == Ubicacion.CASANOVACLUB )
@@ -100,7 +161,20 @@ no-loop true
 		};
 end
 
-rule "Anna acompaña a Martins a ver a Karl" agenda-group "g4"
+rule "Anna acompaña a Martins a ver a Karl" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Anna acompaña a Martins a hablar con el portero Karl. ")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g4"
 no-loop true
 	when
 		anna : Personaje ( nombre == Personaje.anna, ubicacion == Ubicacion.CASANOVACLUB )
@@ -119,7 +193,19 @@ no-loop true
 		};
 end
 
-rule "Karl esta muerto" agenda-group "g4"
+rule "Karl esta muerto" 
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Al llegar a casa de Lime, Martins y Anna encuentran a Karl muerto.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g4"
 no-loop true
 	when
 		karl : Personaje ( nombre == Personaje.karl, estadoSalud == EstadoSalud.VIVO )
@@ -140,7 +226,20 @@ no-loop true
 		};
 end
 
-rule "Martins va a dar la conferencia" agenda-group "g4"
+rule "Martins va a dar la conferencia" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Martins vuelve al hotel y un taxi lo espera para ir a dar la Conferencia.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g4"
 no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
@@ -164,7 +263,20 @@ no-loop true
 		};
 end
 
-rule "Popescu intenta matar a Martin" agenda-group "g4"
+rule "Popescu intenta matar a Martins" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("En la conferencia, Popescu intenta matar a Martins")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g4"
 no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CONFERENCIA )
@@ -207,7 +319,20 @@ end
 
 
 
-rule "Calloway le cuenta la verdad a martins" agenda-group "g4"
+rule "Calloway le cuenta la verdad a martins" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Tras intentar ser asesinado, Martins va a comisaria y Calloway le explica la historia.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g4"
 no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CONFERENCIA )
@@ -287,7 +412,20 @@ no-loop true
 
 end
 
-rule "Martins decide irse e informa a Anna" agenda-group "g4"
+rule "Martins decide irse e informa a Anna" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Martins decide irse de Viena y va a casa de Anna a despedirse. ")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g4"
 no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins )
@@ -316,7 +454,20 @@ no-loop true
 		};
 end
 
-rule "Paine esta en la comisaria" agenda-group "g4"
+rule "Paine esta en la comisaria" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-06)
+
+  @ruleDescription("Paine esta también en la comisaria cuando Calloway le cuenta la historia a Martins.")
+
+  @ruleAuthor(Jesús Garcerán)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g4"
 no-loop true
 	when
 		paine : Personaje (nombre == Personaje.paine, ubicacion == Ubicacion.COMISARIA, estadoSalud == EstadoSalud.VIVO)

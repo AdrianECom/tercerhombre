@@ -8,7 +8,19 @@ import tercerhombre.io.Buffer;
 
 //TODO Revisar el orden de las reglas Y falta poner los append
 
-rule "insertar anna, winkel,popescu,tercerhombre " agenda-group "g2"
+rule "insertar anna, winkel,popescu,tercerhombre " 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-04)
+
+  @ruleDescription("Se insertan los personajes de los que hablan Kurtz y Martins. ")
+
+  @ruleAuthor(Pablo Saura)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g2"
 no-loop true
 
     when
@@ -58,7 +70,19 @@ no-loop true
 
 end
 
-rule "martins van casa lime" agenda-group "g2"
+rule "martins van casa lime" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-04)
+
+  @ruleDescription("Martins va a la casa de Lime para que Kurtz le explique como murió Lime. ")
+
+  @ruleAuthor(Pablo Saura)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g2"
 no-loop true
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CAFEMOZART )
@@ -84,9 +108,19 @@ no-loop true
 end
 
 
+rule "kurtz y martins hablan de winkel" 
 
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-04)
 
-rule "kurtz y martins hablan de winkel" agenda-group "g2"
+  @ruleDescription("Kurtz y Martins hablan de que Dr Winkel estuvo en la muerte de Lime.")
+
+  @ruleAuthor(Pablo Saura)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g2"
 no-loop true
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
@@ -146,7 +180,19 @@ no-loop true
 
 end
 
-rule "kurtz y martins hablan de popescu" agenda-group "g2"
+rule "kurtz y martins hablan de popescu" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-04)
+
+  @ruleDescription("Kurtz y Martins hablan de que Popescu estuvo en la muerte de Lime.")
+
+  @ruleAuthor(Pablo Saura)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g2"
 no-loop true
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
@@ -226,7 +272,20 @@ no-loop true
 		}
 end
 
-rule "kurtz y martins hablan de anna" agenda-group "g2"
+rule "kurtz y martins hablan de anna" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-04)
+
+  @ruleDescription("Kurtz y Martins hablan de que Anna era la novia de Lime.")
+
+  @ruleAuthor(Pablo Saura)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g2"
 no-loop true
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
@@ -323,7 +382,20 @@ no-loop true
 end
 */
 
-rule "visita a anna en el teatro" agenda-group "g2" //
+rule "visita a anna en el teatro" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-04)
+
+  @ruleDescription("Martins decide visitar a Anna en el teatro para conocerla.")
+
+  @ruleAuthor(Pablo Saura)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g2" //
 no-loop true
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )
@@ -359,13 +431,26 @@ no-loop true
 
 end
 
- rule "vuelta a casa Lime" agenda-group "g2"
+ rule "vuelta a casa Lime" 
+ 
+ // **************** METADATOS ******************* //
+  @ruleDate(2016-12-04)
+
+  @ruleDescription("Kurtz y Anna vuelven a la casa de Lime para hablar con el portero Karl.")
+
+  @ruleAuthor(Pablo Saura)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+ 
+ 
+ agenda-group "g2"
  no-loop true
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASANOVACLUB )
         anna : Personaje( nombre == Personaje.anna ,estadoSalud == EstadoSalud.VIVO,ubicacion == Ubicacion.CASANOVACLUB)
         karl : Personaje( nombre == Personaje.karl )
-        tercerhombre : Personaje ( nombre == Personaje.anna )
+        tercerhombre : Personaje ( nombre == Personaje.tercerhombre )
         b : Buffer()
     then
 
@@ -398,7 +483,20 @@ end
 
 end
 
-rule "martins y anna van a casa de anna" agenda-group "g2"
+rule "martins y anna van a casa de anna" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-04)
+
+  @ruleDescription("Martins y Anna se dirigen a la casa de Anna a hablar.")
+
+  @ruleAuthor(Pablo Saura)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
+agenda-group "g2"
 no-loop true
 	when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME )

@@ -15,7 +15,18 @@ import tercerhombre.Fin;
 // Si calloway esta muerto, martins va al cementerio y luego vuelve a casa.
 // Crear una regla general para: martins vuelve a casa.
 
-rule "calloway esta muerto y nunca conoce a martins" agenda-group "g1"
+rule "calloway esta muerto y nunca conoce a martins" 
+// **************** METADATOS ******************* //
+  @ruleDate(2016-11-04)
+
+  @ruleDescription("Si Calloway está muerto, no conoce a Martins y Martins vuelve a su país. ")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g1"
 no-loop true
     when
         martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO, estadoSalud == EstadoSalud.VIVO  )
@@ -34,7 +45,19 @@ end
 
 // Igual que en la regla anterior
 
-rule "kurtz esta muerto y nunca llama a martins" agenda-group "g1"
+rule "kurtz esta muerto y nunca llama a martins" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-11-04)
+
+  @ruleDescription("Si Kurtz está muerto, no llama a Martins y Martins decide volver a EEUU.")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g1"
 no-loop true
     when
         kurtz : Personaje( nombre == Personaje.kurtz, estadoSalud == EstadoSalud.MUERTO  )

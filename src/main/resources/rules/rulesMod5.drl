@@ -17,6 +17,18 @@ import tercerhombre.io.Buffer;
 
 
 rule "modificador EstadoSalud 5"
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-02)
+
+  @ruleDescription("Se modifica el estado de salud de un personaje en el acto 5.")
+
+  @ruleAuthor(Adrian Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
 salience 1
 agenda-group "g5"
 no-loop true
@@ -36,6 +48,17 @@ end
 
 rule "modificador Nacionalidad 5"
 
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-02)
+
+  @ruleDescription("Se modifica la nacionalidad de un personaje en el acto 5.")
+
+  @ruleAuthor(Adrian Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
 salience 1
 agenda-group "g5"
 
@@ -52,6 +75,18 @@ no-loop true
 end
 
 rule "modificador Actividad 5"
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-02)
+
+  @ruleDescription("Se modifica la actividad de un personaje en el acto 5.")
+
+  @ruleAuthor(Adrian Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+
 
 salience 1
 agenda-group "g5"
@@ -70,6 +105,17 @@ no-loop true
 end
 
 rule "modificador Ubicacion 5"
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-12-02)
+
+  @ruleDescription("Se modifica la ubicación de un personaje en el acto 5.")
+
+  @ruleAuthor(Adrian Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
 
 salience 1
 agenda-group "g5"

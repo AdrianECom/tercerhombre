@@ -4,7 +4,17 @@ import tercerhombre.personaje.Personaje;
 import tercerhombre.propiedades.*;
 import tercerhombre.io.Buffer;
 
-rule "insertar martins y lime" agenda-group "g0"
+rule "insertar martins y lime" 
+// **************** METADATOS ******************* //
+  @ruleDate(2016-11-03)
+
+  @ruleDescription("Personajes iniciales de la película antes de que ocurra ningún suceso. ")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+agenda-group "g0"
 no-loop true
     when
     	// sin condiciones
@@ -26,7 +36,17 @@ no-loop true
     	setUbicacion(null));
 end
 
-rule "datos iniciales" agenda-group "g0"
+rule "datos iniciales" 
+// **************** METADATOS ******************* //
+  @ruleDate(2016-11-03)
+
+  @ruleDescription("Información inicial de la película antes de que ocurra ningún suceso. ")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+agenda-group "g0"
 no-loop true
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == null, estadoSalud == EstadoSalud.VIVO )
@@ -64,7 +84,17 @@ no-loop true
 		};
 end
 
-rule "martins va estacion" agenda-group "g0"
+rule "martins va estacion" 
+// **************** METADATOS ******************* //
+  @ruleDate(2016-11-03)
+
+  @ruleDescription("Tratamos la llegada de Martins a la estación de tren. ")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+agenda-group "g0"
 no-loop true
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == null, estadoSalud == EstadoSalud.VIVO  )
@@ -81,7 +111,17 @@ no-loop true
 		};
 end
 
-rule "martins va casa lime" agenda-group "g0"
+rule "martins va casa lime" 
+// **************** METADATOS ******************* //
+  @ruleDate(2016-11-03)
+
+  @ruleDescription("Martins va a casa de Lime a buscarlo tras llegar a Austria.")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+agenda-group "g0"
 no-loop true
     when
     	martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.ESTACION, estadoSalud == EstadoSalud.VIVO  )
@@ -105,12 +145,24 @@ no-loop true
 			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ");
 		};
 
-		//// System.out.println("Karl insertado");
-
 end
 
-rule "martins conoce karl" agenda-group "g0"
+
+rule "martins conoce karl" 
+
+// **************** METADATOS ******************* //
+  @ruleDate(2016-11-03)
+
+  @ruleDescription("Martins encuentra a Karl y esté le dice que Lime está siendo enterrado, Martins va a su entierro. ")
+
+  @ruleAuthor(Adrián Egea)
+
+  @ruleVersion(1.0.0)
+// **************** FIN METADATOS ******************* //
+
+agenda-group "g0"
 no-loop true
+
     when
         martins : Personaje( nombre == Personaje.martins, ubicacion == Ubicacion.CASALIME, estadoSalud == EstadoSalud.VIVO  )
         karl : Personaje( nombre == Personaje.karl, estadoSalud == EstadoSalud.VIVO  )
