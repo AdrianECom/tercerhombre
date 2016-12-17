@@ -89,16 +89,15 @@ public class Personaje {
 		Personaje.listaDeRelacionesEnum.add(Relacion.SOSPECHA_DE);
 		Personaje.listaDeRelacionesEnum.add(Relacion.TRABAJA_CON);
 	}
-		
 
 	// ------------------------------------
 
 	// CONSTRUCTOR
 
 	public Personaje() {
-		
+	
 		modificado = false;
-		
+
 		this.amigo_de = new ArrayList<Personaje>();
 		this.mata_a = new ArrayList<Personaje>();
 		this.enfrentado_con = new ArrayList<Personaje>();
@@ -124,9 +123,6 @@ public class Personaje {
 		this.listaDeRelaciones.add(en_realidad_es);
 		this.listaDeRelaciones.add(sospecha_de);
 		this.listaDeRelaciones.add(trabaja_con);
-		
-		
-		
 		
 	}
 	

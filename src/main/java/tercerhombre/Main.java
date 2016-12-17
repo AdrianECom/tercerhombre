@@ -74,8 +74,10 @@ public class Main {
 	    // RECORREMOS CONSULTAS
 	    for (Consulta consulta : consultas) {
 	    	
+	    	int acto = consulta.getActo();
+	    	
 	    	// Mensaje por si nos pasamos de acto.
-	    	if(consulta.getActo() > ULTIMO_ACTO){
+			if(acto > ULTIMO_ACTO){
 	    		
 	    		salida.print("# SOLO SE PUEDEN REALIZAR CONSULTAS HASTA : Acto" +ULTIMO_ACTO+".\n");
 	    		
@@ -117,7 +119,7 @@ public class Main {
 				 * necesitamos disparar las reglas del acto 0, del acto 1,
 				 * del acto 2, del acto 3 y del acto 4.
 				 */
-				for (int i = 0; !fin && i <= consulta.getActo(); i++) {
+				for (int i = 0; !fin && i <= acto; i++) {
 					kSession.getAgenda().getAgendaGroup("g"+i).setFocus();
 				    kSession.fireAllRules();
 				    
@@ -146,9 +148,10 @@ public class Main {
 			    		}
 					}
 			    	
-			    	if(personajeEncontrado != null)
+			    	if(personajeEncontrado != null){
+			    		salida.print("En el Acto "+acto+". ");
 			    		salida.print(personajeEncontrado.toString()+"\n");
-			    	else
+			    	}else
 			    		salida.print("# NO SE SABE NADA DEL PERSONAJE " + consultaQuien.getNombre() + " EN EL ACTO " + consultaQuien.getActo() +".\n");
 			    }
 			    

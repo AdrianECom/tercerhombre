@@ -8,7 +8,7 @@ public class Buffer {
 	}
 	
 	public Buffer append(String str){
-		buffer.append(str+"\n");
+		buffer.append(str);
 		return this;
 	}
 	

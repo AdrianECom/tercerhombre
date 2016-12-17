@@ -419,7 +419,11 @@ System.out.println("Martins va al Sector Ruso a hablar con Lime");
 		};
 
 		modify(tercerhombre) {
-			setNombre(Personaje.lime);
+			getEn_realidad_es().add(lime);
+		}
+		
+		modify(lime){
+			getEn_realidad_es().add(tercerhombre);
 		}
 
 		modify(b){
@@ -445,7 +449,7 @@ agenda-group "g5"
     when
     	lime : Personaje (nombre == Personaje.lime, ubicacion == Ubicacion.NORIA)
 		tercerhombre : Personaje (nombre == Personaje.tercerhombre)
-		kurtz : Personaje (nombre == Personaje.kurtz)
+		kurtz : Personaje (nombre == Personaje.kurtz, ubicacion != Ubicacion.SECTORRUSO)
 		b : Buffer()
     then
 System.out.println("Kurtz esta con Lime");
@@ -476,7 +480,7 @@ agenda-group "g5"
     when
     	lime : Personaje (nombre == Personaje.lime, ubicacion == Ubicacion.NORIA)
 		tercerhombre : Personaje (nombre == Personaje.tercerhombre)
-		winkel : Personaje (nombre == Personaje.winkel)
+		winkel : Personaje (nombre == Personaje.winkel, ubicacion != Ubicacion.SECTORRUSO)
 		b : Buffer()
     then
 System.out.println("Winkel esta con Lime");
