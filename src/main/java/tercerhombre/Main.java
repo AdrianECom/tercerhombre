@@ -78,6 +78,7 @@ public class Main {
 	    	
 	    	int acto = consulta.getActo();
 	    	
+	    	
 	    	// Mensaje por si nos pasamos de acto.
 			if(acto > ULTIMO_ACTO){
 	    		
