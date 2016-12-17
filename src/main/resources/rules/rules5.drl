@@ -31,7 +31,7 @@ rule "Anna esta en el final"
 		b : Buffer()
 
 	then
-		System.out.println("Anna esta en el final");
+		
 		modify(anna){
 			setUbicacion(Ubicacion.CEMENTERIO);
 		}
@@ -62,7 +62,7 @@ rule "Paine esta en el final"
 		b : Buffer()
 
 	then
-System.out.println("Paine esta en el final");
+
 		modify(paine){
 			setUbicacion(Ubicacion.CEMENTERIO);
 		}
@@ -93,7 +93,7 @@ no-loop true
 
 		b : Buffer()
 	then
- System.out.println("Lime hace acto de presencia");
+ 
 
 		modify(lime){
 			setEstadoSalud(EstadoSalud.VIVO);
@@ -140,7 +140,7 @@ no-loop true
 
 		b : Buffer()
 	then
-System.out.println("Calloway va a la Plaza");
+
 		modify(calloway){
 			setUbicacion(Ubicacion.PLAZA);
 		}
@@ -170,7 +170,7 @@ no-loop true
 		harbin : Personaje ( nombre == Personaje.harbin,ubicacion != Ubicacion.CEMENTERIO)
 		b : Buffer()
 	then
-System.out.println( "Paine va a la Plaza");
+
 		modify(paine){
 			setUbicacion(Ubicacion.PLAZA);
 		}
@@ -201,7 +201,7 @@ agenda-group "g5"
 
 		b : Buffer()
 	then
-System.out.println("Calloway y Martins buscan a Lime en las cloacas");
+
 		modify(calloway){
 			setUbicacion(Ubicacion.CLOACAS);
 		}
@@ -238,7 +238,7 @@ agenda-group "g5"
 		b : Buffer()
 
 	then
-System.out.println("Paine esta con calloway en las cloacas");
+
 		modify(paine){
 			setUbicacion(Ubicacion.CLOACAS);
 		}
@@ -270,7 +270,7 @@ agenda-group "g5"
 
 		b : Buffer()
     then
-System.out.println("Harbin esta enterrado en la tumba de Lime");
+
         modify(calloway){
 			setUbicacion(Ubicacion.CEMENTERIO);
 		}
@@ -317,7 +317,7 @@ agenda-group "g5"
 
     then
     
-    	System.out.println("Paine esta en el cementerio también");
+    	
 		modify(paine){
 			setUbicacion(Ubicacion.CEMENTERIO);
 		}
@@ -350,7 +350,7 @@ agenda-group "g5"
 
 		b : Buffer()
     then
-System.out.println("Llevan a Anna a la comisaria");
+
         modify(anna){
 			setUbicacion(Ubicacion.COMISARIA);
 		}
@@ -394,7 +394,7 @@ agenda-group "g5"
 
 		b : Buffer()
 	then
-System.out.println("Martins va al Sector Ruso a hablar con Lime");
+
 
         modify(martins){
 			setUbicacion(Ubicacion.SECTORRUSO);
@@ -452,7 +452,7 @@ agenda-group "g5"
 		kurtz : Personaje (nombre == Personaje.kurtz, ubicacion != Ubicacion.SECTORRUSO)
 		b : Buffer()
     then
-System.out.println("Kurtz esta con Lime");
+
     	modify(kurtz){
 			setUbicacion(Ubicacion.SECTORRUSO);
 		}
@@ -483,7 +483,7 @@ agenda-group "g5"
 		winkel : Personaje (nombre == Personaje.winkel, ubicacion != Ubicacion.SECTORRUSO)
 		b : Buffer()
     then
-System.out.println("Winkel esta con Lime");
+
     	modify(winkel){
 			setUbicacion(Ubicacion.SECTORRUSO);
 		}
@@ -515,7 +515,7 @@ agenda-group "g5"
 
 		b : Buffer()
     then
-System.out.println("Martins decide ayudar a Calloway");
+
         modify(martins){
 			setUbicacion(Ubicacion.COMISARIA);
 		}
@@ -557,7 +557,7 @@ no-loop true
 
 		b : Buffer()
     then
-System.out.println("Paine esta con ellos");
+
 		modify(paine){
 			setUbicacion(Ubicacion.COMISARIA);
 		}
@@ -591,7 +591,7 @@ agenda-group "g5"
 
 		b : Buffer()
     then
-System.out.println( "Martins y Anna discuten en la estacion");
+
         modify(martins){
 			setUbicacion(Ubicacion.ESTACION);
 		}
@@ -639,7 +639,7 @@ agenda-group "g5"
 		b : Buffer()
 
     then
-System.out.println("Martins y Calloway van al hospital");
+
         modify(martins){
 			setUbicacion(Ubicacion.COMISARIA);
 		}
@@ -686,7 +686,7 @@ agenda-group "g5"
 		b : Buffer()
 
     then
-System.out.println("Martins y Lime se ven en el cafe");
+
         modify(martins){
 			setUbicacion(Ubicacion.CAFEMARC);
 		}
@@ -733,7 +733,7 @@ agenda-group "g5"
 		b : Buffer()
 
 	then
-System.out.println("Paine esta en el Café Marc");
+
 		modify(paine){
 			setUbicacion(Ubicacion.CAFEMARC);
 		}
@@ -764,7 +764,7 @@ agenda-group "g5"
 		b : Buffer()
 
 	then
-System.out.println("Anna va al Café Marc");
+
 		modify(anna){
 			setUbicacion(Ubicacion.CAFEMARC);
 		}
@@ -797,7 +797,7 @@ agenda-group "g5"
 
 		b : Buffer()
     then
-System.out.println("Desenlace en las cloacas" );
+
         modify(martins){
 			setUbicacion(Ubicacion.CLOACAS);
 		}
@@ -838,7 +838,7 @@ agenda-group "g5"
 		b : Buffer()
 
 	then
-System.out.println("Paine está en las cloacas");
+
 
 		modify(paine){
 			setUbicacion(Ubicacion.CLOACAS);
@@ -870,7 +870,7 @@ agenda-group "g5"
 		b : Buffer()
 
 	then
-System.out.println("Muere Lime");
+
 		modify(b) {
 			append("Calloway y Martins encuentran a Lime y Martins mata a Lime. ");
 		};
@@ -905,7 +905,7 @@ agenda-group "g5"
 
 		b : Buffer()
     then
-System.out.println("Final");
+
         modify(martins){
 			setUbicacion(Ubicacion.CEMENTERIO);
 		}

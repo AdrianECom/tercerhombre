@@ -30,7 +30,7 @@ no-loop true
         b : Buffer()
 
     then
-// System.out.println("problemas en casa de anna");
+// 
     	 modify(calloway){
 	    	setUbicacion(Ubicacion.CASAANNA);
 	    };
@@ -79,7 +79,7 @@ no-loop true
 
 		b : Buffer()
 	then
-// System.out.println("anna conoce a paine en su casa");
+// 
 
 		modify(anna){
 	    	getConoce_a().add(paine)
@@ -129,7 +129,7 @@ end
 				b : Buffer()
 
     then
-// System.out.println("van a la comisaria ");
+// 
     	modify(calloway){
 	    	setUbicacion(Ubicacion.COMISARIA);
 	    };
@@ -168,7 +168,7 @@ no-loop true
 				b : Buffer()
 
     then
-// System.out.println("va a ver a winkel");
+// 
 
       	modify(winkel){
 			setUbicacion(Ubicacion.CASAWINKEL);
@@ -207,7 +207,7 @@ no-loop true
 		b : Buffer()
 
     then
-// System.out.println("habla con Winkel");
+// 
     	modify(martins){
       		getConoce_a().add(winkel);
       	};
@@ -243,7 +243,7 @@ no-loop true
 				b : Buffer()
 
     then
-// System.out.println("martins y anna van al cassanovaclub");
+// 
 
 
 		modify(kurtz){
@@ -335,7 +335,7 @@ no-loop true
 
    		b : Buffer()
    	then
-// System.out.println("anna está en casanova club");
+// 
 
    		modify(anna){
     		getConoce_a().add(kurtz);
@@ -374,7 +374,7 @@ no-loop true
 
 	   	b : Buffer()
    then
-// System.out.println("crabbin está en casanova club");
+// 
 
 	   	modify(crabbin){
 			setUbicacion(Ubicacion.CASANOVACLUB);

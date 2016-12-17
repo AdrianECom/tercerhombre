@@ -26,7 +26,7 @@ no-loop true
 
     then
 
-    // System.out.println("insertar harbin");
+    // 
     	insert(Personaje.nuevo().
     	setNombre(Personaje.harbin).
     	setGenero(Genero.HOMBRE).
@@ -57,7 +57,7 @@ no-loop true
 		winkel : Personaje( nombre == Personaje.winkel, estadoSalud == EstadoSalud.VIVO, ubicacion == Ubicacion.CASAWINKEL )
 		b : Buffer()
 	then
-// System.out.println("Winkel está en la reunion");
+// 
 		modify(winkel){
 			setUbicacion(Ubicacion.PUENTE);
 		};
@@ -86,7 +86,7 @@ no-loop true
 		kurtz : Personaje( nombre == Personaje.kurtz, estadoSalud == EstadoSalud.VIVO, ubicacion == Ubicacion.CASANOVACLUB )
 		b : Buffer()
 	then
-// System.out.println("Kurtz está en la reunion");
+// 
 		modify(kurtz){
 			setUbicacion(Ubicacion.PUENTE);
 		};
@@ -118,7 +118,7 @@ no-loop true
 		popescu : Personaje( nombre == Personaje.popescu, estadoSalud == EstadoSalud.VIVO, ubicacion == Ubicacion.CASANOVACLUB )
 		b : Buffer()
 	then
-// System.out.println("Popescu está en la reunion");
+// 
 		modify(popescu){
 			setUbicacion(Ubicacion.PUENTE);
 		};
@@ -150,7 +150,7 @@ no-loop true
 		b : Buffer()
 
     then
-// System.out.println("Martins va a hablar con el portero");
+// 
 
 		modify(martins){
 			setUbicacion(Ubicacion.CASALIME);
@@ -183,7 +183,7 @@ no-loop true
 		b : Buffer()
 
 	then
-// System.out.println("Anna acompaña a Martins a ver a Karl");
+// 
 
     	modify(anna){
 			setUbicacion(Ubicacion.CASALIME);
@@ -213,7 +213,7 @@ no-loop true
 		b : Buffer()
 
 	then
-// System.out.println("Karl esta muerto");
+// 
 		modify(karl){
 			setEstadoSalud(EstadoSalud.MUERTO);
 		};
@@ -249,7 +249,7 @@ no-loop true
 		b : Buffer()
 
     then
-// System.out.println("Martins va a dar la conferencia");
+// 
     	modify(crabbin){
 			setUbicacion(Ubicacion.CONFERENCIA);
 		};
@@ -286,7 +286,7 @@ no-loop true
 		b : Buffer()
 
     then
-// System.out.println("Popescu intenta matar a Martin");
+// 
 
     	modify(popescu){
 			setUbicacion(Ubicacion.CONFERENCIA);
@@ -344,7 +344,7 @@ no-loop true
 		b : Buffer()
 
     then
-// System.out.println("Calloway le cuenta la verdad a martins");
+// 
 
     	modify(calloway){
 			setUbicacion(Ubicacion.COMISARIA);
@@ -435,7 +435,7 @@ no-loop true
 		b : Buffer()
 
     then
-// System.out.println("Martins decide irse e informa a Anna");
+// 
     	modify(martins){
 			setUbicacion(Ubicacion.CASAANNA);
 		};
@@ -475,7 +475,7 @@ no-loop true
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA)
 		b : Buffer()
 	then
-// System.out.println("Paine esta en la comisaria");
+// 
 		modify(paine){
 			setUbicacion(Ubicacion.COMISARIA);
 		};

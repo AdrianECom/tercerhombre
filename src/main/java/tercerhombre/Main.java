@@ -24,6 +24,7 @@ import tercerhombre.personaje.Personaje;
 public class Main {
 	
 	public static FicheroSalida salida;
+	public static FicheroSalida salidaMetadatos;
 	
 	private static final int ULTIMO_ACTO = 5;
 
@@ -33,6 +34,7 @@ public class Main {
     	
     	List<Consulta> consultas = new LinkedList<>();
     	salida = new FicheroSalida("output.txt");
+    	salidaMetadatos = new FicheroSalida("metadata.txt");
     	LectorConsultas lc = new LectorConsultas();
     	
     	for (String fichero : args) {
@@ -85,13 +87,13 @@ public class Main {
 	    		
 	    		KieSession kSession = kContainer.newKieSession("ksession-rules");
 	    		
-				
 				Collection<Rule> rules = kSession.getKieBase().getKiePackage("rules").getRules();
-				System.out.println("-----------------------METADATOS-------------------------");
-				for (Rule r : rules){
-					System.out.println(r.getMetaData().toString());
-				}
-				System.out.println("----------------------FIN METADATOS----------------------");
+				
+				for (Rule r : rules)
+					salidaMetadatos.print(r.getMetaData().toString()+"\n");
+				
+				salidaMetadatos.guardar();
+				
 	    		
 	    		if(consulta instanceof ConsultaSi){
 	    			

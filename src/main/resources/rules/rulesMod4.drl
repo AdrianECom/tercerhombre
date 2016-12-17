@@ -44,7 +44,7 @@ no-loop true
     		setModificado(true);
     	};
 
-    	 System.out.println(p.getNombre()+" " +m.getPropiedad() );
+    	 
 end
 
 rule "modificador Nacionalidad 4"
@@ -72,7 +72,7 @@ no-loop true
     		setNacionalidad((Nacionalidad)m.getPropiedad()).
     		setModificado(true);
     	};
-		// System.out.println(p.getNombre()+" " +m.getPropiedad() );
+		// 
 end
 
 rule "modificador Actividad 4"
@@ -102,7 +102,7 @@ no-loop true
     		setActividad((Actividad)m.getPropiedad()).
     		setModificado(true);
     	};
-		// System.out.println(p.getNombre()+" " +m.getPropiedad() );
+		// 
 end
 
 rule "modificador Ubicacion 4"
@@ -130,5 +130,5 @@ no-loop true
     		setUbicacion((Ubicacion)m.getPropiedad()).
     		setModificado(true);
     	};
-		// System.out.println(p.getNombre()+" " +m.getPropiedad() );
+		// 
 end

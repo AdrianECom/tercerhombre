@@ -89,7 +89,7 @@ public class LectorConsultas {
 
 		if (matchActo.find()) {
 			String acto = matchActo.group(1);
-			//// System.out.println("QUE");
+			//// 
 			
 			int actoInt = 0;
 			
@@ -124,7 +124,7 @@ public class LectorConsultas {
 			
 			if (matchActo.find()) {
 				String acto = matchActo.group(1);
-				//// System.out.println("QUIEN");
+				//// 
 				return new ConsultaQuien(Integer.parseInt(acto),nombre);
 			}
 		}
@@ -144,7 +144,7 @@ public class LectorConsultas {
 		if (matchEs.find()) {
 			String nombre = matchEs.group(1);
 			String propiedad = matchEs.group(2);
-			//// System.out.println("SI");
+			//// 
 			return new ConsultaSi(nombre, propiedad, subconsulta);
 		}
 		

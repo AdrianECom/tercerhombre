@@ -39,7 +39,7 @@ salience 2
 
 		b : Buffer()
     then
-System.out.println("No hay nadie enterrado en la tumba de Lime.");
+
         modify(calloway){
 			setUbicacion(Ubicacion.CEMENTERIO);
 		}

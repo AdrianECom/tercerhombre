@@ -20,7 +20,7 @@ public class FicheroSalida {
 			b = new BufferedWriter(new FileWriter(new File(nombre)));
 			inicializado = true;
 		} catch (IOException e) {
-			System.err.println("No se pudo crear el fichero " + nombre);
+			
 		}
 	}
 	
@@ -35,7 +35,7 @@ public class FicheroSalida {
 		try {
 			b.write(s);
 		} catch (IOException e) {
-			System.err.println("No se pudo escribir en el fichero " + nombre);
+			
 		}
 	}
 	
@@ -46,7 +46,7 @@ public class FicheroSalida {
 		try {
 			b.close();
 		} catch (IOException e) {
-			System.err.println("No se pudo cerrar el fichero " + nombre);
+			
 		}
 	}
 }

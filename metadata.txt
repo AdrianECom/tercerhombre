@@ -1,0 +1,103 @@
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica el estado de salud de un personaje en el acto 0.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la nacionalidad de un personaje en el acto 0.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la actividad de un personaje en el acto 0.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la ubicación de un personaje en el acto 0.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Se inserta a Harbin puesto que se habla de el por primera vez en este acto.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Dr Winkel se dirige a la reunión en el puente en bicicleta.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Kurtz se dirige a la reunión en el puente.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Popescu se dirige a la reunión en el puente.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Martins va a casa de Lime para hablar con el portero Karl. }
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Anna acompaña a Martins a hablar con el portero Karl. }
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Al llegar a casa de Lime, Martins y Anna encuentran a Karl muerto.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Martins vuelve al hotel y un taxi lo espera para ir a dar la Conferencia.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=En la conferencia, Popescu intenta matar a Martins}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Tras intentar ser asesinado, Martins va a comisaria y Calloway le explica la historia.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Martins decide irse de Viena y va a casa de Anna a despedirse. }
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Paine esta también en la comisaria cuando Calloway le cuenta la historia a Martins.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica el estado de salud de un personaje en el acto 4.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la nacionalidad de un personaje en el acto 4.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la actividad de un personaje en el acto 4.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la ubicación de un personaje en el acto 4.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica el estado de salud de un personaje en el acto 2.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la nacionalidad de un personaje en el acto 2.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la actividad de un personaje en el acto 2.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la ubicación de un personaje en el acto 2.}
+{ruleDate=2016-12-04, ruleAuthor=Pablo Saura, ruleVersion=1.0.0, ruleDescription=Se insertan los personajes de los que hablan Kurtz y Martins. }
+{ruleDate=2016-12-04, ruleAuthor=Pablo Saura, ruleVersion=1.0.0, ruleDescription=Martins va a la casa de Lime para que Kurtz le explique como murió Lime. }
+{ruleDate=2016-12-04, ruleAuthor=Pablo Saura, ruleVersion=1.0.0, ruleDescription=Kurtz y Martins hablan de que Dr Winkel estuvo en la muerte de Lime.}
+{ruleDate=2016-12-04, ruleAuthor=Pablo Saura, ruleVersion=1.0.0, ruleDescription=Kurtz y Martins hablan de que Popescu estuvo en la muerte de Lime.}
+{ruleDate=2016-12-04, ruleAuthor=Pablo Saura, ruleVersion=1.0.0, ruleDescription=Kurtz y Martins hablan de que Anna era la novia de Lime.}
+{ruleDate=2016-12-04, ruleAuthor=Pablo Saura, ruleVersion=1.0.0, ruleDescription=Martins decide visitar a Anna en el teatro para conocerla.}
+{ruleDate=2016-12-04, ruleAuthor=Pablo Saura, ruleVersion=1.0.0, ruleDescription=Kurtz y Anna vuelven a la casa de Lime para hablar con el portero Karl.}
+{ruleDate=2016-12-04, ruleAuthor=Pablo Saura, ruleVersion=1.0.0, ruleDescription=Martins y Anna se dirigen a la casa de Anna a hablar.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Anna está en el cementerio cuando están enterrando a Lime.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Paine está en el cementerio cuando están enterrando a Lime. }
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Lime hace acto de presencia a Martins cerca de casa de Anna.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Calloway va a la plaza en la que Lime desapareció.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Paine va a la plaza en la que Lime desapareció.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Calloway y Martins buscan a Lime en las cloacas tras descubrir que se fue por allí.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Paine va con Calloway y Martins a las cloacas en busca de Lime.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Al abrir la tumba de Lime, Martins y Calloway encuentran a Harbin enterrado ahí.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Paine acompaña a Calloway y Martins en el cementerio abriendo la tumba de Lime.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Van a casa de Anna y la llevan a comisaria por el pasaporte falso.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Martins va en busca de Lime y va a una casa en el Sector Ruso.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=En la casa del Sector Ruso, Kurtz está en la casa con Lime.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=En la casa del Sector Ruso, Winkel está en la casa con Lime.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Tras hablar con Lime, Martins decide ayudar a Calloway y va a la comisaria.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=En la comisaria, cuando se reunen Martins y Calloway, también está Paine.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Martins va a ver como Anna coge el tren y Anna lo ve y discuten.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Martins duda si ayudar a Calloway, y para convencerlo, Calloway lo lleva al hospital.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Martins decide quedar con Lime en el Cafe Marc y Calloway espera fuera.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Paine también esta fuera del Café Marc con Calloway esperando a Lime.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Anna aparece en el Café Marc y le dice a Lime que huya.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Lime huye por las cloacas y Martins y Calloway lo siguen.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Paine está con Calloway cuando van a las cloacas a por Lime.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Finalmente Martins dispará a Lime por que Lime se lo pide.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=En el entierro de Lime van Martins y Calloway.}
+{ruleDate=1994, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=En caso de que Lime esté vivo, cuando Martins llegue a casa de Lime lo encontrará y trabajará para él. }
+{ruleDate=1994, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=En el caso de que Martins esté muerto, no hay historia que contar. }
+{ruleDate=1994, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=En caso de que Karl este muerto, Martins no encontrará a nadie al ir a casa de Lime y volverá a EEUU. }
+{ruleDate=2016-11-03, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Personajes iniciales de la película antes de que ocurra ningún suceso. }
+{ruleDate=2016-11-03, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Información inicial de la película antes de que ocurra ningún suceso. }
+{ruleDate=2016-11-03, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Tratamos la llegada de Martins a la estación de tren. }
+{ruleDate=2016-11-03, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Martins va a casa de Lime a buscarlo tras llegar a Austria.}
+{ruleDate=2016-11-03, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Martins encuentra a Karl y esté le dice que Lime está siendo enterrado, Martins va a su entierro. }
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica el estado de salud de un personaje en el acto 5.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la nacionalidad de un personaje en el acto 5.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la actividad de un personaje en el acto 5.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la ubicación de un personaje en el acto 5.}
+{ruleDate=1992, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Si Crabbin esta muerto, Martins va al Hotel Sacher ya que no hay Conferencia.}
+{ruleDate=1992, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=En el Hotel Sacher, Popescu mata a Martins.}
+{ruleDate=1991, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Al abrir la tumba de Lime está esta vacía.}
+{ruleDate=1991, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Si Anna no es Rusa, Anna no irá a la comisaría y Martins irá a su casa a decirle que ha visto a Lime.}
+{ruleDate=1991, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Si Anna no es rusa, Calloway no le puede dar nada a Martins a cambio de su ayuda, y Martins decide irse.}
+{ruleDate=2016-10-04, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Martins va al cementerio al entierro de Lime. }
+{ruleDate=2016-11-04, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Calloway está en el entierro, lo insertamos en la BH. }
+{ruleDate=2016-11-04, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Martins conoce a Calloway en el entierro de Lime. }
+{ruleDate=2016-11-04, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Martins, Calloway van al Pub a hablar sobre Lime. }
+{ruleDate=2016-11-04, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Insertamos a Paine en la BH ya que aparece en el Pub. }
+{ruleDate=2016-11-04, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Martins conoce a Paine puesto que van los dos al Pub junto con Calloway. }
+{ruleDate=2016-11-04, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Martins va al hotel al que se hospedará. Se inserta a Crabbin en la BH puesto que está allí. }
+{ruleDate=2016-11-04, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Martins conoce a Crabbin en el Hotel y le invita a quedarse allí. }
+{ruleDate=2016-11-04, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Kurtz llama a Martins y es insertado en la B.H.}
+{ruleDate=2016-11-04, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Kurtz y Martins deciden encontrarse en el Café Mozart para hablar de Lime.}
+{ruleDate=2016-11-04, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Martins y Kurtz se encuentran en el Café Mozart, se conocen.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica el estado de salud de un personaje en el acto 1.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la nacionalidad de un personaje en el acto 1.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la actividad de un personaje en el acto 1.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la ubicación de un personaje en el acto 1.}
+{ruleDate=2016-11-04, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Si Calloway está muerto, no conoce a Martins y Martins vuelve a su país. }
+{ruleDate=2016-11-04, ruleAuthor=Adrián Egea, ruleVersion=1.0.0, ruleDescription=Si Kurtz está muerto, no llama a Martins y Martins decide volver a EEUU.}
+{ruleDate=2016-12-05, ruleAuthor=Pablo Saura, ruleVersion=1.0.0, ruleDescription=Calloway va a casa de Anna por que tiene problemas con su pasaporte estando Martins allí.}
+{ruleDate=2016-12-05, ruleAuthor=Pablo Saura, ruleVersion=1.0.0, ruleDescription=Paine ha ido con Calloway a casa de Anna.}
+{ruleDate=2016-12-05, ruleAuthor=Pablo Saura, ruleVersion=1.0.0, ruleDescription=Calloway y Paine deciden llevar a Anna a la comisaria.}
+{ruleDate=2016-12-05, ruleAuthor=Pablo Saura, ruleVersion=1.0.0, ruleDescription=Martins decide ir a cada del Dr Winkel a hablar con él.}
+{ruleDate=2016-12-05, ruleAuthor=Pablo Saura, ruleVersion=1.0.0, ruleDescription=Martins y Winkel hablan sobre Lime y su muerte.}
+{ruleDate=2016-12-05, ruleAuthor=Pablo Saura, ruleVersion=1.0.0, ruleDescription=Martins va al Cassanova Club para hablar con Kurtz, ya que el trabaja allí.}
+{ruleDate=2016-12-05, ruleAuthor=Pablo Saura, ruleVersion=1.0.0, ruleDescription=Kurtz aprovecha para presentarle a Martins a Popescu ya que estaba en el Club.}
+{ruleDate=2016-12-05, ruleAuthor=Pablo Saura, ruleVersion=1.0.0, ruleDescription=Martins encuentra a Anna en el Cassanova Club y se quedan juntos.}
+{ruleDate=2016-12-05, ruleAuthor=Pablo Saura, ruleVersion=1.0.0, ruleDescription=Crabbin saluda a Martins en el Cassanova Club.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica el estado de salud de un personaje en el acto 3.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la nacionalidad de un personaje en el acto 3.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la actividad de un personaje en el acto 3.}
+{ruleDate=2016-12-02, ruleAuthor=Adrian Egea, ruleVersion=1.0.0, ruleDescription=Se modifica la ubicacion de un personaje en el acto 3.}
