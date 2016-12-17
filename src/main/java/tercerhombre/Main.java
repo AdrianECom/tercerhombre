@@ -1,15 +1,21 @@
 package tercerhombre;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
+import org.drools.core.base.DroolsQuery;
 import org.kie.api.KieServices;
 import org.kie.api.cdi.KSession;
+import org.kie.api.osgi.Activator.DroolsServiceTracker;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.ObjectFilter;
 import org.kie.api.runtime.rule.FactHandle;
+import org.kie.api.definition.rule.*;
+import org.kie.api.definition.type.*;
 
 import tercerhombre.consultas.Consulta;
 import tercerhombre.consultas.ConsultaQue;
@@ -83,6 +89,14 @@ public class Main {
 	    		
 	    		KieSession kSession = kContainer.newKieSession("ksession-rules");
 	    		
+				
+				Collection<Rule> rules = kSession.getKieBase().getKiePackage("rules").getRules();
+				System.out.println("-----------------------METADATOS-------------------------");
+				for (Rule r : rules){
+					System.out.println(r.getMetaData().toString());
+				}
+				System.out.println("----------------------FIN METADATOS----------------------");
+	    		
 	    		if(consulta instanceof ConsultaSi){
 	    			
 	    			/*
@@ -117,10 +131,11 @@ public class Main {
 				 * necesitamos disparar las reglas del acto 0, del acto 1,
 				 * del acto 2, del acto 3 y del acto 4.
 				 */
+		    	
 				for (int i = 0; !fin && i <= consulta.getActo(); i++) {
 					kSession.getAgenda().getAgendaGroup("g"+i).setFocus();
-				    kSession.fireAllRules();
-				    
+					kSession.fireAllRules();
+
 				    fin = comprobarFin(kSession);
 				}
 				
@@ -160,7 +175,13 @@ public class Main {
 	    salida.guardar();
 	    
     }
+    
+     
 
     // ------------------------------------
 
+    
+
+
+    
 }
