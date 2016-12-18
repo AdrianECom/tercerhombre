@@ -343,7 +343,7 @@ agenda-group "g5"
     no-loop true
     when
 		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.CEMENTERIO )
-		anna : Personaje (nombre == Personaje.anna, nacionalidad != Nacionalidad.AUSTRIA, ubicacion != Ubicacion.CEMENTERIO )
+		anna : Personaje (nombre == Personaje.anna, nacionalidad != Nacionalidad.AUSTRIA, ubicacion != Ubicacion.CEMENTERIO, estadoSalud == EstadoSalud.VIVO )
 		lime : Personaje (nombre == Personaje.lime, estadoSalud == EstadoSalud.VIVO )
 		calloway : Personaje (nombre == Personaje.calloway, ubicacion == Ubicacion.CEMENTERIO )
 		harbin : Personaje (nombre == Personaje.harbin, estadoSalud != null )
@@ -388,7 +388,7 @@ rule "Martins va al Sector Ruso a hablar con Lime"
 agenda-group "g5"
     no-loop true
     when
-		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA )
+		martins : Personaje (nombre == Personaje.martins, ubicacion == Ubicacion.COMISARIA || ubicacion == Ubicacion.CEMENTERIO )
 		lime : Personaje (nombre == Personaje.lime, ubicacion == Ubicacion.CLOACAS)
 		tercerhombre : Personaje (nombre == Personaje.tercerhombre)
 
