@@ -43,11 +43,11 @@
 {ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Martins va en busca de Lime y va a una casa en el Sector Ruso.}
 {ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=En la casa del Sector Ruso, Kurtz está en la casa con Lime.}
 {ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=En la casa del Sector Ruso, Winkel está en la casa con Lime.}
-{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Tras hablar con Lime, Martins decide ayudar a Calloway y va a la comisaria.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Tras hablar con Lime, Martins decide ayudar a Calloway y va a la comisaria. }
 {ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=En la comisaria, cuando se reunen Martins y Calloway, también está Paine.}
 {ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Martins va a ver como Anna coge el tren y Anna lo ve y discuten.}
 {ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Martins duda si ayudar a Calloway, y para convencerlo, Calloway lo lleva al hospital.}
-{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Martins decide quedar con Lime en el Cafe Marc y Calloway espera fuera.}
+{ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Martins decide quedar con Lime en el Cafe Marc y Calloway espera fuera. }
 {ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Paine también esta fuera del Café Marc con Calloway esperando a Lime.}
 {ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Anna aparece en el Café Marc y le dice a Lime que huya.}
 {ruleDate=2016-12-06, ruleAuthor=Jesús Garcerán, ruleVersion=1.0.0, ruleDescription=Lime huye por las cloacas y Martins y Calloway lo siguen.}

@@ -215,7 +215,7 @@ no-loop true
 			setUbicacion(Ubicacion.CEMENTERIO);
 		};
 		modify(b) {
-			append(Personaje.karl+" está "+karl.getEstadoSalud().toString()+". ");
+			append(Personaje.karl+" está "+karl.getEstadoSalud().toString() + karl.getGenero().sufijo() +". ");
 		};
 end
 
@@ -251,7 +251,7 @@ no-loop true
 
 		modify(b){
 			append(Personaje.martins+" va a"+martins.getUbicacion().toString()+". ").
-			append(Personaje.crabbin+" va a"+karl.getEstadoSalud().toString()+". ");
+			append(Personaje.crabbin+" va a"+crabbin.getUbicacion().toString()+". ");
 		};
 end
 

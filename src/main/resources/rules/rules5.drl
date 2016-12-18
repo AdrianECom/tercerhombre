@@ -37,7 +37,7 @@ rule "Anna esta en el final"
 		}
 		modify(b){
 			append(Personaje.anna+"está en e"+anna.getUbicacion().toString()+". ").
-			append(Personaje.anna+" ignora a Martins.");
+			append(Personaje.anna+" ignora a Martins. ");
 		};
 end
 
@@ -108,7 +108,7 @@ no-loop true
 			setUbicacion(Ubicacion.PLAZA);
 		}
 		modify(b){
-			append(Personaje.lime+" y Martins llegan a"+lime.getUbicacion().toString());
+			append(Personaje.lime+" y Martins llegan a"+lime.getUbicacion().toString() + ". ");
 		};
 		modify(lime){
 			setUbicacion(Ubicacion.CLOACAS);
@@ -145,7 +145,7 @@ no-loop true
 			setUbicacion(Ubicacion.PLAZA);
 		}
 		modify(b){
-			append(Personaje.calloway+" va a"+calloway.getUbicacion().toString());
+			append(Personaje.calloway+" va a"+calloway.getUbicacion().toString() + ". ");
 		};
 
 end
@@ -175,7 +175,7 @@ no-loop true
 			setUbicacion(Ubicacion.PLAZA);
 		}
 		modify(b){
-			append(Personaje.paine+" va a"+paine.getUbicacion().toString());
+			append(Personaje.paine+" va a"+paine.getUbicacion().toString() + ". ");
 		};
 
 end
@@ -279,7 +279,7 @@ agenda-group "g5"
 		}
 
 		modify(b){
-			append(Personaje.calloway+" y Martins van a"+calloway.getUbicacion().toString());
+			append(Personaje.calloway+" y Martins van a"+calloway.getUbicacion().toString() + ". ");
 		};
 
 		modify(harbin){
@@ -322,7 +322,7 @@ agenda-group "g5"
 			setUbicacion(Ubicacion.CEMENTERIO);
 		}
 		modify(b){
-			append("Paine va a"+paine.getUbicacion().toString()+" con Calloway y Martins");
+			append("Paine va a"+paine.getUbicacion().toString()+" con Calloway y Martins" + ". ");
 		};
 
 end
@@ -498,7 +498,7 @@ rule "Martins decide ayudar a Calloway"
 // **************** METADATOS ******************* //
   @ruleDate(2016-12-06)
 
-  @ruleDescription("Tras hablar con Lime, Martins decide ayudar a Calloway y va a la comisaria.")
+  @ruleDescription("Tras hablar con Lime, Martins decide ayudar a Calloway y va a la comisaria. ")
 
   @ruleAuthor(Jesús Garcerán)
 
@@ -668,7 +668,7 @@ rule "Martins y Lime se ven en el cafe"
 // **************** METADATOS ******************* //
   @ruleDate(2016-12-06)
 
-  @ruleDescription("Martins decide quedar con Lime en el Cafe Marc y Calloway espera fuera.")
+  @ruleDescription("Martins decide quedar con Lime en el Cafe Marc y Calloway espera fuera. ")
 
   @ruleAuthor(Jesús Garcerán)
 
